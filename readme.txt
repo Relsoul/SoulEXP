@@ -1,6 +1,1 @@
-初始化readme文件
-添加一行说明
-新的开始
-master分支上的readme
-修复bug
-
+## 一枚前端渣渣的JavaScript学习笔记~
