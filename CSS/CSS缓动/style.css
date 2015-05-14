@@ -1,0 +1,287 @@
+@font-face{
+	font-family: "SoulFont";
+	src:url("fonts/raphaelicons-webfont.eot") format("eot"),
+	url("fonts/raphaelicons-webfont.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+
+}
+html 
+{ 
+overflow: hidden; 
+} 
+body{
+	overflow: hidden;
+	font-family: "微软雅黑";
+	font-size:15px;
+	font-weight: 400;
+	font-smoothing:antialiased;
+	-webkit-font-smoothing:antialiased;
+}
+.warp{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+.warp>input,.warp>a{
+	width: 20%;
+	height: 34px;
+	line-height: 34px;
+	position: fixed;
+	bottom: 0;
+}
+
+
+.warp>input{
+	opacity: 0;
+	z-index: 10000;
+}
+.warp>a{
+	color: #fff;
+	z-index: 10;
+	font-weight: 700;
+	font-size: 16px;
+	background: #2D2D29;
+	text-align: center;
+	text-shadow:1px 1px 1px #3CA2A2;
+}
+
+#nav_1,#nav_1+a{
+	left: 0;
+}
+#nav_2,#nav_2+a{
+	left: 20%;
+}
+#nav_3,#nav_3+a{
+	left: 40%;
+}
+#nav_4,#nav_4+a{
+	left: 60%;
+}
+#nav_5,#nav_5+a{
+	left: 80%;
+}
+
+.warp input:checked+a,.warp input:checked:hover +a
+{
+	background: #215A6D;
+
+}
+
+.warp input:hover +a{
+	background: #3CA2A2;
+}
+
+.warp input:checked+a:after{
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border: 20px solid transparent;
+	border-bottom-color:  #215A6D;
+	left: 50%;
+	bottom: 100%;
+	margin-left:-20px; 
+}
+.content{
+
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	transform:translate3d(0,0,0);
+	-webkit-transform:translate3d(0,0,0);
+	-webkit-backface-visibitily:hidden;
+}
+.con_apply{
+	background: #fff;
+	overflow: hidden;
+}
+.con_apply,.content{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+#nav_1:checked~.content{
+	transform:translateY(0);
+	-webkit-transform:translateY(0);
+}
+
+#nav_2:checked~.content{
+	transform:translateY(-100%);
+	-webkit-transform:translateY(-100%);
+}
+#nav_3:checked~.content{
+	transform:translateY(-200%);
+	-webkit-transform:translateY(-200%);
+}
+#nav_4:checked~.content{
+	transform:translateY(-300%);
+	-webkit-transform:translateY(-300%);
+}
+#nav_5:checked~.content{
+	transform:translateY(-400%);
+	-webkit-transform:translateY(-400%);
+}
+
+.con_pic{
+	font-family: "SoulFont";
+	width: 200px;
+	height: 200px;
+	background: #92C7A3;
+	position: absolute;
+	left: 50%;
+	margin-left: -100px;
+	top: 0;
+	transform: translateY(-50%) rotate(45deg);
+	-webkit-transform:translateY(-50%) rotate(45deg) ;
+}
+.con_color{
+	background: #215A6D;
+}
+/*查找含有date-icon属性*/
+[data-icon]:after{
+	content:attr(data-icon); /*插入date-icon值*/
+	width: 200px;
+	height: 200px;
+	color: #fff;
+	text-align: center;
+	font-size: 90px;
+	line-height: 200px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -100px 0 0 -100px;
+	transform:rotate(-45deg) translateY(25%);
+	-webkit-transform:rotate(-45deg) translateY(25%);
+}
+
+.con_apply h2{
+	color: #e23a6e;
+	font-size: 54px;
+	text-align: center;
+	font-weight: 900;
+	width: 80%;
+	left:10%;
+	position: absolute;
+	top: 50%;
+	margin-top: -80px;
+	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+	-webkit-backface-visibility:hidden;
+
+}
+.con_apply p{
+	position: absolute;
+	width: 50%;
+	left: 25%;
+	top:50%;
+	font-size:16px;
+	line-height: 22px;
+	padding: 0;
+	text-align: center;
+	-webkit-backface-visibility:hidden;
+	color: #3CA2A2;
+	
+}
+#nav_1:checked ~.content #con_1 p,
+#nav_2:checked ~.content #con_2 p,
+#nav_3:checked ~.content #con_3 p,
+#nav_4:checked ~.content #con_4 p,
+#nav_5:checked ~.content #con_5 p{
+	-webkit-animation:soul_ref 0.6s ease 0.2s backwards;
+	animation:soul_ref 0.6s ease 0.2s backwards;
+}
+@-webkit-keyframes soul_ref{
+	0%{
+		-webkit-transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		opacity: 1;
+	}
+
+}
+
+@keyframes soul_ref{
+	0%{
+		-webkit-transform:translateY(40px);
+		opacity: 0;
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		opacity: 1;
+	}
+}
+
+/*animation动画不需要触发 直接运行*/
+#nav_1:checked ~.content #con_1 h2,
+#nav_2:checked ~.content #con_2 h2,
+#nav_3:checked ~.content #con_3 h2,
+#nav_4:checked ~.content #con_4 h2,
+#nav_5:checked ~.content #con_5 h2{
+	-webkit-animation:soul 0.6s ease 0.2s backwards;
+	animation:soul 0.6s ease 0.2s backwards;
+}
+
+@-webkit-keyframes soul{
+	0%{
+		-webkit-transform:translateY(-40px);
+		opacity: 0;
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		opacity: 1;
+
+	}
+
+}
+
+@keyframes soul{
+	0%{
+		-webkit-transform:translateY(-40px);
+		opacity: 0
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		opacity: 1;
+
+	}
+	
+
+}
+
+@media screen and (max-width:520px){
+	.con_apply h2{
+		font-size:42px;
+	}
+	.con_apply p{
+		width: 90%;
+		left:10%;
+		margin-top: 0;
+	}
+	.nav >a{
+		font-size: 13px;
+	}
+
+	
+}
+
+@media screen and (max-width:360px){
+	.con_apply h2{
+		font-size:42px;
+	}
+	.con_apply p{
+		width: 90%;
+		left:10%;
+		margin-top: 0;
+	}
+	.nav >a{
+		font-size: 10px;
+	}
+
+	
+}
+

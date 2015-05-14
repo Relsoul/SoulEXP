@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="snabbt.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+
+		function snabbtAnim(){
+			  
+		}
+
+
+		snabbtAnim.prototype.rotate=function(){
+			$("#sna_rotate").click(function(){
+				$(this).snabbt({
+					//移动 position:[x,y,z]
+					position:[200,100,0],
+					//旋转 rotation:[x,y,z]
+					//Math.PI正好是一周.
+					rotation:[0,Math.PI,0],
+					//duration:持续时间(ms)
+					duration: 100,
+					//动画效果 可以参考css中的动画
+					//当设置为spring duration无效
+					easing: 'ease'
+				}).snabbt({
+					position:[0,0,0],
+					rotation:[0,0,0],
+					easing:"spring",
+					//控制spring弹性常数
+					 springConstant: 0.4,
+					 //控制spring回弹.设置为1就根本停不下来
+				  springDeceleration: 0.9,
+				  //控制spring回弹时间.(可以把数字设置为1000然后实践理解下应该就简单了)
+				  springMass: 8,
+
+				})
+			})
+		}
+
+		snabbtAnim.prototype.custom=function(){
+			$("#sna_custom").click(function(){
+				$(this).snabbt({
+					position:[100,0,0],
+					duration:1000,
+					//自定义ease动画效果
+					easing:function(value){
+					 return value + 0.3 * Math.sin(2*Math.PI * value);
+					}
+				}).snabbt({
+					position:[0,0,0],
+					easing:"ease"
+				})
+
+
+			})
+		}
+
+		snabbtAnim.prototype.overly=function(){
+			$("#sna_overly").click(function(){
+				$(this).snabbt({
+					//叠加两个动画 一个是向左移动 一个是抖动
+					valueFeeder: function(i, matrix) {
+						//i在0~1中变化 函数返回的是一个mateix矩阵 具体的可以看官网矩阵
+				    var x = Math.sin(i*Math.PI);
+				    console.log(i)
+				    return matrix.rotateZ(Math.sin(6*i*Math.PI)).translate(x*200, 0, 0);
+				  },
+				  duration: 1000
+				})
+			})
+		}
+
+		snabbtAnim.prototype.msitu=function(){
+			$("#sna_situ").click(function(){
+				$(this).snabbt({
+					  rotation: [0, Math.PI, 0],
+ 					 easing:"ease",
+				}).snabbt({
+					rotation:[0,0,0]
+				})
+			})
+		}
+
+		snabbtAnim.prototype.snaFoc=function(){
+			$("#sna_focus").click(function(){
+				//关注动画只需要传递一个'attention'参数即可
+				$(this).snabbt('attention',{
+					position:[200,1000,0],
+					 rotation: [0, 0, Math.PI/2],
+					  springConstant: 1.9,
+					  springDeceleration: 0.9,
+				})
+			})
+		}
+
+		snabbtAnim.prototype.snaMore=function(){
+			$("#sna_con").click(function(){
+				$("#sna_more").find(".sna_small").snabbt({
+					//设置初始状态/初始地址为0 0 0
+				 fromRotation: [0, 0, 0],
+				 fromPotition:[0,0,0],
+				 position:function(i,total){
+				 	return [i*(total*10),0,0]
+				 },
+				 rotation: function(i, total) {
+				 	console.log(total)//最后结果是5 因为有5个元素
+				 	console.log(i)//1,2,3,4 获取sna_small节点
+				    return [0, 0, (i/(total - 1)) * (Math.PI/2)];
+				  },
+				   easing: 'spring',
+				}).snabbt({
+					position:[0,0,0],
+					rotation: [0, 0, 0],
+					  delay: function(i, total) {
+					    return (total - i - 1) * 50;
+					  },
+					  easing: 'ease',
+				})
+
+
+			})
+			
+		}
+
+
+
+		var snaEvent=new snabbtAnim();
+		snaEvent.rotate()
+		snaEvent.custom()
+		snaEvent.overly()
+		snaEvent.msitu()
+		snaEvent.snaFoc()
+		snaEvent.snaMore()
+	})
+	
+
+
+	</script>
+	<style type="text/css">
+		.but{
+			clear: both;
+			display: block;
+			margin-top: 40px;
+			width: 100px;
+			height: 40px;
+			background:#2D2D29;
+			border:none;
+			border-radius: 5px;
+			color: #fff;
+
+		}
+		.sna_small{
+			width: 20px;
+			height: 20px;
+			background: #2D2D29;
+			float: left;
+			margin: 5px; 
+		}
+		#sna_more{
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button id="sna_rotate" class="but">点击移动旋转</button>
+
+	<button id="sna_custom" class="but">自定义ease动画效果</button>
+	<button id="sna_overly"  class="but">动画叠加</button>
+
+	<button id="sna_situ"  class="but">原点动画</button>
+	<button id="sna_focus"  class="but">关注动画</button>
+
+	<div id="sna_more">
+		<div class="sna_small"></div>
+		<div class="sna_small"></div>
+		<div class="sna_small"></div>
+		<div class="sna_small"></div>
+		<div class="sna_small"></div>
+	</div>
+	<button id="sna_con" class="but">点击开始多重动画</button>
+</body>
+</html>

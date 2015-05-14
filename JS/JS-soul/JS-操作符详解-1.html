@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-操作符详解-1</title>
+	<script type="text/javascript">
+	function test0(){
+		//前置型递增/递减 后置型递增/递减
+
+		//前置型
+		var bl0=10;//设置变量bl0等于10
+		++bl0;//++bl0相当于 bl0=bl0+1;
+		// alert(bl0);//弹出11
+		var bl1 =10;
+		--bl1;//--bl1相当于bl1=bl1-1;
+		// alert(bl1);//弹出9;
+
+		//后置型
+		var bl3=10;
+		bl3++;//bl3++相当于 bl3=bl3+1;
+		// alert(bl3);//弹出11
+		var bl4 =10;
+		bl4--;//bl4--相当于 bl0=bl4-1;
+		// alert(bl4);//弹出9
+
+		//那么这两个有什么区别呢？
+		var bl5 =10;
+		var bl6 = ++bl5 +10;
+		// alert(bl6);//弹出的是21
+
+		var bl7=10;
+		var bl8 =bl7++ +10;
+		// alert(bl8);//奇怪 弹出的是20 怎么回事呢？
+		// alert(bl7);//再来看看经过相加后的bl17是多少 弹出的是11
+		var bl9 =bl7 + 10;
+		// alert(bl9)//再来运算下 弹出的是21
+		//可以得出结论 前置的++是在运算符(+-*/)之前运行的 也就说优先级高于运算符
+		//后置的是在运算符之后运行的 所以第二次运行弹出的是21
+
+		//递增递减运算的对象是数字
+		var bl10 ="jm";
+		bl10 ++;
+		// alert(bl10);//这样弹出Nan
+		var bl11 ="10";
+		bl11 ++
+		// alert(bl11+typeof bl11);//这样弹出的是11 如果字符串里有数字会把字符中数字转换成数字类型
+		var bl12 ="11mm";
+		bl12++
+		// alert(bl12);//这样弹出的会是Nan 因为不能包含字符
+
+		//布尔操作符 
+		//布尔操作符只有true和false两个属性
+
+		//逻辑非
+		var bl13="hello";
+		// alert(!bl13);//!就是逻辑非 ！..逻辑非会拉入你进入反世界 比如bl13存在字符串对吧
+		// alert(bl13);//如果bl13非空字符串 那么就会弹出ture 但是加了！号 一切都反了 !bl13会返回false
+		var bl14=0;
+		// alert(!bl14);//本来数字为0 会弹出false 加了!就会弹出false...好好体会吧.
+
+		//逻辑与
+		var bl15 =true;
+		//var bl16 =(bl15&&nud);//直接会报错,逻辑与在第一个元素是true然后会判断第二个元素 这里第二个元素不存在 
+		//所以会报错
+		var bl17 =false;
+		var bl18 =(bl17&&nud);// 变量1等于false 变量2无论是true还是false，最后结果都是false
+		// alert(bl18);//会直接弹出false
+
+		//逻辑或
+		var bl19=true;
+		var bl20=false;
+		// alert(bl19||bl20);//会弹出true ||是逻辑或的符号 逻辑或只要有一个是true 那么都会返回true
+		//如果两个都是false 那么就会返回false
+		var bl19=false;
+		// alert(bl19||und)//und没有定义 再加上第一个元素是false 所以会报错
+
+
+
+	}
+
+	function test1(){
+		//乘法
+		var bl0=2*77;//这就是乘法
+		var bl1="24";
+		var bl2 =bl0*parseInt(bl1);//还记得parseInt函数吗？乘法要把字符串转为数值哦
+		// alert(bl2);
+
+		//除法
+		var bl3 =-20/0;//任何非零的有限数除以0都是Infinity/-Infinity 取决于符号
+		// alert(bl3);//因为是负号所以会弹出-Infinity
+
+		//余数
+		var bl4 =3%2;//2除以3取余数
+		// alert(bl4);//弹出的是1
+		//除法和余数要把字符串转为数值哦
+
+		//加法
+		var bl5="213";
+		var bl6=24;
+		var bl7=parseInt(bl5)+bl6;//parseInt变量已经讲过咯
+		// alert(bl7+"bl7类型:"+typeof bl7);//弹出237 类型是数字类型
+		var bl8 =bl5+bl6;//如果不经过转换那么是多少呢？
+		// alert(bl8+"bl8类型:"+typeof bl8);//弹出21324 加号单纯变成字符串拼接了 把bl6转换为字符串然后拼接起来
+		var bl9 =22;
+		var bl10=33;
+		var bl11 ="相加获得："+bl9+bl10//
+		// alert(bl11)//因为加法是从左到又的 这里会弹出"相加获得：2233"； 要解决很简单
+		var bl12="相加获得"+(bl9+bl10);//这样就正确了
+
+		//减法
+		var bl13 ="-214";//这个是字符串
+		var bl14 =17;
+		var bl15= parseInt(bl13)+bl14;
+		// alert(bl15);//弹出-197 如果我想把这个变为正数 那么应该怎么办呢？ 简单，跟数学一样
+		var bl16= -parseInt(bl13)+bl14//仅仅在parseInt前面加一个-号就ok了
+		// alert(bl16)//弹出正数
+		var bl7=true;
+		var bl8=10-bl7;//
+		// alert(bl8);//弹出9 因为bl7被转换成了1 false就是0
+		var bl9="2015";
+		var bl10=bl9-"1000";
+		// alert(bl10);//会弹出1015 因为会在后台强制用 Number()转换成数字再进行相减
+
+		//大于,小于，小于等于，大于等于
+		var bl11 = "hello";
+		var bl12 = "soul";
+		var bl13 = bl11 > bl12;
+		// alert(bl13);//字符串比较会把两个字符转换为字符编码再进行比较// 返回的是false
+		var bl4="23";
+		var bl5="3";
+		var bl6=bl5<bl4;
+		// alert(bl6);//明明是正确的啊？ 还是那句话 字符串比较会把两个字符转换为字符编码再进行比较// 返回的是false
+		var bl7="24";
+		var bl8=3;
+		var bl9= bl7>bl8;
+		// alert(bl9);//字符串与数字比较 会把字符串转换为数字类型再进行比较 返回true
+
+		var bl10="a";
+		var bl12=3;
+		// alert(bl10>bl12);//返回Nan 因为a转为数字Nan Nan与数字比较都是会返回Nan
+
+		//相等 不等 全等 不全等
+		//对于对象来说 相等不相等 先转换再比较 全等不全等 仅比较不转换
+
+		var bl10=undefined;
+		var bl11=null;
+		// alert(bl10==bl11);//会弹出相等 因为在JavaScript定义里 undefined和null是相等的
+		var bl12="12";
+		var bl13=12;
+		var bl13= bl12==bl13;
+		// alert(bl13);//将字符串转换后还是相等的.
+		var bl14="12";
+		var bl15=14;
+		var bl16= bl14!=bl15;
+		// alert(bl16);//返回true 因为转换成数字后 他们两个不相等
+
+		//全等 不等 不全等
+
+		var bl17="13";
+		var bl18=13;
+		var bl19= bl17==bl18;
+		// alert(bl19);//转换后相等
+		var bl20 = bl17===bl18//全等是三个等号 不会转换
+		// alert(bl20);//返回false;
+		var bl21="33";
+		var bl22=33;
+		var bl23= bl21!=bl22;//!=是不等于
+		// alert(bl23);//转换后33等于33 所以返回false
+		var bl24 =bl21!==bl22//!==是全不等
+		// alert(bl24);//弹出true 因为他们是不等的 为什么呢？ 因为没有转换成整数比较 字符串等于整数吗？
+ 		var bl25 =undefined;
+ 		var bl26=null;
+ 		// alert(bl25===bl26);//没有转换 会弹出false
+
+	}
+
+	function test2(){
+		//条件操作符(三目操作符)
+		var bl0=10;
+		var bl2="20";
+		var bl3= bl0>bl2?bl0:bl2//bl0是否大于bl2？ 如果是则bl3=bl0；如果不是bl3=bl2；
+		// alert(bl3+ typeof bl3);//因为bl0不大于bl2 所以bl3=bl2 弹出20
+
+		//赋值操作符
+		var bl4=10;//赋值10给bl4
+		bl4 +=bl4;//bl4=bl4+bl4 
+		// alert(bl4);//等于20
+		bl4 /=bl4//bl4=bl4/bl4;
+		bl4 %=bl4//bl4%=bl4;
+
+
+	}
+
+
+
+
+
+	window.onload=function(){
+		test0();
+		test1();
+		test2();
+
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

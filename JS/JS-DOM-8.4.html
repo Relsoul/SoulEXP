@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-DOM-8.4</title>
+	<script type="text/javascript">
+	function insertAfter(before,after){
+		var parent_node=after.parentNode;
+		if (parent_node.lastChild==parent_node) {
+			after.appendChild(before);
+		}else{
+			parent_node.insertBefore(before,after.nextSibling);
+		}
+
+	}
+	function createDl(){
+		var bianli_abbr=document.getElementsByTagName("abbr");
+		var shuzu=[];
+		for (var i = 0; i < bianli_abbr.length; i++) {
+			var abbr_title=bianli_abbr[i].getAttribute("title");
+			// alert(abbr_title);//成功获取到abbr标题属性;
+			var abbr_into =bianli_abbr[i].lastChild.nodeValue;
+			alert(abbr_into);//成功获取到abbr内容.
+			shuzu[abbr_into]=abbr_title;//abbr_title是要解释的 ，abbr_into是缩略的。 那么这句话的意思就是 shuzu[灵魂的意思]=soul就是灵魂
+
+		};
+		var new_dl=document.createElement("dl");
+		for(abbr_into in shuzu){
+			var new_dt =document.createElement("dt");//dt是缩略词，也就是abbr_into
+			var new_dt_txt =document.createTextNode(abbr_into);
+			new_dt.appendChild(new_dt_txt);//在dt属性节点下添加文本节点
+			var new_dd =document.createElement("dd")//dd是解释词 也就是abbr_title
+			var new_dd_txtshuzu =shuzu[abbr_into];//设置dd的解释词内容 也就是把数组每次循环储存到变量new_dd_txtshuzu
+			var new_dd_txt =document.createTextNode(new_dd_txtshuzu);//添加dd解释词
+			new_dd.appendChild(new_dd_txt);//在dd属性节点下添加文本节点
+			new_dl.appendChild(new_dt);//在dl列表下添加dt
+			new_dl.appendChild(new_dd);//在dl列表下添加dd
+		}
+		var new_h2=document.createElement("h2");//创建一个h2元素
+		var new_h2_txt =document.createTextNode("缩略词列表");//创建一个文本节点 内容为"缩略词列表"
+		new_h2.appendChild(new_h2_txt);//在h2元素节点下添加文本节点
+		document.body.appendChild(new_h2);//在body添加h2
+		document.body.appendChild(new_dl);//在body添加dl,因为这句话写在h2后面所以dl元素节点在h2后面
+
+	}
+	window.onload=function(){//网页加载完毕加载函数
+		createDl();
+		createSub();
+	}
+	//显示文档来源的函数.
+	function createSub(){
+		var get_div=document.getElementsByTagName("div");//设置get_div标签等于网页中div标签
+		for (var i = 0; i < get_div.length; i++) {//遍历网页div标签
+			if (get_div[i].getAttribute("laizi")) {//如果div标签含有属性"laizi"
+			var get_div_child =get_div[i].getElementsByTagName("*");//设置get_div_child等于div标签下的元素
+			var get_div_url=get_div[i].getAttribute("laizi");//获取divlaizi属性
+			// alert(get_div_url);//测试获取laizi属性文本内容 测试ok
+			var get_div_lastchild=get_div_child[get_div_child.length-1];//因为.length是从1开始计数，而数组是从0开始计数。另外别把lastchild跟length-1搞混了 一个是用在DOM，一个是用在长度上
+			 alert(get_div_lastchild.nodeName);//弹出属性节点
+			var new_a =document.createElement("a");//创建a元素
+			var new_a_txt =document.createTextNode("来源");//创建文本节点 内容为"来源"
+			var new_a_href=new_a.setAttribute("href",get_div_url);//创建a元素属性，属性为href,内容为"http://emufan.com（get_div_url)"
+			new_a.appendChild(new_a_txt);//在a元素标签下添加文本节点
+			var new_sup =document.createElement("sup");//创建一个sup上标元素
+			new_sup.appendChild(new_a);//在上标元素下添加a标签
+			get_div_lastchild.appendChild(new_sup);//在div最后一个元素节点创建sup上标元素
+
+			};
+			
+
+		};
+
+
+
+	}
+
+
+	</script>
+</head>
+<body>
+	<div laizi="http://emufan.com">
+	<h1>什么是Soul</h1>
+	<p>显示来源文献哦</p>
+	</div>
+	<p>Soul是<abbr title="soul就是灵魂">灵魂的意思</abbr></p>
+	<p><abbr title="追逐者">Seeker</abbr>是什么意思？</p>
+</body>
+</html>

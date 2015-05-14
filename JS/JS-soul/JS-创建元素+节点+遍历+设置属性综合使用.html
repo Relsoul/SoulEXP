@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="cn">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-创建元素+节点+遍历+设置属性综合使用</title>
+	<script type="text/javascript">
+		
+	function createImg(){//定义createImg函数
+		var sz_title=[];//设置全局变量sz_title,为什么要在这里设置全局变量呢？因为下面有两个for循环，两个for循环都需要调用
+		var sz_txt=[];//设置全局变量sz_txt;
+		var get_ul = document.getElementById("ulid");//设置get_ul等于标签id为 "ulid"的元素
+		var get_ul_li =get_ul.getElementsByTagName("li");//设置get_ul_li等于ulid元素下的li元素
+		// alert(get_ul_li)//测试ok 获取到get_ul_li属性
+		for (var i = 0; i < get_ul_li.length; i++) {//开始遍历
+			var li_title =get_ul_li[i].getAttribute("title");//设置li_title等于li元素的title属性内容 第一次循环那么li_title=get_ul_li[0]的title属性 即li_title="这是第一张图片_blur_1"
+			var li_link =get_ul_li[i].getAttribute("soul_link");//设置li_link等于li元素的soul_link属性内容
+			// alert("|获取li soul_link属性:"+li_link+"|获取li tittle属性:"+li_title);
+			//测试获取文本内容ok
+			sz_title[li_link]=li_title;//设置sz_title数组下标等于soul_link,数组等于标题内容.
+			//第一次循环sz_title["../img/Pepsized_Blur_01.jpg"]="这是第一张图片_blur_1"
+			//其实可以这样写的sz_title[li_title]=li_link 看起来比较方便理解一点
+		};
+		for(li_link in sz_title){//开始遍历sz_title数组
+			var new_img =document.createElement("img");//创建一个新的img元素
+			var new_img_src=new_img.setAttribute("src",li_link);//设置img元素的"src"属性等于li_link;
+			//第一次遍历的sz_title[li_link]换成理解的来说就是 sz_title[../img/Pepsized_Blur_01.jpg]设置src属性等于li_link就相当于 src="../img/Pepsized_Blur_01.jpg"
+			var new_img_src=new_img.setAttribute("width","400");//设置img元素的宽等于400
+			var new_img_src=new_img.setAttribute("height","400");//设置img元素的高等于400
+			var p_txt=sz_title[li_link];//设置p元素的文本等于li_title 第一次遍历sz_title["../img/Pepsized_Blur_01.jpg"]="这是第一张图片_blur_1"
+			// alert(p_txt);//检测p元素文本内容获取是否正确
+			var new_p=document.createElement("p");//创建一个p元素
+			var new_p_txt=document.createTextNode(p_txt);//创建p元素的文本节点 文本节点内容等于p_txt
+			new_p.appendChild(new_p_txt);//在p元素下面添加p文本节点
+			document.body.appendChild(new_p);//在body标签所有元素最后添加p标签
+			document.body.appendChild(new_img);//在body p标签后添加图片
+		}
+
+		
+	}
+	window.onload=function(){//页面加载完毕后执行函数
+		var button_bid =document.getElementById("bid");//设置get_ul等于标签id为 "bid"的元素 其实这个文档就一个button元素 可以用document.getElementsByTagName
+		button_bid.onclick=function(){ //在button标签添加一个onclick事件
+			createImg();//添加函数
+			//因为涉及到元素的创建和获取 所以需要再页面加载完毕后才为button绑定事件
+		}
+
+		
+	}
+	//实际上可以把li元素也在JavaScript中写了。
+
+	</script>
+</head>
+<body>
+	<button id="bid">输出图片库图片</button>
+	<ul id="ulid">
+		<li soul_link="../img/Pepsized_Blur_01.jpg" title="这是第一张图片_blur_1">blur_1</li>
+		<li soul_link="../img/Pepsized_Blur_02.jpg" title="这是第一张图片_blur_2">blur_2</li>
+		<li soul_link="../img/Pepsized_Blur_03.jpg" title="这是第一张图片_blur_3">blur_3</li>
+		<li soul_link="../img/Pepsized_Blur_04.jpg" title="这是第一张图片_blur_4">blur_4</li>
+	</ul>
+
+</body>
+</html>

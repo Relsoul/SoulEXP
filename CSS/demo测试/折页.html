@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;
+		font-family: '微软雅黑';}
+		#mom li{
+			list-style-type: none;
+			text-align: center;
+			margin: 10px;
+			margin-top:20px;
+		}
+		#warp{
+			background: #E5FCC2;
+			margin: 100px auto;
+			height: 400px;
+			width: 960px;
+			box-shadow: -5px 5px 30px black;
+
+
+		} 
+		#mom{
+			top: 30px;
+			left: -20px;
+			width: 100px;
+			height: 250px;
+			position: relative;
+			background: #594F4F;
+			border-radius: 0 15px 15px 0;
+			box-shadow: 5px 5px 30px black;
+
+		}
+		
+		#rord_bottom{
+			position: relative;
+			display: block;
+			width: 0;
+			height: 0;
+			border-style:dashed solid dashed dashed; 
+    		border-width:12px 20px; 
+			left:-40px;
+			top: 19px; 
+   			border-color:transparent #594F4F transparent transparent; 
+		}
+
+		#rord_top{
+			position: relative;
+			display: block;
+			width: 0;
+			height: 0;
+			border-style:dashed solid dashed dashed; 
+    		border-width:12px 20px; 
+			left:-20px;
+			top: -12px; 
+   			border-color:transparent #594F4F transparent transparent; 
+
+		}
+
+	</style>
+</head>
+<body>
+	<div id="warp">
+		<ul id="mom">
+			<span id="rord_top"></span>
+			<li>菜单1</li>
+			<li>菜单2</li>
+			<li>菜单3</li>
+			<li>菜单4</li>
+			<li>菜单5</li>
+		</ul>
+		<span id="rord_bottom"></span>
+	</div>
+	
+</body>
+</html>

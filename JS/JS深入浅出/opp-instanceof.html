@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	//instanceof
+	console.log([1,2] instanceof Array);//true;
+	new Object instanceof Array;//false
+	//instanceof会检测左边对象是否由右边构造的
+	//或者说 左边对象原型链是否是右边构造器
+
+	function soul(){};
+	//创建一个soul函数构造器
+
+	function dark(){};
+	//创建一个dark函数构造器
+
+	dark.prototype=new soul();
+	//设置dark的原型等于 soul 实例
+
+	var seeker =new dark();
+	//创建dark实例
+
+	console.log(seeker instanceof dark);//true
+	//seeker原型是否是dark
+
+	var one =new soul();
+	//创建soul实例
+
+	one instanceof soul;//true;
+
+	one instanceof dark;//false;
+
+	console.log(seeker instanceof soul)//true
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

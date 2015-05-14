@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-操作CSS</title>
+	<script type="text/javascript">
+		function testCSS(){
+			var get_pid=document.getElementById("pid");
+			alert("p元素是个什么类型："+typeof get_pid.nodeName);//type of判断函数是个什么类型 比如p就是str(字符串)型的 var num =1 用typeof判断就是数字类型
+			alert("style是什么类型:"+typeof get_pid.style);//style也是一个对象
+			alert("style颜色:"+get_pid.style.color);//获取pid颜色
+			alert("style字体:"+get_pid.style.fontFamily);//js里-号会被认为是运算符 所以采用驼峰式命名
+			alert("style字体大小:"+get_pid.style.fontSize);//获取字体大小;
+			get_pid.style.color="blue";//设置pid颜色为蓝色
+			alert("style更改后的颜色"+get_pid.style.color);//获取更改后的颜色
+
+		}
+		function changecss(){//更改h1兄弟元素的style属性
+			var css_h1=document.getElementsByTagName("h1");//获取文档中h1标签
+			
+			for (var i = 0; i < css_h1.length; i++) {//遍历h1标签
+				var elem =getNextNode(css_h1[i].nextSibling);//设置变量elem,调用getNextNode函数返回的结果 这里传递给getNextNode函数的属性是(h1标签的下一个节点);节点有三种类型 文本，属性，元素，
+				//因为我们要更改元素的css属性，所以我只要获取到元素节点就行了。其他的都不行。
+				elem.style.color="blue";//设置elem的颜色是蓝色
+				elem.style.fontSize="24px";//设置elem字体大小为24px
+			};
+		}
+		function getNextNode(node){//开始检测节点类型函数
+			if (node.nodeType==1) {//nodeType有三种类型 1-元素节点 2-属性节点 3-文本节点 判断是否是元素节点
+				return node;//是 返回node
+			};
+			if (node.nextSibling) {//检测node下一个节点是否存在 存在执行
+				return getNextNode(node.nextSibling);//再次调用函数getNextNode函数 检测Node的下一个节点.
+				//即h1的下一个节点的下一个节点，相当于再次循环.. 好好理解下 应该不难
+			};
+			return null;//如果node下一个节点不存在 返回空
+		}
+ 		window.onload=function(){//网页加载完毕加载函数
+ 			// testCSS();
+ 			changecss();
+
+ 		}
+
+
+	</script>
+</head>
+<body>
+	<p id="pid" style="color: red; font-family: sans-serif;font-size: 24px;">hello soul</p>
+	<h1>测试文本1</h1>
+	<p>测试文本2</p>
+	<p>测试文本3</p>
+	<h1>测试文本4</h1>
+	<p>测试文本5</p>
+	
+</body>
+</html>

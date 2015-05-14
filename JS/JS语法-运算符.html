@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS语法-运算符</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		var m =i+j;
+		document.write(m+"<br />");
+	</script>
+	<p>加法</p>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		var m =i-j;
+		document.write(m+"<br />");
+	</script>
+	<p>减法</p>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		var m =i/j;
+		document.write(m+"<br />");
+	</script>
+	<p>除法</p>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		var m =i*j;
+		document.write(m+"<br />");
+	</script>
+	<p>乘法</p>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		var m =i%j;
+		document.write(m+"<br />");
+	</script>
+	<p>除余</p>
+	<script type="text/javascript">
+		var i =10;
+		var j = ++i;// ++1 = i+1
+		// var m =i+j;
+		document.write(j+"<br />");
+	</script>
+	<p>++i 自运算 ++i是先运算再赋值 i++是先赋值再运算</p>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		 i =j;
+		document.write(i+"<br />");
+	</script>
+	<p>i=j 赋值</p>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		var m = i+=j; //i=i+j
+		document.write(m+"<br />");
+	</script>
+	<p>m= i+=j //i=i+j</p>
+		<p>i=j 赋值</p>
+	<script type="text/javascript">
+		var i =10;
+		var j =20;
+		var m = i*=j; //i=i*j
+		document.write(m+"<br />");
+	</script>
+	<p>m= i*=j //i=i*j</p>
+
+	<script type="text/javascript">
+		var i ="hello";
+		var j ="soul";
+		var m = i+j; //i=i*j
+		document.write(m+"<br />");
+	</script>
+	<p>字符串相加（拼接）任何类型与字符串相加都会转为字符串类型</p>
+	<script type="text/javascript">
+		var i ="10";
+		var j =20;
+		var m = i==j; //i=i*j
+		document.write(m+"<br />");
+	</script>
+	<p>【==】比较运算会返回布尔类型,字符串与数字类型进行比较，如果字符串与数字相等 那么返回还是还是true </p>
+	<script type="text/javascript">
+		var i ="10";
+		var j =10;
+		var m = i===j; //i=i*j
+		document.write(m+"<br />");
+	</script>
+	<p>【===】绝对等会比较数据类型 就算数字一样 数据类型不一样也会返回false</p>
+	<script type="text/javascript">
+		var i ="10";
+		var j =20;
+		var m = i!=j; //i=i*j
+		document.write(m+"<br />");
+	</script>
+	<p>【!=】不等 【！===】同理</p>
+	<script type="text/javascript">
+		var i ="10";
+		var j =20;
+		var m = i>j; //i=i*j
+		document.write(m+"<br />");
+
+		var c ="10";
+		var b =10;
+		document.write(c>=b);
+	</script>
+	<p>【>】大于【>=】</p>
+	<script type="text/javascript">
+		var i ="10";
+		var j =20;
+		var m = i<100&&i<100; //i=i*j
+		document.write(m+"<br />");
+	</script>
+	<p>【&&】且 如果这样写 i<100&&i>100 如果有一项不满足条件将会是false
+		<br>
+		【||】或 满足一项就会true</p>
+	<script type="text/javascript">
+		var i ="10";
+		var j =20;
+		var m = !(i==j); //i=i*j
+		document.write(m+"<br />");
+	</script>
+	<p>【！】取反 以上本来是false 但是加了！那么就变成了true</p>
+	<script type="text/javascript">
+		var i ="10";
+		var j =20;
+		var m = i>10?"i大于10":"i小于10"; //i=i*j
+		document.write(m+"<br />");
+	</script>
+</body>
+</html>

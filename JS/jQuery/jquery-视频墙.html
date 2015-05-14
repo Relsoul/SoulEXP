@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin:0; padding: 0;font-family: '微软雅黑';}
+	#warp{
+		width: 960px;
+		margin:100px auto;
+		overflow: hidden;
+	}
+
+
+	.show_head h1{
+		float: left;
+		display: block;
+	}
+	.show_head i{
+		margin-left: 10px;
+		margin-top: 25px;
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		border-radius:10px;
+		background-color: #2D2D29; 
+	}
+	.show_head a{
+		text-decoration: none;
+		display: inline-block;
+		margin-left: 20px;
+		color: #fff;
+		height: 40px;
+		line-height: 40px;
+		width: 80px;
+		text-align: center;
+		background: #2D2D29;
+
+	}
+	#currt{
+		background-color: #215A6D;
+	}
+
+	.show_img{
+		overflow: hidden;
+		width: 820px;
+		height: 200px;
+		position: relative;
+	}
+
+	.show_img img{
+		width: 200px;
+		height: 200px;
+		padding: 0;
+		margin:0;
+	}
+	.show_img li{
+		display:inline-block;vertical-align:top;
+		margin: 0;
+		padding: 0;
+		height: 200px;
+		width: 200px;
+		
+	}
+	.img_ul{
+		display:inline-block;white-space:nowrap;
+		position: relative;
+		left:0px;
+	}
+	</style>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		function showImg(){
+			//定义每个版面放几张图片
+			this.num=4;
+			//定义最大图片张数
+			this.max_num=9;
+			//定义每张图片宽度
+			this.eve_img=205;
+			//定义最多能显示几版面
+			this.max_lable=3;
+			//初始化i标签(就是小圆点导航)
+			this.i_lable=0
+			//定义小圆点导航数量
+			this.i_maxlable=$("i").length
+		}
+
+		showImg.prototype.showNext=function(){
+			var save_max_lable=this.max_lable;
+			var save_max_num=this.max_num;
+			//获取定义域
+			var than=this
+			// //设置最大图片张数
+			// var than.max_num=than.max_num;
+			// //设置每个版面放几张图片
+			// var than.num=than.num;
+			// //设置最多能显示几个版面
+			// var than.max_lable=than.max_lable;
+			// //设定小圆点导航
+			// var than.i_lable=than.i_lable;
+			// //设置小圆点导航最大数量
+			// var sum_i_maxlable=than.i_maxlable
+			$(".next").click(function(){
+				//每次减一个版面
+				than.max_lable--
+				//每次小圆点导航+1
+				than.i_lable++
+				//每次过去4张图片
+				than.max_num=than.max_num-than.num;
+				console.log("下一页"+than.max_num)
+
+
+				//----开始获取ul left-----
+				var _left_=$(".img_ul").css("left")
+				var now_left=parseInt(_left_)//获取ul目前left
+				//----结束获取ul left-----
+
+				//----更改小圆点导航开始----
+				//取消i标签的全部id
+				$("i").siblings().attr("id"," ")
+				//如果目前小圆点导航大于了最大的小圆点导航-1
+				//别忘了eq()是从0开始计数的
+				if (than.i_lable>(than.i_maxlable-1)) {
+					than.i_lable=0
+				};
+				//更改小圆点导航
+				$("i").eq(than.i_lable).attr("id","currt")
+				console.log(than.i_lable);
+				//----更改小圆点导航结束//
+
+
+				//----切换版面开始----
+				if (than.max_num>=than.num) {//如果目前剩余图片大于4
+					//更改ul left
+					$(".img_ul").css({
+						"left":"-"+than.eve_img*than.num+"px"
+					})
+					console.log("下一页现在第一次left"+$(".img_ul").css("left"))
+				}else{
+
+					if(than.max_lable>0){//如果目前剩余的面板大于0
+						$(".img_ul").css({
+						"left":now_left+(than.max_num*than.eve_img)+"px"
+					})
+						console.log("下一页现在第二次left"+$(".img_ul").css("left"))
+					}else{
+						//如果目前剩余面板小于等于0
+						$(".img_ul").css({
+							"left":0
+						})
+						//重新定义版面
+						than.max_lable=save_max_lable;
+						//重新定义最大图片张数
+						than.max_num=save_max_num;
+						
+					}
+				
+				};
+			//----切换版面结束----
+			})
+		}
+
+		showImg.prototype.showPrev=function(){
+			var than=this;
+			var save_max_lable=this.max_lable;
+			var save_max_num=this.max_num;
+			$(".prev").click(function(){
+				//每次加一个版面..实际上就是向前移动
+				// than.max_lable++
+				//每次小圆点导航-1
+				than.i_lable--
+				//每次过去4张图片
+				if(than.max_num!=save_max_num){
+					than.max_num=than.max_num+than.num;
+				}
+				
+				console.log("上一页"+than.max_num)
+
+
+				//----更改小圆点导航开始----
+				//取消i标签的全部id
+				$("i").siblings().attr("id"," ")
+				//如果目前小圆点导航大于了最大的小圆点导航-1
+				//别忘了eq()是从0开始计数的
+				if (than.i_lable<0) {
+					than.i_lable=0
+				};
+				//更改小圆点导航
+				$("i").eq(than.i_lable).attr("id","currt")
+				// console.log(than.i_lable);
+				//----更改小圆点导航结束//
+
+				//----开始获取ul left-----
+				var _left_=$(".img_ul").css("left")
+				var now_left=parseInt(_left_)//获取ul目前left
+				//----结束获取ul left-----
+				
+				//----切换版面开始----
+				if (than.max_num>than.num) {//如果目前剩余图片大于4
+					//更改ul left
+					console.log("maxnum"+than.max_num)
+
+					if(than.max_num>=save_max_num){
+						than.max_num=save_max_num;
+						$(".img_ul").css({
+						"left":0
+					})
+
+						console.log("上一页现在第一次·left"+$(".img_ul").css("left"))
+
+						
+
+					}else{
+						$(".img_ul").css({
+						"left":"-"+than.eve_img*than.num+"px"
+						})
+						console.log("上一页现在第二次left"+$(".img_ul").css("left"))
+					}
+					
+					
+					
+
+					
+					
+
+				}
+			//----切换版面结束----
+
+
+
+
+
+			})
+
+		}
+
+
+
+
+		var vshow=new showImg();
+		vshow.showNext()
+		vshow.showPrev()
+
+
+	})
+
+
+	</script>
+</head>
+<body>
+	<div id="warp">
+		<div class="show">
+			<div class="show_head">
+				<h1>卡通动漫</h1>
+				<i id="currt"></i>
+				<i></i>
+				<i></i>
+				<a class="prev">上一页</span>
+				<a class="next">下一页</span>
+			</div>
+			<div class="show_con">
+				<div class="show_img">
+					<ul class="img_ul">
+						<li><img src="img/1.jpg" alt=""></li>
+						<li><img src="img/2015.png" alt=""></li>
+						<li><img src="img/2048.jpg" alt=""></li>
+						<li><img src="img/2015-1.jpg" alt=""></li>
+						<li><img src="img/2015.png" alt=""></li>
+						<li><img src="img/2048.jpg" alt=""></li>
+						<li><img src="img/2048.jpg" alt=""></li>
+						<li><img src="img/2015.png" alt=""></li>
+						<li><img src="img/2048.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+	</div>
+</body>
+</html>

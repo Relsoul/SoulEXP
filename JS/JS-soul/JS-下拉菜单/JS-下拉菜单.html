@@ -1,0 +1,63 @@
+<!doctype html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>JS-下拉菜单</title>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	<style type="text/css">
+	
+	.hide{
+		display: none;
+	}
+	.show{
+		display: block;
+	}
+
+	</style>
+ 	<script type="text/javascript">
+ 	$(function(){
+ 		$('#nav ul').hide();
+
+ 		$('#nav > li').hover(function() {
+ 			$(this).children().show();
+
+ 			$(this).children().hover(function(){
+ 			$(this).children('li').children('ul').show();
+
+ 			},function(){
+ 				$(this).children('li').children('ul').hide();
+
+ 			})
+
+ 			// alert('s')
+ 		}, function() {
+ 			$('#nav ul').hide();
+ 		});
+ 	})
+
+
+
+
+ 	</script>
+ </head>
+ <body>
+ 	<ul id="nav">
+ 		<li><a href="">Home</a></li>
+ 		<li><a href="">Soul</a>
+ 			<ul>
+				<li><a href="">灵魂</a>
+
+					<ul>
+						<li><a href="">放荡者</a></li>
+						<li><a href="">游荡者</a></li>
+					</ul>
+				</li>
+				<li><a href="">追逐着</a></li>
+ 			</ul>
+ 		</li>
+ 		<li><a href="">Seeker</a><ul><li>ok <ul><li>test</li></ul></li></ul></li>
+ 		
+ 	</ul>
+ 	
+ </body>
+ </html> 

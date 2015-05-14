@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	var k=10;
+	function test(){
+		this.k=0;
+	}
+
+	var s=new test()
+	s.k=100
+	console.log(s.k)
+
+	var m=new test()
+	m.k=50
+	console.log(m.k)
+
+	test()
+	//指向window
+	console.log(this.k)
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

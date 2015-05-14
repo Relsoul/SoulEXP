@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-2.1.4.js"></script>
+	<script type="text/javascript">
+	//找不到原型,因为是通过init构建的
+	// console.log($().init.prototype)
+
+
+	</script>
+	<script type="text/javascript">
+		// 返回一个对象构造
+		(function(window,undefined){
+			//构造obj关键字
+			obj=function(){
+				//返回一个obj.fn.init构造函数
+			return new obj.fn.init()
+		}
+
+		// obj.prototype.init=function(){alert("初始化")}
+		// obj.prototype.hi=function(){alert("hello")}
+
+		//obj.fn等于obj的原型
+		obj.fn=obj.prototype={
+			constructor:obj,
+		}
+
+		var init = obj.fn.init =function(){
+			alert("初始化")
+		}
+		//init的原型等于obj.prototype
+		init.prototype = obj.fn
+		//会弹出两次次obj
+		//构造的时候会弹出一次,实例的时候会弹出一次
+		// obj().init()
+		// console.log(obj())
+		window.obj=obj
+		
+
+		//普通构造
+		// function nor(){}
+
+		// nor.prototype.hi=function(){alert("nor")}
+
+		// var _nor=new nor()
+		// _nor.hi()
+		// console.log(_nor)
+		})(window)
+
+		console.log(obj().init.prototype)
+
+		// function obj1(){
+
+		// }
+
+		// obj1.prototype=function(){alert("hi")}
+
+		// //init这个方法的原型等于obj1的原型
+		// var s= obj1.prototype.init={
+		// 	x:1
+		// }
+		// s.prototype=obj1.prototype;
+
+		// var _obj1=new obj1()
+
+		// console.log(_obj1.prototype)
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>读心术test</title>
+	<script type="text/javascript">
+		function getValue(){
+			var save_value=document.getElementById("real").value.toString()
+			var arr=[];
+			var col=null;
+			var text=["太极","八卦","太长不写"]
+			var endcol=document.getElementById("end")
+			for (var i = 0; i < save_value.length; i++) {
+				arr.push(Number(save_value.charAt(i)))
+				col+=arr[i]
+			};
+			
+		}
+
+	</script>
+</head>
+<body>
+	<form>
+		请输入数字:<input  id="real" type="number" />
+		<button onclick="getValue(); return false" >确定</button>
+		你的图形是:<input  id="end" type="text" />
+
+	</form>
+	
+	
+</body>
+</html>

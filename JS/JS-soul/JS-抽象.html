@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-抽象</title>
+	<script type="text/javascript">
+	function changeColor(css_v,tag){//定义函数
+		var get_p = document.getElementsByTagName(tag);//获取文档中的p元素
+		for (var i = 0; i < get_p.length; i++) {//遍历p元素
+			get_p[i].className=css_v;//设置p元素的class等于add_css 相当于 class="add_css"
+		};
+
+	}
+
+	function cX(){//定义抽象函数
+		changeColor("add_css","p");//调用函数并且传递变量
+	}
+
+	window.onload=function(){//网页加载完毕后加载函数
+		changeColor();
+		cX();
+	}
+
+	</script>
+	<style type="text/css">
+	.add_css{
+		color: red;
+	}
+
+	</style>
+</head>
+<body>
+	<p>hello</p>
+	<p>Soul Seeker</p>
+	
+</body>
+</html>

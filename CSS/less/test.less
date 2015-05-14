@@ -1,0 +1,94 @@
+
+
+//变量
+@a:#eee;
+@testW:300px;
+
+body{
+	background: @a;
+}
+/* 保留注释*/
+.box{
+	width: @testW;
+	height:@testW;
+	background: red;
+	.border;
+}
+
+//混合
+.border{
+	border:5px solid pink;
+}
+
+.box2{
+	.box;
+	margin-left:100px;
+}
+
+//混合-可带参数
+.border_02(@border_w){
+	border: solid yellow @border_w;
+}
+.test_hunhe{
+	.border_02(30px);
+}
+//混合-带值
+.border_03(@border_w:10px){
+	border:solid blue @border_w;
+}
+.test_hunhe03{
+	.border_03();
+}
+
+//类似于标记锚点
+.Col(red,@a:red){
+	color:@a;
+
+}
+
+.Col(blue,@a:blue){
+	color:@a
+}
+//默认设置..PS:需要把参数全部传递进去
+.Col(@_,@a:null){
+		background: #147845;
+}
+//混合选择器
+.magic{
+	//magic下的li
+	li{
+		//li下的a
+		a{
+			.Col(blue);
+			//&代表上一级选择器的元素
+			&:hover{
+				.Col(red)
+			}
+		}
+	}
+}
+
+.sum{
+
+	//
+	.box();
+	//继承box的样式
+	//同时在后面又定义了个Width覆盖了box的width
+	//运算记得用空格隔开..
+	width:@testW - 100px;
+	
+}
+
+//避免编译
+
+.test_03{
+	//用~""来避免编译
+	width:~"cacl(300px-30px)";
+
+}
+
+//! important
+//css中用来定义层级
+.test_improtant{
+ .box()!important;
+}

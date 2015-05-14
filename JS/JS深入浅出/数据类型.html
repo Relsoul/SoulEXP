@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	var num=32;
+	var num1="33";
+	console.log(typeof (num+num1))
+	//两个字符串相加是3332并且是字符串类型的
+	//字符串相加的时候 如果一方不是字符串会转化为字符串再进行相加
+	console.log(typeof (num1*num));
+	//相乘则是数字类型
+	//字符串相乘的时候 如果一方不是数字会转化Number()为数字再进行相乘
+
+	//函数,数组,日期都是object
+
+	//隐式转化
+	//  num3=-0 //隐式转化数字
+	// num4+''//隐式转化字符串
+
+	var test= "2"==2//
+	console.log(test)//相等true
+	// 非严格等于会先转化再去判断
+
+	var test1="2"===1
+	console.log(test1)//不等
+	//number==string//转number
+	//boolean==?转number 1=teur
+	//object==number|string//new String("hi")=="hi"
+
+	//基本类型添加方法.属性的时候 会把基本类型临时转化为对象 使用过后就会销毁
+
+	//类型检测
+	//type of arrary 返回object
+	//[1,2] instanceof Arrary //return:true
+	//
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

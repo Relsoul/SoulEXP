@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#did{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var t=document.getElementById("did")
+			t.style.transform = "rotateZ(10deg)";
+
+		}
+
+		function changeCss(){}
+
+		changeCss.prototype.css=function(){
+
+		}
+
+		var soul=new changeCss();
+
+
+
+	</script>
+
+</head>
+<body>
+	<div id="did"></div>
+</body>
+</html>

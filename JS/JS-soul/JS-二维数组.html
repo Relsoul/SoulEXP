@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-二维数组</title>
+	<script type="text/javascript">
+		//创建一个二维数组
+		var ew=[["二维数组第一个","二维数组第二个","不是二维数组的第三个"],
+		["二维数组第一个-1","二维数组第二个-2","不是二维数组的第三个-3"],]
+		//ok创建了一个..二维数组
+		document.write(ew[1][2]+"</br>");
+		//ew[1] 是["二维数组第一个-1","二维数组第二个-2","不是二维数组的第三个-3"] 这个数组
+		//ew[1][2]是上面数组中的 第三个元素"不是二维数组的第三个-3"
+		for (var i = 0; i < ew.length; i++) {
+			console.log(ew[i]);
+			for (var j = 0; j <ew[i].length; j++) {
+				document.write(ew[i][j]+"</br>")
+				//判断ew[i]中有多少个元素然后再输出j
+				//也就是输出二维数组
+			};
+		};
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

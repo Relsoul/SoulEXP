@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	//块语句
+	//常用句组合0~多个语句,用花括号定义
+	//无块级作用域
+	// {a:1,b:2}//error
+	var o={a:1,b:2}//ok
+	//
+	
+	function test(){
+		var a=b=1;
+		//实际上隐性的创建了一个全局变量b
+	}
+	test();
+	console.log(typeof a);//undefined
+	console.log(typeof b)//number
+
+	try{
+		throw 'test';
+
+	}catch(ex){
+		console.log(ex)//test
+	}finally{
+		console.log('finally')
+	}
+
+	try{
+		//do sth
+
+	}finally{
+		console.log('finally')
+		//不管中间有没有异常 都要执行finally
+	}
+
+	try{
+		try{
+			throw new Error('oops');
+		}finally{console.log('finally');}
+	}
+	catch(ex){console.error('outer',ex.message)}
+ 	//执行结果 先finally 然后outer 最后oops
+ 	//内部catch抛出异常了给外部处理 会先执行内部的finally
+
+
+ 	//function
+ 	function fd(){
+ 		//do sth
+ 		return true;
+ 	}
+ 	//函数声明会预先处置
+
+
+ 	// re()//error
+ 	var re=function(){}
+ 	//在函数表达式之前调用函数会错误
+
+ 	var p;
+ 	var obj={x:1,y:2}
+
+ 	for(p in obj){}
+ 	//for in 遍历对象顺便不确定
+ 	//for in对象会受原型链的影响
+
+ 	var val=1;
+ 	switch(val){
+ 		case 1:
+ 		case 2:console.log('hello');
+ 		//val=1 or 2都会执行 case2
+
+ 		break;
+ 	}
+
+ 	// while(isTrue){
+ 	// 	do sth;
+ 	// }
+ 	//满足条件后会执行
+
+ 	// do{
+ 	// 	do sth
+ 	// }while(isTrue){
+
+ 	// }
+ 	//在满足条件前先执行do
+
+ 	
+
+
+
+
+	</script>
+</head>
+<body>
+
+	
+</body>
+</html>

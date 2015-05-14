@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	function Map(){
+		return new Map.prototype.init()
+	}
+
+	var soul=Map.prototype={
+		constructor:Map,
+		ver:"1.2.3",
+		valueMap:{}
+	}
+	Map.prototype.init=function(){
+		
+	}
+
+	Map.prototype.get=function(key){
+		if(Map.prototype.valueMap[key]||Map.prototype.valueMap[key]==0){
+			return Map.prototype.valueMap[key]
+		}else{return null}
+	}
+
+	Map.prototype.eachVal=function(fn){
+
+		for(var x in soul.valueMap){
+			fn(x,soul.valueMap[x])
+		}
+
+	}
+
+	Map.prototype.remove=function(key){
+		if(soul.valueMap[key]||Map.prototype.valueMap[key]==0){
+			delete soul.valueMap[key]
+		}else{}
+	}
+
+	Map.prototype.hi=function(){
+		alert(this.ver)
+	}
+	Map.prototype.init.prototype=Map.prototype;
+
+	Map.prototype.valKey=function(key,val){
+		if(typeof key =="object"&&!(key instanceof Array)){
+			var x;
+			for( x in key){
+				Map.prototype.valueMap[x]=key[x]
+			}
+		}else if(typeof key=="string"){
+			Map.prototype.valueMap[key]=val
+		}
+
+
+		// Map.prototype.valueMap[key]=val
+		
+	}
+	Map.prototype.size=function(){
+		var num=0;
+		for(x in Map.prototype.valueMap){
+			num++
+		}
+		console.log(num)
+	}
+
+	Map.prototype.test=function(){
+		var testA=function(){alert("testA")}
+		var testB=function(){alert("testB")}
+		return {testA:testA,testB:testB}
+	}
+	//Map实例是Map.init
+	//init的原型是Map.prototype
+	//下面调用Map()方法都是在调用Map.init.prototype=Map.prototype 也就是Map.prototype
+	//看成Map.prototype就行了.
+	console.log(Map())
+	Map().valKey({"s":"ss","test":02,"val":03})
+	console.log(Map().valueMap)
+	Map().size()
+	console.log(Map().get("ss"))
+	Map().remove("ss")
+	console.log(Map().get("ss"))
+
+	Map().eachVal(function(val,key){
+		console.log(val+":"+key)
+	})
+	// Map().hi()
+	// function mic(){}
+	// mic.prototype.hi=function(){alert("hi")}
+	// //重写了原型所以不行.原型上的方法必须放在重写原型之后
+	// mic.prototype={
+	// 	x:1,
+	// 	y:2
+	// }
+	
+
+	// var _mic=new mic()
+	// console.log(_mic.hi)
+	var save=Map().test()
+	console.log(save)
+	
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

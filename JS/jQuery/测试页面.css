@@ -1,0 +1,174 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-size: 13px;
+	font-family: '微软雅黑';
+}
+
+body{
+	background: #3299BB;
+}
+.head{
+	margin-bottom: 20px;
+	width: 100%;
+	height: 40px;
+	background: #424242;
+	box-shadow:3px 4px 5px rgba(0,0,0,0.5);
+}
+.nav{
+	/*padding-left: 40%;*/
+	left: 50%;
+	margin-left: 500px;
+}
+.nav li{
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	list-style-type: none;
+	margin-left: 20px;
+
+}
+.nav a{
+	padding: 0 10px;
+	text-decoration: none;
+	display: inline-block;
+	color: #fff;
+	font-size: 15px;
+}
+.nav a:hover{
+	background: #E9E9E9;
+}
+
+.warp{
+	width: 960px;
+	margin: 0 auto;
+	clear: both;
+
+}
+
+.post-list{ 
+background: #E9E9E9;
+margin-top:40px; 
+border-radius:8px;
+box-shadow:3px 4px 5px rgba(0,0,0,0.5);
+
+}
+
+.post-title{
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+}
+
+.post-title a{
+	font-size: 16px;
+	text-decoration: none;
+	display: block;
+	color: #FF9900;
+	text-align: left;
+}
+
+.post-meat{
+	margin-top:5px; 
+	padding-left: 15px;
+}
+
+.post-meat a{
+	margin:0 5px; 
+	text-decoration: none;
+	color:#424242;
+}
+
+.post-body{
+	overflow: hidden;
+	padding:10px 0; 
+	margin-top: 10px;
+	
+}
+
+.post-img{
+	display: inline;
+	margin-right:10px; 
+	padding-left: 12px;
+	float: left;
+	height: 110px;
+	width: 150px;
+}
+.post-img img{
+	border: 1px solid #bcbcbc;
+	text-align: center;
+	padding: 5px;
+	border-radius:8px;
+
+}
+
+.post-into{
+	display:  inline;
+	font-size: 14px;
+}
+
+.post-footer{
+	
+	height: 40px;
+	padding-bottom:10px; 
+
+}
+
+.post-footer .post-tag{
+	margin-top:10px;
+	float: left;
+	padding-left: 15px;
+	line-height: 20px;
+	height: 30px;
+}
+
+.post-footer .post-tag a{
+	font-size: 14px;
+	background: #3299BB;
+	border-radius:8px;
+	box-shadow:3px 4px 5px rgba(0,0,0,0.6);
+	margin: 0 5px;
+	color: #fff;
+	display: inline-block;
+	padding: 5px;
+}
+
+.post-footer .post-read{
+	float: right;
+	margin-right:20px;
+	padding-top:10px;
+}
+
+.post-footer .post-read a{
+	width: 100px;
+	display: block;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	font-size: 15px;
+	text-decoration: none;
+	background: #3299BB;
+	border-radius:8px;
+	box-shadow:3px 4px 5px rgba(0,0,0,0.6);
+
+}
+
+.con-warp{
+	width: 100%;
+	overflow: hidden;
+}
+
+.con-list{
+	width: 72%;
+	float: left;
+}
+
+.side{
+	margin-top: 40px;
+	border-radius: 5px;
+	width: 27%;
+	float: right;
+	height: 888px;
+	background:#fff;
+}

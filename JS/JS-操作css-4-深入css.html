@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-操作css-4-深入css</title>
+	<style type="text/css">
+	.add_css{
+		color: red;
+	}
+	.soul{
+		background: blue;
+	}
+	</style>
+	<script type="text/javascript">
+		function addClassName(name,value){//创建一个添加class属性的函数 并且定义两个参数 name,value
+			if(typeof name.className==null){//如果name.className是空的话
+				name.className=value;//直接设置name的className等于传递过来value的值
+			}else{//否则
+				var new_name =name.className;//设置new_name存储当前name的class
+				new_name += " ";//+=的意思就是 new_name=new_name+" ";加上一个空格
+				new_name += value;//然后在空格后面加上传递过来的value值
+				name.className=new_name;//设置传递过来的name的class值等于new_name
+			}
+		}
+
+		function newClassName(){
+			var get_p =document.getElementsByTagName("p");
+			for (var i = 0; i < get_p.length; i++) {
+				var save_get_p=get_p[i]//设置一个变量来存储当前get_p[i]
+				// save_get_p.className="add_css"//这样设置后就直接覆盖了class属性 而不是添加 发现原来的背景也没了
+				addClassName(save_get_p,"add_css");//调用函数addClassName 并且传递两个参数 一个是标签 一个是要加的css
+			};
+		}
+
+		window.onload=function(){ //这次采用了一个页面中多个window.onload = function(){}冲突问题解决方案
+			test();//大家不习惯的话可以换回来,具体情况可以看我blog:http://emufan.com
+		}
+		function test(){
+			newClassName();
+
+		}
+
+	</script>
+</head>
+<body>
+	<p class="soul">我是一名灵魂追逐者</p>
+	<p>放荡者的灵魂</p>
+	<p>红色月色,灵魂绝响</p>
+	<h1 class="soul">风铃</h1>
+	<p>随风而动,奏响灵魂乐章</p>
+	<p>在这夜色之下,恐惧的黑暗</p>
+	
+</body>
+</html>

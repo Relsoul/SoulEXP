@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-apply与call</title>
+	<script type="text/javascript">
+	function num1(a,b){
+		alert(a+b);
+	}
+	function num2(a,b){
+		alert("a*b:"+a*b);
+	}
+	num2.call(num1,10,20)//这个例子中的意思就是用 num2 来替换 num1，num2.call(num1,10,20) == num2(10,20) ，所以运行结果为：alert(200); // 注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。 
+
+	function abb(name){
+		this.name=name
+		this.showName=function(){alert("abb name:"+this.name)}
+	}
+	function ann(name){
+		this.name=name
+	}
+
+	var abb1=new abb("abb1的name");
+	var ann1=new ann("ann的name");
+
+	abb1.showName.call(ann1);//首先 ann是没有showName函数 但是我们又让ann1来执行showName函数,于是通过call继承下来了
+	//showName=function(){alert("abb name"+this.name)} 这里的this.name指的是 ann的name	
+
+	//以下解释来自http://www.jb51.net/article/22963.htm
+	//注意，call 的意思是把 abb1 的方法放到ann1上执行，原来ann1是没有showName() 方法，现在是把abb1 的showName()方法放到 ann 上来执行，所以this.name 应该是 ann，执行的结果就是 ：alert（"ann name"）; 
+//  怎么样，觉得有意思了吧，可以让a对象来执行b对象的方法，这是java程序员所不敢想的。还有更有趣的，可以用 call 来实现继承 
+	
+	function Class1() {
+		this.showTxt = function(txt) {
+			alert(txt);
+		}
+	}
+
+	function Class2() {
+		Class1.call(this);
+	}
+	var c2 = new Class2();
+	c2.showTxt("cc");
+	//这样 Class2 就继承Class1了，Class1.call(this) 的 意思就是使用 Class1 对象代替this对象，那么 Class2 中不就有Class1 的所有属性和方法了吗，c2 对象就能够直接调用Class1 的方法以及属性了，执行结果就是：alert（“cc”）; 
+	function Class10() {
+		this.showSub = function(a, b) {
+			alert(a - b);
+		}
+	}
+
+	function Class11() {
+		this.showAdd = function(a, b) {
+			alert(a + b);
+		}
+	}
+
+	function Class3() {
+		Class10.call(this);
+		Class11.call(this);
+	}
+	var c3 =new Class3();
+	c3.showAdd(10,20)
+
+	//apply与call区别在于 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组，也可以是arguments
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

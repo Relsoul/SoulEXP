@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-再次理解childNodes</title>
+	<script type="text/javascript">
+		function knowChildnodes(){
+			var get_childnodes=document.body.childNodes;
+			console.log(get_childnodes);//当前页面有多少元素
+			var get_childnodes0=document.body.childNodes[0];
+			console.log(get_childnodes0);//第0个的元素是什么
+			var get_did=document.getElementById("did");//获取div
+			console.log(get_did.childNodes);//输出div下的元素
+			console.log(get_did.childNodes[1].nodeName);//从控制台可以看到[0]是一个#text文本 [1]才是元素
+			console.log(get_did.firstChild.nodeName);//也可以使用firstChild获取到第一个[0]元素的名字
+			console.log(get_did.childNodes.length.nodeName);//这样是找不到的 因为在childNodes是从0开始 获取到最后一个元素可以使用
+			console.log(get_did.childNodes[get_did.childNodes.length-2].nodeName)//获取到最后一个元素属性名字 -1是#text文本
+			console.log(get_did.lastChild.nodeName)//获取到最后一个元素的名字
+
+
+			//兄弟节点,父级节点
+			console.log("我是分隔符,下面开始兄弟节点 父级节点");
+			console.log("第0个元素是#text 那么他的下一个元素应该是p||"+get_did.childNodes[0].nextSibling.nodeName);//
+			console.log("第1个元素是p,那么他的下一个元素应该是p的文本||"+get_did.childNodes[1].nextSibling.nodeName);//
+			console.log("第2个元素是p的文本 那么他的下一个元素应该是p||"+get_did.childNodes[2].nextSibling.nodeName);
+			//以上是下级的结构 那么同级的结构是什么呢？
+			var get_h1=document.getElementsByTagName("h1");
+			console.log(get_h1[0].nextSibling.nodeValue);//文本节点...值是回车符
+			//坑待理解后再填
+
+		}
+
+
+		window.onload=function(){
+			knowChildnodes();
+		}
+
+	</script>
+</head>
+<body>
+	<h1>hello</h1>
+	<div id="did">
+		<p>我是soul</p>
+		<p>灵魂追逐者</p>
+		<p>放荡的灵魂</p>
+	</div>
+	<h1>第二个soul<h1>
+	<p>我是规则之外的灵魂</p>
+	<p>我是规则之外的灵魂</p>
+</body>
+</html>

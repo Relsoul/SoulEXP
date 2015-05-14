@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="cn">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-DOM方法</title>
+	<script type="text/javascript">
+		function divIn(){
+			var soul_div =document.getElementById("soul");//设置soul_div等于id：soul
+			var soul_p=document.createElement("p");//新建个p元素存储为soul_p 元素节点
+			soul_div.appendChild(soul_p);//在soul_div节点下插入p元素
+			var soul_p_txt=document.createTextNode("hello soul");//创建个文本节点储存为 soul_p_txt
+			soul_p.appendChild(soul_p_txt);//在P元素节点下插入文本节点
+			var soul_em=document.createElement('em');//创建一个em文本节点
+			var soul_em_txt=document.createTextNode("soul seeker");//创建个文本节点储存为 soul_em_txt
+			soul_em.appendChild(soul_em_txt);//在em元素节点下插入文本节点
+			soul_p.appendChild(soul_em)//在p元素节点下插入em元素节点
+		}
+	window.onload=function(){
+		divIn();
+	}
+
+
+	</script>
+</head>
+<body>
+<div id="soul">
+	
+</div>
+
+	
+</body>
+</html>

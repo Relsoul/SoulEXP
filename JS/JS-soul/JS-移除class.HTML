@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+
+
+
+function hasClass(ele,cls) {
+    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+  
+function addClass(ele,cls) {
+    if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+  
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ');
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	function removeClass(ele,cls) {
+	//移除class
+	if(typeof ele.className==null){
+		//如果原本没有className
+		return false//返回false
+		
+	}else{//否则
+		var get_eleclass=ele.getAttribute("class")//获取到ele的class属性内容
+		var removeCls=get_eleclass.replace(cls,"")//替换cls为空
+		ele.className=removeCls//设置className
+	}
+	
+}
+function addClass(ele,cls) {
+	//定义addClass函数
+	if(typeof ele.className==null){//如果ele的Class是空
+		ele.className=cls//设置ele的className等于cls
+
+	}else{//否则
+		var oldcls=ele.className;//保存oldcls
+		oldcls+=" ";//在oldcls后面加个空格
+		oldcls+=cls//加上传入的class
+		ele.className=oldcls//ele的class等于oldcls
+	}
+}
+	
+window.onload=function(){
+	// console.log(typeof document.getElementById);
+	var test1=document.getElementById("hello")
+	removeClass(test1,"hello")
+	addClass(test1,"mmm")
+
+
+	// var test1_class=test1.getAttribute("class")
+	// var mm=test1_class.replace(/soul/i, "mmmm")
+	// console.log(mm)
+
+
+}
+	</script>
+</head>
+<body>
+	<p id="hello" class="soul hello"></p>
+	
+</body>
+</html>

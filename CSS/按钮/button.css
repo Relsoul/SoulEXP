@@ -1,0 +1,177 @@
+	*{margin: 0;padding: 0;}
+	body{
+		background: #333;
+	}
+	.box{
+		position: relative;
+		width: 800px;
+		height: 280px;
+		margin: 50px auto;
+	}
+	.box .link{
+		width: 205px;
+		height: 280px;
+		float: left;
+		margin: 0 20px;
+	}
+	.link .icon{
+		transition:all 0.2s ease-out 0;
+		-webkit-transition:all 0.2s ease-out 0;
+		display: inline-block;
+		width: 100%;
+		height: 190px;
+		background: url(images/)
+	}
+	/*实现旋转动画*/
+	.link .icon:hover{
+		
+
+		transform:rotate(360deg) scale(1.2);
+		-ms-transform:rotate(360deg) scale(1.2);
+		-webkit-transform:rotate(360deg) scale(1.2);
+
+		
+
+		
+		
+	}
+
+.link-miss .icon{
+	
+	background: url(images/mission.png) no-repeat center center;
+}
+.link-play .icon{
+	
+	background: url(images/play.png) no-repeat center center;
+}
+
+.link-touch .icon{
+	
+	background: url(images/touch.png) no-repeat center center;
+}
+
+/*按钮动画*/
+.button{
+	position: relative;
+	display: block;
+	width: 180px;
+	height: 50px;
+	line-height:50px;
+	text-decoration: none;
+	color: #2dcb70;
+	font-family: Arial;
+	font-weight: bold;
+	border: 2px solid rgba(255,255,255,0.8);
+	padding-left: 20px;
+	margin: 0 auto;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	/*box-sizing不用计算宽度,直接把边框，padding也算进了宽度里面*/
+	transition:all 0.4s ease 0;
+	-webkit-transition:all 0.4s ease 0;
+	background: url(images/allow.png) no-repeat 130px center;
+}
+
+.button:hover{
+	border: 2px solid rgba(255,255,255,1);
+	background-position: 140px center;
+}
+
+.button .line{
+	display: block;
+	position: absolute;
+	background: none;
+	transition: 0.4s ease ;
+	-webkit-transition: 0.4s ease ;
+}
+.button:hover .line{
+	background: #fff;
+}
+.button .line-top{
+	height: 2px;
+	width: 0px;
+	left:-110%;
+	top:-2px;
+	
+
+}
+
+.button:hover .line-top{
+	width: 100%;
+	left: -2px;
+}
+
+.button .line-right{
+	height: 0;
+	width: 2px;
+	top:-110%;
+	right: -2px;
+}
+
+.button:hover .line-right{
+	height: 100%;
+	width: 2px;
+	top:-2px;
+}
+
+
+
+.button .line-bottom{
+	height: 2px;
+	width: 0px;
+	right:-110%;
+	bottom:-2px;
+	
+
+}
+
+.button:hover .line-bottom{
+	width: 100%;
+	right: -2px;
+}
+
+
+
+
+.button .line-left{
+	height: 0;
+	width: 2px;
+	bottom:-110%;
+	left: -2px;
+}
+
+.button:hover .line-left{
+	height: 100%;
+	width: 2px;
+	bottom:-2px;
+}
+
+.tip{
+	position: absolute;
+	padding: 0 14px;
+	line-height: 35px;
+	height:35px;
+	background: #2dcb70;
+	color: #fff;
+	font-size: 18px;
+	margin: 0 auto;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	opacity: 0;
+	top: 100px;/*按钮与盒子顶部的距离*/
+}
+.tip em{
+	font-style: normal;
+}
+.tip span{
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: 0;
+	border: 7px solid transparent;
+	border-top-color:#2dcb70;
+	position: absolute;
+	top: 35px;
+	left: 50%;
+	margin-left: -3px; 
+}

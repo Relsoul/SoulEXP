@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-内置对象-2</title>
+	<script type="text/javascript">
+	function soulArr(){
+		//数组对象
+
+		//数组对象之长度对象
+		var soul_arr1=["hello","soul","i\'m","soul seeker"]//这里使用了转义字符\'
+		console.log("soul_arr1长度是多少"+soul_arr1.length);//soul_arr1有四个元素输出4
+		soul_arr1.length=3;//设置长度会删除后面的元素
+		console.log("设置长度是3,删除了最后一个长度,那么现在数组内容是:"+soul_arr1);
+		soul_arr1[5]="new soul";
+		console.log("新增加了一个元素,那么现在数组内容是:"+soul_arr1);//hello,soul,i'm,,,new soul  中间多出了两个逗号 是因为我们在上次设置了长度为3 然后我们又在第5个添加了元素, 所以中间没有值要写逗号
+
+		soul_arr2=["hello","soul"];
+		soul_arr2[soul_arr2.length]="seeker";
+		console.log("在数组最后添加一个元素"+soul_arr2);
+		soul_arr2[soul_arr2.length-1]="new seeker"//更改数组最后一个元素内容 为什么是-1 因为长度是2 但是数组从0开始 所以要-1
+		console.log("更改数组最后一个元素内容"+soul_arr2);
+
+		//转换数组为字符串
+		console.log("转换数组为字符串"+soul_arr2.toString());
+		console.log("使用不同的符号来作为数组转为字符串的分隔符"+soul_arr2.join("||"));
+
+		//数组的元素插|入
+		var soul_arr3=["hello"];
+		soul_arr3.push("soul","seeker");
+		soul_arr3[3]="new soul";//稍微理解一下 数组是从0开始0,1,2(在最后添加了两个元素),[3]就是第4个元素
+		console.log("在数组的最后添加元素"+soul_arr3);
+		soul_arr3.pop()
+		console.log("移除了最后一个元素"+soul_arr3);
+		var fsoul_arr3=soul_arr3.shift();//取得数组的第一项并且删除第一项
+		console.log("数组取出的第一项是:"+fsoul_arr3+"|现在数组内容为:"+soul_arr3);
+		var f1soul_arr3=soul_arr3.shift();//再取出第一项
+		console.log("数组取出的第一项是:"+f1soul_arr3+"|现在数组内容为:"+soul_arr3);
+		soul_arr3.push("new seeker","new shenshi","new hello");//添加几个元素
+		var nsoul_arr3=soul_arr3.unshift("ok","yes");
+		console.log("在数组前端推入两项 内容是:"+nsoul_arr3+"|当前数组内容为:"+soul_arr3);
+
+		//数组之排序
+		var soul_arr4=["b","a","d","c"];
+		soul_arr4.sort();//从低到高排序 
+		console.log("从低到高排序"+soul_arr4);
+		soul_arr4.reverse();//翻转数组排序
+		console.log("翻转数组排序"+soul_arr4);
+		//sort排序有一个问题 在进行比较时 因为9位于15前面 所以会把9放后面
+		//...下文数组不是排序好的嘛..为何还要多此一举
+		var soul_arr5 =[5,9,15,20,25];
+		soul_arr5.sort();
+		console.log("排序正确的数组再进行排序:"+soul_arr5);
+		//怎么解决呢？编写了一个函数来判断
+		soul_arr5.sort(compaer);//利用 -1 1 0就解决了
+		console.log("解决后:"+soul_arr5);//从低到高
+
+		//数组之 相加
+		var soul_arr6=["hello","world"];
+		var soul_arr7=["none"];
+		soul_arr6 += soul_arr7;//直接相加会发现会把数组转换为字符串再进行相加
+		console.log("直接相加"+soul_arr6+"类型"+typeof soul_arr6);
+
+		var soul_arr6=["我是一","我是二","我是三","我是四"];
+		var soul_arr7=["我是六","我是七"];
+		var soul_arr8=soul_arr6.concat(soul_arr7);//相当于复制了一份 然后再在数组末尾插入soul_arr7 不会破坏原来的数组
+		console.log("在数组末尾插入一个数组"+soul_arr8);
+		//数组之 插入 替换 删除
+		//删除
+		var soul_arr9=["我是0","我是1","我是2","我是3","我是4"];
+		var del_soul_arr9=soul_arr9.splice(0,2);//删除第一项与第二项 0与2之间不就是第一项和第二项嘛？
+		console.log("删除的数组为:"+del_soul_arr9+"当前数组内容为:"+soul_arr9);
+		//插入
+		var add_soul_arr9=soul_arr9.splice(2,0,"我是在\'我是4\'之前插入的","再插入一个");//从第二项插入,因为上面删除了两项 所以第二项应该是"我是4"
+		console.log("插入的元素为:"+add_soul_arr9+"|当前数组内容为:"+soul_arr9);
+		//替换
+		var soul_arr10=["我是0","我是1","我是2","我是3","我是4"];
+		var rep_soul_arr10=soul_arr10.splice(0,1,"我是插入的","我是插入的-2");
+		console.log("删除的元素为:"+rep_soul_arr10+"|当前数组内容:"+soul_arr10);//替换"我是0"后再插入一个元素
+
+		//数组之 位置
+		//从正向开始查找
+		var soul_arr10=["1",4,"1",1,2,3,"1"];
+		console.log("正向查找:"+soul_arr10.indexOf("1"));//indexOf查找时会使用全等查找 并且查到到了后会输出元素在数组的位置
+		//反向查找
+		console.log("反向查找:"+soul_arr10.lastIndexOf("1"));//反向查找会查找到最远的那个
+		//还有分段查询
+		console.log("从1开始查询而非0(数组第一个元素)"+soul_arr10.indexOf("1",1));//结果是2
+		console.log("从反向的6开始查询而非反向的0|"+soul_arr10.lastIndexOf("1",6))//结果是6
+
+		//数组之迭代方法
+		var soul_arr11=[1,2,3,4,5,6,7];
+		//将大于5的元素组成数组
+		var soul5_arr11=soul_arr11.filter(function(num){
+			return(num>5);
+		})
+		console.log("新组成数组:"+soul5_arr11+"|原来的数组"+soul_arr11);//发现不会影响到原来的数组
+		//将每个数组乘以2
+		var soul2_arr11=soul_arr11.map(function(num){
+			return(num*2);
+		})
+		console.log("乘以后的数组:"+soul2_arr11);
+
+		//归并数组
+		//数组内容进行相加
+		var soul_arr12=soul_arr11.reduce(function(q,h){//reduce是从正向开始相加 也可以从反向开始
+			return(q+h);
+		})//传递两个参数 q是前一个值,h是当前值
+		console.log("相加结果:"+soul_arr12);
+		var soul_arr13=soul_arr11.reduceRight(function(q,h){
+			return(q+h);
+		})
+		console.log("反向相加,因为是简单相加所以都一样"+soul_arr13);
+
+
+	}
+	function compaer(a,b){
+		if(a>b){//比较两个值 如果前面的大于后面的
+			return 1;//把后面的放前面 所以返回1
+			
+		}
+		if(a<b){//比较两个值 如果前面的小于后面的
+			return -1;//把前面的放后面 返回-1
+			
+		}
+		if(a=b){//如果相等
+			return 0;//不做更改
+		}
+	}
+
+
+
+
+	window.onload=function(){
+		soulArr();
+
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

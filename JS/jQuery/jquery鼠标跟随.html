@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#fllow{
+		position: absolute;
+		opacity: 1;
+		display: block;
+	}
+	</style>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+
+	$(function(){
+		var x=20;
+		var y=20;
+		$('p').mouseover(function(event) {
+			if(!this.title){return false};
+			if($('#fllow')){$('#fllow').remove()}
+			this.mytitle=this.title;
+			this.title="";
+			var newdiv="<div id=fllow>"+this.mytitle+"</div>";
+			$('body').append(newdiv);
+			$("#fllow").stop().animate({
+				left: (event.pageX+x)+'px',
+				top:(event.pageY+y)+'px'},
+				1000);
+
+		}).mouseout(function(event) {
+			this.title=this.mytitle;
+			$("#fllow").stop().animate({
+				opacity:0,
+				display:'none'
+			},500);
+		}).mousemove(function(event) {
+			if(!$("#fllow").is(":animated")){
+				$("#fllow").stop().animate({
+				left: (event.pageX+x)+'px',
+				top:(event.pageY+y)+'px'}
+				,100);
+			}
+
+		});
+
+
+	})
+
+
+	</script>
+</head>
+<body>
+	<p title="hello">test</p>
+
+	<p title="soul">test</p>
+
+	<p title="seeker">test</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS输出与介绍</title>
+
+</head>
+<body>
+<script>
+	document.write("HELLO Rel Soul");	
+</script>
+<script>
+	document.write("<h1>HELLO Rel Soul</h1>");	
+</script>
+<p>简单的输出</p>
+
+<p>JS控制元素输出是逐行执行的
+比如你写了 1 2 3 JS会以第三个为标准。</p>
+
+<p id="js-1">HELLO SOUL</p>
+
+<script>
+	document.getElementById("js-1").innerHTML="HELLO SOUL-1"
+</script>
+<script>
+	document.getElementById("js-1").innerHTML="HELLO SOUL-2"
+</script>
+<script>
+	document.getElementById("js-1").innerHTML="HELLO SOUL-3"
+	
+</script>
+
+
+</body>
+</html>

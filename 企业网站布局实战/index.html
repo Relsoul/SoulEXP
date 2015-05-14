@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="js/js/mf-pattern/mF_YSlider.css">
+	<script type="text/javascript" src="js/js/myfocus-2.0.1.min.js"></script>
+	<script type="text/javascript" src="js/js/mf-pattern/mF_YSlider.js"></script>
+	<script type="text/javascript">
+	myFocus.set({
+		id:"picBox"
+	})
+
+
+
+
+	</script>
+
+</head>
+<body>
+	<div class="top">
+		<div class="top_content">
+			<ul>
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">加入收藏</a></li>
+				<li><a href="#">设为首页</a></li>
+			</ul>
+		</div>
+	</div>
+<!-- TOP结束 -->
+	<div class="wrap">
+		<div class="logo">
+			<div class="logo_left">
+				<img src="images/logo.jpg"alt="慕课网">
+			</div>
+			<div class="logo_right">
+				<img src="images/tel.jpg"alt="服务热线">
+				24小时服务热线<span class="tel">123-456-7890</span>
+			</div>
+		</div>
+		<!-- logo结束 -->
+
+		<!-- nav分成了三部分 nav_left是左边的圆角
+		nav_right是右边的圆角
+		注意nav要加一个清除浮动,否则会出现一些bug
+		mid就是导航条的主要内容了 -->
+		<div class="nav">
+			<div class="nav_left"></div>
+			<div class="nav_mid">
+				<div class="nav_mid_left">
+					<ul>
+						<li><a href="#">首页</a></li>
+						<li><a href="#">关于慕课</a></li>
+						<li><a href="#">新闻动态</a></li>
+						<li><a href="#">课程中心</a></li>
+						<li><a href="#">在线课程</a></li>
+						<li><a href="#">人才招聘</a></li>
+					</ul>
+				</div>
+
+				<div class="nav_mid_right">
+					<form action="" method="post">
+						<input type="text" class="search_text"/>
+
+					</form>
+				</div>
+			</div>
+			<!-- nav_mid结束 -->
+			<div class="nav_right"></div>
+		</div>
+		<!-- nav结束 -->
+		<div class="ad" id="picBox">
+			<div class="loading">
+				<img src="images/loading.gif" alt="图片加载中">
+			</div>
+			<div class="pic">
+				<ul>
+				<li><img src="images/ad2.jpg" alt=""></li>
+				<li><img src="images/ad3.jpg" alt=""></li>
+				<li><img src="images/ad4.jpg" alt=""></li>
+				</ul>
+			</div>
+
+		</div>
+		<!-- ad结束 -->
+		<div class="main">
+			<div class="news">
+				<div class="title">
+					<h2 class="title_left">新闻中心</h2><span class="title_right"><a href="#">More&gt;&gt;</a></span>
+				</div><!-- divtitle结束 -->
+				<div class="pic_news">
+					<img src="images/news.jpg"/>
+					<h2><a href="">520穆女神喊你来表白！</a></h2>
+					<p>活动时间:5月20日-5月25日<br>获奖公布时间:5月26日<br><a href="">Learn More&gt;&gt;
+					</a></p>
+				</div><!-- pic_news结束 -->
+				<div class="news_list">
+					<!-- 把span放前面可以解决IE6中span下飘一格的bug -->
+					<ul>
+						<li><span>2014-06-01</span><a href="#">【慕课访谈 用户篇】"有为屌丝在路上"</a>
+							</li>
+						<li><span>2014-06-01</span><a href="#">【有奖活动】给父亲的三行书信</a>
+							
+						</li>
+						<li><span>2014-05-30</span><a href="#">《程序猿 请晒出你的童年》活动获奖公告</a>
+							
+						</li>
+						<li><span>2014-05-28</span><a href="#">【慕课访谈】破茧成蝶-美女程序猿的蜕变史</a>
+							
+						</li>
+					</ul>
+
+
+				</div><!-- new_list结束 -->
+
+
+
+
+			</div><!-- news结束 -->
+			<div class="course">
+				<div class="title">
+					<h2 class="title_left">课程中心</h2><span class="title_right"><a href="">More&gt;&gt;</a></span>
+				</div><!-- title结束 -->
+				<div class="course_pic">
+					<img src="images/css.jpg">
+					<h2 class=""><a href="">CSS圆角进化论</a></h2>
+					<p>CSS圆角的实现,经历了三大发展阶段:背景图片方式.CSS2.0+HTML标签模拟、CSS3圆角属性。本案例详细讲解每一种的实现方式,并对实现的优缺点进行对比分析。</p>
+				</div><!-- course_pic结束 -->
+				<div class="course_type">
+					<ul>
+						<li>PHP开发</li>
+						<li>前端开发</li>
+						<li>JAVA开发</li>
+						<li>Android开发</li>
+					</ul>
+				</div><!-- course_type结束 -->
+			</div><!-- course结束 -->
+			<div class="sidebar">
+				<div class="video">
+					<div class="title">
+						<h2 class="title_left">媒体聚焦</h2>
+					</div>
+					<div class="video_content">
+						<embed src="http://player.youku.com/player.php/sid/XNjkzMDE5MTUy/v.swf" allowFullScreen="true" quality="high" width="220" height="140" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+					</div>
+				</div><!-- video结束 -->
+				<div class="sidebar_ad">
+					<img src="images/app.jpg">
+				</div><!-- sidebar_ad结束 -->
+			</div><!-- sidebar结束 -->
+
+
+		</div>
+		<!-- main结束 -->
+	</div>
+	<!-- wrap结束 -->
+	<div class="copyright">
+		<div class="copyright_content">
+			<ul>
+				<li><a href="">关于</a>
+					<ul>
+						<li><a href="">
+							品牌故事
+						</a></li>
+						<li><a href="">联系我们</a></li>
+						<li><a href="">加入我们</a></li>
+						<li><a href="">版权声明</a></li>
+					</ul>
+
+				</li>
+				<li><a href="">课程</a>
+				
+				<ul>
+						<li><a href="">
+							PHP开发
+						</a></li>
+						<li><a href="">前端开发</a></li>
+						<li><a href="">JAVA开发</a></li>
+						<li><a href="">Android开发</a></li>
+					</ul>
+
+				</li>
+				<li><a href="">留言</a>
+<ul>
+						<li><a href="">
+							新浪微博
+						</a></li>
+						<li><a href="">腾讯微博</a></li>
+						<li><a href="">企业微信</a></li>
+						<li><a href="">QQ空间</a></li>
+					</ul>
+				
+				</li>
+				<li><a href="">关注</a>
+					
+				<ul>
+						<li><a href="">
+							意见反馈
+						</a></li>
+						<li><a href="">联系我们</a></li>
+						<li><a href="">加入我们</a></li>
+						<li><a href="">版权声明</a></li>
+					</ul>	
+
+				</li>
+				<li><a href=""><img src="images/weixin.png">微信关注</a>
+				<ul>
+					<li><img src="images/qrcode.jpg"></li>
+				</ul>
+
+				</li>
+
+
+
+			</ul>
+
+
+
+		</div>
+
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	//call apply 绑定一些函数用于传递参数调用
+
+
+	function sum(x,y){
+		return x+y;
+	}
+
+	function call1(num1,num2){
+		//this指向call1函数执行环境
+		return sum.call(this,num1,num2);
+
+	}
+
+	function apply1(num1,num2){
+		//相当于把数组拉平了
+		return sum.apply(this,[num1,num2])
+
+	}
+
+	console.log(call1(10,20))
+	console.log(apply1(5,5))
+
+	//扩充函数作用域
+	var x=10;var y=10;
+
+	function test3(x,y){
+		alert(x+y)
+	}
+
+
+
+	window.color="red";
+
+	var obj={color:"blue"};
+
+	function showColor(){
+		console.log(this.color)
+
+	}
+
+	showColor.call(this)
+	//扩充了作用域 调用obj的color
+	showColor.call(obj)
+
+
+	//call简单模拟实现
+
+	//func
+	function test1(a,b){
+		return a+b;
+	}
+	//对象
+	function obj1(x,y){
+		this.x=x;
+		this.y=y
+		return x*y;
+
+	}
+
+	var _o=new obj1(10,20);
+	//调用test1方法
+	//_o.ca=test1;
+	//_o.ca(x,y)
+	console.log(test1.call(_o,_o.x,_o.y))
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

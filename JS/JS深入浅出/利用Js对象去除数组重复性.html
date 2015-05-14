@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//对象中key永远不会重复
+
+	function Map(){
+		return new Map.prototype.init()
+	}
+
+	var soul=Map.prototype={
+		constructor:Map,
+		ver:"1.2.3",
+		valueMap:{}
+	}
+	Map.prototype.init=function(){
+		
+	}
+
+	Map.prototype.get=function(key){
+		if(Map.prototype.valueMap[key]||Map.prototype.valueMap[key]==0){
+			return Map.prototype.valueMap[key]
+		}else{return null}
+	}
+
+	Map.prototype.eachVal=function(fn){
+
+		for(var x in soul.valueMap){
+			fn(x,soul.valueMap[x])
+		}
+
+	}
+
+	Map.prototype.remove=function(key){
+		if(soul.valueMap[key]||Map.prototype.valueMap[key]==0){
+			delete soul.valueMap[key]
+		}else{}
+	}
+
+	Map.prototype.init.prototype=Map.prototype;
+
+	Map.prototype.valKey=function(key,val){
+		if(typeof key =="object"&&!(key instanceof Array)){
+			var x;
+			for( x in key){
+				Map.prototype.valueMap[x]=key[x]
+			}
+		}else if(typeof key=="string"){
+			Map.prototype.valueMap[key]=val
+		}
+	}
+	Map.prototype.size=function(){
+		var num=0;
+		for(x in Map.prototype.valueMap){
+			num++
+		}
+		console.log(num)
+	}
+
+	Map.prototype.noFe=function(arr){
+		var _obj_={}
+		var _arr_=[]
+		for (var i = 0; i < arr.length; i++) {
+			_obj_[arr[i]]=i
+		};
+
+		for(var x in _obj_){
+			if(_obj_.hasOwnProperty(x))
+			_arr_.push(x)
+		}
+
+		return _arr_
+
+	}
+
+	Map().valKey({"s":"ss","test":02,"val":03})
+	Map().eachVal(function(val,key){
+		console.log(val+":"+key)
+	})
+
+	console.log(Map().noFe([1,2,3,2,1,3,6,7,8,2,6,7]))
+
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

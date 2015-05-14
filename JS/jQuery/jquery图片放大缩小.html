@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			function Zoom(){
+				this.elem=$("img");
+				this.val;
+				this.firstW;
+			}
+
+			Zoom.prototype.big=function(){
+				var elem=this.elem;
+				var than=this
+				for (var i = 0; i < elem.length; i++) {
+						
+						~function(i){
+							than.firstW=parseInt($(elem[i]).width())
+							elem[i].addEventListener("mousewheel",function(event){
+							than.val=event.wheelDelta
+							
+							//滚轮向下为放大 负数
+							//向上缩小 整数
+							if(than.val<0){
+								than.fd(event.target,event.wheelDelta,than.firstW)
+							}else{
+								than.sx(event.target,event.wheelDelta,than.firstW)
+
+							}
+						
+
+					})}(i)
+				};
+			} 
+
+			Zoom.prototype.fd=function(elem,val,first_w){
+				var save_W=parseInt($(elem).css("width"))
+				if(save_W>first_w*1.5){
+					return false;
+				}else{
+					$(elem).stop().animate({
+					width:"+="+save_W*0.5
+				},
+					600);
+				}
+				
+				
+			}
+
+			Zoom.prototype.sx=function(elem,val,first_w){
+				var save_W=parseInt($(elem).css("width"))
+				if(save_W<first_w/1.3){
+					return false;
+				}else{
+					$(elem).stop().animate({
+					width:"-="+save_W*0.5
+				},
+					600);
+				}
+				
+			}
+			var example=new Zoom()
+			example.big()
+		})
+
+
+	</script>
+</head>
+<body>
+	<img src="img/1.jpg" width="380">
+	<img src="img/2048.jpg" width="660">
+</body>
+</html>

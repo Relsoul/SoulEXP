@@ -1,0 +1,162 @@
+
+.logoa{
+	background-image: url("frog   Global Product Strategy and Design Firm_files/friedolin.png");
+	width: 80px;
+	height: 80px;
+	float: left;
+	position: relative;
+	z-index: 999;
+}
+.header{overflow: hidden;}
+.nav{
+
+	position: relative;
+}
+.nav_ul{
+		background: #fff;
+		line-height: 80px;
+		height: 80px;
+		width: 90%;
+		position: absolute;
+		top: 0;
+		left: 80px;
+		display: block;
+
+}
+.nav_ul>li{
+	float: left;
+	list-style-type: none;
+	position: relative;
+	text-align: center;
+	
+}
+.nav_ul a{
+	color: black;
+	padding: 0 20px;
+	line-height: 80px;
+	display: block;
+}
+.nav_ul>li>a:hover{
+	color: #fff;
+	background: black;
+}
+
+.nav_ul>li:hover ul{
+	display:block;
+}
+.nav_ul>li ul{
+	padding: 0;
+	min-width: 222px;
+	position: absolute;
+	top:80px;
+	left: 0px;
+	background-color: #161616;
+	display: none;
+}
+.nav_ul>li>a:hover .nav_ul>li ul{
+	height: auto;
+	display: block;
+}
+.nav_ul>li ul li{
+	display: block;
+	list-style-type: none;
+	text-align: left;
+}
+.nav_ul>li ul li a{
+	color: #fff;
+	line-height: 40px;
+	display: block;
+	padding:none;
+}
+.nav_ul>li ul li a:hover{
+	background:#46BD01; 
+}
+
+
+.main{
+	position: relative;
+}
+
+.nav{
+	position: fixed;
+	z-index: 2;
+}
+
+.hero{
+	position: relative;
+}
+.info{
+	/*z-index: 333px;*/
+	position:absolute;
+	top:73%;
+	padding-left:8.333333%; 
+}
+.info h3{
+	font-size: 50px;
+	font-weight: bold;
+
+}
+[class*='col-']{
+	padding:0;
+}
+
+.row{
+	padding-left: 15px;
+	
+}
+.content_txt{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+.content_txt span{
+	display: inline-block;
+	padding: 0 10px;
+	background: #fff;
+
+}
+
+.content{
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.content:hover .content_info{display:block;}
+.content_info{
+	left: 0;
+	bottom: 0;
+	position: absolute;
+	background: #000;
+	text-align: center;
+	padding:8.33333%;
+	display: none;
+	width: 100%;
+	clear: both;
+}
+
+.content_header{
+	padding: 25%;
+	
+}
+.content_header h3,.content_header p{
+	display: block;
+	width: 100%;
+	text-align: left;
+}
+
+.show_img{
+	padding:6.7%;
+}
+
+.fff{
+	background: #fff;
+}
+.fff:hover{
+	background: #000;
+}
+.txtnode{
+	padding: 0;
+	margin: 19.5%;
+}

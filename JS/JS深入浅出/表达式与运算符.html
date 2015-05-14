@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		//初始化表达式
+		var o={
+			n:4,
+			m:2
+		}
+
+		//属性表达式
+	console.log(o);
+	console.log(o["m"]);
+	console.log(o.n);
+	//对象可以通过o["属性名称"]来访问
+
+	//函数调用表达式
+	function mn(){console.log("mn")}
+	mn();//调用函数表达式
+	(function(){var test1=console.log("hello");return function(){var test2="word"}})();//这也是调用
+	//定义一个匿名函数 同时封装起来
+	//外部访问不到内部的元素
+	// console.log(test2) //error
+
+	//对象创建表达式
+	var test3=new String("hello");
+	test3.t=10
+	console.log(test3.t)
+
+	//运算符
+
+	//一元 +num
+	//二元 a+b
+	//三元 c?a:b
+	var test3 =true?1:2 //c是true会返回1 false返回3
+	var test3 =(1,2,3)//会比较值 会取最右边的
+	delete o["n"]//删除对象n
+	console.log(o.n)//undefined
+
+
+	var z={};
+		Object.defineProperty(z,"n",{
+			configurable: false,
+			value:4
+		})
+	var test4=delete z.n;
+	console.log(test4)//false
+
+	window.s="window.s"
+	s in window //true
+	{} instanceof Object //true
+
+	function Foo(){}
+	Foo.prototype.x=1;
+	var obj=new Foo();//new创建一个对象
+	obj.x //1
+	obj.hasOwnProperty('x')//判断x是否obj上 //false
+	obj._proto_.hasOwnProperty('x')//true //obj原型链上是否存在x
+
+	this;//window(浏览器)
+	var obj={
+		func:function(){return this};
+	}
+	obj.func()//obj
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

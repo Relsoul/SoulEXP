@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css"></style>
+	<script type="text/javascript">
+	function getNav () {
+		var nav =document.getElementById("nav-home")
+		var nav_li=nav.getElementsByTagName("ul")
+		for (var i = 0; i < nav_li.length; i++) {
+			if(nav_li[i].getAttention("id")=="nav-2"){
+				alert("this nav-2")
+				
+			}else{
+				if(nav_li[i].getAttention("id")=="nav-3"){
+					alert("this nav-3")
+					
+				}
+				
+			}
+
+
+	};
+		
+
+
+		// body...
+	}
+	window.onload=function() {
+		getNav();
+		// body...
+	}
+
+
+	</script>
+</head>
+<body>
+	<ul id="nav-home">
+		<li>test1</li>
+		<li>test2
+			<ul id="nav-2">
+			<li>nav-2test</li>	
+				<ul id="nav-3"></ul>
+
+
+			</ul>
+
+
+
+		</li>
+		<li>test3
+			<ul id="nav-2">
+				
+
+			</ul>
+
+
+		</li>
+	</ul>
+</body>
+</html>

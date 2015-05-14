@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+    *{margin:0;
+     padding:0;
+     font-size:13px;
+     list-style:none;}
+
+.menu{width:210px;
+      margin:50px auto;
+      border:1px solid #ccc;}
+
+.menu p{height:25px;
+        line-height:25px;
+        font-weight:bold;
+        background:#eee;
+        border-bottom:1px solid #ccc;
+        cursor:pointer;
+        padding-left:5px;}
+
+.menu div ul{display:none;}
+
+.menu li{height:24px;
+         line-height:24px;
+         padding-left:5px;}
+</style>
+	<script type="text/javascript">
+    function hasClass(ele,cls) {
+    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+  
+function addClass(ele,cls) {
+    if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+  
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ');
+    }
+}
+	window.onload=function(){
+        changeShow()
+		
+      // 将所有点击的标题和要显示隐藏的列表取出来
+
+     // 遍历所有要点击的标题且给它们添加索引及绑定事件
+
+     // 获取点击的标题上的索引属性，根据该索引找到对应的列表
+
+     // 判断该列表，如果是显示的则将其隐藏，如果是隐藏的则将其显示出来
+
+	}
+    
+    
+    function changeShow(){
+        var get_p=document.getElementsByTagName("p")
+        var get_menu=document.getElementById("menu")
+        var get_menu_ul=get_menu.getElementsByTagName("ul")
+        for(var i=0;i<get_p.length;i++){
+            get_p[i].id=i
+            get_p[i].onmouseover=function(){
+                for(var j=0;j<get_p.length;j++){
+                    get_menu_ul[j].style.display="none"
+                }
+             get_menu_ul[this.id].style.display="block"
+                
+            }
+            
+            
+            
+        }
+        
+        
+    }
+    
+    
+	</script>
+</head>
+<body>
+	<div class="menu" id="menu">
+		<div>
+			<p>Web前端</p>
+			<ul style="display:block">
+				<li>JavaScript</li>
+				<li>DIV+CSS</li>
+				<li>jQuery</li>
+			</ul>
+		</div>
+		<div>
+			<p>后台脚本</p>
+			<ul>
+				<li>PHP</li>
+				<li>ASP.net</li>
+				<li>JSP</li>
+			</ul>
+		</div>
+		<div>
+			<p>前端框架</p>
+			<ul>
+				<li>Extjs</li>
+				<li>Esspress</li>
+				<li>YUI</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

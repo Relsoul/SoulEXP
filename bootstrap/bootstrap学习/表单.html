@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<style>
+	.row{
+		margin-top: 10px;
+		background: #b3b3b3;
+		padding: 10px;
+	}
+	[class*='col-']{
+		border:1px solid #2b2f2f; 
+		padding: 10px;
+	}
+
+
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<form>
+				<div class="form-group">
+					<label for="em">用户名</label>
+					<input  id="em" type="email" class="form-control" placeholder="请输入Email">
+					<!-- 默认是100% -->
+					<!-- placeholder是默认提示文字 -->
+				</div>
+
+				<div class="form-group">
+					<label>密码</label>
+					<input type="password" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label>选择文件</label>
+					<input type="file">
+					<p>请选择文件</p>
+				</div>
+
+				<div class="checkbox">
+					<label>
+					 <input type="checkbox">男
+					  </label>
+				</div>
+				<button type="submit" class="btn btn-default">提交</button>
+				</form>
+				
+				<br>
+				<!-- 并排显示 -->
+				<form class="form-inline">
+					<div class="form-group">
+						<label class="sr-only">用户名</label>
+						<input type="email" class="form-control" placeholder="请输入Email">
+					</div>
+					<div class="form-group">
+						<label class="sr-only">密码</label>
+						<input type="password" class="form-control"placeholder="请输入密码">
+
+
+
+					</div>
+					<div class="form-group">
+						<label class="sr-only">金额</label>
+						<div class="input-group">
+							<div class="input-group-addon">$</div>
+							<!-- 合并两个div -->
+							<input type="text" class="form-control"placeholder="请输入金额">
+							<div class="input-group-addon">美刀</div>
+						</div>
+						
+
+
+
+					</div>
+					
+
+				</form>
+				<br>
+
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-md-2 control-lable">Email</label>
+						<div class="col-md-4">
+							<input type="email" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Text input">
+					</div>
+				</form>
+				<br>
+
+				<form>
+					<select class="form-control">
+						<option value="">1</option>
+						<option value="">2</option>
+						<option value="">3</option>
+						<option value="">4</option>
+						<option value="">5</option>
+
+					</select>
+					<br>
+					<select  multiple class="form-control">
+						<!-- 全部展开 -->
+						<option value="">1</option>
+						<option value="">2</option>
+						<option value="">3</option>
+						<option value="">4</option>
+						<option value="">5</option>
+
+					</select>
+				</form>
+				
+
+				<br>
+				<br>
+				<br>
+
+
+
+				<form class="form-horizontal">
+					<label class="sr-only">hello</label>
+					<input class="form-control focus">
+				</form>
+				<button type="res"></button>
+				
+
+
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+
+
+</body>
+</html>

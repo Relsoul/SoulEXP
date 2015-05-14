@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>JS函数-带参数的函数</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var sum=null;
+		var a,b;
+		var arr=[1,2,3,4,5];
+		var arr1=[1,2,3,4,5];
+		function test(a,b){
+			for(var i=0;i<a.length;i++){
+
+				sum=sum+a[i]+b[i];
+
+
+			}
+			return sum;
+
+		}
+		
+		document.write(test(arr,arr1));
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	//OOP慨念
+	//继承，封装，多态，抽象
+
+	//基于原型的继承
+
+	function Foo(){
+		this.y=2;
+	}
+	typeof Foo.prototype;//Object
+	Foo.prototype.x=1;
+	var obj3=new Foo();
+	obj3.y//2
+	obj3.x//1
+
+	//Foo.prototype
+	// {
+	// 	constructor:Foo,
+	// 	_proto_:Object.prototype,
+	// 	x:1
+	// }
+	//对象上的原型通常都是构造器(Foo)的prototype
+
+
+	//通过Foo.prototype.xxx=function(){}来构造所有对象的公用属性
+
+	//ok来通过一个WP模板简单的制作实例来说明一下对象
+
+	function WP(name,version,author){
+		//定义一个函数对象构造器传递三个参数
+		//分别是名字，版本，作者
+		this.name=name;
+		this.version=version;
+		this.author=author;
+	}
+	//在WP原型定义一个公用属性输出WP信息
+	WP.prototype.Into=function(){
+		console.log("WP名字是:"+this.name+"WP版本是:"+this.version+"WP作者是"+this.author);
+	};
+	//定义两个公用属性
+	WP.prototype.code="PHP";
+	WP.prototype.language=["中文","英文","日文","..."];
+
+	function Soul(name,version,age,wpname,into){
+		//向WP这个函数对象构造器传递name,version
+		//传递this是为了指向WP中的this
+		WP.call(this,name,version,wpname);
+		this.age=age;
+		this.into=into;
+	}
+
+	Soul.prototype=Object.create(WP.prototype)//用Object.create创建了一个空对象,并且指向是WP的原型
+	//继承了WP的原型和方法
+	Soul.prototype.constructor=Soul;//constructor指向Soul
+
+	Soul.prototype.Into=function(){
+		console.log('我的名字:'+this.name+"|我的版本:"+this.version+"|我的年龄:"+this.age+"|我的WP名字:"+this.version);
+	}
+	//覆盖掉了WP.prototype.Into
+
+	Soul.prototype.intro=function(name){
+		console.log("WP介绍"+this.into+"By:"+name)
+	}
+
+	var new_soul=new Soul("凌魂","2.333","17","Soul Seeker","追逐内心的灵魂,不愿被沉沦在这幻想世界中");
+	console.log(new_soul.code);
+	console.log("支持语言:"+new_soul.language)//字符串与字符串相加会调用toString方法
+	new_soul.Into();
+	new_soul.intro("凌魂");
+
+	//更改prototype
+
+	Soul.prototype.x=101;
+	new_soul.x;//101
+
+	Soul.prototype={y:2};
+	new_soul.y;//undefined
+	new_soul.x;//101
+
+	var test_soul=new Soul();
+	console.log(test_soul.x);//undefined
+	console.log(test_soul.y);//2
+
+	//在把对象原型重新设置为一个字面量的对象时.不会影响以前已经创建的实例 但是会影响后续创建的实例
+	
+
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

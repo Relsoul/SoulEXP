@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS事件-事件处理</title>
+</head>
+
+<body>
+	<button id="but2" >弹出</button>
+	<script type="text/javascript">
+
+		
+		// var btn1 = document.getElementById("but1")
+
+		// btn1.onclick =function(){
+		// 	alert("soul seeker DOM0级事件处理1");//被覆盖掉
+		// }
+		// btn1.onclick =function(){
+		// 	alert("soul seeker DOM0级事件处理2");
+		// }
+
+		// var but2 = document.getElementById("but2");
+		// but2.addEventListener("click",demo);
+		// but2.addEventListener("click",demo1);
+		// but2.removeEventListener("click", demo);
+		// function demo(){
+		// 	alert("DOM 2级事件处理程序");
+		// }
+		// function demo1(){
+		// 	alert("DOM 2级事件处理程序1");
+		// }
+
+		var but3 =document.getElementById("but2");
+		function demo3(){
+			document.write("hello");
+		}
+		if(but3.addEventListener){
+			but3.addEventListener("click",demo3);
+			
+		}else{ 
+			if(but3.attachEvent){
+				but3.addEventListener("onclick",demo3);
+			}
+
+		}
+
+	</script>
+</body>
+</html>

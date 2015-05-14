@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS事件</title>
+</head>
+<style type="text/css">
+	.test1{
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+
+
+
+</style>
+<body onload="mgs()">
+	<button onclick="test()">弹出</button>
+	<script type="text/javascript">
+		function test(){
+			alert("test");
+
+		}
+		function onOver(ooj){
+			ooj.innerHTML="Hello";
+
+		}
+		function onOut(ooj){
+			ooj.innerHTML="World"
+		}
+
+
+
+
+
+	</script>
+	<div class="test1" onmouseout="onOut(this)" onmouseover="onOver(this)">
+		
+	</div>
+
+	<form>
+		<input type="text" onchange="alert('hello 内容改变了')">
+		<input type="text" onselect="bgC(this)" onfocus="changeTest(this)">
+	</form>
+	<script type="text/javascript">
+		function bgC(bg){
+			bg.style.background="red";
+		}
+		function change(){
+			alert("Hello 内容改变了")
+		}
+		function changeTest(bg){
+			bg.style.background="blue";
+		}
+		function mgs(){
+		alert("网页内容加载完毕");
+	}
+	</script>
+
+</body>
+</html>

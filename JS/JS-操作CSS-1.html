@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-操作CSS-1</title>
+	<style type="text/css">
+		table,th,td{
+			border: 2px solid black;
+			border-collapse:collapse;
+			width: 100px;
+		}
+
+	</style>
+	<script type="text/javascript">
+		function changeBg(){//定义函数
+			var get_table =document.getElementsByTagName("table");//获取页面中的table标签
+			var obb;//定义变量 obb(偶数)
+			for (var i = 0; i < get_table.length; i++) {//开始遍历table
+				obb =false;//设置偶数行等于 假
+				var get_table_tr=get_table[i].getElementsByTagName("tr");//设置get_table等于table中的tr元素
+			for (var d = 0; d < get_table_tr.length; d++) {//开始遍历tr
+				if (obb==true) {//如果偶数行等于 真
+					get_table_tr[d].style.background="red";//设置tr的背景颜色为红色
+					obb=false;//设置obb等于 假
+				}else{//否则
+					obb=true;//返回obb等于 真
+				}
+				}
+			}
+		}
+		function highLightrow(){//定义函数
+			var get_tr =document.getElementsByTagName("tr");//获取tr标签
+			for (var i = 0; i < get_tr.length; i++) {//遍历
+				get_tr[i].onmouseover=function(){//在tr标签添加鼠标移入动画 相当于onmouseove="" 
+					this.style.fontSize="24px";//this这个很重要 返回鼠标移入的tr标签
+				}
+				if (get_tr[i].getAttribute("fh")=="none") {//如果检测到tr标签的 fh属性等于 none
+					get_tr[i].onmouseout=function(){//添加鼠标移除的动画
+					this.style.fontSize="16px";//设置大小为16px;
+					}
+				}else{
+					get_tr[i].onmouseout=function(){
+					this.style.fontSize="14px";//否则设置大小为14px; 这样做是为了使标题醒目
+					}
+				}
+				
+			};
+		}
+	window.onload=function(){
+		changeBg();
+		highLightrow();
+	}
+
+	</script>
+</head>
+<body>
+		<table>
+			<tr fh="none">
+				<th>名字</th>
+				<th>性别</th>
+			</tr>
+			<tr>
+				<td>soul</td>
+				<td>保密</td>
+			</tr>
+			<tr>
+				<td>seeker</td>
+				<td>你猜</td>
+			</tr>
+
+		</table>
+	
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-test1</title>
+	<script type="text/javascript">
+	// function obj(){
+	// 	this.num=0
+	// 	this.getNum=function(){
+	// 		alert(this.num)
+	// 	}
+		
+	// 	this.setNum=function(){
+	// 		this.num=1
+	// 	}
+	// }
+	// obj.prototype={
+	// 	constructor:obj
+
+	// }
+	// var test =new obj()
+	// test.getNum()
+	// test.setNum()
+	// test.getNum()
+
+
+	
+
+
+	window.onload=function() {
+		// getP()
+		// document.body.innerHTML="<p id=\"hello\">test</p>"
+		// var get_p=document.getElementById("hello")
+		// get_p.setAttribute("fh", "test")
+	}
+
+	function getP(){//定义一个函数 getP
+		var pid=document.getElementsByTagName("p")//获取页面的p标签
+		for (var i = 0; i < pid.length; i++) {//遍历p标签
+				pid[i].onclick=function(num){//给p标签添加点击事件 并且创建一个匿名函数 参数设置为i
+					return function(){//返回一个匿名函数2
+						alert(num)
+					}
+				}(i)//这里再调用匿名函数2
+		}
+	}
+
+
+function outerFn() {//定义一个outerFn函数
+            document.write("运行的是outerFn函数<br/>");//打印
+            var innerVar = 0;//设置outerFn中的全局变量innerVar 因为这个变量在outerFn有效
+            function innerFn() {//定义一个匿名函数 这样写也ok var innerFn=function(){}
+                
+                innerVar++;//每次调用这个函数都会给innerVar+1
+                document.write("调用Inner函数 \t");//打印
+                document.write("innerVar = "+innerVar+"<br/>");//打印innerVar次数
+            }
+            function res(){
+            	 innerVar =0
+            }
+            return {//函数间的相互交互
+            	"inn":innerFn,
+            	"re":res
+            };
+            //在第一次运行了outerFn函数后,然后outerFn函数就指向了outerFn函数中的innerFn函数
+            //为什么会指向呢？ 因为返回了innerFn这个函数
+        }
+        var fnRef = outerFn();//这里调用outerFn函数后 fnRef就指向了innerFn
+        fnRef.inn();
+        fnRef.inn();
+        fnRef.re()
+        fnRef.inn();
+        fnRef.inn();
+        fnRef.inn();
+        alert(innerVar)
+
+        // var fnRef2 = outerFn();//创建一个新的fnRef2函数 
+        // fnRef2();//这里的变量并不会共享
+        // fnRef2();
+        // fnRef2();
+
+	</script>
+</head>
+<body>
+	<p>hello</p>
+	<p>world</p>
+	<p>soul</p>
+	<p>seeker</p>
+</body>
+</html>

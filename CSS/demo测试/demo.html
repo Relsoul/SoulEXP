@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		window.onload=function(){
+			var save_sel=document.getElementById("myselect")
+			var get_sel=document.getElementById("myselect").getElementsByTagName("option");
+			var arr=[];
+			var arr1=[]
+			for (var i = 0; i < get_sel.length; i++) {
+				arr.push(get_sel[i].getAttribute("val"))
+				arr1[get_sel[i].getAttribute("val")]=get_sel[i]
+
+			};
+			arr.sort()
+			console.log(arr);
+			console.log(arr1);
+			
+			for (var i = 0; i < arr.length; i++) {
+
+				save_sel.appendChild(arr1[arr[i]])
+			};
+
+		}
+
+	</script>
+</head>
+<body>
+<select id="myselect" size="5">
+  <option val="c">选项C</option>
+  <option val="d">选项D</option>
+  <option val="b">选项B</option>
+  <option val="e">选项E</option>
+  <option val="a">选项A</option>
+</select>
+	
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>无标题文档</title>
+    </head>
+    
+    <body>
+        <form>
+          请选择你爱好:<br>
+          <input type="checkbox" name="hobby" id="hobby1">  音乐
+          <input type="checkbox" name="hobby" id="hobby2">  登山
+          <input type="checkbox" name="hobby" id="hobby3">  游泳
+          <input type="checkbox" name="hobby" id="hobby4">  阅读
+          <input type="checkbox" name="hobby" id="hobby5">  打球
+          <input type="checkbox" name="hobby" id="hobby6">  跑步 <br>
+          <input type="button" value = "全选" onclick = "checkall();">
+          <input type="button" value = "全不选" onclick = "clearall();">
+          <p>请输入您要选择爱好的序号，序号为1-6:</p>
+          <input id="wb" name="wb" type="text" >
+          <input name="ok" type="button" value="确定" onclick = "checkone();">
+        </form>
+        <script type="text/javascript">
+        function checkall(){
+            var hobby = document.getElementsByTagName("input");
+            var hobby_name=document.getElementsByName("hobby")
+           
+          for(var i=0;i<hobby.length;i++){
+              if(hobby[i].type=="checkbox"){
+                  hobby[i].checked=true
+              }
+              
+          }
+        }
+        function clearall(){
+            var hobby = document.getElementsByName("hobby");
+            for(var i=0;i<hobby.length;i++){
+                if(hobby[i].checked==true){
+                    hobby[i].checked=false
+                }
+            }
+            
+         // 任务2    
+            
+        }
+       var savebox=[];
+        function checkone(){
+            var j=document.getElementById("wb").value;
+            var hobby = document.getElementsByTagName("input");
+             
+       for(var i=0;i<hobby.length;i++){
+              if(hobby[i].type=="checkbox"){
+                  savebox[i]=hobby[i]
+              }
+              
+          }
+
+          switch(j){
+          	case "1":
+          		
+          		 checkNum(0);
+          		break;
+          	case "2":
+          	   checkNum(1);
+          		break;
+          	case "3":
+          		checkNum(2);
+          		break;
+          	case "4":
+          		checkNum(3);
+          	break;
+          	case "5":
+          		checkNum(4);
+          	break;
+          	case "6":
+          		checkNum(5);
+          	break;	
+          	default:
+          		alert("请输入1-6的数字")
+          		break;
+          }
+        }
+
+        function checkNum(n){
+        	if(savebox[n].checked==true){
+        		return savebox[n].checked=false
+        		
+        	}else{
+        		return savebox[n].checked=true
+        	}
+
+        }
+        
+        </script>
+    </body>
+</html>

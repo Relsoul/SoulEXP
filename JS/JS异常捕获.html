@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS异常捕获</title>
+</head>
+<body>
+	<form>
+		<input id="txt" type="text">
+		<input id="btn" type="button" onclick="test1()" value="提交">
+
+	</form>
+	<script type="text/javascript">
+		// function test(){
+		// 	try{
+		// 		alert(str);
+		// 	}catch(err){
+		// 		alert(err);
+		// 	}
+
+		// }
+		// test();
+
+		function test1(){
+			try{var e =document.getElementById("txt").value;
+			if (e==""){
+				throw "请输入";
+			}
+
+		}catch(err){
+			alert(err);
+		}
+
+		}
+
+
+
+
+	</script>
+</body>
+</html>

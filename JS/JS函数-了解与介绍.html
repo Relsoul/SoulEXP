@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS函数-了解与介绍</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var j=0;
+		for(var i=0;i<10;i++){
+			j=j+i;
+			document.write(j+"<br />");
+
+
+	}
+		document.write("从1加至9<br />");
+		var arr;
+		var sb=[1,2,3,4,5,6,7,8,9,10,11];
+		var test=null;
+		function demo(arr){
+			for(var i=0;i<arr.length;i++){
+				 test = test + arr[i];
+				document.write(test+"<br />");
+				
+			}
+			return test;
+			
+		}
+		document.write("数组相加方法")
+	window.onload=function(){
+		demo(sb);
+	}
+
+	</script>
+	<button onclick="demo(sb)">计算</button>
+</body>
+</html>

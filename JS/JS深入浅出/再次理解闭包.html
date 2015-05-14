@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	var name="xiao A";
+	var obj={
+		name:"xiao B",
+		getName:function(){
+			var that=this
+			return function(){
+				return that.name
+			}
+		}
+
+	}
+	//全局作用域 再次调用 返回的this是window
+	console.log(obj.getName()())
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

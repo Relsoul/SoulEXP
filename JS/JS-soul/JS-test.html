@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS测试</title>
+	<script type="text/javascript">
+		// var arr =["我是第一个","我是第二个","我是第三个","我是第四个"];
+		// alert("我是数组内容:"+arr+"|我是数组长度:"+arr.length);
+		// alert("数组中最后一个元素:"+arr[arr.length-1]);
+		// // for (var i = 0; i < arr.length; i++) {
+		// // 	arr.length-1
+		// // };
+		// function hello () {
+		// 	f_soul();
+		// }
+		// function soul(){
+
+		// }
+		// var f_soul=soul;
+		function Animal(){  
+    this.name = "Animal";  
+    this.showName = function(){  
+        alert(this.name);  
+    }  
+}  
+/**定义一个Cat类*/  
+function Cat(){  
+    this.name = "Cat";  
+}  
+  
+/**创建两个类对象*/  
+// var animal = new Animal();  
+// var cat = new Cat();  
+  
+//通过call或apply方法，将原本属于Animal对象的showName()方法交给当前对象cat来使用了。  
+//输入结果为"Cat"  
+//animal.showName.call(cat,",");  
+animal.showName.apply(cat,[]);  
+	function bq () {
+		alert("标签等于tag吗?")
+		var bq1="标签"
+		var bq2="tag"
+		if(bq1==bq2){
+
+			alert("啦啦啦！这条代码随便写了 因为标签不可能等于tag")
+		}else{
+			alert("你这不是在坑爹么？ 标签等于tag？ 字都不一样好吧")
+		}
+		// body...
+	}
+
+		</script>
+
+</head>
+<body>
+	<button onclick=bq()>检测标签是否等于tag</button>
+	<button></button>
+	<div id="did">
+		<p>hello</p>
+		<p>hello</p> 
+	</div>
+	
+</body>
+</html>

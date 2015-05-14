@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-继承-1-继承者们</title>
+	<script type="text/javascript">
+	//每个构造函数都有一个原型对象,原型对象都包含一个指向构造函数的指针,实例都包含一个指向原型对象内部的指针
+	//继承之原型链
+
+	function Soul1(){//构造函数 对象Soul1
+		this.name="soul1"
+	}
+	Soul1.prototype.getName = function(){//定义 Soul1的原型函数getName
+		return this.name;//this指向调用这个函数的 变量，对象等等
+	};
+	function Soul2(){//构造函数 对象Soul2
+		this.age="19"
+	}
+	Soul2.prototype=new Soul1()//对象Soul2的原型等于Soul1
+
+	Soul2.prototype.getAge=function(){//定义 Soul2的原型函数getAge
+		return this.age
+	}
+	var soul1_1=new Soul2();
+	var soul1_2=new Soul1();
+	console.log(soul1_1.getAge())//ok 这是Soul2中的age 那么来试试Soul1中的name
+	console.log(soul1_1.getName())//ok 获取到Soul1中的name
+	// console.log(soul1_2.getAge())//error 不能越级访问..也就是说 Soul2定义的函数,属性 Soul1都不能访问到
+	console.log(soul1_1 instanceof Object)//soul1_1是Object 所有的对象都是Object的实例
+	console.log(soul1_1 instanceof Soul1)//true
+	console.log(Object.prototype.isPrototypeOf(soul1_1))//soul1_1原型是Object
+
+	//谨慎的定义方法
+	Soul2.prototype.getName=function(){//重写超类型(指的是Soul1)中的getName函数 注意 这语句必须放Soul1_1=new Soul2()之下
+		return this.age+this.name
+	}
+	console.log(soul1_1.getName())
+
+	// Soul2.prototype={//用字面量添加新方法会导致Soul2.prototype=new Soul1() 失效
+	// 	this.name=name
+	// }
+	function Soul3(){//构造函数 Soul3
+		this.color=["红色","黑色"]//创建 颜色数组
+	}
+	function Soul4(){}//构造函数 Soul4
+
+	Soul4.prototype=new Soul3()//Soul4的原型等于Soul3的原型
+
+	var Soul3_1 = new Soul4()//创建Soul4的实例
+	Soul3_1.color.push("蓝色")//在Soul3_1的颜色数组添加蓝色
+	console.log(Soul3_1.color)//输出颜色数组
+
+	var Soul3_2 = new Soul4()//创建Soul4的实例
+	console.log(Soul3_2.color)//输出颜色数组
+	//发现 创建了Soul3_1 和Soul3_2 两个实例都共享了color数组
+
+	//组合继承(将原型和借用构造函数组合)
+	//构造函数构造属性 原型建立方法
+	function Soul5(name){
+		this.name= name;
+		this.color=["蓝色","绿色","黄色"];
+		}
+	Soul5.prototype.sayName=function(){
+		console.log("Soul5名字"+this.name);
+	}
+	function Soul7(name,age){
+		//关键代码就是call
+		//Soul5.call(this, name) == ==this.Soul5(name)
+		//Soul7的实例是 Soul7_1 那么Soul7_1在调用Soul7的时候传递了name属性这句话解释来就行
+		//Soul5.call(Soul7_1,name)== Soul7_1.Soul5(name)
+		//Soul7_1向Soul5传递了name属性, 那么Soul5中是怎么处理的呢？
+		//Soul5("Soul7_2的名字")
+		//Soul7_2.name="Soul7_2"名字
+		Soul5.call(this,name);//向Soul5传递this.name  比如Soul7_1用这个函数构建name属性的 this就相当于Soul7_1
+
+		this.age=age;//age Soul7自己处理
+	}
+	//继承方法
+	Soul7.prototype=new Soul5();
+	Soul7.prototype.constructor=Soul7 //Soul7构造函数并不指向Soul5 而是指向自己
+	Soul7.prototype.sayAge=function(){
+		console.log("Soul7年龄:"+this.age)
+	}
+	var Soul7_1 =new Soul7("Soul7name","19")//构造Soul7的实例Soul7_1
+	Soul7_1.color.push("Soul7_1红色")//在Soul7_1实例中的color数组添加新元素
+	Soul7_1.sayName();//Soul7_1是Soul7的实例 但是Soul7继承了Soul5的原型,所以Soul7_1继承了Soul5的方法和属性
+	Soul7_1.sayAge();//同上
+	console.log(Soul7_1.color)
+
+	var Soul7_2=new Soul7("Soul7_2的名字","18")//同上
+	Soul7_2.color.push("Soul7_2黑色")
+	Soul7_2.sayName();
+	Soul7_2.sayAge();
+	console.log(Soul7_2.color)
+	//以上代码都继承了 Soul5的原型 但是用构造函数创建属性 并且指定Soul7的原型构造函数等于Soul7 
+	//所以Soul7_1和Soul7_2公用构造函数Soul7但是这个构造函数Soul7的原型构造函数等于他本身,所以不会
+	//重写Soul5构造函数的属性
+	//...绕的有点多..多理解一下就ok了
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

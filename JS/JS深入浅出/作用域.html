@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	var a=10;//全局
+	(function(){
+		var b=20;//函数作用域
+	})();
+
+	console.log(a);
+	// console.log(b)//error,b 未定义
+
+	for(var item in{a:1,b:2}){
+		//item在外级也可以访问到
+		//JavaScript无块级作用域
+		console.log(item);
+	}
+	console.log(item);//可以访问到
+
+	eval("var a=1")
+
+	//作用域链
+
+	function outer2(){
+		var local2=1;
+		function outer1(){
+			var local1=1;
+
+		}
+		outer1();
+	}
+	var global3=1;
+	outer2();
+
+	function outer3(){
+		var i=1;
+		var func=new Function("console.log(typeof i);");
+		func();//undefined
+	}
+	outer3();
+
+	//利用函数作用域封装
+	(function(){
+		//do sth
+		var a,b;
+	})();
+
+	!function(){
+		//do sth 
+		var a,b;
+	}();
+
+	var name="soul";
+	(function(){
+		if(typeof name==="undefined"){
+			var name="jack"
+			console.log(name)
+		}else{
+			console.log(name)
+		}
+	})()//jack
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

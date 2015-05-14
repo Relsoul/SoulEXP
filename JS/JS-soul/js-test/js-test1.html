@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var id1=document.getElementById("id_1");
+			var id2=document.getElementById("id_2");
+			var $id1=$(id1)
+			$id1.click(function(){
+				alert("1")
+			})
+
+		}
+
+	</script>
+
+</head>
+<body>
+	<input type="checkbox" id="id_1">1
+	<br>
+	<input type="checkbox" id="id_2">2
+</body>
+</html>

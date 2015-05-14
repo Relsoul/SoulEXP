@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-操作css-2</title>
+	<style type="text/css">
+		.add_css{
+			color:red;
+
+		}
+	</style>
+	<script type="text/javascript">
+		function setClassName(){
+			var get_h1=document.getElementsByTagName("h1");
+			var elem
+			for (var i = 0; i < get_h1.length; i++) {
+				// var testa=get_h1[i].childNodes[1].nodeName;//测试获取到h1元素的下级第二个元素数组是从[0]开始
+				// //childNodes[0]弹出的是text,这段只是为了更助于理解节点问题.看不懂可以跳过哦
+				// alert(testa);//弹出testa内容
+
+				elem=getNextElem(get_h1[i].nextSibling);//nextSibling是获取同级兄弟元素而不是下级
+				// alert(elem.nodeName);//获取到下一个兄弟元素是p
+				elem.className="add_css"//添加class属性等于 css当中设置的add_css				
+			};
+		}
+
+		function getNextElem(nextnode){//获取到传递的参数
+			if (nextnode.nodeType ==1) {//如果传递的参数属性类型等于1 1为元素节点 2为属性节点 3为文本节点
+				return nextnode;//返回nextnode
+			}else{//否则
+				if (nextnode.nextSibling) {//如果传递的nextnode下一个兄弟元素存在
+					return getNextElem(nextnode.nextSibling);//递归调用这个函数 然后再针对nextnode的下一个兄弟元素进行检查
+				} else{return null};//如果没有那么返回空
+			}
+
+		}
+
+		// function changeNextSib(tag,theclass){
+		// 	var elem=document.getElementsByTagName("tag");
+		// 	var obb
+		// }
+
+		window.onload=function(){
+			setClassName();
+		}
+
+
+
+	</script>
+</head>
+<body>
+	<h1>Hello Seeker
+		<p>我是下级P</p>
+	</h1>
+	<p>我是一名灵魂追逐者</p>
+	<p>放荡者的灵魂</p>
+	<p>红色月色,灵魂绝响</p>
+	<h1>风铃</h1>
+	<p>随风而动,奏响灵魂乐章</p>
+	<p>在这夜色之下,恐惧的黑暗</p>
+	
+</body>
+</html>

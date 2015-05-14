@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.talk{
+		margin: 100px auto;
+		padding: 50px;
+		width: 	200px;
+		height: 100px;
+		border: 5px solid red;
+		position: relative;
+	}
+	.talk_bot{
+		width: 0;
+		height: 0;
+		border-top:15px solid transparent;
+		border-right: 20px solid red;
+		border-bottom:15px solid transparent;
+		position:absolute;
+		left: -25px;
+		top: 90px;
+
+	}
+	.talk_top{
+		width: 0;
+		height: 0;
+		border-top:15px solid transparent;
+		border-right: 20px solid #fff;
+		border-bottom:15px solid transparent;
+		position:absolute;
+		left: -15px;
+		top: 90px;
+
+	}
+
+	</style>
+</head>
+<body>
+	<div class="talk">
+		<p>CSS对话边框</p>
+		<span class="talk_bot"></span>
+		<span class="talk_top"></span>
+	</div>
+</body>
+</html>

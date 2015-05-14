@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="//cdn.gbtags.com/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <select>
+      <option>php</option>
+      <option>c</option>
+      <option>javascript</option>
+      <option>css</option>
+      <option>html</option>
+      <option>python</option>
+    </select> 
+    <script>
+      $(function(){
+        //获取列表
+        var $select=$('select'),
+        //储存子元素节点
+            $options=$select.children('option');
+        //因为储存的是一个数组所以可以进行排序
+        $options.sort(function(a,b){
+          //也就是对每个元素的文本进行排序对比 
+          //如果大于则在前面
+          if($(a).text()>$(b).text()) return 1;
+          else return -1;
+        });
+        //重新给select加上这些元素节点
+        $select.html($options);
+      });
+    </script>
+  </body>
+</html>

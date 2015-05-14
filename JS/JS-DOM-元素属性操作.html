@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-DOM-元素属性操作</title>
+	<style type="text/css">
+		li{
+			float: left;
+			margin: 5px;
+			list-style-type: none;
+		}
+		img{
+			clear: both;
+			display: block;
+		}
+
+	</style>
+	<script type="text/javascript">
+		function clickSP(){
+			var ul_all = document.getElementById("ul_all");//获取元素id="ul_all"
+			var add_showpic = ul_all.getElementsByTagName("a");//设置add_showpic=ul_all下的a标签
+			for (var i = 0; i < add_showpic.length; i++) {//递归ul_all下的a标签
+				if (add_showpic[i].getAttribute("fh")!="stop") {//如果a标签fh属性不等于stop 执行
+					add_showpic[i].onclick=function(){//为a标签添加onclick事件
+						showPic(this);//添加showPic(this)；
+						return false;//等同于 onclick="showPic(this);return false;"
+					}
+
+				}
+			};
+		}
+		function showPic(whichpic) 
+			{var source = whichpic.getAttribute("href");
+			var placeholder = document.getElementById("shit");
+			placeholder.setAttribute("src",source);
+			var get_a_title=whichpic.getAttribute("title");
+			// alert("title"+get_a_title);//测试ok
+			var get_pid =document.getElementById("p_node");
+			// alert(p_node.childNodes[0].nodeValue);//获取到P_node文本；测试ok
+			
+			
+			get_pid.firstChild.nodeValue=get_a_title;//firstChild等同于childNodes[0] 设置P_node文本等于get_a_title内容；
+			}
+		function getBody(){
+			var get_body =document.getElementsByTagName("body")[0];//获取body元素子元素总个数
+			alert("子元素个数"+get_body.childNodes.length);
+			alert("所有类型节点"+get_body.nodeType);
+		}
+
+		
+		// window.onload = getBody;//页面加载完毕调用 getBody函数；JavaScript代码放文档尾部 </body>标签之前才能生效
+		function testck(a,b){
+			window.open(a,b,"width=300,height=300");//设置标题无用。。
+		}
+
+		// function aTest(){
+		// 	var alink = document.getElementsByTagName("a");
+		// 	for (var i = 0; i < alink.length; i++) {
+		// 		if(alink[i].getAttribute("fh")=="test"){
+		// 			var tz_titile=[];
+		// 			var tz =[];
+		// 			tz_titile[i] =alink[i].getAttribute("title");//不加var隐形设置全局变量
+		// 			 tz[i] =alink[i].getAttribute("href");
+		// 			 alink[i].onclick =function(){//给fh属性=test的a标签加个onclick函数，等同 onlick= testcl(tz[i],tz_title[i]);return false)
+		// 			 	testck(tz[i],tz_titile[i]);
+		// 			 	return false;
+		// 			 }
+		// 		}
+		// 	};
+		// }
+
+
+		function tc(){
+			window.open("http://baidu.com","hello","width=300,height=300");
+
+		}
+		function jianCe(){
+			if(!document.getElementsByTagName){
+				
+			}else{alert("document.getElementsByTagName存在")}
+		}
+		
+		function addWin(func){//定义函数addWin并且自定义一个变量func
+			var oldevent=window.onload;//设置oldevent等于window.onload 意思就是把原来的函数存储起来
+			if(typeof window.onload == "function"){//如果win.onload类型是函数，当然如果原来没写过window.onload那么就不是函数了
+				window.onload =function(){//设置window.onload
+					oldevent();//添加上原来的老函数
+					func();//添加上新的函数
+				}
+			}else{//如果原来没写过window.onload那么执行
+				window.onload =func;//设置window.onload=func
+			}
+		}
+		addWin(clickSP);//hello就相当于func 那么window.onloado=func；相当于window.onload=hello;
+		addWin(starIMGP);
+		function hello(){
+			alert("hello")
+
+		}
+
+		function starIMGP(){
+			var star_img=document.createElement("img");//创建一个新元素节点img
+			star_img.setAttribute("id","shit");//设置img id属性等于shit
+			star_img.setAttribute("width","500px");//设置宽属性节点
+			star_img.setAttribute("height","500px");//设置高属性节点
+			star_img.setAttribute("src","");//设置src属性节点
+			var star_p=document.createElement("p");//创建一个新元素节点p
+			star_p.setAttribute("id","p_node");//设置p id属性等于p_node
+			var star_p_txt=document.createTextNode("pnode");//创建一个文本节点节点
+			star_p.appendChild(star_p_txt);//star_p元素节点下添加star_p_txt属性节点
+			var star_ul=document.getElementById("ul_all");//获取ul id
+			// star_ul.parentNode.insertBefore(star_img,star_ul);//把star_img插入star_ul前面
+			insertAftet(star_img,star_ul);//将star_img插入star_ul之后
+			insertAftet(star_p,star_img);//将star_p插入star_img之后
+
+
+		}
+		function insertAftet(before,after){//定义函数insertAftet
+			var parent_node =after.parentNode;//设置变量parent_node等于after父级元素
+			if(parent_node.lastChild==parent_node){//如果after父级元素就是after自己
+				after.appendChild(before);//在after元素之后插入before元素
+			}else{//如果不是
+				parent_node.insertBefore(before,after.nextSibling);//在after与下一个元素之间插入before元素
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<p title="hello">我是soul</p>
+	<p title="soul">Soul Seeker</p>
+	<p title="">我是追逐者</p>
+	<ul id="ul_all">
+		<li><a  href="img/Pepsized_Blur_01.jpg " title="hello soul"  title="ssdas">one</a></li>
+		<li><a  href="img/Pepsized_Blur_02.jpg" title="soul seeker"  title="ssds">two</a></li>
+		<li><a id="testa" href="img/Pepsized_Blur_03.jpg" title="by soul"  >three</a></li>
+		<li><a fh="stop" href="#" onclick="tc()">弹窗测试</a></li>
+	</ul>
+
+
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-操作css-3-奇数行偶数行深入</title>
+	<style type="text/css">
+	.add_css{
+		color: red;
+	}
+	</style>
+	<script type="text/javascript">
+	function addClassName(name,value){//创建一个添加class属性的函数 并且定义两个参数 name,value
+			if(typeof name.className==null){//如果name.className是空的话
+				name.className=value;//直接设置name的className等于传递过来value的值
+			}else{//否则
+				var new_name =name.className;//设置new_name存储当前name的class
+				new_name += " ";//+=的意思就是 new_name=new_name+" ";加上一个空格
+				new_name += value;//然后在空格后面加上传递过来的value值
+				name.className=new_name;//设置传递过来的name的class值等于new_name
+			}
+		}
+	function changeColor(){//定义函数
+		var get_div =document.getElementsByTagName("div");//获取div标签
+		var obb;//设置一个变量obb
+		obb =false;//设置obb等于false
+		for (var i = 0; i < get_div.length; i++) {//遍历div
+				var get_div_p =get_div[i].getElementsByTagName("p");//设置get_div_p等于get_div[i]下的p标签
+			for (var d = 0; d < get_div_p.length; d++) {//遍历p标签
+				if (obb==true) {//如果obb是真
+				var save_get_p=get_div_p[d];//设置变量save_get_p存储当前数组
+				addClassName(save_get_p,"add_css");//调用函数addClassName 并且传递两个参数 一个是标签 一个是要加的css
+				obb =false;//设置obb等于假
+				}else{obb=true};//否则返回obb等于真
+			}	
+		}
+	}
+	window.onload=function(){//网页加载完毕加载函数
+		changeColor();
+	}
+	</script>
+</head>
+<body>
+	<div>
+		<p>hello</p>
+		<p>soul seeker</p>
+		<p>欢迎来到</p>
+		<p>灵魂放逐者营地</p>
+		<p>解开封锁的灵魂吧！</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	function obj(){
+
+	}
+	obj.prototype.fun=function(age,name){
+		alert(age+name)
+	}
+
+	obj.prototype.first=function(){
+		obj.prototype.fun(12)
+	}
+
+	var sl=new obj()
+	sl.first()
+
+	var MyClass = function(a){
+  this.a = a;
+}
+
+MyClass.prototype.selfadd = function(b){
+  this.a += b;
+  document.write("当前值：" + this.a + "<br/>");
+  return this;
+}
+
+var myobj = new MyClass(5);
+myobj.selfadd(2).selfadd(4).selfadd(6)
+
+
+function myObj(a){
+		this.a=a
+}
+
+myObj.prototype.sum=function(b){
+	this.a+=b
+	console.log(this.a)
+	return this
+}
+
+var te=new myObj(0)
+te.sum(2).sum(4)
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

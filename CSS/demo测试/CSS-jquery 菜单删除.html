@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+@import url('http://cdn.gbtags.com/font-awesome/4.1.0/css/font-awesome.min.css');
+
+body{
+  background:#666;
+  color: #fff;  
+  font-family: 'microsoft yahei',Arial,sans-serif;
+}
+ 
+ul{
+  list-style:none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+ 
+li{
+  padding: 10px;
+  margin: 2px;
+  border: 1px solid #888;
+}
+
+
+
+	</style>
+	<script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			function first(){
+				$("#container i").click(function(event){
+				var $i_parent= $(this).parent()
+				$($i_parent).stop().animate({
+					left:0,
+					width:0,
+					opacity:0
+				},300,function(){$($i_parent).remove()})
+				event.stopPropagation()
+
+			});
+			}
+			first()
+			
+			function addElem(elem){
+				$(elem).bind('click',
+					function(event){
+				var $i_parent= $(this).parent()
+				console.log($i_parent)
+				$($i_parent).stop().animate({
+					left:0,
+					width:0,
+					opacity:0
+				},300,function(){$($i_parent).remove()})
+				event.stopPropagation()
+			});
+
+			}
+			var num=0;
+			var $new_li,$li_first;
+			$("#container").click(function(event){
+				num++
+				$li_first=$("#container li").first();
+				//创建元素节点
+				var new_elem=$("<li>更多语言<i class='fa fa-times pull-right'></i></li>)")
+				$new_li=$li_first.before(new_elem);
+				console.log($new_li)
+				new_elem.hide().slideDown(500);
+				event.stopPropagation()
+				addElem($(new_elem).find("i"))
+				if(num=1){
+					first();
+				}
+
+			})
+
+
+
+
+		})
+
+
+
+	</script>
+</head>
+<body>
+	<ul id="container">
+  <li>Java<i class="fa fa-times pull-right"></i></li>
+  <li>Javascript<i class="fa fa-times pull-right"></i></li>
+  <li>HTML<i class="fa fa-times pull-right"></i></li>
+  <li>CSS<i class="fa fa-times pull-right"></i></li>
+  <li>PHP<i class="fa fa-times pull-right"></i></li>
+</ul>
+</body>
+</html>

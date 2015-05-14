@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS条件语句</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var i = 3;
+		if(i>=10){ //返回true的时候
+			document.write("i大于等于10");
+
+		}else if(i<=5&&i>3){
+			document.write("i小于5");
+		}else if(i<=3){
+			document.write("i小于等于3");
+		}
+
+	</script>
+	<p>以上是if else语句 以下是 switch</p>
+	<script type="text/javascript">
+		var i=8;
+		switch(i){
+			case 1:
+				document.write("i=1输出的是我哦");
+				break;//跳出当前循环
+			case 2:
+				document.write("i=2输出的是我哦");
+				break;
+			default:
+				document.write("条件不满足任何case")
+				break;
+
+		}
+	</script>
+</body>
+</html>

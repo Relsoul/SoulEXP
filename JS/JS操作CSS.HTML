@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS操作CSS</title>
+</head>
+<style type="text/css">
+	.did{
+		width: 100px;
+		height: 100px;
+		background: red;
+
+	}
+	
+
+
+
+
+</style>
+<body>
+	<div class="did" id="did">Soul</div>
+	<button onclick="did(blue)">更改背景颜色为蓝色</button>
+	<script type="text/javascript">
+	var blue ="blue";
+	function did(color){
+		document.getElementById("did").style.color="red"
+		document.getElementById("did").style.background= color;
+	}
+		
+
+
+
+
+	</script>
+</body>
+</html>

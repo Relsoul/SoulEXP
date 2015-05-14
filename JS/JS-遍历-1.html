@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-遍历-1</title>
+	<script type="text/javascript">
+	 function bianLi(){
+	 	var bianli_p =document.getElementsByTagName("p");//设置变量bianlian_p等于文档中的p标签
+	 	for (var i = 0; i < bianli_p.length; i++) {//开始循环 如果i小于bianli_p标签的长度,比如这个文档p有三个长度，然后设置i=0 0肯定小于3对吧 然后开始循环
+	 		var bianli_p_txt =bianli_p[i].firstChild.nodeValue;//设置bianlian_txt等于bianlian_p[i]的文本内容 [i]是0就是第一个，别忘了数组从0开始
+	 		alert("遍历第"+i+"次|内容为"+bianli_p_txt);//弹出遍历
+	 	};
+	 }
+	 window.onload =function(){//网页加载完毕后加载函数
+	 	// bianLi();
+	 	// bianLiAdv();
+	 	bianLiSR();
+		 }
+	function bianLiAdv(){
+		// var x,hello,soul;
+		// var x=null;
+		// var shuzu=[];
+		// shuzu[hello]="hello";
+		// shuzu[soul]="hello2";
+		// for(x in shuzu){
+		// 	// var shuzu_into=shuzu[x]; 
+		// 	document.write(shuzu[x]);}
+		//以上代码是我犯的一个错误代码,如果这样输出发现只能只能输出一个"hello2"
+		//因为hello未加""双引号，因为浏览器会理解hello是一个数字，而hello没有赋值，实际上在某些浏览器这样运行会直接报错。
+		//未赋值变量，很多情况下被强制转换成需要的类型，比如false，0，"" 等
+		//你可以在var x,hello,soul下面写一句 var hello=0;那么发现能够正常输出
+		//
+		var x,hello,soul;//定义变量x,hello,soul未赋值的变量是undefined;
+		var shuzu=[];//定义数组
+		shuzu["hello"]="hello";//加上双引号后就正常了
+		shuzu["soul"]="hello2";//设置数组下标
+		for (x in shuzu){//开始遍历
+			alert("遍历下标为"+x+"数组内容为"+shuzu[x]);//弹出。
+		}
+	}
+	//下面可以利用上面的来深入一点点
+	function bianLiSR(){
+		var shuzu=[]//设置数组，如果在for循环里面测试，每一次都会重新定义数组,最终只能得到最后一个内容.
+		var get_p=document.getElementsByTagName("p");//设置变量get_p等于p标签
+		for (var i = 0; i < get_p.length; i++) {//开始遍历循环p标签
+			var get_p_soul =get_p[i].getAttribute("soul");//设置get_p_soul等于get_p[i]的soul属性内容
+			var get_p_xiabiao =get_p[i].getAttribute("xiabiao");
+			// alert(get_p_soul+"|"+get_p_xiabiao);//测试弹出get_p_soul内容是否正确
+			shuzu[get_p_soul]=get_p_xiabiao;//设置数组自定义下标 get_p_soul等于soul属性内容 
+
+			//get_p_xiabiao等于下标属性内容,那么第一次循环就是 shuzu[标题1]=[我是下标1];
+			//具体的去测试就ok了
+			// alert(shuzu[get_p_soul]);//测试shuzu[soul]=xiabiao内容是否正确
+		};
+		for(get_p_soul in shuzu){//开始遍历
+			alert("数组下标是:"+get_p_soul+"|数组内容是:"+shuzu[get_p_soul]);//弹出遍历内容.
+		}
+		
+	}
+	</script>
+</head>
+<body>
+	<p soul="标题1" xiabiao="我是下标1">Hello 我是文字</p>
+	<p soul="标题2" xiabiao="我是下标2">hello 我是文字2</p>
+	<p soul="标题3" xiabiao="我是下标3">hello 我是文字3</p>
+	
+</body>
+</html>

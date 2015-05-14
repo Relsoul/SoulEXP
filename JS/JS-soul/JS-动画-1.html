@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-动画-1</title>
+	<style type="text/css">
+	#div_show{
+		width: 200px;
+		height: 200px;
+		overflow: hidden;
+		position:relative;
+	}
+
+
+
+	</style>
+	<script type="text/javascript">
+		function anmi(){//定义函数
+			var get_img =document.getElementById("show");//设置 get_img等于id属性为show的img元素
+			get_img.style.position="absolute";//设置定位为绝对定位
+			get_img.style.left="0px";//先前编写的时候就出错在这 必须要设置左 和上的属性
+			get_img.style.top="0px";//要不然下面获取的时候会获取不到
+			var get_list =document.getElementById("list");//设置 get_list等于id为list的ol元素
+			var get_link =get_list.getElementsByTagName("a");//设置get_link等于list下的a元素
+			get_link[0].onmouseover =function(){//因为数组是从0开始的 设置第一个a元素当鼠标放上去的时候调用函数
+				CQ("show",-400,0,10);//CQ("需要传递的元素id",最终大小x为-400,y为0,10毫秒间隔执行);
+			}
+			get_link[1].onmouseover =function(){//同上
+				CQ("show",-1900,0,10);//同上
+			}
+
+			
+		}
+		function CQ(elem,finally_x,finally_y,timenum){//定义CQ函数 并且定义4个参数
+			var get_elem=document.getElementById(elem);//设置get_elem等于id为elem参数,比如上面elem传递的是"show"那么就获取id为show的标签
+ 			var porx=parseInt(get_elem.style.left);//设置porx为get_elem的左属性 并且只获取整数
+			var pory=parseInt(get_elem.style.top);//设置porx为get_elem的上属性 并且只获取整数
+			var dist=0;
+			if(elem.anmi){//这里的elem.anmi的意思是 elel的anmi的属性存在,变量也可以跟标签一样加属性之类的.
+				//不好理解可以这样看 假设elem是p标签 那么anmi就是p标签的属性 <p anmi=""></p>这样的形式
+				clearTimeout(elem.anmi);//clearTimeout是清除动画的函数
+				
+			}
+			if(porx == finally_x && pory==finally_y){//如果porx等于finally_x参数比如200 pory等于传递下来的finally_y参数 比如200
+				return true;//如果是 返回真
+				
+			}
+			if(porx<finally_x){//如果左属性小于最终需要的左属性
+				dist=Math.ceil((finally_x-porx)/10);//设置dist等于 最终左属性减去当前的左属性然后再除以10 这个10可以自由设置
+				//加Math.ceil的意思是 如果最后只剩下了 3/10 那么不就是小数点了吗？ 所以Math.ceil的意思是返回一个不小于dist的整数.
+				porx=porx+dist;//设置porx等于porx+dist 这样就可以快速移动了
+				
+			}
+			if(porx>finally_x){//如果左属性大于最终需要的属性
+				dist=Math.ceil((porx-finally_x)/10);//设置dist等于 当前的左属性减去最终需要的左属性再除以10
+				porx=porx-dist;//设置porx等于porx减去dist 这样就可以快速移动
+			}
+			if(pory<finally_y){//原理同上
+				dist=Math.ceil((finally_y-pory)/10);
+				pory=pory+dist;
+				
+			}
+			if(pory>finally_y){//原理同上
+				dist=Math.ceil((pory-finally_y)/10);
+				porx=porx-dist;
+				
+			}
+			get_elem.style.left=porx+"px";//因为parseInt获取到的是整数 所以需要再后面加个px
+			get_elem.style.top=pory+"px";//同时
+			var rept="CQ('"+elem+"',"+finally_x+","+finally_y+","+timenum+")";
+			//这个+号的意思是拼接 凡是字符串与变量连接都需要用+号..不要问我为什么 因为我也不知道
+			//并且'"+elem+"' 必须是单引号然后双引号 如果双引号放外面函数误认为是个新属性
+			elem.anmi=setTimeout(rept,timenum);//递归函数 timenum是传递下来的参数 elem.anmi上文已经解释了
+
+
+		}
+		// function moveAnmi(){//定义移动函数
+		// 	var get_anmi_o =document.getElementById("anmi_o");//设置 get_anmi_o等于id属性为anmi_o的元素 因为在函数内是局部变量 不会影响到上面
+		// 	var ypor=parseInt(get_anmi_o.style.top);//parseInt的作用是 获取字符中的整数 比如"213soul" 他只会获取到213 soul不会获取、
+		// 	var xpor=parseInt(get_anmi_o.style.left);//获取到左和上属性 并且存储
+		// 	if(ypor == 100 && xpor ==200){//如果上属性等于200 和 左属性等于200
+		// 		return true;//返回true(停止运行函数)
+				
+		// 	}
+		// 	if(xpor<200){//如果左属性小于200
+		// 		xpor++;//xpor++的意思是 xpor=xpor+1 每次加1
+		// 	}
+		// 	if(xpor>200){//如果左属性大于200
+		// 		xpor--;//每次减一
+		// 	}
+		// 	if(ypor<100){//如果上属性小于100
+		// 		ypor++;//每次加1
+				
+		// 	}
+		// 	if(ypor>100){//如果上属性大于100
+		// 		ypor--;//每次减一
+				
+		// 	}
+		// 	get_anmi_o.style.top =ypor+"px";//因为parseInt获取到的是整数 所以需要再后面加个px
+		// 	get_anmi_o.style.left =xpor+"px";//同上
+		// 	mov =setTimeout("moveAnmi()",10);//递归调用函数 每隔10毫秒执行moveAnimi()函数 然后moveAnimi函数再做判断
+		// }
+		window.onload=function(){//网页加载完毕加载函数
+			anmi();
+
+		}
+
+
+	</script>
+</head>
+<body>
+	<ol id="list">
+		<li><a href="../img/Pepsized_Blur_01.jpg">Soul-1</a></li>
+		<li><a href="../img/Pepsized_Blur_02.jpg">Soul-2</a></li>
+		<li><a href="../img/Pepsized_Blur_03.jpg">Soul-3</a></li>
+		<li><a href="../img/Pepsized_Blur_04.jpg">Soul-4</a></li>	
+	</ol>
+	<div id="div_show">
+		<img src="../img/2048.jpg" id="show">
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS DOM操作html</title>
+</head>
+<body>
+	<p class="pid" id="pid">soul</p>
+
+	<button onclick="pgg()">更改为hellosoul</button>
+	<a href="http://www.baidu.com" id="aid">百度</a>
+	<button onclick="aherf()">跳转为好123</button>
+	<script type="text/javascript">
+	function pgg(){
+		document.getElementById("pid").innerHTML="hello soul"
+	}
+	function aherf(){
+		var doc = document.getElementById("aid");
+		doc.innerHTML="好123";
+		doc.href="http://www.hao123.com";
+	}
+
+
+
+
+	</script>
+	
+</body>
+</html>

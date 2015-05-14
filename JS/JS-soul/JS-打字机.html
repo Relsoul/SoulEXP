@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-打字机</title>
+	<script type="text/javascript">
+	//思路
+	//每1秒打一个字,每打一个字更改一下颜色
+	//1.创建一个P元素
+	//2.创建一个动画.
+	//2.5 创建一个文本数组
+	//3.创建一个颜色数组
+	//4.把颜色数组应用到文本上
+	var new_p =document.createElement("p");//全局函数 意思是新建一个标签p
+	var txt="hello soul next fllow myeles night die";//创建一个文本数组
+	var i=0,n=0;//设置i=0,,n=0
+	var color_1=["bule","green","red","rgb(100,200,300)","black"]//创建一个颜色数组
+	function test(){//开始打字+闪瞎你狗眼
+		
+		var p_txt =document.createTextNode(txt.charAt(i));//创建一个文本节点,文本节点内容等于文本数组的第[i]个元素
+		i++;//i++
+		new_p.appendChild(p_txt);//在p标签下添加文本节点
+		new_p.style.color=color_1[n];//设置p标签的颜色等于颜色数组的第[n]个元素颜色
+		n++;//n++
+		document.body.appendChild(new_p);//在文档根目录添加p
+		var anmi=setTimeout(test,500);//每500毫秒执行test函数
+		if(n==color_1.length){//如果n等于颜色数组的长度
+			n=0;//重新开始计数
+			
+		}
+		if(i==txt.length){//如果i等于文本数组的长度
+			clearTimeout(anmi);//停止动画
+			
+		}
+
+	}
+
+	window.onload=function(){
+		test()
+	}
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

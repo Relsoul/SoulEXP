@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  <style>
+  *{margin:0;
+    padding:0;
+    list-style:none;}
+  .wrap{height:170px;
+        width:490px;
+        margin:60px auto;
+        overflow: hidden;
+        position: relative;
+        margin:100px auto;}
+  .wrap ul{position:absolute;} 
+  .wrap ul li{height:170px;}
+  .wrap ol{position:absolute;
+           right:5px;
+           bottom:10px;}
+  .wrap ol li{height:20px; width: 20px;
+              background:#ccc;
+              border:solid 1px #666;
+              margin-left:5px;
+              color:#000;
+              float:left;
+              line-height:center;
+              text-align:center;
+              cursor:pointer;}
+  .wrap ol .on{background:#E97305;
+               color:#fff;}
+
+  </style>
+  <script type="text/javascript">
+  window.onload=function(){//网页加载完毕
+    var wrap=document.getElementById('wrap'),
+        pic=document.getElementById('pic'),
+        //获取list列表
+        list=document.getElementById('list').getElementsByTagName('li'),
+        //建立索引
+        index=0,
+        //设置定时器
+        timer=null;
+
+
+      //自动播放图片
+      //在自动播放图片前加一个判断
+      if (timer) {//如果原来就有了这个定时器
+        //先清除原来的定时器
+        clearInterval(timer);
+        timer=null;
+      };
+      //再进行播放
+      timer=setInterval(autoPlay,2000)
+
+      function autoPlay(){
+        //index+1
+        index++;
+        //如果index大于list条数
+        if(index>=list.length){
+          //重置index
+          index=0;
+        }
+        //调用图片切换函数
+        changeImg(index);
+      }
+     //
+     
+
+      // 定义图片切换函数
+      function changeImg(curindex){
+        //首先遍历所有的list 把className设置空
+        for (var i = 0; i < list.length; i++) {
+            list[i].className=" "
+        };
+        //根据传递过来的索引 比如index=0 那么list[0].className等于on
+        list[curindex].className='on';
+        //设置pic距离顶部的距离 根据距离顶部的多少来判断应该显示哪张图片
+        //首先ul下有很多li li都是竖排排列的
+        //所以只需要控制每张图片的大小
+        //显示的div高度是170
+        pic.style.top='-'+curindex*170+'px';
+        //把curindex赋值给index 
+        //这样做的目的是 如果我们鼠标移入的是list 3 那么更改index索引等于3
+        index=curindex;
+
+      }
+     
+    
+     //建立停止自动播放以及鼠标移入移出事件函数
+     stopPlay()
+
+     function stopPlay(){
+      //变量list并且设置fh等于d
+      for (var d = 0; d < list.length; d++) {
+        list[d].setAttribute("fh", d)
+  
+
+        list[d].onmouseover=function(){
+          //鼠标移入的时候 先清除下定时器timer 
+          //如果不清除那么他还是会一直自动播放下去
+          clearInterval(timer)
+          //然后调用更改图片的函数 并且传递的curindex等于鼠标移入的index
+          changeImg(this.getAttribute("fh"))
+        }
+        //设置鼠标移出事件
+        list[d].onmouseout=function(){
+          //既然鼠标已经移出了 那么重新开始设置定时器
+          timer=setInterval(autoPlay,2000)
+        }
+
+      };
+     }
+
+
+   }
+
+  </script> 
+</head>
+<body>
+  <div class="wrap" id='wrap'>
+    <ul id="pic">
+      <li><img  height=470 src="http://img.mukewang.com/54111cd9000174cd04900170.jpg" alt=""></li>
+      <li><img height=470 src="http://img.mukewang.com/54111dac000118af04900170.jpg" alt=""></li>
+      <li><img height=470 src="http://img.mukewang.com/54111d9c0001998204900170.jpg" alt=""></li>
+      <li><img height=470 src="http://img.mukewang.com/54111d8a0001f41704900170.jpg" alt=""></li>
+      <li><img height=470 src="http://img.mukewang.com/54111d7d00018ba604900170.jpg" alt=""></li>    
+    </ul>
+    <ol id="list">
+      <li class="on">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ol>
+  </div>
+</body>
+</html>

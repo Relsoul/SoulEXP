@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-内置对象-3-函数类型</title>
+	<script type="text/javascript">
+
+	//定义一个函数方法1
+	function newFuc(){
+
+	}
+	//定义一个函数方法2
+	var sum =function(){};
+
+	//函数指针
+	function newFuc2(num1,num2){
+		return(num1+num2);
+
+	}
+	var zhizhen =newFuc2;//不加括号是访问函数指针而不是调用函数
+	console.log("通过函数指针来调用函数:"+zhizhen(10,20));
+	//就算把原函数定义为null 也可以通过指针来调用
+	var newFuc2=null;
+	console.log("原函数是null:"+zhizhen(20,30));
+
+	//作为值的函数
+	function zhi(func,num){//定义一个函数 并且定义两个参数 func参数的意思是函数 另一个是值
+		return func(num,num+10);//返回调用func这个函数获得的值 fun(num,num+10);
+	}
+	function zhi1(num3,num4){//定义一个函数,并且定义参数 num3,num4都是数值
+		return(num3+num4);//返回num3+num4
+	}
+	var getzhi=zhi(zhi1,10);//调用函数
+	//zhi(zhi1,10);然后zhi这个函数里面是怎么写的呢？
+	//调用了zhi1(10,10+10);
+	//zhi1函数怎么写的呢？ zhi1(10,10+10){return 10+20};
+	//最后获得的结果是20
+	console.log("函数作为值的结果:"+getzhi);
+
+	//
+	function paiXu(num){
+		return function(obj1,obj2){
+			var value1=obj1(num);
+			var value2=obj2(num);
+			if(value1>valu2){
+				return 1;
+				
+			}else if(value1<value2){
+				return -1;
+			}else{return 0};
+		}
+
+	}
+	var data=[]
+	
+
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-页面悬浮导航</title>
+	<style type="text/css">
+	#xf{
+		list-style: none;
+		position: absolute;
+	}
+	#xf li{
+		float: left;
+		margin: 10px;
+		background: gray;
+	}
+
+	</style>
+	<script type="text/javascript">
+	var get_xf=document.getElementById("xf")//获取到需要悬浮的导航栏的id
+	window.onscroll=function(){//绑定滚动条事件
+		xf.style.top=(document.documentElement.scrollTop||document.body.scrollTop)+"px"//设置导航条离屏幕顶部的距离
+		console.log(xf.style.top);//输出top数值
+	};
+
+
+
+
+	</script>
+</head>
+<body>
+	<ul id="xf">
+		<li>hello</li>
+		<li>world</li>
+		<li>test</li>	
+
+
+	</ul>		
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+	<p>测试文本</p>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#tab{
+		width: 400px;
+		height: 200px;
+		border: 1px solid #aaa;
+		margin: 10px;
+		overflow: hidden;
+	}
+	#title{
+		position: relative;
+		height: 40px;
+		text-align:center;
+		line-height: 40px;
+		background: #F7F7F7;
+	}
+	#title ul{
+		position: absolute;
+		width: 401px;
+		left: -1px;
+		height: 40px;
+
+
+	}
+	#title ul li{
+		list-style: none;
+		float: left;
+		width:75px;
+		height: 39px;
+		line-height: 39px;
+		text-align: center;
+		background: #fff;
+		border-bottom:1px solid #eee;
+		padding: 0 3px;
+		background: #F7F7F7;
+	}
+
+
+	#tab ul li a{
+		text-decoration: none;
+		color: black;
+
+	}
+	#title ul li.light{
+		border-right: 1px solid #aaa;
+		background: #fff;
+		border-bottom-color: #fff;
+		border-left: 1px solid #eee;
+		border-right: 1px solid #eee;
+		padding: 0px;
+	}
+	#tab a:hover{
+		color: red;
+	}
+	.disblock{
+		display: block;
+	}
+	</style>
+	<script type="text/javascript">
+function hasClass(ele,cls) {
+    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+  
+function addClass(ele,cls) {
+    if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+  
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ');
+    }
+}
+
+
+function changeCss(){
+	var tab_li=document.getElementById("title_ul").getElementsByTagName("li")
+	//获取li列表
+	var tab_con=document.getElementById("tab_con").getElementsByTagName("div")
+	//获取内容列表
+	var index=0;
+	var timer=null;
+	//创建一个索引
+	for (var i = 0; i < tab_li.length; i++) {
+		//建立id索引
+		tab_li[i].id=i;
+		//鼠标移入事件
+		tab_li[i].onmouseover=function(){
+			//先清除下播放函数
+			clearInterval(timer)
+			//传递this.id
+			changeOp(this.id)
+		}
+
+		//鼠标移出事件
+		tab_li[i].onmouseout=function(){
+			timer=setInterval(autoPlay,2000)
+		}
+
+	};
+
+
+	//每2秒执行autoPlay函数
+	//先判断是否存在 存在清空 定时器 这样做有利于性能维护
+	if (timer) {
+		clearInterval(timer);
+		timer=null
+	};
+	timer=setInterval(autoPlay,2000)
+
+
+	function autoPlay(){
+		//每次index+1
+		index++;
+		//如果index大于等于li列表个数了
+		if (index>=tab_li.length) {
+			//重新定义li
+			index=0;
+		};
+		//调用changeOp函数 并且传递index
+		changeOp(index);
+		
+	}
+	//创建个函数 方便调用
+	function changeOp(curindex){
+		for(var j=0;j<tab_li.length;j++){
+			tab_li[j].className=" ";
+			tab_con[j].style.display="none";
+
+		}
+		//接受传递的curindex值
+		tab_li[curindex].className="light"
+		tab_con[curindex].style.display="block";
+		//重置index值
+		//鼠标移出事件的时候 就会把index值设置成this.id
+		index=curindex
+	}
+
+
+}
+		
+window.onload=function(){
+	changeCss()
+}
+
+	</script>
+</head>
+<body>
+	<div id="tab">
+		<div id="title">
+			<ul id="title_ul">
+				<li class="light"><a href="#" >公告</a></li>
+				<li><a href="#">规则</a></li>
+				<li><a href="#">论坛</a></li>
+				<li><a href="#">安全</a></li>
+				<li ><a href="#" >公益</a></li>
+			</ul>
+		</div>
+	<div id="tab_con">
+		<div class="mod" style="display: block;">
+			<ul>
+				<li><span><a href="">[通知]</a></span>
+					<a href="#">今日装备大优惠</a>
+
+				</li>
+				<li><span><a href="">[通知]</a></span>
+					<a href="#">快来抢购啊</a>
+
+				</li>
+				<li><span><a href="">[通知]</a></span>
+					<a href="#">过了这个村可没那个店了</a>
+				</li>
+				<li><span><a href="">[通知]</a></span>
+					<a href="#">哈哈哈哈</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mod" style="display: none;">
+			<ul>
+				<li><span><a href="">[规则]</a></span>
+					<a href="#">严禁抢购装备</a>
+
+				</li>
+				<li><span><a href="">[规则]</a></span>
+					<a href="#">严禁非法购买</a>
+
+				</li>
+				<li><span><a href="">[规则]</a></span>
+					<a href="#">守卫24小时守护</a>
+				</li>
+				<li><span><a href="">[规则]</a></span>
+					<a href="#">哈哈哈哈</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mod" style="display: none;">
+			<ul>
+				<li><span><a href="">[论坛]</a></span>
+					<a href="#">洞天福地出售</a>
+
+				</li>
+				<li><span><a href="">[论坛]</a></span>
+					<a href="#">道友极品装备出售</a>
+
+				</li>
+				<li><span><a href="">[论坛]</a></span>
+					<a href="#">收购大量灵晶</a>
+				</li>
+				<li><span><a href="">[论坛]</a></span>
+					<a href="#">哈哈哈哈</a>
+				</li>
+			</ul>
+		</div>
+<div class="mod" style="display: none;">
+			<ul>
+				<li><span><a href="">[安全]</a></span>
+					<a href="#">保证探险安全</a>
+
+				</li>
+				<li><span><a href="">[安全]</a></span>
+					<a href="#">结伴而行</a>
+
+				</li>
+				<li><span><a href="">[安全]</a></span>
+					<a href="#">不知道写什么了</a>
+				</li>
+				<li><span><a href="">[安全]</a></span>
+					<a href="#">哈哈哈哈</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mod" style="display:none;">
+			<ul>
+				<li><span><a href="">[公益]</a></span>
+					<a href="#">免费出售</a>
+
+				</li>
+				<li><span><a href="">[公益]</a></span>
+					<a href="#">免费出售</a>
+
+				</li>
+				<li><span><a href="">[公益]</a></span>
+					<a href="#">免费出售免费出售免费出售免费出售</a>
+				</li>
+				<li><span><a href="">[公益]</a></span>
+					<a href="#">哈哈哈哈</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+	</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			function form(){
+
+			}
+
+			form.prototype.oneF=function(){
+				var _elem=$("#k_commit")
+				var max_h=500;
+				var min_h=50;
+				$("#k_b").bind("click",function(){
+					if(_elem.height()<max_h){
+						_elem.stop().animate({
+							height:"+=50"
+						},500)
+					}
+
+				})
+
+				$("#k_s").click(function(){
+					if(_elem.height()>min_h){
+						_elem.stop().animate({
+							height:"-=50"
+						},500)
+					}
+				})
+
+			}
+
+			form.prototype.oneW=function(){
+				var _checkbox=$("#form_w").find("input")
+
+				$("#checkAll").click(function(event) {
+					_checkbox.prop("checked",true)
+					event.preventDefault();
+				});
+
+				$("#checkNo").click(function(event){
+					_checkbox.prop("checked",false)
+					event.preventDefault();
+				});
+
+				$("#checkRev").click(function(event){
+					$('[name=m_o]:checkbox').each(function(){
+						this.checked=!this.checked
+						event.preventDefault();
+					})
+
+
+				})
+
+			}
+
+			form.prototype.oneT=function(){
+				var _selL=$("#selL")
+				var _selR=$("#selR")
+				//---左边开始
+				//添加选择
+				$("#addChose").click(function(){
+					var _elem=_selL.find("option:selected")
+					var _remove=_elem.remove()
+					_remove.appendTo(_selR)
+				})
+				//添加全部
+				$("#addAll").click(function(){
+					var _elem=_selL.find("option")
+					var _remove=_elem.remove()
+					_remove.appendTo(_selR)
+				})
+				//双击添加
+				_selL.dblclick(function(){
+					var _elem=$("option:selected",this)
+					var _remove=_elem.remove()
+					_remove.appendTo(_selR)
+				})
+				//-----左边结束----
+
+				//-----右边开始----
+				//移除选择
+				$("#removeChose").click(function(){
+					var _elem=_selR.find("option:selected")
+					var _remove=_elem.remove()
+					_remove.appendTo(_selL)
+				})
+
+				//移除全部
+				$("#removeAll").click(function(){
+					var _elem=_selR.find("option")
+					var _remove=_elem.remove()
+					_remove.appendTo(_selL)
+				})
+
+				//双击移除
+				_selR.dblclick(function(){
+					var _elem=$("option:selected",this)
+					var _remove=_elem.remove()
+					_remove.appendTo(_selL)
+				})
+				//-----右边结束-----
+
+			}
+
+
+		var star=new form()
+		star.oneF()
+		star.oneW()
+		star.oneT()
+
+
+
+		})
+
+
+
+	</script>
+	<style type="text/css">
+	.k_c{
+		float: left;
+		margin: 10px;
+
+	}
+	.input_k{
+		position: relative;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div class="input_k">
+		<span id="k_b" class="k_c">放大</span>
+		<span id="k_s" class="k_c">缩小</span>
+		<textarea id="k_commit" rows="8" cols="20">
+			测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,测试文本文本文本,
+		</textarea>
+	</div>
+	<form id="form_w">
+		<input type="checkbox" name="m_o">足球
+		<input type="checkbox" name="m_o">篮球
+		<input type="checkbox" name="m_o">羽毛球
+		<input type="checkbox" name="m_o">乒乓球 <br>
+		<button id="checkAll">全选</button>
+		<button id="checkNo">全不选</button>
+		<button id="checkRev">反选</button>
+		<button id="send">提交</button>
+	</form>
+	<br>
+	<div>
+		<select multiple id="selL" style="width:100px; height:160px">
+			<option>橘子</option>
+			<option>苹果</option>
+			<option>香蕉</option>
+		</select>
+		<span id="addAll" class="sel_c">添加全部</span>
+		<span id="addChose" class="sel_c">添加选择</span>
+
+		<select multiple id="selR" style="width:100px; height:160px">
+			
+		</select>
+		<span id="removeAll" class="sel_c">移除全部</span>
+		<span id="removeChose" class="sel_c">移除选中</span>
+
+
+	</div>
+</body>
+</html>

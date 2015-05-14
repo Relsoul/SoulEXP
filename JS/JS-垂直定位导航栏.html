@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-垂直定位导航栏</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		font-size: 12px;
+		line-height: 1.7;
+	}
+	li{
+		list-style: none;
+	}
+	#content{
+		width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+	#content h1{
+		color: #0088bb;
+
+	}
+	#content .item{
+		padding: 20px;
+		margin-bottom: 20px;
+		border: 1px dotted #0088bb;
+
+	}
+	#content .item h2{
+		font-size: 16px;
+		font-weight: bold;
+		border-bottom: 2px solid #0088bb;
+		margin-bottom: 10px;
+	}
+	#content .item li{
+		display: inline;
+		margin-right: 10px;
+	}
+	#content .item li a img {
+		width:230px;
+		height: 230px;
+		border: none;
+	}
+	#menu{
+		position: fixed;
+		top:100px;
+		left: 50%;
+		margin-left: 400px;
+		width: 80px;
+	}
+	#menu ul li a{
+		display: block;
+		margin:5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		color: #333;
+		width: 80px;
+		line-height: 50px;
+		text-decoration: none;
+		text-align: center;
+	}
+	#menu ul li a:hover,#menu ul li a.current{
+		color: #fff;
+		background: #0088bb;
+	}
+	</style>
+	<script type="text/javascript">
+ 	function getClassName(obj,cls){
+ 		//定义函数
+ 		var elem=obj.getElementsByTagName("*")
+ 		//获取到obj下的所有标签
+ 		var ref=[];//设置数组
+ 		for (var i = 0; i < elem.length; i++) {
+ 			//遍历elem
+ 			if(elem[i].className==cls){
+ 				//如果elem的className等于cls
+ 				ref.push(elem[i])//向ref数组添加elem[i]
+ 			}
+ 		};
+ 		return ref;//返回数组
+
+
+ 	}
+  
+function hasClass(ele,cls) {
+    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+  
+function addClass(ele,cls) {
+    if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+  
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ');
+    }
+}
+
+  
+ 	function getScrolltop(){
+ 		window.onscroll=function(){
+ 			//scrollTop代表的是滚动条滚动的距离
+ 			var top =document.documentElement.scrollTop||document.body.scrollTop
+ 			console.log(top)
+ 			var menus=document.getElementById("menu").getElementsByTagName("a")
+ 			//设置menus等于menus下的a标签
+ 			var items=getClassName(document.getElementById("content"),"item")
+ 			//获取到content下classname为item的所有元素
+ 			var currentId="";//设置一个空字符
+ 			for (var i = 0; i < items.length; i++) {
+ 				//遍历classname为item的所有元素
+ 				var _item=items[i]
+ 				var _itemTop=_item.offsetTop
+ 				//获取到每个item标签距离页面顶部的距离
+ 				//比如item1 距离页面顶部是400
+
+ 				//offsetTop是item距离页面的高度 也就是说元素距离页面的高度
+
+ 				if(top>_itemTop-200){
+ 					//如果滚动的距离大于元素距离页面的高度(-200是为了用户体验)
+ 					//举例 比如说 item1的举例顶部的高度是400
+ 					//滚动条滚动了250 
+ 					//那么250肯定大于200对吧
+
+ 					currentId=_item.id
+ 					//遍历因为是从0开始的
+ 					//所以这里就是设置相应的item id赋值
+ 					//设置currentId为item标签的id
+ 					//举个例子 item1的id就是 item1
+ 					console.log(currentId)
+
+ 				}else{
+ 					break;
+ 				}
+ 			};
+ 			if(currentId){//currentId存在
+ 					for (var j = 0; j < menus.length; j++) {
+ 						//遍历menu下的 a标签
+ 						var _menus=menus[j]
+ 						//设置_menus等于a标签
+ 						// console.log(_menus.href)
+ 						var _href=_menus.href.split("#")
+ 						//因为我们在href属性中写的是# 所以页面的连接应该为
+ 						//http://xxx.com/#item1
+ 						//我们需要分割一下数组
+ 						//
+ 						if(_href[_href.length-1]!=currentId){
+ 							//这句话的意思就是 每一次移动都会遍历删除
+ 							//其他a标签的class
+
+ 							removeClass(_menus,"current")
+ 							//删除当前a标签的class属性()
+ 							
+ 							
+ 						}else{
+ 							//比如 移动到item1时 等于item1
+ 							//那么就给item1添加上class
+ 							addClass(_menus,"current")
+
+ 						}
+ 						
+ 					};
+ 					
+ 				}
+
+
+ 		}
+
+ 	}
+window.onload=function(){
+	getScrolltop()
+}
+ 
+
+
+
+	</script>
+</head>
+<body>
+<div id="menu">
+<ul>
+	<li><a href="#item1" class="current">1F 灵魂</a></li>
+<li><a href="#item2">2F 晶石</a></li>
+<li><a href="#item3">3F 装备</a></li>
+<li><a href="#item4">4F 经验</a></li>
+<li><a href="#item5">5F Hero</a></li>
+</ul>
+</div>
+<div id="content">
+	<h1>Soul</h1>
+	<div id="item1" class="item">
+		<h2>1F 灵魂</h2>
+		<ul>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/2048.jpg" alt=""></a></li>
+		</ul>
+	</div>
+	<div id="item2" class="item">
+		<h2>2F 晶石</h2>
+		<ul>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/Pepsized_Blur_05.jpg" alt=""></a></li>
+		</ul>
+	</div>
+	<div id="item3" class="item">
+		<h2>3F 装备</h2>
+		<ul>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+			<li><a href="#"><img src="./img/2015.png" alt=""></a></li>
+		</ul>
+	</div>
+	<div id="item4" class="item">
+		<h2>4F 经验</h2>
+		<ul>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/jesus-light-578027_1920.jpg" alt=""></a></li>
+		</ul>
+	</div>
+	<div id="item5" class="item">
+		<h2>5F Hero</h2>
+		<ul>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/1.jpg" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

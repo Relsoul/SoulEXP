@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+
+	//函数是一块JavaScript代码，被定义一次，但可执行多次和调用多次,JS中的函数也是对象,所以JS函数可以像其他对象那样操作和传递，所以我们也常叫JS中函数为函数对象
+
+
+	function foo(x,y){
+
+		if(typeof x==='number'&& typeof y==="number"){
+			return x+y;
+			//函数返回值依赖return语句
+			//如果没return语句的话 默认返回时一个 undefined
+		}else{
+			return 0;
+		}
+
+	}
+
+	foo(1,2)//3
+
+
+
+
+	//创建函数
+
+	//函数声明
+	function add(a,b){
+		a=+a;
+		b=+b;
+		if(isNan(a)||isNan(b)){
+			return
+		}
+		return a+b;
+	}
+
+
+	//函数表达式
+	var add1=function(a,b){
+		//dosth
+	};
+
+	//IEF(立即执行函数表达式)
+	(function(){
+		//do sth
+	})();
+
+	//fist-class function
+
+	// return function(){
+	// 	//do sth
+	// };
+
+	//NFE(命名式函数表达式)
+
+	var add2=function foo2(a,b){
+		// dosth
+	}
+
+
+	//函数声明会被前置
+
+
+	//命名函数表达式
+
+	var func=function nfe(){}
+	//ie 6~8返回不相等
+	//ie9+ 报错
+	// alert(func===nfe);
+	//递归调用
+	var func=function nfe(){nfe();}
+
+	//function构造器
+
+	var func1=new Function('a','b','console.log(a+b);')
+	func1(1,2)//3
+
+	var func2= Function('a','b','console.log(a+b);')
+	func2(1,2)//3
+
+
+
+
+	Function ('var localVal="local";console.log(localVal);')()
+	console.log(typeof localVal);
+	//局部变量
+	//local undefined 
+
+
+	var globalVal='global';
+	(function(){
+		var localVal='local';
+		Function('console.log(typeof localVal,typeof globalVal);'
+			//可以拿到全局变量,拿不到外层
+			)()
+	})()
+	//undefined string 
+
+
+
+
+	//this
+	//全局作用域下this指向全局对象(window)
+
+
+	console.log(this.document===document)//true
+
+	console.log(this===window)//true
+
+	this.a=37;
+
+	console.log(window.a)//37
+
+	//函数this
+
+	function f1(){
+		return this;
+	}
+	f1()===window//true global object
+
+	function f2(){
+		'use strict'//严格模式
+		return this
+	}
+	f2()===undefined;//true
+
+
+	//对象this
+
+	var o1={
+		prop:37,
+		f:function(){
+			return this.prop;
+		}
+	}
+
+	console.log(o1.f())//logs 37
+
+	var o2={prop:37};
+	function independent(){
+		return this.prop
+	}
+
+	o2.f=independent;
+	console.log(o2.f());//37
+
+
+	//对象原型链上的this
+
+	var o3={
+		f:function(){return this.a+this.b}
+	}
+
+	var p=Object.create(o3);
+	//p原型指向o3
+	p.a=1;
+	p.b=4;
+
+	console.log(p.f())//5
+
+
+	//构造器中this
+
+	function MyClass(){
+		this.a=37;
+	}
+
+	var o4=new MyClass();
+	console.log(o4.a)//37
+
+	function C2(){
+		this.a=37;
+		return {a:38};
+		//返回是个return 是个对象 会将对象中的a作为返回值
+	}
+
+	o4 =new C2();
+	console.log(04.a)//38
+
+
+	//call apply
+
+	function add(c,d){
+		return this.a+this.b+c+d;
+	}
+
+	var o5={a:1,b:3};
+	add.call(o5,5,7)//1+3+5+7=16
+	add.apply(o5,[10,20]);//1+3+10+20=34
+
+	function bar(){
+		console.log(Object.prototype.toString.call(this))
+	}
+
+	bar.call(7)//[object Number]
+
+	//bind 与this
+
+	function f6(){
+		return this.a
+	}
+
+	var g6=f6.bind({a:'test'});
+	console.log(g6());//test
+
+
+	var o6={a:37,f:f6,g:g6}
+	console.log(o6.f(),o6.g())//37,test
+
+
+	//arguments
+
+	function foo(x,y,z){
+		arguments.length;//2
+		arguments[0];//1
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

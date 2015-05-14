@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-对象-1:对象弹琴</title>
+	<script type="text/javascript">
+	//创建对象之字面量创建
+	var soul={};//ok 这就创建了一个对象
+	soul.tc=function(){console.log("hello,我是弹窗的soul的对象")};
+	soul.tc();//这就相当于调用了soul.tc的对象
+
+	var soul1={//这样也可以创建个对象
+		name:"soul",//这样创建用逗号分隔
+	}
+	console.log(soul1.name)//
+
+	//理解对象
+	var Soul3 =new Object();
+	Soul3.name="soul"
+	Soul3.sayName=function(){console("Soul3的sayName函数对象")+this.name}//this.name被解析成Soul3.name
+	//也可以通过var Soul3={}这样的形式来创建对象
+	console.log("我是分隔线 下面开始理解对象之数据属性")
+	//理解对象之数据属性
+	var Soul4={};
+	Object.defineProperty(Soul4,"name", {//三个值分别对应 对象名字 对象属性 描述 PS:IE9以上支持
+		writable:false,//能否修改属性的值 默认是true 用逗号分隔
+		value:"Soul4"//相当于 name="Soul4"
+	});
+	console.log(Soul4.name)//获取Soul4的name属性值
+	Soul4.name="更改Soul4"
+	console.log("能否获取到更改Soul4后的name属性值:"+Soul4.name);//因为writable:false 所以禁止修改
+	//
+	var Soul5={};
+	Object.defineProperty(Soul5,"name", {//三个值分别对应 对象名字 对象属性 描述
+		configurable:false,//能否删除属性 是否能够更改属性为访问器属性 默认是true 用逗号分隔
+		value:"Soul5"//相当于 name="Soul5"
+	});
+	console.log("Soul5的name属性:"+Soul5.name);
+	delete Soul5.name;//删除Soul5_name属性
+	console.log("删除了Soul5的name属性吗？:"+Soul5.name)
+	//理解对象之访问器属性
+	console.log("我是分隔线，下面开始理解对象之访问器属性");
+
+	var Soul6 ={
+		_year:2015,
+		num:1//这是一个属性
+	};
+	Object.defineProperty(Soul6, "year", {
+		get:function(){//读取year属性的时候做出的行动
+			return this._year;//返回this._year this解析为 Soul6
+		},//用逗号分隔
+		set:function(new_value){
+			if(new_value>2015){
+				this._year=new_value;
+				this.num=new_value-2015;
+			}
+		}
+
+	});
+	console.log("这是读取Soul6的_year属性做出的行动"+Soul6.year);
+	Soul6.year=2018;
+	console.log("更改Soul6的_year属性时会设置num等于新属性减去_year:"+Soul6.num);
+	//理解对象之定义多个属性
+	var Soul7={};
+	Object.defineProperties(Soul7, {//两个参数分别对应是 对象名 描述 PS:IE9以上支持
+		_year:{
+			value:2015
+		},//用逗号分隔
+
+		num:{
+			value:1
+
+		},
+
+		year:{
+			get:function(){
+				return this._year
+			}
+		},
+
+		set:function(new_value) {
+			if(new_value>2015){
+				this._year=new_value;
+				this.num=new_value-2015;
+			}
+		}
+
+	})
+	//上面这段代码跟Soul6是一样的意思
+	console.log("我是分隔线,下面开始理解对象之读取属性的特性")
+	//理解对象之 读取属性的特性
+	var miao_shu =Object.getOwnPropertyDescriptor(Soul7, "_year");//设置miao_shu 等于Soul7的 _year描述
+	console.log("获取Soul7的_year值:"+miao_shu.value);
+	console.log("获取Soul7的_year属性能否读写:"+miao_shu.configurable);
+	
+	//下面开始创建对象
+	console.log("我是分隔线,下面开始创建对象")
+
+	//工厂模式创建对象
+	function Soul9(name,age,job){
+		var o=new Object();
+		o.name=name;
+		o.age=age;
+		o.job=job;
+		o.sayName=function(){console.log("工程模式创建Soul9的sayName函数")+this.name};
+		return o;
+	}
+	var Soul9_1=Soul9("Soul9_1",19,"学生");
+	var Soul9_2=Soul9("Soul9_2",20,"学生");
+
+
+
+
+	//构造函数模式创建对象
+	function Soul2(name,age,job){
+		this.name=name;//this指的是当前传递参数的函数调用
+		this.age=age;
+		this.job=job;
+		this.sayName=function(){console.log("soul2对象sayName函数:"+this.name)}
+	}
+	// var soul_1=soul2("我叫soul",19,"student");//..这样给对象传递参数是不对
+	var soul_2 =new Soul2("我叫soul",19,"student");
+	var soul_3 =new Soul2("我叫灵魂",20,"学生");
+	console.log(soul_2.name);//看看能不能获取到soul_2对象的name属性
+	soul_3.sayName();//看看能不能获取到osul2对象的sayName函数
+	//来检测下soul_2和soul_3是不是Soul2的实例？
+	console.log(soul_2.constructor == Soul2);//"soul_2和soul_3都是构造函数" 是=true 否=false //soul_3就不列举了
+	console.log(soul_3 instanceof Object)//所有的对象都是Object的实例 true
+	console.log(soul_2 instanceof Soul2)//true 是Soul2的实例
+
+	//将构造函数当做函数
+	var soul_2 =new Soul2("window弹出|我叫soul",19,"student");//构造函数
+	soul_2.sayName()//构造函数
+
+	Soul2("我叫soul",19,"student");//普通函数
+	window.sayName();//添加到window
+
+	var o =new Object();//跨域函数
+	Soul2.call(o,"我叫Soul-跨域函数",19,"student");//
+	o.sayName();
+
+	//原型模式
+	console.log("我是分隔线,下面开始理解原型模式")
+	function Soul10(){}//创建一个Soul10对象
+	Soul10.prototype.name = "Soul10"//给Soul10对象添加个原型属性name
+	Soul10.prototype.sayName=function(){console.log("原型模式:"+this.name)}//this指的是Soul10的name
+	var soul_10 =new Soul10();//
+	var soul_11 =new Soul10();
+	console.log("原型模式 soul_10 name:"+soul_10.name)
+	soul_11.sayName();
+	console.log(soul_11.sayName==soul_10.sayName)//判断soul_11的sayName是否跟soul_10的sayName函数一样 是-true
+	//原型与实例
+	//当调用时首先搜索 实例 如果实例没属性再搜索原型 在实例定义属性会覆盖掉原型
+
+	soul_10.name="实例hello"
+	console.log(soul_10);
+	delete soul_10.name;
+	console.log(soul_10)//原型 Soul10
+	//使用 hasOwnProperty检测属性是来自原型还是实例 来自原型-false 实例true
+	console.log(soul_10.hasOwnProperty("name"))
+
+	//原型与in操作符
+	console.log("name" in soul_10)//检测soul_10里有没有name属性 不管name属性是原型还是实例
+	var save_soul_10 =Object.getOwnPropertyNames(Soul10.prototype);//枚举 Soul10的实例
+	console.log("枚举soul_11的属性"+save_soul_10)
+
+	//更简单的原型语法
+	function Soul13 () {}
+	Soul13.prototype={
+		name:"Soul13",
+		sayName:function () {
+			console.log(this.name)
+		}
+	}
+	var soul_13 =new Soul13()
+	//每创建一个函数,都会创建它的prototype对象 这个对象也会获得constructor属性(这个指向构造函数)
+	//但是用字面量方法创建重写了prototype对象 constructor也不会指向Soul3
+	console.log(soul_13.constructor == Soul13)//false
+	//如果constructor属性很重要 可以通过添加一句话来指向原型
+	function Soul14 () {}
+	Soul14.prototype={
+		name:"Soul14",
+		constructor:Soul14//这样就会始终指向Soul14
+	}
+	var soul_14 =new Soul14()
+	console.log(soul_14.constructor == Soul14);//true
+
+	//原型的动态性
+	var soul_15 =new Soul14()
+	Soul14.prototype.hello=function(){console.log("原型动态性")}//
+	soul_15.hello();
+	//以上先创建了 Soul14的实例 保存在soul_15中 然后给Soul14原型添加了一句方法
+	//我们调用soul_15.hello()时,先会在实例中搜索hello,如果实例没有再搜索原型
+
+	//实例中的指针[Prototype]只指向原型,而不指向构造函数
+	function Soul15(){}//这是个构造函数
+	var soul_16 =new Soul15();//创建个Soul15的实例
+	Soul15.prototype={
+		name:"hello",
+		saySoul:function(){console.log(this_name)}
+	}
+	// soul_16.saySoul();//error
+	//上文说过了 实例中指针[Prototype]只指向原型,而我们在创建实例后又重写了
+	//一开始 soul_16指向的是Soul15的原型,但是下一步我们又重写了原型,所以soul_16指向的
+	//仅仅是 原来的原型. 而不是新的原型
+
+	//原生对象的原型
+	console.log("我是分隔线,下面开始原生对象的原型")
+	//
+	console.log(typeof Array.prototype.sort)//数组的sort方法,返回的是一个函数
+
+	//定义原生对象的方法
+	String.prototype.CZ=function(txt){
+		return this.indexOf(txt);//查找txt字符是从哪开始的
+	}
+	var txt="soul"
+	console.log(txt.CZ("o"))//o是soul中的第一个字符 字符从0开始的
+
+	//原型对象的问题
+	
+
+	function Soul16(){}
+	Soul16.prototype={
+		name:["张三,李四"]
+	}
+	var soul_16_1=new Soul16();
+	var soul_16_2=new Soul16();
+	soul_16_1.name.push("王五")//在soul_16_1.name属性后面添加王五
+	console.log(soul_16_2.name);//我输出的是soul_16_2.name 而非soul_16_1.name 为什么还会有王五？
+	//因为soul_16_1与2 都是共享一个原型Soul16
+	
+	//组合使用构造函数模式与原型模式
+	console.log("我是分隔线,下面开始组合使用构造函数模式与原型模式")
+
+	//构造函数模式用于定义实例属性, 而原型模式用于定义方法和共享的属性s
+
+	function Soul17(name,age){
+		this.soul=["灵魂","灵魂追逐着"]//不加this会找不到soul属性
+		this.name=name
+		this.age=age
+	}
+
+	Soul17.prototype={
+		constructor:Soul17,
+		sayName:function(){console.log(this.name)}
+	}
+	var soul17_1=new Soul17("soul","19")
+	var soul17_2=new Soul17("我是soul17_2","19")
+	soul17_2.soul.push("hello")
+	console.log("soul17_2:"+soul17_2.soul);
+	console.log("soul17_1:"+soul17_1.soul);
+	soul17_2.sayName();
+	//用构造函数定义属性 用原型定义方法 共享方法,修改属性却不共享
+
+	//寄生构造函数模式
+	console.log("我是分隔线,下面开始动态原型模式")
+	function Soul18(){
+		var soul18_arr =new Array();
+		soul18_arr.push.apply(soul18_arr,arguments)
+		soul18_arr.setSoul18=function(){
+			return this.join("|")//使用不同的分隔符
+		}
+		return soul18_arr//返回数组
+	}
+	var soul18_1 =new Soul18("red","blue");
+	console.log(soul18_1.setSoul18())
+	//能使用其他模式的情况下 不建议使用这种模式
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

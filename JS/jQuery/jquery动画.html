@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var img_width,img_height;
+			img_width=$('#test img').width();
+				 img_height=$('#test img').height();
+			$('#test img').hover(function(){
+				$('#test img').stop(true).animate({
+					width:'200px',
+					height:'200px',
+				})
+			},function(){
+				console.log(img_height);
+				$('#test img').stop().animate({
+					width:img_width,
+					height:img_height,
+				})
+			})
+
+			var m=$('#xq').find('li');
+			console.log(m)
+
+			var s=document.getElementById("xq");
+			var sm=s.getElementsByTagName('li');
+			console.log(sm)
+
+
+		})
+
+
+
+	</script>
+	<style type="text/css">
+	*{padding:0;margin:0;}
+	#test img{
+		float: left;
+	}
+	#test{
+		border: 1px solid black;
+		margin: 20px;
+		padding: 20px;
+		overflow: hidden;
+		width:400px;
+	}
+	</style>
+</head>
+<body>
+	<div id="test">
+		<img width="70" height="70" src="img/1.jpg">
+		<h1>我也是测试文本</h1>
+		<p>我是测试文本</p>
+	</div>
+
+	<ul id="xq">
+		<li>苹果</li>
+		<li>橘子</li>
+		<li>菠萝</li>
+	</ul>
+</body>
+</html>

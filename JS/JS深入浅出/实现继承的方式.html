@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	function Person(){
+
+	}
+
+	function Student(){
+
+	}
+
+	Student.prototype=Person.prototype;
+	//不能直接把原型赋值给一个对象
+	//如果student.prototype有一些方法和属性,后续构建实例的话会直接影响到这些方法和属性
+
+	Student.prototype=new Person();
+	//可以实现 但是比如Person有 age 和name.在这里创建实例的话 传参比较奇怪
+
+	Student.prototype=Object.create(Person.prototype);
+	//JavaScript ES5之后支持
+
+	Student.prototype.constructor=Person;
+
+	//ES5之前
+	if(!Object.create){
+		Object.create=function(proto){
+			function F(){}
+			F.prototype=proto;
+			return new F;
+		}
+	}
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

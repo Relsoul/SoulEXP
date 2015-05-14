@@ -1,0 +1,186 @@
+*{
+	margin: 0 ;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+
+.wrap{
+	width: 1000px;
+	margin: 0 auto;
+
+}
+.header{
+	height: 70px;
+	margin-bottom: 10px;
+	clear: both;
+}
+.header_left{
+	float:left;
+}
+
+
+.header_nav ul{
+	margin-top: 5px;
+	height: 70px;
+}
+.header_nav ul li{
+	float: left;
+	list-style: none;
+	line-height: 70px;
+	text-align: center;
+	margin: 0 10px;
+}
+
+.header_nav ul li a{
+	display: block;
+	font-size: 16px;
+	width: 70px;
+	text-decoration: none;
+	color: black;
+	height: 70px;
+}
+.header_nav ul li a:hover{
+	background: #C4293B;
+}
+.light{
+	background: #C4293B;
+}
+.adbox{
+	overflow: hidden;
+	height: 310px;
+}
+
+.roll{
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+}
+.roll_left{
+	float: left;
+	width: 20%;
+	background: #C4293B;
+	text-align: center;
+	height: 40px;
+	
+}
+.roll_left p{
+	display: block;
+	color: #fff;
+	line-height: 40px;
+	font-size: 18px;
+}
+.roll_right{
+	float: left;
+	width: 80%;
+	background: #3e3e3e;
+	height: 40px;
+}
+.roll_right p{
+	padding-left:20px; 
+	display: block;
+	color: #fff;
+	line-height: 40px;
+	font-size: 18px;
+
+}
+
+.case{
+	height: 150px;
+	clear: both;
+	margin-bottom: 10px;
+}
+.case_mid img{
+	height: 129px;
+}
+.case_mid{
+
+	margin-top: 10px;
+	float: left;
+	border: 1px solid #8e8e8e;
+}
+.case_mid p{
+	line-height: 20px;
+	text-align: center;
+}
+.case_mid p span{
+	font-weight: bold;
+}
+.case_margin{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.col_all{
+	clear: both;
+	margin-top: 30px;
+	height: 330px;
+	
+
+}
+.col_mid{
+	height: 330px;
+	width: 328px;
+	border: 1px solid #e8e8e8;
+	float: left;
+}
+.col_mid_margin{
+	margin:0 5px;
+}
+.col_mid_title{
+	background: #C4293B;
+	line-height: 40px;
+	color: #fff;
+	padding-left: 15px; 
+
+}
+.into_left{
+	float: left;
+	margin-right: 5px;
+	background: #C4293B;
+	border-radius:7px;
+}
+.col_mid_into{
+	margin-top:10px; 
+	margin-left: 5px;
+	border-bottom: 1px solid #8e8e8e;
+	padding-bottom: 15px;
+
+}
+.into_left p{
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	width: 50px;
+	height: 55px;
+	margin-top:15px;
+	
+}
+.into_right h5{
+	margin-bottom: 5px;
+
+}
+
+.act{
+	padding: 15px;
+}
+
+.act img{
+	height: 170px;
+}
+.act ul li{
+	list-style: none;
+	font-weight: bold;
+}
+
+.footer{
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+
+}
+.footer p{
+	background: #e8e8e8;
+	line-height: 40px;
+	text-align: center;
+}

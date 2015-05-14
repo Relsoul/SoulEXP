@@ -1,0 +1,22 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#con{
+	position: relative;
+}
+.box{
+	padding: 5px;
+	float:left;
+
+}
+.box_img{
+	border: 1px solid #cccccc;
+	padding: 5px;
+	box-shadow: 0 0 5px #ccc;
+	border-radius: 5px;
+}
+.box_img img{
+	width: 200px;
+	height: auto;
+}

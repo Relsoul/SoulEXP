@@ -1,0 +1,50 @@
+body {
+  background: #eeeeee;
+}
+/* 保留注释*/
+.box {
+  width: 300px;
+  height: 300px;
+  background: red;
+  border: 5px solid pink;
+}
+.border {
+  border: 5px solid pink;
+}
+.box2 {
+  width: 300px;
+  height: 300px;
+  background: red;
+  border: 5px solid pink;
+  margin-left: 100px;
+}
+.test_hunhe {
+  border: solid #ffff00 30px;
+}
+.test_hunhe03 {
+  border: solid #0000ff 10px;
+}
+.magic li a {
+  color: #0000ff;
+  background: #147845;
+}
+.magic li a:hover {
+  color: #ff0000;
+  background: #147845;
+}
+.sum {
+  width: 300px;
+  height: 300px;
+  background: red;
+  border: 5px solid pink;
+  width: 200px;
+}
+.test_03 {
+  width: cacl(300px-30px);
+}
+.test_improtant {
+  width: 300px !important;
+  height: 300px !important;
+  background: red !important;
+  border: 5px solid pink !important;
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function outer(){
+			var localVal=30;
+			return localVal;
+			//返回localVal变量
+		}
+		outer();//30
+
+		//函数可以作为返回值 传参
+		function outer_1(){
+			var localVal=30;
+			return function(){//返回一个匿名函数
+				return localVal;
+			}
+		}
+		var func=outer();
+		console.log(func)//30 访问到外层的变量
+
+		//常见错误之循环闭包
+		function bo(){
+			var get_div=document.getElementsByTagName('div')
+		for (var i = 0; i < get_div.length; i++) {
+			!function(i){
+// 叹号后面跟函数!function和加号后面跟函数+function
+// 都是跟(function(){})();这个函数是一个意思，都是告诉浏览器自动运行这个匿名函数的，因为!+()这些符号的运算符是最高的，所以会先运行它们后面的函数
+				get_div[i].onclick=function(){
+				alert(i)
+				}
+			}(i);
+		};
+	}
+
+		//闭包之封装
+		(function(){
+			var _userId=222;
+			var _typeId="item";
+			var export1={};
+
+			function converter(userId){
+				return +userId;
+			}
+			export1.getUserId=function(){
+				return converter(_userId);
+			}
+			export1.getTypeId=function(){
+				return _typeId;
+			}
+			window.export1=export1;
+			//用window.方式来把想要的输出出去
+
+		}())
+
+		export1.getUserId()//222;
+		export1.getTypeId()//item;
+		export1._userId;//undefined;
+		export1._typeId;//undefined
+		export1.converter;//undefined
+
+
+
+		window.onload=function(){
+			bo();
+		}
+
+
+
+	</script>
+</head>
+<body>
+	<div>aaa</div>
+	<div>bbb</div>
+	<div>ccc</div>
+</body>
+</html>

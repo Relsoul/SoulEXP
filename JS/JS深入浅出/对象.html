@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//对象中包含一系列属性,
+	//这些属性是无序的,每个属性都要一个字符串key 比如下面的x就是字符串,以及对象的值
+	var obj={
+		x:1,
+		y:2
+	};
+	obj.x//1
+	obj.y//2
+
+	var test={};
+	test[1]=1;
+	test['1']=2;
+	console.log(test);//obtestject{1:2}
+
+	test[{}]=true;
+	test[{x:1}]=true;
+	console.log(test);//object{1:2,[object object]:true}
+	//javascript会把key toString处理
+
+	//对象构造
+	var test1={};
+	test1.x=2;
+	test1.y=3;
+	//对象中的每个属性都有属性标签
+	//如writable,configurable,value;等等
+
+	//对象也有标签 比如proto,class
+
+	function foo(){}
+	foo.prototype.z=3;
+	var soul =new foo();
+
+	//创建对象 原型链
+	var test2={x:1,y:2}
+	var test3={
+		x:1,
+		y:2,
+		o:{
+			z:3,
+			n:4
+		}
+	}
+
+	//原型链
+	function test4(){}
+	//创建一个函数对象
+	//函数对象默认带一个prototype对象属性
+	test4.prototype.z=3;
+	//在test4的prototypr中添加个z=3
+
+	//有限原型链
+	// test4.prototype 的proto指向
+	// Object.prototype 的proto指向null
+
+	var soul1 =new test4();
+	soul1.y=2;
+	soul1.x=1;
+	//soul1的原型会指向 test4的prototype属性
+
+	soul1.y//2
+	soul1.x//1
+
+	typeof soul1.toString//'function'
+	//soul1,和test4.prototype都不存在
+	//toString属性 但是test4.prototype指向Object.protype
+
+	'z'in soul1 //true
+	//z从test4继承而来的
+
+
+	soul1.hasOwnProperty('z')//false
+	//soul1并不存在z
+
+	soul1.z=5;
+	//给对象赋值的时候 
+	//并不会修改原型链的值
+
+	soul1.hasOwnProperty('z')//true
+	test4.prototype.z//3
+
+
+	delete soul1.z
+	//删除soul1.z 这样以后访问就访问到原型链上的值
+
+	delete soul.z
+	//再次进行删除也是空的 并不会删除掉原型链上的值
+
+	var test5 =Object.create({x:1});
+	//create是系统内置的一个函数,创建了一个对象.
+
+	test5.x//1
+
+	typeof test5.toString//'function'
+
+	test5.hasOwnProperty('x');//false
+
+	var test5 =Object.create(null);
+	//test5的原型直接是null
+	test5.toString//undefined
+
+
+	//属性操作
+
+	var test6={x:"1x",y:"2x"};
+	test['y']=2;
+
+	//读取属性
+	var test7={x1:1,x2:2}
+	var i=1,n=2;
+	for(;i<=n;i++){
+		console.log(test7['x'+i])
+	};
+
+	var p;
+	for(p in test6){
+		console.log(test6[p])
+	}
+	//会把原型链上的属性遍历出来 顺序不确定
+
+	var test7={x:1};
+	test7.y//undefined 没找到的话尝试创建y属性并且赋值(跟创建变量差不多)
+	// var yz=test7.y.z //Cannot read property 'z' of undefined 无法在原型链上读取
+	// test7.y.z=2;//不能赋值
+
+	var mz;
+	if(test7.m){
+		mz=test7.m.z
+	}
+
+	var nz=test7&&test7.n&&test7.n.z
+	//如果整体全部存在会返回一个z的值
+	//没有会返回 undefined
+
+
+	//删除属性
+	var test8={age:28,title:"soul"}
+	delete test8.age //true
+	delete test8['title']//true
+	console.log(test8['title'])//undefined
+	console.log(delete test8.title)//true
+	//delete 只会返回删除的对象上是否还有这个值
+	//所以重复删除会返回true
+
+	// delete.Object.prototype;  //false
+
+	var desc=Object.getOwnPropertyDescriptor(Object,'prototype');
+	//检测对象上属性的标签
+	//返回的desc也是一个对象
+	desc.configurable;//false
+
+	//用var 定义的变量,函数都不能被删除 比如
+	var a=2;
+	var b=3;
+	var c=8;
+	var ac=a&&b&&c
+	console.log(ac)
+	//返回c
+
+	var tt1=1;
+	delete tt1;//false
+	ohNo=2;
+
+	function fd(){
+		delete fd;//false
+	}
+
+	//隐形创建的全局变量会被删除
+	window.ohNo//2
+	delete ohNo//true
+
+	//属性检测
+
+	var cat =new Object;
+	cat.legs=4;
+	cat.name="kitty";
+
+	'legs'in cat//true
+	'abc'in cat//false
+	'toString'in cat//true 继承了Object原型链上属性
+
+	cat.hasOwnProperty('legs')//true
+	//cat对象上就有这个legs属性
+	cat.hasOwnProperty('toString')//false
+	//原型链上才有
+
+
+	//属性是否可以被枚举
+	//枚举就可以被遍历
+	console.log(cat.propertyIsEnumerable('legs'))//true
+	console.log(cat.propertyIsEnumerable('toString'))//false
+
+	//自定义对象属性
+
+	Object.defineProperty(cat, 'price', {enumerable:false,value:1000});
+	//用define创建的对象默认的属性标签都是false
+	cat.propertyIsEnumerable('price')//false
+	cat.hasOwnProperty('price')//true
+
+
+	if(cat&&cat.legs){
+		cat.legs*=2;
+	}
+
+	if(cat.legs!=undefined){
+		//!==undefined,or,!==null
+		//不等于undefined或者null的情况下会进行处理
+		
+	}
+
+	if(cat.legs!==undefined){
+		//only if cat.legs is not undefined
+	}
+
+
+	//属性枚举
+
+	var o={
+		x:1,
+		y:2,
+		z:3
+	}
+	'toString'in o //true
+	o.propertyIsEnumerable('toString')
+	//false
+	var key;
+	for(key in o){
+		console.log(key)//x ,y ,z
+	}
+
+	var obj3=Object.create(o);
+
+	obj3.a=4;
+	var key;
+	for(key in obj3){
+		console.log(key)//a x y z
+	}
+
+	var obj4=Object.create(o);
+	//继承了o也就是obj4的原型链是o
+	obj4.a=4;
+	var key;
+	for(key in obj4){
+		if(obj4.hasOwnProperty(key)){
+			//obj4对象上的元素只有a
+			console.log(key)//a
+		}
+	}
+
+
+	//get set方法
+
+	var man={
+		name:'soul',
+		weibo:"@soul",
+		get age(){
+			return new Date().getFullYear()-1988;
+		},
+
+		set age(val){
+			//会拿到设置的值传递进来
+			console.log('Age 不能被设置'+val);
+		}
+	}
+
+	console.log(man.age)//27
+	man.age=100//age不能被设置为100
+	//因为我们并没有在set里做更改之类的
+	console.log(man.age)//27
+
+	//更复杂的get set方法
+
+
+	var man1={
+		weibo:'soul',
+		$age:null,//只是一个变量名而已
+		get age(){
+			if(this.$age==undefined){
+				//非严格等于
+				return new Date().getFullYear()-1988
+			}else{
+				return this.$age;
+			}
+		},
+
+		set age(val){
+			val=+val;
+			//=+它会将紧挨着它的变量转换成number类型，即使转换失败，变量的类型也会变为number，其值为NaN。
+			console.log('val'+val)
+			if(!isNaN(val)&&val>0&&val<150){
+				this.$age=+val
+
+				
+			}else{
+				// throw new Error('Incorrect val='+val)
+			}
+
+		}
+	}
+
+console.log(man1.age);//27
+man1.age=100;
+console.log(man1.age)//100
+man1.age="abc"//error: val=NaN
+
+
+//get set 与原型链
+
+function foo2(){}
+//函数默认就有原型链指向object
+Object.defineProperty(foo2, 'z', {get:function(){return 1;}})
+
+var obj5 =new foo2();
+obj5.z//1
+//读取的时候查找到原型链上z 发现有get方法
+obj5.z=10;//如果是普通的设置z:1
+//这里应该是成功的,但是在原型链上没查找到set方法,所以设置会失败,
+obj5.z//still 1
+
+Object.defineProperty(obj5,'z',{value:100,configurable:true});
+obj5.z//100
+delete obj5.z;
+obj5.z// back to 1
+
+var o2={};
+Object.defineProperty(o2, 'x', {value:1})//没设置其他属性标签 默认是false
+var obj6=Object.create(o2);
+obj6.x//1
+obj6.x=200;
+obj6.x//cant change it 1
+
+Object.defineProperty(obj6,'x',{writeable:true,configurable:true,value:100});
+	//writeable :true 可以读写写入
+	//configurable:true 可以删除这个属性
+obj6.x;//100
+obj6.x=500;
+obj6.x;//500
+
+
+
+//属性标签
+
+Object.getOwnPropertyDescriptor({pro:true}, 'pro')
+//Object. writable:true,  value:true这样创建标签属性都是true
+Object.getOwnPropertyDescriptor({pro:true}, 'a')
+//undefined
+//创建一个字面量对象pro
+//查找一个不存在的a属性会返回undefined
+
+var person={};
+Object.defineProperty(person,'name',{
+	configurable:false,
+	writable:false,
+	enumerable:true,
+	//是否可以被枚举 for in是否可以出现
+	value:'Soul'
+})
+
+person.name;//Soul
+person.name=1;
+person.name//Soul
+delete person.name//false
+
+
+Object.defineProperty(person,'type',{
+	configurable:true,
+	writable:true,
+	enumerable:false,
+	value:'Object'
+})
+Object.keys(person);//['name']
+//Object.keys来获取对象上所有的key
+
+Object.defineProperties(person,{
+	title:{value:'fe',enumerable:true},
+	corp:{value:'BABA',enumerable:true},
+	salary:{value:50000,enumerable:true,writable:true},
+	luck:{
+		get:function(){
+			return Math.random()>0.5?'good':'bad'
+		}
+	},
+	promote:{
+		set:function(val){
+			this.salary*=1+val*0.1
+		}
+	}
+})
+//注意是defineProperties 接收的是两个参数
+
+Object.getOwnPropertyDescriptor(person, 'salary')
+//检查salary属性上的标签
+//value:50000,writable:true,enumerable:true,configyrable:false
+Object.getOwnPropertyDescriptor(person, 'corp')
+//value:'BABA',writable:false,enumerable:true,configyrable:false
+
+person.salary;//50000
+person.promote=2;
+person.salary;//60000
+
+
+//对象标签
+
+//[[proto]]
+//原型
+
+//[class]
+
+var toString=Object.prototype.toString;
+function getType(o){return toString.call(o).slice(8,-1);};
+//截取从8到最后一个字符,再去掉最后一个字符
+//return 返回的是type
+toString.call(null)//[object Null]
+//调用toString方法的时候会把参数变为对象
+getType(null)//null
+getType(undefined);//Undefined
+getType(1)//Number
+getType(new Number(1))//Number
+typeof new Number(1)//object
+getType(true)//Boolean
+getType(new Boolean(true))//Boolean
+
+
+//extensible标签
+//检测对象是否能够继续添加属性
+var obj7={x:1,y:2};
+Object.isExtensible(obj7)//true
+//检测对象是否可以被扩展
+Object.preventExtensions(obj7)
+//禁止对象扩展
+Object.isExtensible(obj7)//false
+obj7.z=1;
+obj7.z;//undefined 不能继续添加新的属性
+Object.getOwnPropertyDescriptor(obj7, "x");
+//Object(value:1,writable:true,enumerable:true,configurable:true)
+
+Object.seal(obj7)
+//使对象不可扩展，这样便无法向其添加新属性。
+// 为对象的所有属性将 configurable 特性设置为 false。
+Object.getOwnPropertyDescriptor(obj7, 'x')
+//Object(value:1,writable:true,enumerable:true,configurable:false)
+Object.isSealed(obj7)//true
+
+
+Object.freeze(obj7)
+// 使对象不可扩展，这样便无法向其添加新属性。
+// 为对象的所有属性将 configurable 特性设置为 false。 在 configurable 为 false 时，无法更改属性的特性且无法删除属性。
+// 为对象的所有数据属性将 writable 特性设置为 false。 当 writable 为 false 时，无法更改数据属性值。
+
+Object.getOwnPropertyDescriptor(obj7, 'x')
+///Object(value:1,writable:false,enumerable:true,configurable:false)
+
+Object.isFrozen(obj7)//true
+
+//以上方法并不会影响对象的原型链
+
+
+
+//序列化 其他对象方法
+var obj8={x:1,y:true,z:[1,2,3],nullVal:null};
+console.log(JSON.stringify(obj8));
+//{'x':1,"y":true,"z":[1,2,3],'nullVal':null}
+
+
+obj8={val:undefined,a:NaN,b:Infinity,c:new Date()}
+//序列化值是undefined, NaN是不会出现在序列化中
+JSON.stringify(obj8);
+//{'a':null,'b':null,'c':2015-01-20T14..}
+
+//JSON变对象
+obj8=JSON.parse('{"x":1}');
+//JSON用双引号包括起来
+//外边用单引号
+obj8.x//1
+
+
+//自定义序列化
+var obj9={
+	x:1,
+	y:2,
+	o:{
+		o1:1,
+		o2:2,
+		toJSON:function(){
+			return this.o1+this.o2;
+		//在序列化的时候会调用这个方法
+		//并且返回
+		}
+	}
+}
+JSON.stringify(obj9)//{'x':1,'y':2,"o":3}
+
+
+//其他对象方法
+var obj9={x:1,y:2};
+obj9.toString()//object Object
+obj9.toString=function(){return this.x+this.y};
+'Result'+obj9//'Result 3',By toString
++obj9;//3, from toString
+
+obj9.valueOf=function(){return this.x+this.y+100};
+//valueOf 尝试把对象转化为基本类型的时候回调用
++obj9//103 from valueOf
+
+'Result'+obj9 //Result 103
+//存在valueOf的时候不管是字符串拼接还是减号等等都会把对象转化为基本类型 也就是说 就算to String存在的时候也会优先调用valueOf
+//如果valueOf返回时一个不合法的值会找toString 如果toString valueOf都不存在 返回就会报错
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

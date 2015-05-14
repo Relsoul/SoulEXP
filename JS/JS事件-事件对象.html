@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="cn">
+<head>
+	<meta charset="UTF-8">
+	<title>JS事件-事件对象</title>
+</head>
+<body>
+	<div id="div">
+		<button id="but1">soul</button>
+		<a id="aid" href="http://www.emufan.com">emufan</a>
+	</div>
+		
+	<script type="text/javascript">
+		var but1 = document.getElementById("but1");
+		but1.addEventListener("click",showtype);
+		document.getElementById("div").addEventListener("click",divdemo);
+		document.getElementById("aid").addEventListener("click",aiddemo)
+		//阻止事件冒泡
+		function showtype(e){
+			// alert(e.type);
+			alert(e.target);
+			e.stopPropagation();
+		}
+		function divdemo(e){
+			alert("div");
+		}
+		function aiddemo(e){
+			e.stopPropagation();
+			e.preventDefault();
+
+		}
+
+	</script>
+</body>
+</html>

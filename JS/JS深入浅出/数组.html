@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+	<script type="text/javascript">
+	//数组是弱类型的,每个数组可以有不同的元素，如对象 其他数组
+	var arr=[1,true,null,undefined,{x:1},[1,2,3]];
+
+	arr[0]//1
+	arr[4].x//1
+	arr[5][0]//1
+	var students=[{name:'soul',age:27},{name:'test'}]
+	var conArr1=[1,,2]//1,undefined,2
+	var conArr2=[,,]//undefined,undefined,
+
+
+	//对象构造器创建数组
+	var arr1=new Array();
+	var arrWithLength=new Array(100)//undefined*100
+	var arrLinkesLiteral=new Array(true,false,null,1,2,'hi')
+	//等价[true,false,null,1,2,'hi']
+
+	//数组元素读写
+	var arr3=[1,2,3];
+	arr3[1]//2
+	arr3.length//3
+
+	delete arr[0];
+	arr3[0]//undefined
+	//delete 删除后数组长度不变 delete只相当于赋值了一个 undefined值
+
+	//数组元素增删
+	var arr4=[];
+	arr4[0]=1;
+	arr4[1]=2;
+	arr4.push(3);
+	//向数组末尾添加一个元素
+	arr4;//[1,2,3];
+
+	arr4[arr4.length]=4//相当于arr4.push(4)
+	console.log(arr4);//[1,2,3,4]
+
+	arr4.unshift(0);
+	//在数组前面添加个元素
+	arr4;//[0,1,2,3,4];
+
+	delete arr4[2];
+	arr4;//[0,1,undefined,3,4]
+	arr4.length//5
+	2 in arr4//false
+
+	arr4.length -=1;
+	//更改数组长度
+	arr4;//[0,1,undefined,3]//4已经移除
+
+	arr4.pop()//3 returned by pop
+	//移除最后一个元素
+	arr4//[0,1,undefined]//3已经移除
+
+	arr4.shift()//0已经移除
+	//移除最前面的元素
+	arr4//[1,undefined]
+
+	//数组迭代
+	var i = 0;
+	for (; i < arr4.length; i++) {
+		console.log(arr4[i]);//1,2,3,4,5
+	};
+	for(i in arr4){
+		console.log(arr4[i])//1,2,3,4,5
+	}
+
+
+	Array.prototype.x='inherited'
+
+	for(i in arr4){
+		//for in 会输出原型链上的属性
+		console.log(arr4[i])//1,2,3,4,5,inherited
+	}
+
+	console.log(Array.prototype)
+
+	for(i in arr4){
+		if(arr4.hasOwnProperty(i)){
+			//i是否是arr4本身对象
+			console.log(arr[i])//1,2,3,4,5
+		}
+	}
+
+
+
+	//二维数组
+
+	var arr5=[[0,1],[2,3],[4,5]];
+
+	var i=0,j=0;
+
+	var row;
+	for(; i<arr5.length;i++){
+		row=arr5[i];
+		console.log('row'+i)
+		for(j=0;j<row.length;j++){
+			//这里设置j=0,因为有好几个row,每次循环row都要重新设置j=0
+			console.log(row[j])
+		}
+
+	}
+
+	//稀疏数组
+
+	//稀疏数组并不含有从0开始的连续索引一般length属性值比实际元素个数大
+
+	var arr6=[undefined];
+	var arr7=new Array(1);
+	console.log(arr7)
+	0 in arr6;//true;
+	0 in arr7;//false
+	arr6.length=100;
+	arr6[99]=123
+	99 in arr6//true
+	98 in arr6//false
+
+	var arr8=[,,];
+	0 in arr8 //false
+
+
+	//数组方法
+
+	//{}=>Object.prototype
+	//[]=>Array.prototype
+
+	//举例一些方法
+	//Array.protorype.join
+	//Array.prototype.foEach(Ec5)//ie9以上支持
+
+
+	//将数组转化为字符串
+
+	var arr9=[1,2,3];
+	arr9.join();//'1,2,3'
+	arr9.join('_')//'1_2_3'
+
+	function repeatString(str,n){
+		return new Array(n+1).join(str);
+		//n+1是数组长度
+	}
+	repeatString('a',3);//'aaa
+	repeatString('HI',5)//'HIHIHIHIHI'
+
+	//将数组逆序
+
+	var arr10=[1,2,3];
+	arr10.reverse();//[3,2,1]
+	//会对原数组进行修改
+	arr10//[3,2,1]
+
+	//数组排序
+	var arr11=['a','d','c','b'];
+	arr11.sort();//['a','b','c','d']
+
+	arr11=[13,24,51,3]
+	arr11.sort()[13,24,3,51]
+	arr11//[13,24,3,51]
+	//原数组会被修改
+
+	//sort会转化为字符串后再进行排序
+	//[开头数组是1,2,3,5]
+
+
+	arr11.sort(function(a,b){
+		return a-b;
+		//左边元素小于右边元素 返回负数
+		//升序
+	})//[3,13,24,51]
+
+
+
+	arr11=[{age:25},{age:39},{age:99}];
+
+	arr11.sort(function(a,b){
+		return a.age-b.age
+		//排序对象
+
+	})
+
+	arr11.forEach(function(item){
+		console.log('age',item.age)
+		//forEach遍历
+	})
+	
+	//age 25
+	//age 39
+	//age 99
+
+
+	//数组合并
+
+	var arr12=[1,2,3];
+	arr12.concat(4,5)//[1.2.3.4.5]
+	arr12;//[1,2,3]
+	//并不会对原数组进行修改
+
+	arr12.concat([10,11],13)
+	//[1,2,3,10,11,13]
+	//创建二维数组需要在方括号中再包裹一个方括号
+
+	arr12.concat([1,[2,3]])
+	//[1,2,3,1[2,3]]
+
+
+	//返回部分数组
+
+	var arr13=[1,2,3,4,5];
+	arr13.slice(1,3)//[2,3]
+	arr13.slice(1)//[2,3,4,5]
+	arr13.slice(1,-1)//[2,3,4]
+	arr13.slice(-4,-3)//[2]
+
+
+	//数组拼接
+	//可以删除数组元素 也可以拼接
+
+	var arr14=[1,2,3,4,5];
+	arr14.splice(2)//returns [3,4,5]
+	//从第三个元素删除
+	arr14//[1,2]
+
+	arr14=[1,2,3,4,5]
+	arr14.splice(2,2)//returns [3,4]
+	//从索引2开始 删除两个元素
+	arr14;//[1,2,5];
+
+	arr14=[1,2,3,4,5];
+	arr14.splice(1,1,'a','b')//return[2]
+	//从第二个元素开始 删除掉一个元素
+	arr14;//[1,'a','b',3,4,5]
+
+	//数组遍历
+
+	var arr15=[1,2,3,4,5];
+	arr15.forEach(function(x,index,a){
+		console.log(x+"|"+index+'|'+(a===arr15))
+	});
+	//1|0|true
+	//2|1|true
+	//3|2|true
+	//4|3|true
+	//5|4|true
+	//a指向数组本身
+	//ie9以上支持这个方法
+
+
+	//数组映射
+
+	var arr16=[1,2,3];
+	arr16.map(function(x){
+		return x+10;
+	});//[11,12,13]
+	arr16//[1,2,3]
+	//原数组未被修改
+
+
+	//数组过滤
+
+
+	arr17=[1,2,3,4,5,6,7,8,9,10];
+	arr17.filter(function(x,index){
+		return index % 3 ===0||x>=8;
+	})//return[1,4,7,8,9,10]
+	//同样未对原数组进行修改
+
+
+	//数组判断
+
+
+	var arr18=[1,2,3,4,5];
+	arr18.every(function(x){
+		return x<10;
+	})//true
+
+	arr18.every(function(x){
+		return x<3
+	})//false
+
+	//every会对数组每个元素进行判断,只要有一个不符合就返回false
+
+
+	arr18.some(function(x){
+		return x===3
+	})//true 
+	//some元素只要数组中存在一个匹配的元素就会返回true
+
+	var arr19=[1,2,3];
+	var sum=arr19.reduce(function(x,y){
+		return x+y
+	},0)//6
+	arr19//[1,2,3]
+	//0这个参数第一次的时候把0传进来.
+	//相加后1作为x
+
+
+	arr20=[3,6,9];
+	var max=arr20.reduce(function(x,y){
+		console.log(x+"|"+y);
+		return x>y?x:y
+	})
+
+	//3|9
+	//9|6
+	max;//9
+
+	//数组检索
+
+	var arr21=[1,2,3,2,1];
+	arr21.indexOf(2)//1
+	//查找元素2在位置
+	arr21.indexOf(99)//-1
+	//没有返回-1
+	arr21.indexOf(1,1)//4
+	//查找1,从第二个元素查找
+	arr21.indexOf(1,-3)//4
+	//从右到左查找
+	arr21.indexOf(2,-1)//-1
+
+	arr21.lastIndexOf(2)//3
+	//从右到左查找
+	arr21.lastIndexOf(2,-2)//3
+	//
+	arr21.lastIndexOf(2,-3)//1
+
+	//判断是否为数组
+
+	Array.isArray([]);//true
+
+	[].instanceof Array//true
+	({}).toString.apply([])==='[object Array]'//true
+	//调用对象的toString方法并且呼叫数组中的toString来处理
+	[].constructor===Array//true
+	//constructor 可以被修改
+
+	//call
+	var str="soul"
+	Array.prototype.join.call(str,'_')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+</head>
+<body>
+	
+</body>
+</html>

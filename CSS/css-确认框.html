@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+  /*  @import url("http://127.0.0.1/lable/css_icon/css/font-awesome.min.css");*/
+ 
+body{
+  background:#CFCFCF;
+    font-family: 'microsoft yahei',Arial,sans-serif;
+}
+ 
+h2{
+  font-weight: normal;
+  font-size:18px;
+  text-align:center;
+}
+ 
+.desc{
+  text-align:center;
+  font-size:12px;
+  color: #AFAFAF;
+}
+ 
+#holder{
+  background: white;
+  padding: 10px;
+  width: 250px;
+  margin: 60px auto;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+} 
+
+.button{
+  position: relative;
+  overflow: hidden;
+ /* width: 250px;*/
+  height: 60px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.btnText{
+  position:relative;
+  background: #FFA500;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+}
+
+.btnTwo{
+  
+}
+
+.btnText2{
+  position: absolute;
+ background: #26A69A;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  width: 80px;
+  top: 0px;
+  left: -80px;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.button:hover .btnText2{
+  left:0px;
+}
+.button:hover .btnText{
+  left:30px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div id="holder">
+ 
+<h2>确认框设计效果</h2>
+<p class="desc">请将鼠标悬浮于橙色按钮</p>
+ 
+<div class="button">
+    <p class="btnText">确认</p>
+    <div class="btnTwo">
+      <p class="btnText2"> <i class="fa fa-check">√</i> </p>
+    </div>
+ </div>
+ 
+<div class="button">
+    <p class="btnText">取消</p>
+    <div class="btnTwo">
+      <p class="btnText2"> <i class="fa fa-times">x</i> </p>
+    </div>
+ </div>
+ 
+</div>
+</body>
+</html>

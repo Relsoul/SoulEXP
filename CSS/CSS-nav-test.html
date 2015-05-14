@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css-nav-test</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#nav_ul li a:hover{
+		color: white;
+		background:blue;
+	}
+	#nav_ul{
+		padding: 0 15px;
+		font-size: 18px;
+		width: 100%;
+		height: 40px;
+		position: relative;
+		background: red;
+	}
+	#nav_ul li a{
+		text-decoration: none;
+		color: black;
+		display: block;
+		padding: 0 10px;
+	}
+	#nav_ul li{
+		width: 90px;
+		list-style: none;
+		float: left;
+		line-height: 40px;
+		text-align: center;
+	}
+	.nav2{
+		width: 85px;
+		position: absolute;
+		top:50px;
+		left: 0px;
+	}
+	.nav2 li{
+		float: none;
+		background: #f2f2f2;
+		
+
+	}
+	</style>
+	<script type="text/javascript">
+		function show () {
+
+			// body...
+		}
+
+
+	</script>
+</head>
+<body>
+	<div id="nav">
+		<ul id="nav_ul">
+			<li>
+				<a href="">灵魂</a>
+				<ul  class="nav2">
+					<li><a href="">hello</a></li>
+					<li><a href="">soul</a></li>
+					<li><a href="">look</a></li>
+
+				</ul>
+			</li>
+			<li><a href="" >装备</a>
+				<ul class="nav2">
+					<li><a href="">晶石</a></li>
+					<li><a href="">武器</a></li>
+				</ul>
+			</li>
+
+		</ul>
+
+
+	</div>
+	
+</body>
+</html>

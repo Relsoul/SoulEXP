@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HtmlCss实现下拉菜单</title>
+    <style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #nav{
+        background-color: gray;
+        margin: 0 auto;
+        width: 100%;
+        height: 60px;
+        list-style: none;
+        position: relative;
+
+    }
+    #nav li{
+        float: left;
+        line-height: 60px;/*设置垂直,也就是行高*/
+        text-align: center; /*设置垂直(因为上面设置了行高),和水平居中*/
+
+    }
+    #nav li:hover #nav2{
+        display: block;
+    }
+    #nav li a{
+         padding: 0 10px;
+        /* padding值加在 a标签里是为了防止li宽度加宽 a标签移动时背景颜色覆盖不全*/
+        text-decoration: none;
+        /*设置a标签下划线为空*/
+        color: black;
+        /*a标签颜色 黑色*/
+        display: block;
+        /*设置块状元素的原因是
+        鼠标经过a标签的时候
+        背景颜色可以覆盖整个a标签块*/
+    }
+    #nav li a:hover{
+        color: #FFF;
+        background: #2D2D29;
+    }
+    #nav2{
+        list-style: none;
+        position: absolute;
+        width: 85px;
+        display: none;
+    }
+    #nav2 li{
+        float: none;
+        top: 50px;
+        left: 0px;
+        background: #215A6D;
+        margin-top:2px;
+
+    }
+    </style>
+</head>
+<body>
+    <ul id="nav">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">灵魂城堡</a>
+            <ul id="nav2">
+                <li><a href="#">Soul</a></li>
+                <li><a href="#">Seeker</a></li>
+            </ul>
+        </li>
+        <li><a href="#">放荡者茶会</a></li>
+        <li><a href="#">记录的地平线</a></li>
+    </ul>
+    
+</body>
+</html>

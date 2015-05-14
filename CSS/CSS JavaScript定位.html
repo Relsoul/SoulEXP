@@ -1,0 +1,204 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<style type="text/css">
+*{margin: 0; padding: 0;}
+    ul{
+    	list-style: none;
+    	margin-left: 30px;
+    	margin-bottom: 30px;
+
+	
+}
+body{font:"微软雅黑";font-size:14px;}
+a{text-decoration:none;}
+ul li{
+
+	float: left;
+	border: 1px solid #ccc;
+	width: 164px;
+	height: auto;
+}
+#box{
+	margin: 0 auto;
+	width: 550px;
+	overflow: hidden;
+	border: 1px solid #aaa;
+	height: auto;
+}
+.top a{
+	display: block;float: right;margin: 5px;
+	height:16px; width:16px;
+}
+.top{height:40px;}
+.btn-list-off{
+	background: #aaa url(http://img.mukewang.com/53ab7e86000153cc00710057.jpg) no-repeat -38px 0px;
+}
+.btn-list-on{
+	background: #aaa url(http://img.mukewang.com/53ab7e86000153cc00710057.jpg) no-repeat -21px 0px;
+}
+.btn-car-on{
+	background: #aaa url(http://img.mukewang.com/53ab7e86000153cc00710057.jpg) no-repeat -21px -34px;
+}
+.btn-car-off{
+	background: #aaa url(http://img.mukewang.com/53ab7e86000153cc00710057.jpg) no-repeat -38px -32px;
+}
+/* 制作静态网页的样式*/
+.a-img{height:164px;width:164px;display:block;  overflow: hidden; }
+	p a,p span{
+		display:block;
+		line-height:23px;
+		padding-left:10px;
+	}
+.bottom{
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	background: #ccc;
+}
+.small{
+	height:50px;width:50px;margin:5px;  float: left;
+}
+</style>
+<script type="text/javascript">
+
+// 使用JS实现，点击不同的按钮(卡片模式和列表模式)显示不同的模式。
+function changeBtn(){
+	var listbtn= document.getElementById("btn1");
+	var carbtn= document.getElementById("btn2");
+
+	listbtn.onclick=function(){
+		var get_img= document.getElementsByTagName("img")
+		for (var i = 0; i < get_img.length; i++) {
+			get_img[i].src="http://img.mukewang.com/53ab7cf4000196c000500050.jpg";
+			get_img[i].parentNode.className="a-img small";
+		};
+
+
+	carbtn.onclick=function(){
+		var get_carimg=document.getElementsByTagName("img")
+		for (var i = 0; i < get_carimg.length; i++) {
+			get_carimg[i].src="http://img.mukewang.com/53ab7d16000159a801640236.jpg"
+			get_carimg[i].parentNode.className="a-img "
+		};
+
+
+
+	}
+
+	}
+
+}
+window.onload=function(){
+	changeBtn()
+}
+
+
+
+</script>
+</head>
+
+<body>
+
+<div id="box">
+	<div class="top">
+		<a href="#" title="列表模式" id="btn1" class="btn-list-off"></a>
+		<a href="#" title="卡片模式" id="btn2" class="btn-car-on"></a>
+	</div>
+	<ul>
+		<li>
+			<div class="con">
+			<a href="#" class="a-img ">
+				<img src="http://img.mukewang.com/53ab7d16000159a801640236.jpg" />
+			</a>
+			<p>
+				<a href="#">白阳</a>
+				<span>辽宁</span>
+				<span>21个共同好友</span>
+			 </p> 
+			 </div>
+			 <div class="bottom">
+			 	未分组的好友
+			 </div>
+		</li>
+		 
+		 <li>
+			<div class="con">
+			<a href="#" class="a-img">
+				<img src="http://img.mukewang.com/53ab7d16000159a801640236.jpg"/>
+			</a>
+			<p>
+				<a href="#">白阳</a>
+				<span>辽宁</span>
+				<span>21个共同好友</span>
+			 </p> 
+			 </div>
+			 <div class="bottom">
+			 	未分组的好友
+			 </div>
+		</li><li>
+			<div class="con">
+			<a href="#" class="a-img">
+				<img src="http://img.mukewang.com/53ab7d16000159a801640236.jpg"/>
+			</a>
+			<p>
+				<a href="#">白阳</a>
+				<span>辽宁</span>
+				<span>21个共同好友</span>
+			 </p> 
+			 </div>
+			 <div class="bottom">
+			 	未分组的好友
+			 </div>
+		</li>
+		<li>
+			<div class="con">
+			<a href="#" class="a-img">
+				<img src="http://img.mukewang.com/53ab7d16000159a801640236.jpg"/>
+			</a>
+			<p>
+				<a href="#">白阳</a>
+				<span>辽宁</span>
+				<span>21个共同好友</span>
+			 </p> 
+			 </div>
+			 <div class="bottom">
+			 	未分组的好友
+			 </div>
+		</li><li>
+			<div class="con">
+			<a href="#" class="a-img">
+				<img src="http://img.mukewang.com/53ab7d16000159a801640236.jpg"/>
+			</a>
+			<p>
+				<a href="#">白阳</a>
+				<span>辽宁</span>
+				<span>21个共同好友</span>
+			 </p> 
+			 </div>
+			 <div class="bottom">
+			 	未分组的好友
+			 </div>
+		</li><li>
+			<div class="con">
+			<a href="#" class="a-img">
+				<img src="http://img.mukewang.com/53ab7d16000159a801640236.jpg"/>
+			</a>
+			<p>
+				<a href="#">白阳</a>
+				<span>辽宁</span>
+				<span>21个共同好友</span>
+			 </p> 
+			 </div>
+			 <div class="bottom">
+			 	未分组的好友
+			 </div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

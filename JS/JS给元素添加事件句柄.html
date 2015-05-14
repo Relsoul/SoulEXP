@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS给元素添加事件句柄</title>
+</head>
+<body>
+	<p id="pid">hello</p>
+	<button id="btn">提交</button>
+	<script type="text/javascript">
+		var btn =document.getElementById("btn");
+		btn.addEventListener("click",test1);
+		btn.addEventListener("click",test);
+		btn.removeEventListener("click",test);
+
+		function test(){
+			document.getElementById("pid").innerHTML="Soul";
+		}
+		function test1(){
+			alert("soul");
+		}
+
+
+	</script>
+	
+</body>
+</html>

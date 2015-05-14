@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	//执行环境 window(最上层的执行环境)
+
+	var color1="blue";
+	function changeColor(){//执行环境 changecolor
+		var color2="red";//作用域
+
+		function swapColor(){//执行环境 swapcolor
+			var color3=color2;
+			color2=color1;
+			color1=color3;
+			//这里可以访问color1,2,3
+
+
+		}
+
+		//这里可以访问color1,color2,但不能访问color3
+		swapColor()
+	}
+	//这里只能访问color1
+	changeColor()//作用域 window 第一个作用域
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

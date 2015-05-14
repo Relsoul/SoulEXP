@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-变量详解-1</title>
+	<script type="text/javascript">
+	
+	 function test0(){
+	 tet = "soul";//这样也可以定义 没有加var默认为全局类型的变量.
+	 var soul ="hello";//这是一个字符型的变量.
+	 alert(typeof soul);//typeof是输出变量的类型 比如这个会输出字符型
+	 var num =1;//这是一个数字型的变量
+	 var bl =true;//这是一个布尔型的变量 他只有两个值 一个是true 一个是false
+	 var arr=[];//这是一个数组，注意[]计算机都是从0开始 也就是说数组第一个元素是arr[0]
+	 arr[0]="hello";//给数组第一个添加一个hello字符
+	 alert(arr[0]);//弹出数组第一个元素.
+	 var und;//这样也可以设置一个变量 但是没有赋值
+	 alert(und);//这样弹出的变量值是 undefined
+	 var nu=null;//这样给nu变量赋为一个空值 但是跟undefined不同的是 null可以根据你后续调用的需要可以转为数组
+	 //而vat nu;如果你后续要用nu作为数组 这样就不行..只能先这样理解咯，要专业化的可以推度娘一下
+	 }
+	 function test1(){
+	 	//整数类型：Number数值转换，下面只列出一小部分 具体的请推度娘或者查阅相关资料哦
+	 	var bl0=Number("hello");//会返回NaN 字符串转换成数字..你认为怎么转换？
+	 	var bl1=Number(true);//会返回1 如果是false 那么会返回0
+	 	var bl2=Number("");//会返回一个0 
+	 	//parseInt(),这个可以获取字符串中的整数(字符串第一个数必须是数字或者是符号 否则会返回Nan) 同时会把8进制 16进制的数转换成10进制
+	 	var bl3=parseInt("10086call");//这样就只获取到当中的10086并且以数字类型保存起来;
+	 	var bl4=parseInt("70");//同上
+	 	var bl5=parseInt(22.5)//这样会返回22 因为只是获取整数 要获取小数请使用parseFloat
+	 	var bl6=parseFloat(22.88)//这样就获取到小数了
+	 	var bl7=parseInt("0xf");//返回15
+	 	var bl8=parseInt("0xAF",16);//0xAF是一个16进制的数 后面的16 是要转换的数值类型 当然最终还是会转为为十进制
+	 	var bl9=parseInt("10",2);//按照2进制来解析 把10(二进制)转为为十进制
+	 	var bl10=parseInt("10",10);//10进制来解析
+	 	//parseFload 浮点数
+	 	var bl11=parseFloat("0xf");//因为parseFloat没有第二个参数可以写，parseFloat只解释10进制,再加上parseFloat会忽略前面的0,
+	 	//所以bl11 弹出的是0 任何16进制的数都会返回成0;
+	 }
+
+	 function test2(){
+	 	//字符串类型
+	 	var bl0="hello";//这样就是一个字符串类型
+	 	var bl1='soul';//用单引号包裹也是ok的
+	 	var bl2= "错误"//左边一个单引号 右边一个双引号 这是奇葩(因为代码编写器原因 就没写引号了 大家把左边的双引号改成单引号)
+	 	var bl3= "hello\'soul";//反斜号是转义符号，如果想要在字符中输出单引号 必须要用转义 包括斜杠啊 双引号之类的
+	 	var bl4="hello\nsoul";// \n是换行的意思
+	 	var bl5="hello\n soul\' 我是\"大魔王\" "//大家好好理解这句话
+	 	var bl6="hello\x41"//转义字符 也可以\u 这样 转义字符大家可以在百度上找到
+	 	var bl7="hello soul\x41";//空格也算一个字符 转义字符也算一个字符
+	 	// alert(bl7.length);//.length是输出这个变量的长度 这样会弹出11 原因上一个已经解释了
+	 	var bl8="hello";
+	 	var bl8=bl8+"soul";//字符串拼接 可以把变量与字符串拼接
+	 	var bl9=10;//设置bl9是数字变量
+	 	var bl9=bl8+bl9;//bl9等于bl8加上bl9
+	 	// alert(bl9+"相加后是整数还是字符串呢"+typeof bl9);//相加后会变成字符串
+	 	// 使用to.String 来转换成字符串
+	 	var bl10 =999;
+	 	var bl10s= bl10.toString();//把bl10转为字符串类型 后面没加参数默认是10
+	 	var bl11=10;
+	 	var bl11s=bl11.toString(2);//按照2进制的形式转换 得出的结果是 "1010" 可以使用 8 16进制等来转换
+	 	//String 把任何类型转为字符串类型
+	 	var bl12=10;
+	 	var bl12s=String(bl12);//把bl12转换为字符串
+	 	alert(bl12s+"转换后类型为"+typeof bl12s);
+	 	var bl13;//未赋值的变量默认是 undefined
+	 	var bl13s=String(bl13);//这样相当于把undefined转为字符串了 弹出的是"undefined"
+	 	var bl14=null;
+	 	var bl14s=String(bl14);//转为的是"null"
+	 }
+
+	 function test3(){
+	 	//对象简介
+	 	var o = new Object();//创建一个对象
+	 	var o1 =new Object;//没加括号也是可以的 但是不推荐
+	 	//对象类型具体后面再说
+	 }
+
+
+	 function qj(){
+	 	alert("我是全局的变量tet:"+tet);//可以调用到刚刚在函数内部设置的变量tet.
+	 }
+	 
+
+	 window.onload=function(){//网页加载完毕后加载函数.
+	 	// test0();
+	 	// qj();
+	 	// test1();
+	 	// test2();
+	 }
+
+	</script>
+</head>
+<body>
+
+	
+</body>
+</html>

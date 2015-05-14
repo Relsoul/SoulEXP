@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS-计时器跳转</title>
+</head>
+<body>
+	<form>
+		<input type="text" id="txt">
+
+	</form>
+	<a href="http://baidu.com">baidu</a>
+	<script type="text/javascript">
+		var num=0,time;
+		function sTime(){
+			document.getElementById("txt").value=num
+			num++
+			time=setTimeout(function(){
+				sTime()
+			},1000)
+			if(num>5){
+				location.assign("http://www.imooc.com");
+				clearTimeout(time);
+			}
+
+		}
+		sTime();
+
+
+
+
+	</script>
+	
+</body>
+</html>
