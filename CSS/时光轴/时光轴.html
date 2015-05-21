@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="时光轴.css">
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="GetLunarDay.js"></script>
+	<script type="text/javascript" src="timeline.js"></script>
+</head>
+<body>
+	<div class="hide">
+		<div id="tpl_scrubber_year">
+			<a href="javascript:;" class="scrubber_year current">{year}</a>
+			{list}
+		</div>
+		<div id="tpl_scrubber_month">
+			<a href="javascript:;" class="scrubber_month">{month}月</a>
+		</div>
+
+		<div id="tpl_content_item"></div>
+	</div><!-- 模板标签 End -->
+
+	<div class="top"></div><!-- topEnd -->
+	<div class="header"></div><!-- headerEnd -->
+	<div class="container">
+		<div class="scrubber" id="scrubber">
+			<a href="javascript:;" class="scrubber_year current">2014</a>
+			<a href="javascript:;" class="scrubber_month">3月</a>
+			<a href="javascript:;" class="scrubber_month">2月</a>
+		</div><!-- scrubberEnd -->
+		<div class="content" id="content">
+			<div class="content_year">2014</div><!-- content_year End -->
+			<div class="content_year">3月</div><!-- content_year End -->
+			<div class="content_item">
+				<div class="content_item_icon_arrow"></div><!-- content_item_icon_arrow End -->
+				<div class="content_item_icon_dot"><i class="content_item_icon_dot_child"></i></div><!-- content_item_icon_dot End -->
+				<div class="content_item_head">
+					<div class="content_item_head_title">
+						<div class="content_item_head_title_lunar">三<br>&nbsp;&nbsp;&nbsp;十</div>
+					2014-03-30	
+					</div><!-- content_item_head End -->
+					<div class="content_item_head_intro">
+						<i class="ui_icon quote_before"></i>
+						3月27日晚12点，QQ音乐年度盛典完美谢幕。这是一场由大数据决定的“巅峰对决”，5500万人次投票，265万人次观看在线直播——每一个数据都由你组成。#乐动你我，无处不乐#
+						<i class="ui_icon quote_after"></i>
+					</div><!-- content_item_head_intro -->
+				</div><!-- content_item_head End -->
+				<div class="content_item_media">
+					<img src="images/psb.jpeg" width="370">
+				</div><!-- content_item_media End -->
+				<div class="content_item_footer">
+					<div class="content_item_footer_info">
+						
+
+						<a href="javascript:;" class="" titile="赞"><i class="icon_zan"></i>(199)</a>
+						<a href="javascript:;" class="" title="评论"><i class="icon_pin"></i>(2199)</a>
+					</div>
+					<div class="content_item_footer_like">
+						2.5万人觉得很赞
+					</div><!-- content_item_footer_like End -->
+				</div><!-- content_item_footer End -->
+			</div><!-- content_item End -->
+		</div><!-- cotentEnd -->
+	</div><!-- containerEnd -->
+</body> 
+</html>

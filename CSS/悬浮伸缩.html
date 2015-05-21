@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	@import "font-awesome.min.css";
+ 
+html {
+    background: #d7d9d9;
+    font-family: 'microsoft yahei' ,Arial,sans-serif;
+}
+ 
+*, html, body {
+    font-family: Open Sans;
+}
+ 
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+ 
+.container {
+    margin: 40px auto 0;
+    width: 143px;
+}
+ 
+.profile-container {
+    position: relative;
+    width: 143px;
+    float: left;
+
+}
+ 
+.profile {
+    background: #f6f6f6;
+    float: left;
+    padding: 4px;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+ 
+.avatar img {
+    display: block;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+ 
+.follow {
+    margin: 4px 0 0 0;
+}
+ 
+.follow button {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: #268cde;
+    color: white;
+    padding: 7px 0;
+    margin: 0;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.profile-list{
+	overflow: hidden;
+	width: 100%;
+
+}
+.profile-list li{
+	line-height: 50px;
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	width:100%;
+	color: black;
+	padding-left: 10px;
+	opacity: 0;
+	transform-origin:0% 70%;
+	-webkit-transform-origin:0% 70%;
+	transform:rotateX(-90deg);
+	-webkit-transform:rotateX(-90deg);
+
+}
+
+.profile:hover~.profile-list>li{
+	transform:rotateX(0deg);
+	-webkit-transform:rotateX(0deg);
+		transition:0.2s linear 0s;
+	-webkit-transition:0.2s linear 0s;
+}
+
+.profile-list .first{
+	-webkit-transition: 0.2s linear 0.8s;
+    -o-transition: 0.2s linear 0.8s;
+    transition: 0.2s linear 0.8s;
+}
+.profile-list .second{
+	-webkit-transition: 0.2s linear 0.6s;
+    -o-transition: 0.2s linear 0.6s;
+    transition: 0.2s linear 0.6s;
+}
+.profile-list .third{
+	-webkit-transition: 0.2s linear 0.5s;
+    -o-transition: 0.2s linear 0.5s;
+    transition: 0.2s linear 0.5s;
+}
+.profile-list .fourth{
+	-webkit-transition: 0.2s linear 0.2s;
+    -o-transition: 0.2s linear 0.2s;
+    transition: 0.2s linear 0.2s;
+}
+
+.fourth{
+	border-radius:0 0 4px 4px; 
+}
+
+.profile:hover~.profile-list .first{
+	opacity: 1;
+	-webkit-transform-origin:20% 40%;
+	transform:rotateX(120px);
+	-webkit-transform:rotateX(120px);
+	 -webkit-transition: 0.2s linear 0s;
+    -o-transition: 0.2s linear 0s;
+    transition: 0.2s linear 0s;
+}
+.profile:hover~.profile-list .second{
+	opacity: 1;
+	-webkit-transform-origin:20% 40%;
+	transform:rotateX(120px);
+	-webkit-transform:rotateX(120px);
+	 -webkit-transition: 0.2s linear 0.2s;
+    -o-transition: 0.2s linear 0.2s;
+    transition: 0.2s linear 0.2s;
+}
+.profile:hover~.profile-list .third{
+	opacity: 1;
+	-webkit-transform-origin:20% 40%;
+	transform:rotateX(120px);
+	-webkit-transform:rotateX(120px);
+	 -webkit-transition: 0.2s linear 0.5s;
+    -o-transition: 0.2s linear 0.5s;
+    transition: 0.2s linear 0.5s;
+}
+.profile:hover~.profile-list .fourth{
+	opacity: 1;
+	-webkit-transform-origin:20% 40%;
+	transform:rotateX(120px);
+	-webkit-transform:rotateX(120px);
+	 -webkit-transition: 0.2s linear 0.7s;
+    -o-transition: 0.2s linear 0.7s;
+    transition: 0.2s linear 0.7s;
+}
+
+	</style>
+</head>
+<body>
+<div class="container">
+ 
+	<div class="profile-container unfold">
+		<div class="profile">
+			<div class="avatar"><img src="http://www.gbtags.com/gb/laitu/135x180&text=MY AVATAR/222222/dd4814" /></div>
+			<div class="follow"><button><i class="icon-plus"></i> 关注</button></div>
+		</div>
+		<ul class="profile-list">
+			<li class="first"><i class="fa fa-user"></i> 介绍</li>
+			<li class="second"><i class="fa fa-tags"></i> 动态</li>
+			<li class="third"><i class="fa fa-home"></i> 技能</li>
+			<li class="fourth"><i class="fa fa-sun-o"></i> 背景</li>
+		</ul>
+	</div>
+ 
+</div>
+</body>
+</html>

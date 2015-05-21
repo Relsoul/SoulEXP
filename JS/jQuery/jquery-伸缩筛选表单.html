@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.row{
+		background: #cb2e3e;
+	}
+
+	</style>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+
+		function Star(){
+
+		}
+
+		Star.prototype.souS=function(){
+			$(".parent").off().on("click",function(){
+				if($(this).attr("hide")=="ok"){
+					$(this).siblings("."+this.id+"_child").show();
+					$(this).removeClass('row');
+					$(this).attr("hide","none");
+				}else{
+					$(this).addClass('row');
+					$(this).siblings("."+this.id+"_child").hide();
+					$(this).attr("hide","ok");
+				}
+
+			})
+
+
+		}
+
+		Star.prototype.sXuan=function(){
+			$("#sx").off().on("keyup",function(){
+				var $val=$(this).val()
+				console.log($val);
+				$(" table tbody tr").hide().filter(":contains("+$val+")").show()
+			})
+
+		}
+
+	var form=new Star();
+	form.souS();
+	form.sXuan();
+
+
+
+	})
+
+
+
+	</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>暂居地</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			筛选:<input type="text" id="sx">
+			<tr id="row_1" class="parent">
+				<td>前台设计组</td>
+			</tr>
+			<tr class="row_1_child">
+				<td>张三</td>
+				<td>男</td>
+				<td>浙江宁波</td>
+			</tr>
+			<tr class="row_1_child">
+				<td>李四</td>
+				<td>女</td>
+				<td>浙江杭州</td>
+			</tr>
+			<tr id="row_2" class="parent">
+				<td>前台开发组</td>
+			</tr>
+			<tr class="row_2_child">
+				<td>王五</td>
+				<td>男</td>
+				<td>湖南长沙</td>
+			</tr>
+			<tr class="row_2_child">
+				<td>赵六</td>
+				<td>女</td>
+				<td>浙江温州</td>
+			</tr>
+			<tr id="row_3" class="parent">
+				<td>后台开发组</td>
+			</tr>
+			<tr class="row_3_child">
+				<td>Rain</td>
+				<td>男</td>
+				<td>浙江杭州</td>
+			</tr>
+			<tr class="row_3_child">
+				<td>MAXMAN</td>
+				<td>男</td>
+				<td>浙江杭州</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

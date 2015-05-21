@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+
+		$("#ok").on("click",function(event){
+			var str=$("#rom").find("input:checked")
+			var num=getnum(str);
+			console.log(str);
+
+			$("#txt").val(num)
+			event.preventDefault();
+			event.stopPropagation();   
+		})
+
+		function getnum(elem){
+			var num=0;
+			for (var i = 0; i < elem.length; i++) {
+				num+=parseInt(elem[i].attributes["2"].value)
+			};
+			return num
+		}
+	})
+
+
+	</script>
+</head>
+<body>
+	<form id="rom">
+		<p>分数1</p>
+		<input type="radio" name="fs1" fs="5">优秀5分
+		<input type="radio" name="fs1" fs="3">良好3分
+		<input type="radio" name="fs1" fs="1">差1分
+		<p>分数2</p>
+		<input type="radio" name="fs2" fs="5">优秀5分
+		<input type="radio" name="fs2" fs="3">良好3分
+		<input type="radio" name="fs2" fs="1">差1分
+		<br>
+		<input type="text" id="txt">
+		<button id="ok">提交</button>
+	</form>
+</body>
+</html>

@@ -4,23 +4,62 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-	#did{
+	/*#did{
 		display: inline-block;
 		background: red;
 	}
 	#warp{
 		text-align: center;
+	}*/
+	*{
+		padding: 0;
+		margin:0;
 	}
+	.left{
+		float: left;
+		width: 100px;
+		background: red;
+		position: relative;
+	}
+	.right{
+		margin-left: 120px;
+		background: green;
 
+	}
+	.right-fix{
+	float: right;
+	width: 100%;
+	margin-left: -100px;
+	}
 	</style>
 </head>
 <body>
-	<div id="warp">
+	<!-- <div id="warp">
 		<div id="did">div</div>
-	</div>
+	</div> -->
+	
+		<div class="left">
+			<p>left</p>
+		</div>
+		<div class="right-fix">
+			<div class="right">
+				<p style="clear:both">right</p>
+				<p>right</p>
+			</div>
+		</div>
+
+		<div id="test">
+			test
+		</div>
 	
 	<script type="text/javascript">
-
+	var teID=document.getElementById("test");
+	teID.onclick=function(){
+		return mytest(teID)
+	}
+	function mytest(elem){
+		alert(elem)
+	}
 	// var d=55555;
 	// // function test(){
 	// // 	var d=6666;

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	/*CSS源代码*/
+@import url('http://cdn.gbtags.com/font-awesome/4.1.0/css/font-awesome.min.css');
+ *{
+ 	font-family: '微软雅黑';
+ }
+button{
+  width: 80px;
+  height: 40px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -20px;
+  position: absolute;
+}
+	#notification{
+		position: absolute;
+		top: 0px;
+		left: 50%;
+		height: 35px;
+		width: 80%;
+		margin-left: -40%;
+		background: #efb73e;
+		line-height: 35px;
+		color: #fff;
+		display: none;
+		padding: 0 10px 0 10px;
+		overflow: hidden;
+	}
+	#msg{
+		float: left;
+	}
+	#close{
+		width: 35px;
+		line-height: 35px;
+		float:right;
+		text-align: right;
+	}
+
+	</style>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+
+		function star(){
+			return new star.prototype.init();
+		}
+
+		star.prototype={
+			constructor:star,
+			num:0
+		}
+
+		star.prototype.init=function(){
+
+		}
+		star.prototype.init.prototype=star.prototype;
+
+		star.prototype.starGame=function(){
+			that=this
+			$("#magic").off().on("click",function(){
+				if(that.num>=1){return false}
+
+				$("#notification").slideDown(600);
+				that.num++
+			})
+
+			$("#close").off().on("click",function(){
+				if(that.num>=1){
+					$("#notification").slideUp(600);
+					that.num=0
+				}else{return false}
+
+			})
+
+		}
+
+
+		star().starGame()
+	})
+
+
+</script>
+</head>
+<body>
+	<div id="notification">
+  <span id="msg"><i class="fa fa-info-circle"></i><span>系统错误，请稍后重试</span></span>
+  <span id="close" class="fa fa-times"></span>
+</div>
+ 
+<button id="magic">系统提示</button>
+	
+</body>
+</html>

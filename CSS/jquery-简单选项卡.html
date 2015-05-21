@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: "微软雅黑";
+	}
+	#container{
+		margin: 100px auto;
+		width: 960px;
+		overflow: hidden;
+	}
+	#tab{
+		list-style: none;
+	}
+
+	#tab li{
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 18px;
+		padding: 10px;
+
+		position: relative;
+	}
+
+	.tab_li{
+		border: 2px solid black;
+		border-bottom: none;
+	}
+	.tab_li::after{
+		content: "";
+		border: 2px solid #fff;
+		width: 52px;
+		position: absolute;
+		left: 0px;
+		top:100%;
+		background:#fff;
+		display:block;
+
+	}
+
+
+
+	#tab_show{
+		display:block;
+	}
+	#contant div{
+		border: 2px solid black;
+		width: 250px;
+		height: 150px;
+		display: none;
+	}
+	
+
+	</style>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var list;
+		$("#tab li").off().on("click",function(){
+		$(this).siblings().removeClass('tab_li').end().addClass('tab_li');
+		list=$("#tab li").index(this);
+		console.log(list);
+			$("#contant>div").siblings().hide();
+			$("#contant>div").eq(list).show();
+
+		})
+
+		
+	})
+	
+
+
+	</script>
+</head>
+<body>
+	<div id="container">
+	<ul id="tab">
+		<li  class="tab_li">生活</li>
+		<li>政治</li>
+		<li >游戏</li>
+	</ul>
+	<div id="contant">
+		<div style="display:block;">生活小事</div>
+		<div>时事政治</div>
+		<div>游戏装备</div>
+	</div>
+	</div>
+</body>
+</html>

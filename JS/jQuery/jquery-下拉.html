@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	/*CSS源代码*/
+
+@import "//cdn.gbtags.com/font-awesome/4.1.0/css/font-awesome.min.css";
+
+html
+{
+    background: #d7d9d9;
+    font-family: 'microsoft yahei' ,Arial,sans-serif;
+}
+
+*, html, body
+{
+    font-family: Open Sans;
+}
+
+ul, li
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.container
+{
+    margin: 40px auto 0;
+    width: 143px;
+}
+
+.profile-container
+{
+    position: relative;
+    width: 143px;
+    float: left;
+}
+
+
+.profile
+{
+    background: #f6f6f6;
+    float: left;
+    padding: 4px;
+    border-radius: 3px; 
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.avatar img
+{
+    display: block;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.follow
+{
+    margin: 4px 0 0 0;
+}
+
+.follow button
+{
+    display: block;
+    width: 100%;
+    border: 0;
+    background: #268cde;
+    color: white;
+    padding: 7px 0;
+    margin: 0;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+
+.profile-list
+{
+   margin-top:221px; 
+}
+.profile-list li
+{
+    font-size: 12px;
+
+    background-color: White;
+    border-top-color: #ccc;
+    border-top-style: solid;
+    border-top-width: 1px;
+   
+}
+.profile-list li .fa
+{
+    padding: 20px 10px 10px 20px;
+}
+
+.fourth
+{
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.first1
+{ 
+   animation: xsfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 0s normal forwards;
+   transform-origin:0% 0%;
+
+}
+.second2
+{
+      animation: xsfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 300ms normal forwards;
+     transform-origin:0% 0%;
+
+}
+.third3
+{
+       animation: xsfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 600ms normal forwards;
+     transform-origin:0% 0%;
+
+}
+.fourth4
+{
+       animation: xsfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 900ms normal forwards;
+     transform-origin:0% 0%;
+
+}
+@-webkit-keyframes xsfanzhuan
+{
+    0%
+    {
+        transform:rotateX(90deg);
+    }
+    100%
+    {
+        transform:rotateX(0deg);
+    }
+}
+
+.first11
+{
+     animation: ycfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 900ms normal forwards;
+     transform-origin:0% 0%;
+
+}
+
+.second22
+{
+     animation: ycfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 600ms normal forwards;
+     transform-origin:0% 0%;
+ 
+}
+
+.third33
+{
+     animation: ycfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 300ms normal forwards;
+     transform-origin:0% 0%;
+
+}
+
+.fourth44
+{
+     animation: ycfanzhuan 300ms cubic-bezier(0, 0.58, 1, 0.51) 0ms normal forwards;
+     transform-origin:0% 0%;
+
+}
+
+@-webkit-keyframes ycfanzhuan
+{
+    0%
+    {
+      transform:rotateX(0deg);
+    }
+    100%
+    {
+        transform:rotateX(-90deg);
+    }
+}
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<!-- HTML代码片段中请勿添加<body>标签 //-->
+<div id="container">
+	<div class="container">
+        <div class="profile-container unfold">
+            <div class="profile">
+                <div class="avatar">
+                    <img src="http://www.gbtags.com/gb/laitu/135x180&text=MY AVATAR/222222/dd4814" /></div>
+                <div class="follow">
+                    <button>
+                        <i class="icon-plus"></i>关注</button></div>
+            </div>
+            <ul class="profile-list">
+                <li class="first"><i class="fa fa-user"></i>介绍</li>
+                <li class="second"><i class="fa fa-tags"></i>动态</li>
+                <li class="third"><i class="fa fa-home"></i>技能</li>
+                <li class="fourth"><i class="fa fa-sun-o"></i>背景</li>
+            </ul>
+        </div>
+    </div>
+    <script src="http://cdn.gbtags.com/prefixfree/1.0.7/prefixfree.min.js" type="text/javascript"></script>
+</div>
+
+
+
+<!-- 推荐开源CDN来选取需引用的外部JS //-->
+<script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+/*Javascript代码片段*/
+ $(function () {
+
+            $(".profile").mousemove(function () {
+              	
+                $(".first").addClass("first1");
+                $(".second").addClass("second2");
+                $(".third").addClass("third3");
+                $(".fourth").addClass("fourth4");
+            });
+            $(".profile-container").mouseout(function () {
+                $(".fourth").removeClass("fourth4").addClass("fourth44");
+                $(".third").removeClass("third3").addClass("third33");
+                $(".second").removeClass("second2").addClass("second22");
+                $(".first").removeClass("first1").addClass("first11");
+            })
+        })
+
+
+</script>
+	
+</body>
+</html>

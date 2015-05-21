@@ -100,6 +100,26 @@
 	var save=Map().test()
 	console.log(save)
 	
+	var obj1={
+		name:"li",
+		sayName:function(){return function(){alert(this.name)}}
+	}
+	obj1.sayName()()//this指向obj1
+
+	//在另一个对象作用域中调用
+
+	function obj2(name,age){
+		this.name=name;
+		this.age=age;
+		this.sayage=function(){alert(this.age)}
+	}
+
+	var obj3={};
+
+	obj2.call(obj3,"soul",19)
+	obj3.sayage()
+
+	
 
 	</script>
 

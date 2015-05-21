@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+
+
+	</style>
+	<script type="text/javascript" src="jquery-1.9.1.min.js">
+
+
+	</script>
+	<script type="text/javascript">
+	$(function(){
+
+		function Zhai(){
+			this.nextNum=0;
+			this.date=[{
+				title:"测试你有多宅",
+				a0:"A:不宅",
+				a1:"B:很宅",
+				a2:"C:宅吗？",
+				a3:"D:宅",
+				zq:2,
+			},{
+				title:"测试你有多宅2",
+				a0:"A:宅A",
+				a1:"B:宅B",
+				a2:"C:宅C",
+				a3:"D:宅D",
+				zq:3,
+			},{
+				title:"测试你有多宅3",
+				a0:"A:宅0",
+				a1:"B:宅1",
+				a2:"C:宅2",
+				a3:"D:宅3",
+				zq:0,
+			}];
+			this.fs=0;
+
+	}
+
+
+	Zhai.prototype.startElem=function(){
+		$("#test h1").html(this.date[this.nextNum].title);
+		var that=this
+		var _elem=$("#test span");
+		for (var i = 0; i < _elem.length; i++) {
+			~function(){
+				$(_elem[i]).html(that.date[that.nextNum]["a"+i])
+			}(i)
+		};
+		this.confirmElem();
+		this.confirm();
+		this.nextNum++;
+		console.log(this.nextNum)
+	}
+
+	
+	Zhai.prototype.confirm=function(elem){
+		var _elem=$("#test input");
+		var that=this
+		$(_elem).on("click",function(){
+			if($(this).attr("ok")=="true"){
+				that.fs++
+				that.startElem()
+			}
+		})
+
+	}
+
+	Zhai.prototype.confirmElem=function(){
+		var _elem=$("#test input");
+		$(_elem).siblings().attr("ok","")
+		$(_elem[this.date[this.nextNum]["zq"]]).attr("ok","true");
+		console.log(this.nextNum)
+	}
+
+	var start=new Zhai();
+	start.startElem();
+	})
+	
+
+
+	</script>
+</head>
+<body>
+	<div id="test">
+		<h1></h1>
+		<span></span><input type="radio" name="test"><br>
+		<span></span><input type="radio" name="test"><br>
+		<span></span><input type="radio" name="test"><br>
+		<span></span><input type="radio" name="test"><br>
+	</div>
+	
+</body>
+</html>
