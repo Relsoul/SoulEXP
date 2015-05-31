@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	img{
+		width: 200px;
+	}
+	#div1{
+		width: 800px;
+		height: 130px;
+		margin: 100px auto;
+		position: relative;
+			background: red;
+			overflow: hidden;
+	}
+	#div1 ul{
+		position: absolute;
+		left: 0;
+		top:0;
+	
+	}
+	#div1 li{
+		list-style: none;
+		float: left;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		var oUl=oDiv.getElementsByTagName("ul")[0];
+		var oLi=oUl.getElementsByTagName("li");
+		oUl.style.width=200*oLi.length+"px";
+		var time=null;
+		var spped=5;
+		function move(){
+		console.log(oUl.offsetLeft);
+		if(oUl.offsetLeft<-(oUl.offsetWidth/2)){
+			oUl.style.left=0;
+		}
+		if(oUl.offsetLeft>0){
+			oUl.style.left=-oUl.offsetWidth/2+"px";
+		}
+
+		oUl.style.left=oUl.offsetLeft+spped+"px";
+		}
+
+		time=setInterval(move,30)
+
+		oDiv.onmouseover=function(){
+			clearInterval(time);
+		}
+
+		oDiv.onmouseout=function(){
+			time=setInterval(move,30);
+		}
+
+		document.getElementsByTagName("a")[0].onclick=function(){
+			spped=-5;
+		}
+		document.getElementsByTagName("a")[1].onclick=function(){
+			spped=5;
+		}
+		alert(oDiv.firstChild);
+
+	}
+
+
+	</script>
+</head>
+<body>
+	<a href="javascript:;">向左走</a>
+	<a href="javascript:;">向右走</a>
+	<div id="div1">
+
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2015-1.jpg" alt=""></li>
+			<li><img src="img/2015.png" alt=""></li>
+			<li><img src="img/2048.jpg" alt=""></li>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2015-1.jpg" alt=""></li>
+			<li><img src="img/2015.png" alt=""></li>
+			<li><img src="img/2048.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>

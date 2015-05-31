@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	function type(elem){
+		if(Object.prototype.toString.call(elem).replace(/object|\[|\]| /g,"").toLowerCase()=="object"){
+				return elem.constructor.replace(/function|\(\)|\{|\}|\[|\]|native|code/g,"");
+		}else{
+			return Object.prototype.toString.call(elem).replace(/object|\[|\]/g," ").toLowerCase();
+		}
+		
+	}
+			
+	var b=Object.prototype.toString.call().replace(/object|\[|\]|/g,"")
+	
+	function abcc(){
+		this.s=1;
+	}
+	var bb=new abcc();
+
+	console.log(type());
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

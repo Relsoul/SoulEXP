@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	function rand(){
+		return Math.round(Math.random()*999)
+	}
+
+
+	function sum(a,b){
+		return a+b;
+	}
+
+	function code(a){
+		return a;
+
+	}
+
+	var first_object={
+		num:42
+	};
+
+	function multiply(mult){
+		return this.num*mult
+	}
+
+	Object.prototype.ss=function(thisArg){
+		var _this=this
+		if(arguments.length<2){
+			return function(){ return _this.apply(thisArg,arguments)}
+		}else{
+			var _this=this;
+			var _arr=[];
+			var _arr2=[]
+			for (var i = 1; i < arguments.length; i++) {
+						_arr.push(arguments[i])
+			};
+			for (var i = 0; i < _arr.length; i++) {
+				if(_arr[i].constructor==Array){
+					for(var j=0;j<_arr[i].length;j++){
+					_arr2.push(_arr[i][j])
+					}
+				}else{
+					_arr2.push(_arr[i])
+				}
+				
+			};
+	
+			return _this.apply(arguments[0],_arr2)
+
+		}
+
+
+
+	}
+
+	var m=multiply.ss(first_object)
+console.time("str");
+	var arr3=[]
+	for (var i = 0; i < 100000; i++) {
+		arr3.push(rand())
+	};
+	
+	var s=Math.min.apply(this,arr3)
+	console.log(s)
+	console.timeEnd("str")
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

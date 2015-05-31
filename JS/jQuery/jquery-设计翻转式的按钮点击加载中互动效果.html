@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	html,body {
+  padding:0;
+  margin:0;
+  background:#fafafa;
+  text-align:center;
+  font-family: 'microsoft yahei' ,Arial,sans-serif;
+}
+ 
+body {
+  padding-top: 5em;
+}
+ 
+h1 {
+  margin-bottom:3rem;
+  color:#666;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+ 
+button {
+	position:relative;
+	border:0;
+	margin:0;
+	padding:0;
+	cursor:pointer;
+    font-family: 'microsoft yahei' ,Arial,sans-serif;
+	font-size:1.2rem;
+	color:rgba(0,0,0,0);
+	background:transparent;
+	border-radius:.25rem;
+   -webkit-tap-highlight-color: rgba(0,0,0,0);
+   -webkit-touch-callout: none;
+}
+ 
+button,
+button:after,
+button:before {
+	padding:.6875rem 4rem;
+	-webkit-transition:-webkit-transform 0.75s,background-color .125s;
+	-moz-transition:-moz-transform 0.75s,background-color .125s;
+	-ms-transition:-ms-transform 0.75s,background-color .125s;
+	transition:transform 0.75s,background-color .125s;
+ 
+}
+ 
+button:after,
+button:before {
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	border-radius:.25rem;
+ 
+}
+ 
+button:before {
+	z-index:2;
+	color:#fff;
+	background-color: #aa0000;
+	content:attr(data-label);
+}
+ 
+button:after {
+	z-index:1;
+	background-color:#999;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-image:url(data:image/gif;base64,R0lGODlhEAAQAPIAAJmZmf///7CwsOPj4////9fX18rKysPDwyH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQACgAFACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQACgAGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==);
+	content:'';
+}
+ 
+button:active:before {
+	background-color:#800000;
+}
+.rotate{
+  transform:rotateX(180deg);
+  -webkit-transform:rotateX(180deg);
+  -webkit-transtion:0.2,ease;
+  transtion:0.2,ease;
+}
+.rotate:after{
+	z-index: 3;
+}
+
+	</style>
+<script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+
+	$(function(){
+
+		var time=null;
+	$("#but").click(function(){
+		var that=this;
+		if(that.className=="rotate"){
+			$(that).removeClass('rotate');
+		}else{
+			 $(that).addClass("rotate");
+			 autoPlay(that);
+		}
+	})
+
+	function autoPlay(elem){
+		if(time){
+			clearTimeout(time);
+		}
+		time=setTimeout(function(){
+			$(elem).removeClass('rotate');
+		},1000);
+
+	}
+
+
+	})
+
+
+	</script>
+</head>
+<body>
+	<h1>按钮点击加载设计效果</h1>
+	<button data-label="更多信息" id="but">更多信息</button>
+</body>
+</html>

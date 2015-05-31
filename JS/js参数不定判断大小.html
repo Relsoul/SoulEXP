@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		function maxNum (a,b) {
+			if(maxNum.length==arguments.length){
+				return a>b?a:b
+			}else{
+				var _max=arguments[0];
+				for (var i = 1; i < arguments.length; i++) {
+					if(arguments[i]>_max){
+						_max=arguments[i]
+					}
+				};
+
+				return _max
+			}
+			// body...
+		}
+
+		console.log(maxNum(10,20,40))
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

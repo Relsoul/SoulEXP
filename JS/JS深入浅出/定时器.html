@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.pp{
+		display: inline;
+	}
+
+
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+	
+
+	function zero(time){
+		if(time<=9){
+			return "0"+time;
+		}else{
+			return ""+time;
+		}
+
+	}
+
+	var str;
+	var pid=document.getElementsByTagName("p");
+	function getTime(){
+	var oDate=new Date();
+	var hours=oDate.getHours();
+	var min=oDate.getMinutes();
+	var sec=oDate.getSeconds();
+	str=zero(hours)+zero(min)+zero(sec);
+	console.log(str);
+	for (var i = 0; i < pid.length; i++) {
+		~function(){
+			pid[i].innerHTML=str.charAt(i);
+		}(i)
+	};
+	// var pid=document.getElementById("time");
+	// pid.innerHTML=hours+":"+min+":"+sec;
+
+	}
+	
+	setInterval(getTime,1000);
+
+
+
+
+
+	
+	}
+	
+
+
+
+
+	</script>
+</head>
+<body>
+	<p class="pp"></p>
+	<p class="pp"></p>
+	<span>:</span>
+	<p class="pp"></p>
+	<p class="pp"></p>
+	<span>:</span>
+	<p class="pp"></p>
+	<p class="pp"></p>
+</body>
+</html>

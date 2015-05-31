@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		padding:0;
+		margin: 0;
+		font-family: "微软雅黑";
+	}
+	.container{
+		width: 960px;
+		margin: 10% auto;
+		overflow: hidden;
+	}
+	ul li{
+		list-style:none;
+		width: 100px;
+		height: 50px;
+		background: #FE4365;
+		padding: 10px;
+		margin: 10px;
+		opacity: 0;
+		
+		/*其实也可以这样写，因为是他们公用的样式嘛,唯一的区别就是消失的时间不同*/
+
+		/*-webkit-transform:rotateX(0deg);
+		transform:rotateX(0deg);
+		transform-origin:0% 50%;
+		-webkit-transform-origin:0% 50%;*/
+	}
+
+	/*这里控制鼠标移出后li是如何消失的*/
+	
+	.first{
+		-webkit-transform:rotateX(0deg);
+		transform:rotateX(0deg);
+		transform-origin:0% 50%;
+		-webkit-transform-origin:0% 50%;
+		transition:0.4s ease 0.6s;
+		-webkit-transition:0.4s ease 0.6s;
+	}
+
+	.first2{
+		-webkit-transform:rotateX(0deg);
+		transform:rotateX(0deg);
+		transform-origin:0% 50%;
+		-webkit-transform-origin:0% 50%;
+
+		transition:0.4s ease 0.4s;
+		-webkit-transition:0.4s ease 0.4s;
+	}
+	
+	.first3{
+		-webkit-transform:rotateX(0deg);
+		transform:rotateX(0deg);
+		transform-origin:0% 50%;
+		-webkit-transform-origin:0% 50%;
+
+		transition:0.4s ease 0.2s;
+		-webkit-transition:0.4s ease 0.2s;
+	}
+
+
+	#move{
+		width: 120px;
+		height: 50px;
+		background: #83AF9B;
+		margin: 10px;
+	}
+
+	#move:hover ~ul .first{
+		-webkit-transform:rotateX(-360deg);
+		transform:rotateX(-360deg);
+		transition:0.4s ease 0.2s;
+		-webkit-transition:0.4s ease 0.2s;
+		opacity: 1;
+	}
+
+	#move:hover ~ul .first2{
+		-webkit-transform:rotateX(-360deg);
+		transform:rotateX(-360deg);
+		transition:0.4s ease 0.4s;
+		-webkit-transition:0.4s ease 0.4s;
+		opacity: 1;
+	}
+
+	#move:hover ~ul .first3{
+		-webkit-transform:rotateX(-360deg);
+		transform:rotateX(-360deg);
+		transition:0.4s ease 0.6s;
+		-webkit-transition:0.4s ease 0.6s;
+		opacity: 1;
+	}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="move">移动</div>
+		<ul>
+			<li class="first">我是第一个</li>
+			<li class="first2">我是第二个</li>
+			<li class="first3">我是第三个</li>
+		</ul>
+	</div>
+</body>
+</html>

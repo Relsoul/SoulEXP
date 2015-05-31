@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	object
+
+	一:构造器说明
+		-object是一组属性与方法集合
+		-string/number/boolean/array/date/error构造器都是objecy子类对象，继承object原型对象属性与方法
+
+	二:实例化对象方法
+		var obj={name:"soul"};
+
+	三:属性方法
+		-prototype....
+
+	四:原型对象属性方法
+		-constructor,toString,valueof,
+		var obj1= new Object(); 继承原型对象上的所有属性方法
+
+	五:object无实例对象属性方法
+
+	六:object.create
+		-功能:基于原型对象创建新对象
+		-语法:object.create(prototype)
+		-范例:
+			var proto={a:1,b:2}
+			var obj3=Object.create(proto);
+
+	七:object.prototype.toString
+		-功能:获取方法,调用者标准类型
+		-语法:objectObj.toString()
+		-范例:
+			var obj4={}
+			obj4.toString()
+
+	八:object.prototype.hasOwnProperty(property)
+		-功能:判断一个属性是否是对象自身属性
+		-语法:object.prototype.hasOwnProperty(property)
+		-范例:
+			var proto={a:1,b:2}
+			var obj3=Object.create(proto);
+			obj3.hasOwnProperty("a")//false
+
+
+// ----------------------------------------------
+	
+
+	boolean
+
+	一:构造器说明
+		-值:true,false
+		-出现场景
+			-条件语句导致系统执行的隐式类型转换
+			-显示定义:var a=true;
+	
+	二:构造器对象属性方法
+		-prototype...
+
+	三:原型对象属性,方法
+		-constructor,toString,valueof...
+
+	四:其他类型像布尔类型转换
+		数字-布尔:0,NaN=false
+		字符串-布尔:"空字符串"=false
+		undefined-布尔:false
+		null-布尔:false
+		对象-布尔：true
+
+
+// --------------------------------------------------
+
+	string
+
+	一:构造器说明
+		-由单引号或者双引号括起来的字符序列
+
+	二:字符串使用："hello"
+
+	三:构造器对象属性方法
+		-constructor,replace,slice..
+
+	四:String.prototype.indexOf
+		-功能
+			-获取子字符串在字符串中位置索引
+		-语法
+			-StringObj.indexOf(searchValue)
+		-范例
+			var str="hello"
+			var ind=str.indexOf("he")//从字符串头部开始查找返回0
+			str.indexOf("he",ind+1)//从上一次位置开始向后查找
+			str.indexOf("12131")//不存在字符串返回-1
+
+	五:string.prototype.replace
+		-功能
+			-查找字符串替换目标字符
+		-语法
+			-strObj.replace(reg."字符串")
+		-范例
+			var my="soul"
+			var resmy=my.replace("o","mm")//把o替换为mm
+
+	六:str.split
+		-功能
+			-按分割符将字符串分割成字符串数组
+		-语法
+			-strObj.split(分隔符/正则,数组长度)
+		-实例
+			var str1="h e l l o"
+			str1.split(" ")//[h,e,l,l,o]
+			str1.split(" ",3)//[h,e,l]
+
+// ----------------------------------------------
+	number
+
+	一:构造器说明
+		-整形直接量/八进制/十六进制...
+
+	二:数字使用
+		var count=0x10//16进账
+		var pi=new Number(3.14)
+
+	三:构造器属性，方法
+		-prototype,Number.MAX_VALUE,
+
+	四:原型对象属性方法
+		-constructor,toFixed(digits)..
+
+	五:Number.prototype.toFixed
+		-功能:把Number四舍五入为指定小数位数数字
+		-语法
+			-number.prototype.toFixed(digits)
+		-范例
+			var num=13.37
+			num.toFixed(1)//13.4
+
+// -----------------------------------------------
+
+	array
+
+	一:构造器说明
+		-用于定义数组对象
+
+	二:创建数组
+		var a=[1,2,3]
+
+	三:构造器对象属性方法
+		-prototype,isArray....
+
+	四:原型对象属性方法
+		-constructor,splice,forEach...
+
+	五:实例化对象属性方法
+		-length
+
+	六:Array.prototype.splice
+		-功能:从数组中删除或添加元素，返回被删除的元素
+		-语法
+			-arrayObj.splice(start,deletecount)
+		-范例
+			var arr=[1,2,"a","b",6]
+			var ret=arr.splice(2,2,3,4,5)//"a","b" arr数组为//1,2,3,4,5,6
+
+	七:array.prototype.forEach
+		-功能
+			-遍历数组元素并调用回调函数
+		-语法
+			-arrobj.forEach(callback...)
+		-范例
+			function logArr(value,index,array){
+				console.log(value)
+				console.log(value==array[index])//true
+			}
+			[2,5,9].forEach(logArr)
+
+// ---------------------------------------------
+
+	function
+
+	一:构造器说明
+		-用于定义函数或新对象构造器
+
+	二:实例化函数方法
+		-对象实例化:var fuc=new Function()
+		-函数关键字语句 function fuc1(){}
+		-函数表达式 	var add=function(){}
+
+	三:属性方法
+		-prototype
+
+	四:原型对象属性方法
+		-constructor,apply,call,
+
+	五:实例化对象属性方法
+		-length,prototype,arguments
+
+	六:自定义对象构造
+		function point(x,y){
+			this.x=x;
+			this.y=y;
+		}
+		point.prototype.move=function(x,y){
+			this.x+=x;
+			this.y+=y;
+		}
+		-对象实例化 
+		var p=new point(0,1)
+
+	七:function.prototype.apply
+		-功能:通过参数指定函数调用者和函数参数并执行该函数
+		-语法
+			functionObj.apply(thisArg,[]);
+		-范例
+			Object.prototype.toString.apply("123")//[object object]
+			var circle={x:1,y:1,r:1}
+			p.move.apply(circle,[2,1])//传参并且调用move
+
+	八:function.prototype.bind
+		-功能:通过参数指定函数调用者和函数参数并返回该函数引用
+		-语法:
+			functionObj.bind(thisArg)
+			var circlimove=p.move.bind(circle,[2,1])//跟apply差不多
+			setTimeout(circlemove,1000)
+
+	九:子类构造器
+		function circle(x,y,z){
+			point.apply(this,[x,y])
+			this.radius=r
+		}
+		//继承point原型链属性
+		circle.prototype=Object.create(point.prototype)
+		circle.prototype.constructor=circle;
+
+	十:函数调用
+		-()
+		-apply,call
+
+	十一:函数参数
+		-形参个数不一定等于实参个数
+		-值传递
+		-通过参数类型检查实现函数重载
+
+	十二:arguments
+		-arguments对象常用属性
+			-length:实参个数
+			-0....arguments.length-1:实参属性名称(key-value中key)
+			-callee:函数本身
+		-范例
+			-比较不定数字大小并返回大数
+				function maxNum (a,b) {
+				if(maxNum.length==arguments.length){
+					return a>b?a:b
+				}else{
+					var _max=arguments[0];
+					for (var i = 1; i < arguments.length; i++) {
+						if(arguments[i]>_max){
+							_max=arguments[i]
+						}
+					};
+
+					return _max
+				}
+				// body...
+			}
+
+			console.log(maxNum(10,20,40))
+
+	十三:值传递
+		传递进去的仅仅是对象的地址,而不是对象的堆内存..原来是这样,重写对象相当于重写地址,重新引用了一个堆内存的值
+		-范例
+			function setname(obj){
+			obj.name="setname",obj={name:"new name"}
+			}
+
+			var nameobj={name:"soul"}
+
+			setname(nameobj)
+
+			nameobj//setname
+
+	十四:函数重载
+		--
+
+// -----------------------------------------------
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

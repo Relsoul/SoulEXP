@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload=function(){
+
+	var Tab=document.getElementById("tab1");
+	var oldcolor=""
+	for (var i = 0; i < Tab.tBodies[0].rows.length; i++) {
+		Tab.tBodies[0].rows[i].onmouseover=function(){
+			oldcolor=this.style.background;
+			this.style.background="green";
+		};
+		Tab.tBodies[0].rows[i].onmouseout=function(){
+			this.style.background=oldcolor;
+		}
+		if(i%2){
+			Tab.tBodies[0].rows[i].style.background="#ccc";
+		}
+
+	};
+
+
+	}
+
+
+
+	</script>
+</head>
+<body>
+	<table id="tab1">
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>年龄</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Soul</td>
+				<td>27</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>张三</td>
+				<td>27</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>李四</td>
+				<td>27</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>王五</td>
+				<td>37</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>李伟</td>
+				<td>30</td>
+			</tr>
+		</tbody>
+
+	</table>
+</body>
+</html>
