@@ -1,0 +1,50 @@
+ffd8 ffe0 0010 4a46 4946 0001 0101 0048
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0}
+	.clearfix:after{
+		content:".";
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		display: block;
+		clear: both;
+	}
+	.clearfix{
+		zoom:1;
+	}
+	
+	.parent{
+		width: 810px;
+		margin: 0 auto;
+	}
+
+
+
+	.side{
+		width: 200px;
+		float: left;
+		background: red;
+
+	}
+
+	.main{
+		float: left;
+		width: 590px;
+		margin-left: 10px;
+		background: blue;
+	}
+	</style>
+</head>
+<body>
+<div class="parent clearfix"> 
+    <div class="side">侧栏</div>
+    <div class="main">主栏</div>
+</div>
+
+</body>
+</html>

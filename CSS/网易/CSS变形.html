@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		CSS变形
+	一:transform
+		-none|<transform-function>
+
+	二:rorate() 变形
+		-rorate(<angle>)
+		-transform:rorate(45deg)
+		-transform:rorate(60deg)
+	
+	三:translate() 移动
+		-translate(<X>,<Y>)
+		-translateX()
+		-translateY()
+		-transform:translate(50px)
+		-transform:translate(50px ,20%)
+
+	四:scale() 缩放
+		-scale(<X>,<Y>)
+		-scaleX()
+		-scaleY()
+		-transform:scale(1.2)//X轴，Y轴放大1.2倍
+		-transform:scale(1,1.2)
+
+	五:skew() 倾斜
+		-skew(<Xdeg>,<Ydeg>)
+		-skewX()
+		-skewY()
+	
+	六:transform:translate(50%) rorate(45deg)//多个方法 先进行移动·再进行旋转
+
+	七：transform-origin 定位点
+		-[X]|[Y]|[Z]
+		-transform-origin:50% 50%
+		-transform-origin:0 0 //左上角
+		-transform-origin:20%//Y坐标为50%
+		-transform-origin:right 50px 20px
+			  	      X         Y        Z
+	
+	八:perspective 透视
+		-none|<length>
+		-perspective:2000px //人眼至物体的距离
+		transform:rorateY(45deg)//Y轴旋转
+		-配合transform:rorateY使用
+
+	九:perspective-origin 透视角度
+		-perspective-origin:50% 50% //正中间透视
+		-perspective-origin:left bottom //左下角透视
+		-perspective-origin：right//Y轴默认50%
+
+
+	
+	十:translate3d() 移动3D
+		-translateX()
+		-translateY()
+		-translateZ()
+		-transform:translate3d(10px,20%,50px)
+	
+	十一:scale3d() 放大缩小
+		-transform:scale3d(1.2,1.2,1)
+		
+
+	十二:rotate3d() 3d旋转
+		-xyz
+		-transform:rotate(1,0,0,45deg)
+
+	十三：transform-style 3d效果
+		-flat(扁平)|preserve-3d(3d)
+		
+	十四:backface-visibility 背面是否可见
+		-visible(可见)|hidden(不可见)
+		-
+
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	
+</body>
+</html>

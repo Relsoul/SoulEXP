@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:变量作用域
+		-生命周期
+		-作用范围
+		-静态作用域(词法作用域)
+			-由程序定义的位置决定
+			-范例:
+				var x=10;
+				function foo(){
+					alert(x)
+				}
+				function bar(){
+					var x=20;
+					foo()
+				}
+				bar();
+
+		-动态作用域
+			-程序运行时刻决定
+			
+	二:JS变量作用域
+		-JS使用静态作用域
+		-JS没有块级作用域
+		-ES5中使用词法环境管理静态作用域
+
+	三:词法环境
+		-组成
+			-环境记录（形参、变量、函数等）
+			-对外部词法环境的引用（outer）
+		-一段代码开始执行前、先初始化词法环境
+			-形参
+			-函数定义
+			-变量定义
+		-词法环境构造过程
+			var x=10;
+			function fooo(y){
+				var z=30;
+
+				function bar(){
+					return x+y+z+q
+				}
+				return bar
+			}
+			var bar =foo(20)
+			bar(40)
+	
+	四:词法环境-问题
+		-形参、函数定义、变量定义名称冲突
+		-arguments
+		-函数表达式
+
+	五:词法环境-with
+		var foo="abc"
+		with({
+			foo:"bar"
+		}){
+			function f(){
+				alert(foo)
+			};
+			(function(){
+				alert(foo)
+			})()
+			f()//abc
+		}
+
+	六:词法环境-try catch
+		try{
+			var e=10
+			throw new Error()
+		}catch(e){
+			function f(){
+				alert(e)
+			}
+			(function(){
+				alert(e)
+			})()
+			f()
+		}
+
+	七:Js作用域-带名称的函数表达式
+		(function A(){
+			A=1;
+			alert(A)
+		})()
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		CSS布局
+		布局-元素的摆放模式
+
+	一: display //设置元素的显示方式
+		-block
+			-块级元素
+			-默认宽度为父元素宽度
+			-可设置宽高
+			-换行显示
+			-默认display:div,p,h1-h6,ul,form
+		-inline
+			-默认宽度为内容宽度
+			-不可设置宽高
+			-同行显示
+			-默认inline:span,a,label,cite,em
+
+		-inline-block
+			-默认宽度为内容宽度
+			-可设置宽高
+			-同行显示
+			-整块换行
+			-默认inline-block:input,textarea,select,button
+
+		-none
+			-设置元素不显示
+			-visibility：hidden //仍然在页面占据空间
+
+	二:块级元素水平居中
+		-margin:auto;width:978px;
+
+	三:居中导航
+		-通过ul li来设置HTML
+		-ul{text-align:center;height:30px;line-height:30px;}
+		-li,a{display:inline-block;width:80px;height:100%;}
+--------------------------------------------------------------------------------
+	四:position 定位
+		-top,right,bottom,left,z-index -设置位置
+		-没有设置宽高 那么设置Position会被撑开
+		-元素边缘边缘距离参造物边缘的距离
+		-z-index
+			-Z轴上的排序
+		-z-index栈
+			-子级元素的Z-index是参考于父级的Z-index 
+
+	五:position
+		-static|relative|absolute|fixed
+		-positon:relative;//相对定位
+			-仍在文档流中
+			-参造物为元素本身
+			-使用场景:绝对定位的参造物
+		-positon:absolute;//绝对定位
+			-默认宽度为内容宽度
+			-脱离了文档流
+			-参造物为第一个定位祖先/根元素
+		-position:fixed //固定定位
+			-默认宽度为内容宽度
+			-脱离文档流
+			-参造物为视窗
+
+	六:遮罩
+		-position:fixed;z-index:999;height:100%;width:100%
+
+	七:三行自适应布局
+		-.body{position:absolute;top:100px;left:0;bottom:100px;right:0;oveflow:auto}
+
+	八:float
+		-left|right|
+		-默认宽度为内容宽度
+		-脱离文档流
+		-向指定方向一直移动
+		-float的元素在同一文档流中
+		-float元素半脱离文档流
+		-对元素，脱离文档流;对内容，在文档流    
+	
+	九:clear
+		- both|left|right
+		-应用于后续元素
+		-应用于后续元素
+		-clearfix:after{content:".";display:block;clear:both;oveflow:hidden;}//在父级上加
+
+	十:两列布局
+		-边栏向右浮动,主栏向左浮动,给父级元素加上清除clearfix
+
+ 	三行自适应布局(position)+两列布局(flot)->两列自适应布局
+
+ 	十一:Flex布局(弹性布局)
+ 		-flex container 内容
+ 		-flex item 元素
+ 		-main axis 主轴
+ 		-cross axis 副轴
+
+ 	十二:flex item
+ 		-在文档流中的子元素 (position 除外) float也算文档流 ,子元素的子元素也除外
+
+ 	十三:flex-direction 方向
+ 		-row(行)|row-reverse(反向行)|column(列)|column-reverse(反向列)
+
+ 	十四:flex-wrap 换行
+ 		-nowarp|warp|wrap-reverse
+
+ 	十五:flex-flow 一次性设置方向与换行
+ 		-<flex-direction>||<flex-wrap>
+
+ 	十六:order 排列顺序
+ 		-order:<number>
+ 		-initial:0
+
+ 	十七:flex-basis 弹性基准
+ 		-设置flex item的初始宽/高
+ 		-flex-basis:main-size|<width>
+
+ 	十八:flex-grow 分配到剩余空间的比例 考虑flex-basis
+ 		-flex-grow:<number>
+ 		-initial:0
+
+ 	弹性布局元素宽度:flex-basis+flow-grow/sum(flow-grow)*remain
+
+ 	十九:flex-shrink 设置或检索弹性盒的收缩比率。
+ 		-flex-shrink:<number>
+ 		-initial:1
+ 	弹性布局元素宽度:flex-basis+flex-shrink/sum(flow-grow)*remain
+
+ 	二十:flex
+ 		-<flex-grow>||<flex-shrink>||<flex-basis>
+ 			伸展因子  收缩因子        基准
+
+ 	二十一:justify-content 对齐剩余空间分配
+ 		-flex-start|flex-end|center|space-between|space-around
+
+ 	二十二:align-items
+ 		-设置cross-axis方向上对齐方式
+
+ 	二十三:align-self
+ 		-设置单个flex item在cross-axis方向上对齐方式
+
+ 	二十四:align-content
+ 		-设置cross-axis方向上行对齐方式
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

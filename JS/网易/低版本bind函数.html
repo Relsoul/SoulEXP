@@ -48,8 +48,7 @@
 				}
 				
 			};
-	
-			return _this.apply(arguments[0],_arr2)
+				_this.apply(arguments[0],_arr2)
 
 		}
 
@@ -57,16 +56,17 @@
 
 	}
 
-	var m=multiply.ss(first_object)
-console.time("str");
-	var arr3=[]
-	for (var i = 0; i < 100000; i++) {
-		arr3.push(rand())
-	};
+	var m=multiply.ss(first_object,20)
+
+// console.time("str");
+// 	var arr3=[]
+// 	for (var i = 0; i < 100000; i++) {
+// 		arr3.push(rand())
+// 	};
 	
-	var s=Math.min.apply(this,arr3)
-	console.log(s)
-	console.timeEnd("str")
+// 	var s=Math.min.apply(this,arr3)
+// 	console.log(s)
+// 	console.timeEnd("str")
 
 
 	</script>

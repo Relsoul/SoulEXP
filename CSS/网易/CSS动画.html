@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	
+		CSS动画
+	一:transition-property 动画过渡属性
+		-transition-property:none
+		-transition-property:all 所有属性都可以做过渡效果
+		-transition-property:left  只对left进行过渡效果
+		-transition-property:color,left 对Left color进行过渡效果
+
+	二:transition-duration 动画执行时间
+		-transition-duration 0s;
+		-transition-duration: 1s;
+
+	三:transition-timing-function 时间函数
+		-transition-timing-function:ease 慢-快-慢
+		-transition-timing-function:cubic-bezier(0.25,0.1,0.25,1);
+
+	四:transition-delay 延迟
+		-transition-delay:1s; 延迟一秒
+	
+	五:transition
+		-transition:left 2s ease 1s ,color 2s;
+					      颜色动画执行2s
+	
+	六:animation-name 动画名称
+		-animation-name:abc name //应用两个动画效果
+		-animation自动运行 transition需要进行触发
+	
+	七:animation-duration 动画执行时间
+		-animation-duration:1s;
+
+	八:animation-timing-function 动画执行函数
+		-animation-timing-function:ease
+
+	九:animation-iteration-count 动画执行次数
+		-animation-iteration-count:1,2,infinite //第一个动画执行一次 第二个动画执行两次 最后一个动画执行无限次
+
+	十:animation-direction 动画顺序
+		-animation-direction:reverse 反向执行
+		-animation-direction:alternate 往返执行
+
+	十一:animation-play-sate 动画播放状态
+		-animation-play-state:running
+
+	十二:animation-delay 动画延迟
+		-animation-delay:1s;
+
+	十三:animation-fill-mode 动画开始结尾状态
+		-animation-fill-mode:backwards//开始时保持动画第一帧状态
+		-animation-fill-mode:forwards//结束时保持动画最后一帧状态
+		-animation-fill-mode:both;
+	
+	十四:@keyframes 关键帧定义
+		-@keyframes abc{
+			form{ //0%
+				width: 10px;
+			}
+			to{//100%
+				width: 200px;
+			}
+		}
+		-@keyframes flash{
+			0%,50%,100%{
+				opacity: 1;
+			}
+			25%,75%{
+				opacity: 0;
+			}
+		}
+
+		-animation:abc 0.5s both,flash 0.5s both;
+
+	</style>
+</head>
+<body>
+	
+</body>
+</html>

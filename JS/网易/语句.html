@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:语句
+		-条件控制语句
+			-if(){}else{}
+			-switch(){
+				case "xx":
+				break;
+				case "x1":
+				break;
+				default:
+				break;
+			}
+		-循环控制语句
+			-while(){}
+			-do{}while()
+			-for(){}
+			-for(x in y)
+			-continue
+			-break
+		-异常处理语句
+			-try/catch/finally throw
+		-with语句
+
+	二:for/in
+		-功能
+			-遍历对象属性
+		-范例
+			-function car(){
+				this.y="y";
+				this.x="x";
+			}
+			var be=new car();
+			for(var key in be){
+				if(be.hasOwnProperty(key)){//判别对象属性是否为自身属性
+
+				}
+				console.log(key+be[key]);
+			}
+
+	四:with语句
+		-功能
+			-通常用于缩短特定情况下必须写的代码量
+			-暂时改变变量的作用域链，将with语句中的对象添加到作用域的头部
+			(function(){
+				with(Math){
+					var x=cos(3*PI)*sin(LN10)
+					var y =tan(14*E)
+				}
+			})()
+			-范例
+				-frame[1].document.forms[0].name.value=""
+				-with(frame[1].document.forms[0]){
+					name.value=""
+				}
+
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

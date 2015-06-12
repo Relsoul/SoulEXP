@@ -285,6 +285,138 @@
 
 // -----------------------------------------------
 
+	regexp
+	一:构造器对象说明
+		-用于定义正则表达式，一个regexp对象包含一个正则表达式和关联的标志
+
+	二:定义方法
+		-/pattern/flags
+		-new regexp()
+
+	三:构造器对象属性方法
+		-prototype
+
+	四:原型对象属性方法
+		-constructor,test,exec
+
+	五:regexp.prototype.test
+		-功能:使用正则表达式对字符串进行测试，并返回测试结果
+		-语法:
+			-regxobj.test(str)
+		-范例:
+			var reg=/^abc/i
+			reg.test("Abc123")//true
+			reg.text("1Abc123")//false
+
+	六:Date构造器对象说明
+		-用于定义日期对象
+		-定义方法
+			var mydate=new Date()
+		-构造器对象属性方法
+			-prototype,parse
+		-原型对象属性方法
+			-constructor,date,getDate..
+
+// ------------------------------------------------------------
+
+标准内置对象-其他
+	
+	一:Math
+		-对象说明:Math对象是拥有一些属性和方法的单一对象,主要用于数字计算
+		-对象属性
+			-E，PI,SQRT2..
+		-对象方法
+			-floor,random,abs,max..
+
+	二:Math.floor
+		-功能:向下取整
+		-语法:Math.floor(num)
+		-范例:
+			Math.floor(0.97)//0
+			Math.floor(5.1)//5
+			Math.floor(-5.1)//-6
+		-相似方法
+			-ceil(向上取整),round(四舍五入)
+
+	三:Math.random
+		-功能:取随机数,返回0~1之间的浮点数
+		-语法:Math.random()
+		-范例:Math.random()
+
+// --------------------------------------------------
+
+JSON
+	一:对象说明
+		-用于存储和交换文本信息
+
+	二:对象方法
+		-parse,stringify
+
+	三:JSON.stringify
+		-功能:将json对象序列化成字符串
+		-语法:JSON.stringify
+		-范例:
+			var json={1:1,2:"2",3:{4:"4",5:{6:6}}};
+			JSON.stringify(json);//{"1":1,"2":"2"...}
+	四:JSON.parse
+		-功能:将json字符串转化成json对象
+		-语法:JSON.parse(text)
+		-范例:
+		var str='{"1":1,"2":2}'///
+
+// -----------------------------------------------
+
+	全局对象
+
+	一:属性
+		-NaN,Infinity,undefined
+
+	二:方法
+		-parseInt,parseFloat...
+
+	三:处理URI方法
+		-encodeURIComponent,....
+
+	四:构造器属性
+		-boolean,String,Number,Object,Function....
+
+	五:对象属性
+		-Math,JSON
+
+	六:NaN
+		-非数字值
+			-表示错误或无意义的运算结果
+			-NaN参与运算返回仍然是NaN
+			-NaN不等于任何值，包括NaN本身
+			-可以用isNaN()判断运算结果是否为NaN
+
+	七:parseInt
+		-功能:将字符串转化为数字
+		-语法:parseInt(string,[radix])
+		-范例:
+			parseInt("10")//10
+			parseInt("10",8)//8 八进制
+			parseInt("10",16)//16进制
+
+			parseInt("010")//10 十进制
+			parseInt("010",8)//8 八进制
+
+			parseInt("0x1f")//31
+			parseInt("0x1f",16)//31
+
+	八:eval
+		-功能:eval()函数可以计算某个字符串，并执行其中的JavaScript代码
+		-语法:eval(string)
+		-范例:
+			var s="alert('hello')"
+			eval(s)
+
+	九:encodeURIComponent
+		-功能:将URI参数中的中文、特殊字符等作为URI一部分进行编码
+		-语法:encodeURIComponent()
+		-范例:
+			var url="http://baidu.com/reg.html?name="+encodeURIComponent(name)
+			var url1="test.html?param0"+encodeURIComponent("javk$lucy")="&paraml"+encodeURIComponent("/image.test.png")
 
 
 

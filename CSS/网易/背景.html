@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	CSS之背景
+
+	一：background-color //背景颜色
+		-<color>
+		-background-color:rgba(255,255,255,0.5)
+		-background-color:transparent//全透明
+
+	二:background-image 背景图片
+		-<bg-image>[,<bg-image>]*
+		-background-image:url(red.png),url(blue.png)//可以写多个背景,先写的在上一层
+		-background-color:green;//颜色始终在最后一层
+
+	三:background-repeat 图片平铺
+		-<repeat-style>=repeat-x|repeat-y|[repeat|space|round|no-repeat]{1,2}
+		-background-image:url(red.png),url(blue.png)
+			-background-repeat:repeat-x|space
+			-background-repeat:no-repeat repeat,repeat-x
+						X轴	  Y轴	 blueX轴
+
+	四:background-attachment 图片滚动
+		-background-image:url(red.png)
+		-background-attachment:local//内容跟随背景滚动
+
+	五:background-position 图片定位
+		-background-position: 10px 20px
+					X轴     Y轴
+		-background-position:50% 50% //居中
+		-background-position:center center //居中
+		-background-position:right//X轴右边 只有一个值默认为center
+		-background-positon:right 10px top 20px
+					右边距离10px 上边距离20px
+		-background-position:0 -100px//利用-值来偏移
+	
+	六:linear-gradient 线性渐变
+		-background-image:linear-gradient(red,blue)//从上至下 red渐变为blue
+		-background-image:linear-gradient(to right bottom red,blue)//从左上角至右下角 红色变蓝色
+		-background-image:linear-gradient(45deg,red,green 20%,blue)//green在20%位置
+
+
+	七:radial-gradient 径向渐变
+		-background-image:radial-gradient(circle,red,blue);
+		-background-image:radial-gradient(100px 50px at 0 0,red,blue);
+							X 	Y  圆心定位
+	八:repeat-*-gradient 重复渐变
+		-background-image:repeating-linear-gradient(red,blue 20px red 40px);//重复渐变
+
+	九:background-origin 图片位置
+		-<box>[,<box>]
+		-background-image:url(red.png)
+		-background-origin:content-box|border-box..
+
+	十:background-clip 图片裁剪
+		-background-clip:paddding-box|content-box..//图片裁剪
+		-background-origin:content-box|....
+
+	十一:background-size
+		-background-size:20px 		20px //固定大小
+				    宽为 容器20px        高为容器20px
+		-background-size:cover//撑满整个容器
+		-background-size:contain//图片以最大的形状显示在容器,但是不超过容器
+
+	十二:background 缩写
+		-[<bg-layer>,]*<final-bg-layer>给背景加颜色必须是最后一个层
+		-background:url(red.png) 0 0/20px 20px no-repeat, url(blue.png) 50% 50%/contain no-repeat content-box green;
+						  既是clip content-box 也是orgin content-box
+	</style>
+</head>
+<body>
+	
+</body>
+</html>

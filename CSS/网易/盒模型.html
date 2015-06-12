@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		CSS盒模型
+
+		一:盒子模型
+			-每个盒子都有:边距、边框、填充、内容四个属性
+			-每个属性都有:上、下、左。右四部分
+
+		二:CSS盒模型
+			-margin border padding content
+			-content=width*height
+			-border,padding,margin都有top right bottom left四部分
+
+		三:width
+			-width:<length>|<precentage>
+			-引申:max-width,min-width
+			-width:50%;
+
+		四:height
+			-<length>|<precentage>
+			-height:50%;
+			-引申:max-height,min-height
+
+
+		五:padding 填充
+			-[<length>|<precentage>]{1,4}
+			-padding:20px 20px 20px 20px
+				   上	   右	下   左
+			-也可以单独设置　padding-top:10px;
+			-引申:margin,border都有四个值
+
+			-值缩写
+				-padding:20px 10px (上下20px 左右10px)
+				-padding:20px 10px 30px=padding:20px 10px 30px 10px
+				-对面相等，后者省略，4面相等，只设一个
+
+		六:margin
+			-[<length>|<precentage>|auto]{1,4}
+			-引申:margin的TRBL,值缩写
+			-margin合并：
+				-相邻的元素外边距会合并,取较大的值
+				-父元素与第一个/最后一个子元素会合并
+
+		七:水平居中
+			-margin:0 auto;(水平居中)
+
+		八:border
+			-[<border-width>||<border-style>||<border-color>]
+			-border-width:[<length>]{1,4}
+			-border-style:[solid|dashed|dotted]{1,4}
+			-border-color:[<color>|transparent]{1,4}
+
+		九:border-radius(圆角)
+			-top-left,top-right,bottom-right,bottom-left
+			-[<length>|<precentage>]{1,4}[/<length>|<precentage>]{1,4}?
+			-border-radius:10px;(四个角都是10px)
+			-border-radius:0px 5px 10px 15px/20px 15px 10px 5px
+				   top-L水平  -R水平                -L垂直  -R垂直
+			-border-radius:50%;//正圆
+			-border-top-left-radius:10px//左上角10px
+		
+		十:overflow
+			-visible|hidden|scroll|auto
+			-overflow:visible//超出部分仍然显示
+			-overflow:hidden//超出部分隐藏
+			-overflow:scroll//显示滚动条
+			-overflow:auto//当元素内容超出显示滚动条
+			-引申:overflow-x,overflow-y
+
+		十一:box-sizing
+			-content-box|border-box
+			-border-box设置的是border的宽高
+			-content-box会把paddding也计算进入宽高里面
+			-设置width height指定的区域是哪个区域
+
+		十二:box-shadow (盒阴影)
+			-none|<shadow>[,shadow]*..
+			-box-shadow:        4px          6px           3px          3px     red
+				              水平偏移     垂直偏移  模糊半径  阴影大小
+			-box-shadow:3px 3px 5px 2px //外阴影
+			-box-shadow: inset 0px 0px 5px red//内阴影
+			-box-shadow 3px 3px 5px 2px black,inset 0px 0px 5px red//多阴影
+			-阴影不占空间
+
+		十三:outline (轮廓)
+			-[<outline-width>||<outline-style>||<outline-color>]
+			-不占空间
+			-border外
+
+			
+		关于CSS属性的浏览器兼容性，可以通过 caniuse 查询。
+		border-radius ie8及以下不支持
+		box-sizing ie7及以下不支持
+		box-shadow ie8及以下不支持
+		outline ie7及以下不支持
+
+	</style>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		文本
+
+		一:font-size设置文本大小
+			-<length>|<percentage>
+			-font-size:2em;//父元素font-size的两倍
+
+		二:font-family设置字体
+			-[<family>|<generic-family>]
+				-serif|sans-serif
+			-font-family:arial,Verdana,sans-serif
+
+		三:font-weight字体加粗
+			-normal|bold
+
+		四:font-style斜体
+			-normal|italic
+			-font-style:normal|italic(斜体)
+
+		五:line-height字体间距
+			-normal|<number>|<length>|<percentage>
+			-line-height:40px;
+			-line-height:3em;同等于line-height:300%(先计算再继承给子元素)|3(具体过程中会有一些区别)
+
+		六:font缩写
+			-font:30px(font-size)/2(line-height) "consolas"
+			-font:italic bold 20px/1.5 arial,serif
+
+		七:color颜色
+			-color:rgba(255.0.0.1)
+			-color:#ccc;
+			-color:transparent//全透明
+		
+		八:text-align 水平对齐
+			-left|right|center
+			-text-align:right
+			-text-align:justify;//两端对齐
+
+		九:vertical-align 垂直对齐
+			-baseline|sub|super|top|middle(居中)|<percentage>(参造物line-height)|<length>...
+			-vertical-align:middle;//垂直居中对齐
+
+		十:text-indent 首行缩进
+			-<length>|<percentage>
+			-text-indent:2em//以文字大小为参造物
+			-text-indent:20%//以容器百分比缩进
+			-text-indent:-2em//反方向缩进
+		
+		十一:white-space 
+			-换行是否保留,空格是否合并,是否自动换行
+			-normal|nowrap|pre|pre-wrap|pre-line
+		
+		十二:word-warap 单词换行
+			-normal|break-word
+
+		十三:word-break 
+			-任意两个字母之间换行
+			-normal|keep-all|break-all
+
+		十四:text-shadow 文字阴影
+			-none|<length>{2,3}&&<color>?]#
+			-text-shadow:1px 2px 3px(模糊banjing) #f00(color不写默认为文字颜色)
+
+
+		十五:text-decoration 文本装饰
+			-none|[underline(下划线)||overline(上划线)|line-throusg(删除线)]
+			-text-decoration:underline overline line-throusg;
+
+		十六:text-overflow 文本超出处理
+			-clip|ellipsis
+			-text-overflow:ellipsis;//必须配合以下两个属性
+			-overflow:hidden//溢出的时候截掉
+			-white-space:nowarap//一行
+
+		十七:curosr 光标属性
+			-[<uri>]*[auto|none...]
+			-cursor:url(xxx.cur),pointer
+		
+		十八: inherit 强制继承父元素的值
+			-color:inherit
+			-font-size:inherit
+
+
+	</style>
+</head>
+<body>
+	
+</body>
+</html>

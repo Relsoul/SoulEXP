@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.container{
+			margin: 0 auto;
+			width: 40%;
+		}
+		
+		.bar_bg{
+			display: block;
+			background: #485876;
+			height: 15px;
+			border-radius: 8px;
+			width: 100%;
+		}
+
+		.bar_on{
+			height: 15px;
+			animation: bar 7s infinite ;
+			background:linear-gradient(-45deg, rgba(247,122,122,0.9) 0%,  transparent 30%, rgba(247,122,122,0.4) 60%, rgba(247,122,122,0.9) 80% ,transparent 100%);
+			display: block;
+			border-radius: 8px;
+			width: 0;
+			-webkit-animation: bar 7s ease-out  infinite;
+			-o-animation: bar 7s ease-out infinite;
+			animation: bar 7s ease-out infinite;
+
+		}
+		@keyframes bar{
+			0%{
+				width: 0;
+			}
+			100%{
+				width: 100%;
+			}
+		}
+
+		@-webkit-keyframes bar{
+			0%{
+				width: 0;
+			}
+			100%{
+				width: 100%;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>进度条</p>
+		<div class="bar">
+			<span class="bar_bg">
+				<span class="bar_on"></span>
+			</span>
+			
+		</div>
+	</div>
+</body>
+</html>

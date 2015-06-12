@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		闭包
+	function add(){
+		var i=0
+		return function(){
+			alert(i++)
+		}
+	}
+	var f=add();
+	f();
+	f();
+
+	-闭包由函数和与其相关引用环境的组合而成
+	-闭包允许函数访问其引用环境中的变量（又称自由变量）
+	-广义上来说，所有的JS函数都可以称为闭包，因为JS函数在创建时保存了当前的词法环境
+
+	二:闭包的应用-保存变量现场
+	var addH=function(nodes){
+		var help=function(i){
+			return function(){
+				alert(i)
+			}
+		}
+		for (var i = 0; i < nodes.length; i++) {
+			nodes[i].onclick=help(i)
+		};
+
+	}
+
+	三:闭包的应用-封装
+	var obs=(function(){
+		var obsl=[]
+		return {
+			add:function(obj){
+				obsl.push(obj)
+			}
+		}
+		//do sth
+	})()
+
+function start(age,sex){
+	this.age=age
+	this.sex=sex
+}
+
+start.prototype.pass=function(){
+	var infoP=confirm("if OK?")
+	return infoP
+}
+
+start.prototype.goQun = function() {
+	var age = this.age;
+	var sex=this.sex;
+	if (age >= 20 && age < 26&&sex=="男") {
+		var infoH=prompt("Your Height");
+		var infoW=prompt("Your Weight");
+		var info_img=new images();
+		if(this.pass()){
+			console.log("your OK")
+		}else{
+			return false;
+		}
+
+	} else {
+		console.log("rules")
+	}
+
+}
+
+var soul=new start(17,"男");
+soul.goQun();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

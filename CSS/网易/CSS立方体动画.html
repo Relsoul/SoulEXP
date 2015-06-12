@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.container{
+		margin: 10% auto;
+		width: 40%;
+		-webkit-perspective: 1000px;
+
+		
+		
+	}
+
+	.box{
+		-webkit-transform-style: preserve-3d;
+		position: absolute;
+		transform:rotateX(-20deg) rotateY(-20deg);
+		animation: anim 5s ease;
+		-webkit-animation: anim 3s ease infinite;
+	}
+
+	@keyframes anim{
+		form{
+		transform:translateZ(-100px) rotateY(0deg);
+		-webkit-transform:translateZ(-100px) rotateY(0deg);
+		}
+		to{
+			transform:translateZ(-100px)   rotateY(360deg);
+			-webkit-transform:translateZ(-100px)   rotateY(360deg);
+		}
+	}
+
+	@-webkit-keyframes anim{
+		form{
+	transform:translateZ(-100px) rotateY(0deg);
+	-webkit-transform:translateZ(-100px) rotateY(0deg);
+		}
+		to{
+			transform:translateZ(-100px)   rotateY(360deg);
+			-webkit-transform:translateZ(-100px)   rotateY(360deg);
+		}
+	}
+
+	.box>div{
+		width: 200px;
+		height: 200px;
+		border: 1px solid black;
+		position: absolute;
+	}
+
+	.font{
+	transform:translateZ(100px);
+	}
+
+	.back{
+	transform:rotateX(180deg) translateZ(100px);
+	-webkit-transform:rotateX(180deg) translateZ(100px);
+	}
+
+	.left{
+	transform:rotateY(-90deg) translateZ(100px);
+	-webkit-transform:rotateY(-90deg) translateZ(100px);
+	}
+
+	.right{
+	transform:rotateY(90deg) translateZ(100px);
+	-webkit-transform:rotateY(90deg) translateZ(100px);
+
+
+
+	}
+
+	.top{
+	transform:rotateX(90deg) translateZ(100px);
+	-webkit-transform:rotateX(90deg) translateZ(100px);
+
+
+
+	}
+
+	.bottom{
+	transform:rotateX(-90deg) translateZ(100px);
+	-webkit-transform:rotateX(-90deg) translateZ(100px);
+	}
+	
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+		<div class="font">font</div>
+		<div class="back">back</div>
+		<div class="left">left</div>
+		<div class="right">right</div>
+		<div class="top">top</div>
+		<div class="bottom">bottom</div>
+		</div>
+	</div>
+</body>
+</html>

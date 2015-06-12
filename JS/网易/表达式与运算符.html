@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	
+	一:表达式
+		-慨念
+			-js短语，解释器可以执行它并生成一个值
+		-范例
+			-1.7 ;"1.7";var a=2; var b="2"; (1.7+1)*"1.7"-b&&(function()..)
+
+	二运算符
+		-算术运算符（+，-，*，/，%）
+		-关系运算（>,<,==,!=,>=,===,!==）
+		-逻辑运算(!、&&、||)
+		-位运算（&、|、^、~、<<、>>）
+		-赋值运算（=）
+		-条件语句（？：）
+		-逗号运算（，）
+		-对象运算符（new delete . [] instanceof）
+
+	三：关系运算 ===
+		-功能
+			-判断左右两边对象或值是否类型相等且值相等
+		-范例
+			-var a="123"; var b= "123"; var c="4" var oa=new String("123"); var ob=new String("123"); var oc=oa;
+			a===oa//false 
+			oa===ob //false
+			oa===oc//true
+			a===b//true
+			a===c//false
+
+	四:关系运算==
+		-功能
+			-判断操作符两边对象或值是否相等
+		-范例
+			-99=="99"//true
+			-new String("99")==99//true
+			-true=1//true
+			-false=0//true
+		-==例外规则
+			-null==undefined
+			-null/undefined进行==运算时不进行隐式类型转换
+		-范例
+			-0=null//false
+			-null=false//false
+			-"undefined"==undefined//false
+
+	五:逻辑运算!
+		-功能
+			-!x表达x表达式运行结果转换成boolean值后取反
+			-!!表示取x表达式运行结果的boolean值
+		-范例
+			-var obj={}
+			-var a=!obj//false
+			-var a=!!obj//true
+
+	六:逻辑运算&&
+		-功能
+			-x&&y：如果x表达式结果转换为boolean值为false,则不运行表达式y而直接返回x表达式的运行结果
+		-范例
+			-var a=0&&(function(){return 1+1})()//0
+			-var b=1-0&&(function(){return 1+1})()//2
+
+	七:逻辑运算||
+		-功能
+			-x||y：如果x表达式结果转换为boolean值为true,则不运行表达式y而直接返回表达式x的运行结果
+		-范例
+			-var a=0||(function(){return 1+1})()//2
+			-var b=1-0||(function(){return 1+1})()//1
+
+	八:运算符优先级
+		-1-0&&2//2
+		-+-*/%优先级高于&&
+		-*/%优先级高于+-
+		-&&优先级高于?:
+		-括号内优先级高于&&
+		
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

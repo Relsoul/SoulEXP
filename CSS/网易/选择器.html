@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		选择器
+		例如:
+		h1{
+			color:red;
+		}
+
+	一:标签选择器
+		-p{color:blue;}
+
+	二:类选择器
+		-.special{color:red;}
+		-.
+		-字母,数字,-,_
+		-className必须以字母开头
+		-区分大小写
+		-可以出现多次
+
+	三:id选择器
+		-#banner{color:black;}
+		-#
+		-字母,数字,-，_
+		-id必须以字母开头
+		-区分大小写
+		-只能出现一次
+
+	四:通配符选择器
+		-*{color:blue;}
+
+	五:属性选择器-[att]
+		-[disabled]{background: red;}
+		-[type=button]{color:blue;}
+		-#nav{}==[id=nav]{}
+		-[class~=sports]//class属性包含了sports
+		-[lang|=en]//选择lang为en或者中划线连接的
+		-[href^="#"]{color:red;}//选择#元素
+		-[href$=pdf]//选取以pdf结尾的元素
+		-[href*="xxx"]//href包含了xxx值
+
+	六:伪类选择器
+		-伪类选择器以冒号开头
+		-a:link{color:red;}
+		-a:visited{}//访问过的连接颜色
+		-a:hover{}//用户鼠标移上去的时候
+		-a:active{}//用户鼠标点击上去的时候
+		-:enabled//元素可用
+		-:disabled//元素不可用
+		-:checked//选中元素
+		-li:first-child//选择元素第一项
+		-li:last-child//选择元素最后一项
+		-li:nth-child(3n+1)//n从0开始
+		-li:nth-last-child(3n+1)//n从最后一项开始计算
+		-:only-child//选择只有一个子元素的标签
+		-dd:first-of-type//选择第一个这种类型的元素
+		-dd:last-of-type//选择最后一个这种类型的元素
+		-dd:nth-of-type(2n)//
+		-:only-of-type//选择只有一个父级元素
+		-:empty//选择没有子元素的
+		-:root//选择html根标签html
+		-:not()//不包含某个选择器的元素
+
+	七:伪元素选择器
+		-::first-letter{color:red;}//选择第一个字母
+		-::first-line{}//选择第一行
+		-::before{content:;}//在元素内容前面插入
+		-::after{content: }//在元素后面插入
+		-::selection{}//用于被用户选中的内容
+
+	八:组合选择器;
+		-后代选择器
+			-.main h2{}//选取main下的h2
+		-子选择器:
+			-.main>h2{}//选择.main第一级的子元素
+		-兄弟选择器:
+			-h2+p{}//选择相邻1的p
+			-h2~p{}//选择同级的
+
+	九:选择器分组
+		h1,h2,h3{}//逗隔开
+
+	十:继承
+		-body{font-family: "微软雅黑"}//属性的继承,子元素可以继承父级元素的属性
+		-继承属性
+			-color
+			-font
+			-text-align
+			-list-style
+		-非继承属性
+			-background
+			-border
+			-position
+
+	十一：CSS优先级
+		-计算方法
+			-a=行内样式
+			-b=ID选择器的数量
+			-c=类，伪类和属性选择器数量
+			-d=标签选择器和伪元素的数量
+
+	十二:CSS层叠;
+		-相同的属性会覆盖
+			-优先级
+			-后面覆盖前面
+		-不同的属性会合并
+	
+	十三:CSS改变优先级;
+		-改变先后顺序
+		-提示选择器的优先级
+		-!import//在属性后面加
+
+
+	</style>
+</head>
+<body>
+	
+</body>
+</html>
