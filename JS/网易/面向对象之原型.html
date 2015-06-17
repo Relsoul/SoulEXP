@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	面向对象原型与原型链
+
+	一:思考
+		-function Teacher(){
+			this.courses=[];
+			this.job='teacher';
+			this.setName=function(name){
+				this.name=name
+			}
+			this.addCourse=function(course){
+				this.courses.push(course)
+			}
+		}
+
+		var bill=new Teacher();
+		bill.setName('Bill');
+		bill.addCourse('Math');
+
+		var tom=new Teacher();
+		tom.setName('Tom');
+		tom.addCourse('physics')
+
+		//以上tom和bill的公共属性都耗用了内存 因为每次都需要生成每个实例的公共方法
+
+	二:原型
+		-prototype
+		-function Teacher(){
+			
+			this.courses=[];
+		}
+		Teacher.prototype={
+			job:'teacher',
+			setName:function(name){
+				this.name=name;
+			}
+			addCourse:function(course){
+				this.courses.push(course)
+			}
+		}
+		//生成的实例有一个_proto_执行构造器的原型
+
+	三:原型链
+		-实例的_proto_都指向teacher.prototype,teacher._proto_指向Object.prototype
+		-Object.prototype指向null
+
+	四:原型链-属性查找
+		-从原型链从下往上查找
+
+	五:原型链-属性修改
+		-直接修改对象属性，永远修改对象本身属性，无论是来源于原型还是本身，如本身无这个属性则增加这个属性至本身
+		-tom.job="soul" //tom本身无job属性,在tom对象上创建一个job属性同时设置job为soul
+		-Teacher.prototype.job="soul"//修改原型对象上的属性
+		-bill.job//soul
+
+	六:原型链-属性删除
+		-delete tom.job//删除了自身job属性 返回的是原型上的job属性
+		-delete tom.job//无法删除到原型上的属性 不会有任何变化
+
+	七:思考
+		-如何判断一个属性来自于对象本身？
+			-tom.hasOwnProperty("job")//来源于对象本身返回true 反之返回false
+
+	八:ES5中的原型继承
+		-Object.create(proto[,propertiesObject])//第二个参数为创建的实例对象设置属性方法
+		-var soul={
+			//私有属性与方法
+			job:"teacher",
+			courses:[],
+			addCourse:function(course){
+				this.course.push(course)
+			}
+		}
+		var bill=Object.create(teacher);//以teacher为原型
+		bill.job//teacher
+		bill.addCourse("soul")//因为Job是原型链上并且没有被继承下来 所以会修改原型链上的值
+		//soul.addCourses//soul
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

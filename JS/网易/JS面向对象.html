@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	JS面向对象编程
+
+	一:全局变量
+		-var test="soume"
+		-window.test="some"
+		-(function(){
+			var a;
+			test='some v'
+		})
+		-后面两种相当于把变量加在window对象上 可以用delete删除
+		-function todo(){
+			var a =test ="some V"
+			//实际上定义了两个变量
+			test="someV"
+			var a=test
+
+		}
+
+		-var test="aaa"//可以在程序任何地方改写
+
+	二:信息隐藏-封装
+		-开放一部分属性与方法
+		-function A(){
+			this.a=null;
+			this.b=null;
+			this.step1=function(){
+
+			}
+			this.api=function(){
+
+			}
+		}
+
+		-function A(){
+			this.a=null;
+			this.b=null;
+		}
+		var pro=A.prototype;
+		pro.step1=function(){
+
+		}
+
+		-以上方法 私有跟公有是不分的
+
+		-function A (){
+			var _config=["A","B","C"];//私有属性
+			//开放API
+			this.getConfig=function(){
+				return _config
+			}
+		}
+		var pro=A.prototype;
+		//公共属性
+		pro.step1=function(){
+
+		}
+
+
+	三:类继承
+		-(function(){
+			function ClassA(){}
+			ClassA.classMethod=function(){}//类对象上 为类方法
+			ClassA.prototype.api=function(){}//类原型上方法 为实例上方法
+
+			function ClassB(){
+				ClassA.apply(this,arguments)//为了使用构造函数的 new ClassB() 执行下CLASSA
+			}
+
+			ClassB.prototype=new ClassA();//给ClassB原型赋值了一个对象
+			ClassB.prototype.constructor=ClassB();
+			ClassB.prototype.api=function(){//在实例上定义了api
+				ClassA.prototype.api.apply(this,arguments)
+			}
+		})()
+		
+
+		-		ClassA
+				calssMethod |function
+				prototype     |ClassA.prototype
+
+					ClassA.prototype
+					_proto_   |Object.prototype
+					api 	  | function 
+
+			ClassB
+			classMethod | function
+			prototype     | ClassB.prototype
+
+			ClassB.prototype
+			_proto_   |ClassA.prototype
+			constructor |ClassA
+			api  	      | function
+
+			B
+			_proto_ |ClassB.prototype
+
+		-形成了类继承的形式
+
+	四:原型继承
+		(function(){
+			var proto={
+				action1:function(){
+
+				},
+				action2:function(){
+
+				}
+			}
+
+			var obj=Object.create(proto)
+		})()
+
+
+
+
+
+
+
+
+	</script>	
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	function soul(){
+		this.name="soul"
+		this.age=25
+		this.sayName=function(){
+			console.log(this.name)
+		}
+	}
+
+	soul.prototype.sayAge=function(){
+		console.log(this.age)
+	}
+
+	var init=Object.create(soul)
+
+	console.log(init.name)
+	console.log(init)
+	init.sayAge()
+	init.sayName()
+if (!Object.create) {
+    Object.create = function (o) {
+        if (arguments.length > 1) {
+            throw new Error('Object.create implementation only accepts the first parameter.');
+        }
+        function F() {}
+        F.prototype = o;
+        return new F();
+    };
+}
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

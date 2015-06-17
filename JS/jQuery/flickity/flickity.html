@@ -31,52 +31,52 @@
 	
 	div{
 		color: #fff;
-		font-size:200%;
+		font-size:150%;
 		text-align: center;
 	}
 
 	/*通过设置 elem.is-selected{}来设置选中图片的样式*/
 
 
-	.img_2.is-selected{
+	/*.img_2.is-selected{
 		background: #b2b3b4;
 	}
 
 	/*上下切换条箭头背景颜色设置*/
-	.flickity-prev-next-button{
+	/*.flickity-prev-next-button{
 		background-color:#8e8e9e;
 		border-radius: 8px;
 	}
 	
 	/*上下切换条箭头颜色设置*/
-	.flickity-prev-next-button .arrow{
+	/*.flickity-prev-next-button .arrow{
 		fill:#7ece7e;
-	}
+	}*/
 
 	/*小圆点导航条整体设置*/
-	.flickity-page-dots {
+	/*.flickity-page-dots {
 	  bottom: 0px;
-	}
+	}*/
 
 	/*小圆点导航原点设置*/
-	.flickity-page-dots .dot {
+	/*.flickity-page-dots .dot {
 	  width: 12px;
 	  height: 12px;
 	  opacity: 1;
 	  background: transparent;
 	  border: 2px solid #fff;
-	}
+	}*/
 
 	/*选中小圆点设置*/
-	.flickity-page-dots .dot.is-selected {
+	/*.flickity-page-dots .dot.is-selected {
 	  background: #887e8e;
-	}
+	}*/
 	
 	/*选择幻灯片时的轮廓线设置*/
-	.flickity-enabled:focus .flickity-viewport {
+	/*.flickity-enabled:focus .flickity-viewport {
 	  outline: thin dotted;
 	  outline: 5px auto -webkit-focus-ring-color;
-	}
+	}*/
 
 
 	.img_1{
@@ -127,18 +127,18 @@
 
 			setGallerySize: true,//默认使用最高的图片作为幻灯片的高度,设置为false则使用幻灯片定义高度
 
-			rightToLeft: true,//从右至左播放幻灯片
+			
 
 			
 
 		})
 
-		//创建一个新的预览导航幻灯片
-		$(".main_box_nav").flickity({
-			asNavFor: '.main_box', //指向主幻灯片
-			pageDots:false,
-			contain:true
-		})
+		// //创建一个新的预览导航幻灯片
+		// $(".main_box_nav").flickity({
+		// 	asNavFor: '.main_box', //指向主幻灯片
+		// 	pageDots:false,
+		// 	contain:true
+		// })
 
 		
 	})
@@ -152,16 +152,16 @@
 <body>
 
 	<div class="main_box" >
-		<div class="img_1">1</div>
-		<div class="img_2">2</div>
-		<div class="img_3">3</div>
+		<div class="img_1">极客标签社区1</div>
+		<div class="img_2">极客标签社区2</div>
+		<div class="img_3">极客标签社区3</div>
 	</div>
 
-	<div class="main_box_nav">
+	<!-- <div class="main_box_nav">
 		<div class="nav img_1">1</div>
 		<div class="nav img_2">2</div>
 		<div class="nav img_3">3</div>
-	</div>
+	</div> -->
 
 	
 	

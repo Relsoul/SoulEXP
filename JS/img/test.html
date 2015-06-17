@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+
+	$(function(){
+
+		var a=$(".col img").length;
+		console.log(a)
+		var w=$(".col").width(120*a);
+		
+		var last_img=$(".col img").eq(a-1).position().left;
+		console.log(last_img);
+
+		$(".x").on("click",function(){
+			var col_left=$(".col").css("left")
+			var n_l=parseInt(col_left);
+			console.log(n_l)
+			
+			if(n_l>-(50*a-1)){
+				$(".col").animate({
+					left:"-=100px"
+
+				},300)
+			}
+			
+		})
+
+		$(".s").on("click",function(){
+			var col_left=$(".col").css("left")
+			var n_l=parseInt(col_left);
+			if(n_l<0){
+				$(".col").animate({
+					left:"+=100px"
+
+				},300)
+			}
+
+		})
+			
+	
+
+	})
+
+
+	</script>
+
+	<style type="text/css">
+	*{
+		padding: 0;margin: 0;
+	}
+		.col{
+			list-style: none;
+			position: relative;
+			left: 0;
+			
+
+
+		}
+		
+		.col>li{
+			display: inline-block;
+			
+		}
+
+		.link_rool{
+			margin:  200px auto;
+			width: 240px;
+			overflow: hidden;
+			
+		}
+
+	</style>
+</head>
+<body>
+	<div class="link_rool">
+		<span class="s">上一页</span>
+		<ul class="col">
+			<li><img src="1.jpg" width="100"></li>
+			<li><img src="2048.jpg" width="100"></li>
+			<li><img src="2015.png" width="100"></li>
+			<li><img src="2015-1.jpg" width="100"></li>
+
+		</ul>
+			
+
+			
+		<span class="x">下一页</span>
+	</div>
+	
+
+</body>
+</html>

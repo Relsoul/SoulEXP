@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	面向对象
+
+	一:程序设计方法
+		-面向过程
+		-面向对象
+
+	二:面向过程
+		-思想
+			-以过程为中心
+			-自顶向下-逐步细化
+			-C...等
+
+	三:面向对象
+		-思想
+			-对象作为程序的基本单元
+			-程序分解为数据和相关操作
+			-C++ Java
+		-基本慨念
+			-类、对象
+			-属性、方法
+		-基本特性
+			-继承
+			-封装
+			-多态
+
+	四:JS面向对象
+		-constructor
+		-this
+		-原型继承
+		-原型链
+		-应用
+
+	五:constructor
+		-var o=new Object();
+		var o={x:1}
+		var a= new Array();
+		var a=[1,2,3]
+		以上constructor为Object
+
+		-自定义constructor
+			-function myObj(name,age){
+				this.name=name;
+				this.age=age;
+				this.setName=function(name){
+					this.name=name;
+				}
+			}
+			var m=new myObj("name",100)//constructor为myObj
+
+		-三种形式
+			-function myObj(){};
+			-var myObj=function(){};
+			-var myObj=new Fcuntion();
+
+		-注意
+			-所有的函数都可以当成constructor?  //NO!
+			-var o =new Math.min()//NO!
+			-function myObj(name,age){
+				this.name=name;
+				this.age=age;
+				this.setName=function(name){
+					this.name=name;
+				}
+				return {};
+			}
+			-var m=new myObj("name",100);
+			-alert(m.name)// undefined 这里的m实际上是函数返回的{}对象的属性而非函数对象 
+			//在返回对象找不到这个m 因为是空的
+
+	六:this
+		-var a=10;
+		alert(this.a)//window.a
+		this.b=20//window
+		alert(this.c)//window
+
+		-function test(name){
+			this.name=name//this指向创建的实例
+			this.sayHello=function(){
+				alert("hello",this.name)
+				//这里的this指向函数调用者 也就是下面的实例p1
+			}
+		}
+		-var p1=new test("by")//p1.name:by
+		-p1.sayHello()//p1.this
+
+		-new Fcuntion(this) //出现的this都指向window 无论执行环境在什么情况
+
+		-eval('alert(this)') //调用上下文的环境
+
+		-(function(){
+			eval("alert('this')")//执行闭包的this也就是window
+
+		})()
+
+		function Foo(){
+			this.bar=function(){
+				eval('alert(this)')//这里的eval this执行bar函数的this 也就是foo实例
+			}
+		}
+
+		var foo=new Foo();
+		foo.bar();
+
+		-总结
+			-	场景			值
+				全局环境		全局对象(window)
+				constructor 		新创建的对象
+				函数调用		函数的调用者
+				new Function 		全局对象window
+				eval 			调用上下文中的this
+
+
+	七:apply、call
+		-function Point(x,y){
+			this.x=x;
+			this.y=y;
+			this.move=function(x,y){
+				this.x+=x;
+				this.y+=y
+			}
+		}
+		var point=new Point(0,0)
+		point.move(1,1)
+
+		var circle={x:0,y:1,r:1};//创建一个圆
+		point.move.apply(circle,[1,1])//利用apply来实现圆的移动
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
