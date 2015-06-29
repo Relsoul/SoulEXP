@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:实现方式
+		-gif
+		-flash
+		-CSS3
+		-JS
+
+	二:三要素
+		-对象
+			-DOM
+		-属性
+			-width
+			-height
+			-Left
+			-....
+		-定时器
+			-setInterval
+			-setTimeout
+			-requestAnimationFrame
+
+	三:setInterval
+		-var timer=setInterval(func,delay)
+					函数  触发定时器的间隔
+		-clearInterval(timer)
+		-每隔一段时间执行
+
+
+	四:setTimeout
+		-var timer=setTimeout(func,delay)
+		-clearTimeout(timer)
+		-只会执行一次
+
+	五:requestAnimationFrame
+		-var timer=requestAnimationFrame(func)
+		-cancelAnimationFrame(func)
+		-间隔时间以显示器的频率决定
+		-更流畅
+
+	六:常见动画
+		-形变
+		-位移
+		-旋转
+		-透明度
+		-...
+
+	七:动画函数
+		-var animation=function(ele,attr,from,to){
+			var distance=Math.abs(to-from);
+			var stepLength=distance/100
+			var sign=(to-from)/distance
+			var offset=0;
+			var step=function(){
+				var tmpOffset=offset+stepLength;
+				if(tmpOffset<distance){
+					ele.style[attr]=from+tmpOffset*sign+'px'
+				}else{
+					ele.style[attr]=from+"px"
+					clearInterval(intervalId)
+				}
+			}
+			ele.style[attr]=from+"px";
+			var intervalId=setInterval(step,10)
+		}
+
+		-var process=function(prcsswrap,drtn,intrvl,callback){
+			var width=prcsswrap.clientWidth
+			var prcss=prcsswrap.getElementsByClassName('prcss')[0]
+			var count=drtn/intrvl
+			var offset=Math.floor(width/count)
+			var tmpCurrent=CURRENT
+			var step=function(){
+				
+			}
+			var intervalId=setInterval(step,intrvl)
+		}
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

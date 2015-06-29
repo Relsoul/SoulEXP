@@ -4,11 +4,17 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="../lable/css_icon/css/font-awesome.min.css">
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+		var elem=document.getElementById("profession")
+		// console.log(elem.siblings[0])
+		console.log(elem.parentNode.firstElementChild)
+		console.log(elem.firstChild)
+		console.log(elem.nextElementSibling)
+	}
+	</script>
 </head>
 <body>
-	<div>
-		<i class="icon-ok"></i>
-	</div>
+	 <p id="profession"><em id="m">微专业</em>是由<a id="n" href="http://study.163.com">网易云课堂</a>精心打造的职业化课程</p>
 </body>
 </html>

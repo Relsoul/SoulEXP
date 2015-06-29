@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload=function(){
+		function getElementChildren(elem){
+			//如果函数该方法存在
+			if(elem.children){
+				return elem.children
+			}else{}
+				var child=[]
+				for (var i = 0; i < elem.childNodes.length; i++) {
+					if(elem.childNodes[i].nodeType==1){
+						child.push(elem.childNodes[i])
+					}
+				};
+				return child;
+			}
+			
+		}
+
+		var elem=document.getElementById("elem")
+		var test=getElementChildren(elem)
+		console.log(test)
+	}
+
+
+
+	</script>
+</head>
+<body>
+	<div id="elem">
+		<p>test</p>
+		<p>test1</p>
+		<p>test2</p>
+	</div>
+	
+</body>
+</html>

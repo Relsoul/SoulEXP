@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:Event
+		-load
+		-unload
+		-error
+		-select
+		-abort
+
+	二:UIEvent
+		-resize
+		-scroll;
+
+	三:FocusEvent
+		-blur
+		-focus
+		-focusin
+		-focusout
+
+	四:InputEvent
+		-beforeinput
+		-input
+
+	五:KeyboardEvent
+		-keydown
+		-keyup
+
+	六:MouseEvent
+		-click
+		-dbclick
+		-mousedown
+		-mouseenter;
+		-mouseleave
+		-mousemoved 
+		-mouseout
+		-mouseover
+		-mouseup
+
+	七:WheelEvent
+		-wheel
+	
+	八:MouseEvent对象
+		-属性
+			-clientX,clientY //页面
+			-screenX,screenY //系统的屏幕
+			-ctrlKey,shiftKey,altKey //按下去玩 true
+			-button(0,1,2) //鼠标 左键，中间，右键
+
+	九:MouseEvent顺序
+		-从元素A上方移过
+			-mousemove-mouseover(A)-mouseenter(A)-mousemove(A)-mouseout(A)-mouseleave(A)
+		-点击元素
+			-mousedown-[mousemove]-mouseup-click
+
+	十:例子-拖拽div
+		-HTML
+			-<div id="div1"></div>
+		-CSS
+			-#div1{
+				position:absolute;
+				///
+			}
+		-js
+			-var elem=document.getElementById("div1")
+			-var clientX,clientY,moving;
+			-var mouseDownHandler=function(event){
+				event=event||window.event
+				clientX=event.clientX;
+				clientY=event.clientY;
+				moving=!0;
+			}
+			-var mouseMoveHandler=function(event){
+				if(!moving) return;
+				event=event||window.event
+				var newClientX=event.clientX
+				var newClientY=event.clientY
+				var left=parseInt(elem.style.left)||0,
+				       top=parseInt(elem.style.top)||0
+				elem.style.left=left+(newClientX-clientX)+"px";
+				elem.style.top=top+(newClientY-clientY)+"px";
+				clientX=newClientX;
+				clientY=newClientY;
+			}
+			-var mouseUpHandler=function(event){
+				moving=!1;
+			}
+			addEvent(elem,'mousedown',mouseDownHandler)
+			addEvent(elem,"mousemove",mouseMoveHandler)
+			addEvent(elem,"mouseup",mouseUpHandler)
+
+
+	十一:WheelEvent对象
+		-属性
+			-daltaMode
+			-daltaX
+			-daltaY
+			-daltaZ
+
+	十二:FocusEvent
+		-属性
+			-relatedTarget//失去焦点的元素
+	
+	十三:InputEvent
+		-onpropertychange(IE)
+
+	十四:KeyboardEvent
+		-属性
+			-key //按下的什么键
+			-code//按键码
+			-ctrlKey,shiftKey...
+			-repeat//按住不动的键 持续按键
+			-keyCode 
+			-charsetCode
+			-which
+
+	十五:window
+		-load
+		-unload
+		-error
+		-abort
+
+	十六:Image
+		-load
+		-error
+		-abort
+		-<img src="xxx" onerror="this.scr='http://xxx.png">
+
+	十七:UIEvent
+		
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	var str1="abcdef"
+	//search
+	console.log(str1.search("a"))//0
+	console.log(str1.search("xx"))//-1
+
+	//substring
+	console.log(str1.substring(2,5))//cde 不包括结束为止
+	console.log(str1.substring(1))//从1开始一直往后取
+
+	//charAt 截取某位字符串
+	console.log(str1.charAt(0))//a
+
+	//split
+	var str2="1-2-3"
+	console.log(str2.split("-"))//分割字符串
+
+	//为何要学正则？
+
+	var str3="12 fff 97 er223 255 -2fo2"
+	//获取字符串中的所有数字
+	var tmp=''
+	var arr=[];
+	for (var i = 0; i < str3.length; i++) {
+		if(str3.charAt(i)>='0'&&str3.charAt(i)<="9"){
+			tmp+=str3.charAt(i)
+		}else{
+			if(tmp){
+				arr.push(tmp);
+				tmp='';
+			}
+		}
+	};
+	if(tmp){
+			arr.push(tmp);
+			tmp='';
+		}
+		console.log(arr)
+	//使用正则
+
+	console.log(str3.match(/\d+/g))//....
+
+
+	//正则表达式
+	//JS风格 
+	var re=new RegExp("a","gi") // i 不区分大小写
+	//perl风格 
+	var re1=/a/;
+
+	//查找字符串第一个出现的数字
+	var str4='adsf 23 23 wcs'
+	var re2=/\d/
+	console.log(str4.search(re2))//5
+
+	//match 把所有匹配的提取出来
+	var str5='asdf 34 5g54f6 css33'
+	//提取str5中的所有数字
+	var re3=/\d+/g//g 全局模式 \d匹配一个数字一个数字为一个数组内容 \d+全部匹配到的数字作为数组内容
+	console.log(str5.match(re3));//返回
+
+	//replace替换
+
+	var str6='abc aaa eerea'
+	//把a替换为0
+	var re4=/a/g
+	console.log(str6.replace(re4,"0"))
+
+	//过滤敏感词
+	var str7="北京测试替换敏感管理后淘宝"
+	var re5=/百度|北京|淘宝|管理/g// | 为或的意思
+	console.log(str7.replace(re5,'**'))
+
+
+	//正则基础组成部分
+
+	//元字符（方括号）
+	var str8="apc aapc ccpc dbpc"
+	var re6=/[abc]pc/g //a或b或c  apc bpc
+	console.log(str8.match(re6))//apc apc cpc bpc
+
+	//元字符范围
+	var re7=/[a-z]/; //a-z
+	var re8=/[0-9]/ //0,1,2,3..9
+	var re9=/\d/// \d为0-9的意思
+	var re10=/[^a-z]/ //除a-z以外的 比如数字，符号，中文等 ^为非的意思
+	var re11=/[^a-z0-9] / //除英文数字以外的符号，比如中文等
+
+	//过滤HTML标签
+	var str9="<p>dasdsa</p>nice <br> test</br>"
+	var re12=/<[^<>]+>/g //.代表任意字符 <除<>以外的字符>
+	console.log(str9.replace(re12,""))
+
+	//转义字符
+	// \d   数字 			[0-9]
+	// \w   英文，数字，下划线  	[a-z0-9_]
+	// \s     空白字符(空格,tab 等。）
+
+	// \D   				[^0-9]
+	// \W  				[^a-z0-9]
+	// \S   除空白字符以外的
+	//不出现在尖括号里的^ 		行首(字符串开头)
+	//$  				行尾(字符串结尾)
+
+	//量词:个数
+	// {n} 	正好出现n次
+	// [1-9]\d{8}	只出现八次的数字 第一位为1-9数字
+	// {n,m}	最少n次最多m次
+	// [1-9]\d{4,10}	
+	// {n,}	最少n次，最多不限
+	// +	{1,} 
+	// ?	{0,1}最少0次最多一次
+	// *	{0,}可以有 最多可以有无限 0次也算  匹配不推荐用
+
+	//匹配固话
+	// 010-87654231-86
+
+	// (0\d{2,3}-)?[1-9]{7}(-\d{1,5})? //()为分组 (0后面匹配2-3位数字)?可有可无 匹配8位电话 匹配分机号
+
+	//匹配邮箱
+
+	// 一串英文，数字，下划线@一串英文，数字.一串英文
+	var str10="sd_blue@etst.com";
+	var re13=/(^\w+)@([a-z0-9]+)\.([a-z]+$)/gi
+	console.log(re13.test(str10))// test 字符串一部分符合要求,true
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

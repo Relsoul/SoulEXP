@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:获取节点
+		-父子关系
+			-parentNode
+			-firstChild/lastChild/childNodes
+			-childNodes/children
+		-兄弟关系
+			-previousSibling/nextSibling
+			-previousElementSibling/nextElementSibling
+		-通过关系获取可维护性差
+
+		-getElementById
+			-element=document.getElementById(id)//获取文档中指定id的元素
+		-getElementsByTagName
+			-collection=element.getElementsByTagName(tagName)//从element获取指定标签名称
+			-collection值为实时动态的
+			-element.getElementsByTagName("*")//获取element下所有的后代元素
+		-getElementsByClassName
+			-collection=element.getElementsByClassName(classname)
+			-collection可以通过下标来获取指定的元素
+			
+		-querySelector/All
+			-list=element.querySelector/All(selector)
+			-var user=document.querySelector("#uesrs")//获取到单个元素
+			-user.querySelectorAll(".user")//获取到user下的class类
+			-document.querySelectorAll("#users .user")//同上
+			-list不是实时动态的,获取后不会变化
+
+	二:创建节点
+		-element=document.createElement(tagName)
+
+	三:修改节点
+		-element.textContent
+			-节点及其后代节点的文本内容 //返回的是节点和后代节点所有的文本内容
+			-user_last.textContent="tom"//IE9以下不支持
+		-element.innerText
+			-节点及其后代节点内容的文本内容//FF不支持
+
+	四:插入节点
+		-element.appendChild(achild)
+			-在指定的元素后插入节点
+		-element.insertBefore(achild,referenceChild)
+			-在指定的子元素前插入一个节点
+			-ul.insertBefore(li,ul.firstChild)
+
+	五:删除节点
+		-child=element.removeChild(child)
+			-删除指定元素的子节点 //需要在父节点进行操作
+			-user2.parentNode.removeChild(child)
+
+	六:innerHTML
+		-节点的HTML内容
+		-ul.innerHTML+="xx" //会删除原来绑定的event事件
+		-内存泄露
+		-安全问题
+		-建议仅用于新节点
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload=function(){
+		var elem=document.getElementById("elem");
+		function getData(elem){
+			console.time("o")
+			var s=elem.outerHTML.split(" ")//处理HTML代码以空格分割
+			var arr=[];//定义一个arr空数组
+			var arrdata=[]//定义一个arrdata数组
+			var fg=[]//定义一个fg数组
+			var fgname=[]//定义一个fg名称数组
+			var obj={}//定义一个返回的obj
+			for (var i = 0; i < s.length; i++) {
+				//初步处理下data 向arr数组添加data存在的分割数组
+				if(s[i].indexOf("data")!=-1){
+					arr.push(s[i])
+				}
+			};
+			//处理下数组最后一个带">"号
+			var a=arr[arr.length-1]
+			var a_index=a.split(">")
+			arr[arr.length-1]=a_index[0]
+			//处理完毕
+
+			//以=号来分割下数组 所以会生成个二维数组
+			for (var i = 0; i < arr.length; i++) {
+				var z=arr[i].split("=")
+				arrdata.push(z)
+			};
+
+			//分割二维数组 二维数组0为name 1位data
+			for (var i = 0; i < arrdata.length; i++) {
+				fg.push(arrdata[i][1].replace(/\"/gi,""))
+				fgname.push(arrdata[i][0].replace(/\-/,""))
+			};
+			//数组转化为对象顺便处理下前缀data-
+			for (var i = 0; i < fgname.length; i++) {
+				var b=fgname[i].replace(/data/gi,"")
+				var _b=b.split("-")
+				var _str=""
+				var reg_ok;
+				var reg;
+				if(_b[1]!=null){
+					//首字母大小写
+					for (var z = 0; z < _b.length; z++) {
+						_str=_b[z].charAt(0).toLocaleUpperCase()
+						reg=new RegExp(_str,"i");
+						reg_ok=_b[z].replace(reg,_str)
+						_b[z]=reg_ok
+
+					};
+					
+				}
+				_b=_b.join("")
+				console.log(_b)
+				fgname[i]=b
+				obj[fgname[i]]=fg[i]
+			};
+			console.log(obj)
+			console.timeEnd("o")
+			return obj;
+
+
+		}
+
+
+		function getDataset(element) {
+			console.time("y")
+   
+        var arr = element.outerHTML.replace(/"/g, '').split(/ |>/); // 去掉属性值的双引号，以空格或者>切割字符串
+        var aDataAttr = [];
+        var i = 0;
+        for (; i < arr.length; i++) {
+            if (/^data-/.test(arr[i])) { // 储存前缀为data-的项
+                aDataAttr.push(arr[i].substring(5));
+            }
+        }
+        var aTemp = [];
+        var oDataset = {}; 
+        for (i = 0; i < aDataAttr.length; i++) {
+            aTemp = aDataAttr[i].split('=');
+            var sKey = aTemp[0].replace(/\-([a-zA-Z])/g, function ($, $1) { // account-name  -> accountName
+                return $1.toUpperCase();
+            });
+            oDataset[sKey] = aTemp[1];
+        }
+        console.timeEnd("y") 
+        return oDataset;
+
+    
+}
+
+		var new_get=getDataset(elem);
+		var old_get=getData(elem);
+		var m =elem.dataset
+		console.log(m)
+		// for(var v in z){
+		// 	document.write(v+":"+z[v]+"<br>")
+		// }
+
+
+
+	}
+
+	</script>
+</head>
+<body>
+	<div id="elem" data-id="1" data-account-name-bay-de="spencer" data-name="sp" data-email="10*******@qq.com">
+		
+	</div>
+</body>
+</html>

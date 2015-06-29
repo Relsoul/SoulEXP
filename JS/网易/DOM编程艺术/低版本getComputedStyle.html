@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	function getStyle(element, cssPropertyName)
+{
+    if(getComputedStyle(element, false))
+    {
+        return getComputedStyle(element, false)[cssPropertyName];
+    }
+    else
+    {
+        return element.currentStyle[cssPropertyName];
+    }
+}
+	window.onload=function(){
+		var element=document.getElementById("pid")
+		var m=element.style.cssText.substring(13,18)
+		console.log(m)
+	}
+
+
+	</script>
+</head>
+<body>
+	 <p style="line-height: 200px" id="pid">网易一线资深工程师</p>
+</body>
+</html>

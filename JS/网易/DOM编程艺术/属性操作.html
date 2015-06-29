@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:每个HTML属性对应相应的DON属性
+
+	二:属性访问器之读取
+		-input.className//获取class
+		-input["id"]//获取id
+
+	三:属性访问器之写入
+		-input.value="xxx"//设置value属性
+		-input.disabled=true//禁用输入框
+
+	四:属性访问器之类型
+		-input.disabled//boolean
+		-input.id//string
+		-input.onclick//function
+		-转换过的实用对象
+		-通用性差-名字异常
+		-扩展性差
+		-去到的是实用对象//经过转化的 如string-number
+
+	五:attribute之读取
+		-input.getAttribute("class")//获取到class
+
+	六:attribute之写入
+		-input.setAttribute("value", "test")//修改value值
+		-input.setAttribute("disabled", "")//disavle true 出现就为true
+
+	七:attribute之类型
+		-input.getAttribute('onclick')//string
+		-input.getAttribute("disabled")//string
+		-input.getAttribute("maxlength")//string
+		-仅仅是字符串
+
+	八:实例
+		-button.disabled=true;
+		-button.setAttribute('class', 'disabled')
+
+	九:dataset
+		-data-*属性集
+		-元素上保存数据
+		-div.dataset//返回html上以data-开头的属性值 返回的是一个对象
+		-div.dataset.name//string
+		-div.dataset.email//string
+	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

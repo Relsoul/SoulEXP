@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload=function(){
+		function getElementsByClassName(elem,cls){
+			var _elem=document.getElementById(elem).getElementsByTagName("*")
+			var _arr=[];
+			var _cls=cls.replace(/(^\s*)|(\s*$)/g,"").split(" ")
+			var index=_cls.indexOf("")
+			while(index!=-1){
+				_cls.splice(index,1)
+				index=_cls.indexOf("")
+			}
+			_cls=_cls.join(" ")
+			
+			var elem_cls;
+			console.log(_cls)
+			for (var i = 0; i < _elem.length; i++) {
+				elem_cls=_elem[i].className.split(" ").sort().join(" ");
+				console.log(elem_cls)
+				if(elem_cls==_cls||elem_cls.indexOf(_cls)!=-1){
+					_arr.push(_elem[i])
+				}
+				
+			}
+			return _arr
+				
+		}
+
+		
+		var test1=document.getElementsByClassName("bbb ccc A1A2")
+		var test=getElementsByClassName("example","      A1A2         bbb       ccc        ")
+		console.log(test)
+		console.log(test1)
+	}
+
+
+	</script>
+</head>
+<body>
+	<div id="example">
+  <p id="p1" class="aaa bbb ACbd"/>
+  <p id="p2" class="aaa ccc Abcd"/>
+  <p id="p3" class="bbb ccc A1A2"/>
+</div>
+</body>
+</html>

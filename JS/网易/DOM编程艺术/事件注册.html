@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:事件注册
+		-addEventListener(type, listener)//注册事件 默认为冒泡过程
+		-使用element.onclick// 只能注册一个函数
+
+	二:取消事件注册
+		-removeEventListener(type, listener)
+		-element.onclick=null//不推荐
+
+	三:事件触发
+		-dispatchEvent(event)//触发事件
+		-element.dispatchEvent('click')
+
+	四:浏览器兼容型
+		-事件注册与取消
+			-attachEvent/detachEvent
+		-事件触发
+			-fireEvent(e)
+		-no capture //无捕获阶段
+
+		var addEvent=document.addEventListener?function(elem,type,lis,useca){
+			elem.addEventListener(type,lis,useca)
+		}:function(elem,type,lis,useca){
+			elem.attachEvent('on'+type+lis)
+		}
+		-事件取消同上
+
+	五:事件对象
+		-var click=function(event){
+
+		}
+		-IE低版本
+			-var click=function(event){
+				event=event||window.event
+			}
+		-属性
+			-type //事件类型
+			-target(srcElement)//目标元素
+			-currentTarget//父节点的元素
+		-方法
+			-stopPropagation//阻止冒泡
+				-event.cancelBubble=true //IE
+				-event.stopImmediatePropagation//阻止本身和子节点事件传播
+			-preventDefault//阻止默认行为
+				-returnValue=false ///IE
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

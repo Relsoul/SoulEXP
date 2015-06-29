@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	function myType(elem){
+		if(Object.prototype.toString.call(elem).replace(/object|\[|\]| /g,"").toLowerCase()=="Object"){
+				return "i am an"+elem.constructor.replace(/function|\(\)|\{|\}|\[|\]|native|code/g,"")+"!";
+		}else{
+			return "i am an"+ Object.prototype.toString.call(elem).replace(/object|\[|\]/g," ").toLowerCase()+"!";
+		}
+		
+	}
+
+	console.log(myType())
+
+
+
+	function search(items, value){  
+   	 var startIndex = 0,  
+   	 stopIndex = items.length - 1,  
+    	middle = Math.floor((stopIndex + startIndex)/2);  
+    while(items[middle] != value && startIndex < stopIndex)  
+    {  
+        //调整查找范围  
+        if (value < items[middle]){  
+            stopIndex = middle - 1;  
+        } else if (value > items[middle]){  
+            startIndex = middle + 1;  
+        }  
+        //重新计算中项索引  
+        middle = Math.floor((stopIndex + startIndex)/2);  
+    }  
+    //确保返回正确的值  
+    return (items[middle] != value) ? -1 : middle;  
+}         
+
+	var arr = [1, 2, 4, 6, 7, 9, 19,20, 30, 40, 45, 47];
+	var idx=search(arr,45);
+	console.log(idx)
+
+	function add(){
+		var _args=[]
+		return function(){
+			if(arguments.length==0){
+				return _args.reduce(function(a,b){
+					return a+b;
+				})
+			}
+			[].push.apply(_args,[].slice.call(arguments))
+			return arguments.callee
+		}
+		
+	
+	}
+
+	var sum=add()
+
+	sum(10,20)(300)
+	console.log(sum())
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

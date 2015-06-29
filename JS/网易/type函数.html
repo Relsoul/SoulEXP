@@ -5,7 +5,7 @@
 	<title>Document</title>
 	<script type="text/javascript">
 	function type(elem){
-		if(Object.prototype.toString.call(elem).replace(/object|\[|\]| /g,"").toLowerCase()=="object"){
+		if(Object.prototype.toString.call(elem).replace(/object|\[|\]| /g,"").toLowerCase()=="Object"){
 				return elem.constructor.replace(/function|\(\)|\{|\}|\[|\]|native|code/g,"");
 		}else{
 			return Object.prototype.toString.call(elem).replace(/object|\[|\]/g," ").toLowerCase();

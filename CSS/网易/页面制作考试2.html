@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{padding: 0;margin: 0;}
+	.login_input{
+		width: 200px;
+		height: 20px;
+		border: 1px solid #ddd;
+		margin-top: 15px;
+
+
+	}
+	
+	.login_title{
+		font-size: 14px;
+		line-height: 16px;
+		font-family: '微软雅黑';
+		font-weight: bold;
+		margin-left: 15px;
+		
+	}
+	.login_col{
+		width: 60px;
+		font-size: 12px;
+		font-family: '宋体';
+		text-align: center;
+		line-height: 20px;
+		padding-top: 15px;
+
+
+	}
+	.login_dl{
+		display:block;
+		width: 40px;
+		height: 20px;
+		border: none;
+		background: #5e5e5e;
+		font-size: 12px;
+		font-family: '宋体';
+		text-align: center;
+		line-height: 20px;
+		margin-top: 15px;
+		background: #54AEDE;
+		color: #fff;
+	}
+	</style>
+</head>
+<body>
+	<form action = "/login" method = "post" class="F_post" >
+		<h3 class="login_title">登陆网易通行证</h3>
+		<table class="login">
+			
+			<tr>
+				<td class="login_col">用户名:</td>
+				<td ><input  class="login_input" type="text"></td>
+			</tr>
+			<tr>
+				<td class="login_col">密码:</td>
+				<td ><input class="login_input" type="password"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button class="login_dl">登陆</button></td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>

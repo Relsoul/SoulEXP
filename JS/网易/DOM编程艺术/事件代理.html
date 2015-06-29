@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	一:事件代理
+		-<ul id="myUi"><li></ul>
+		-将事件注册到元素的父节点上
+		-var myUl=document.getElementById("myUl");
+		myUl.addEventListener('click', function(event){
+			var e=event||window.event;
+			var target=e.target||e.srcElemnt
+		})
+		-有点
+			-需要管理的handler更少
+			-内存分配更少
+			-增加/删除节点可以不处理事件
+		-缺点
+			-事件管理的逻辑更复杂
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

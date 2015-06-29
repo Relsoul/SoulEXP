@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:CSS-DOM
+		-element.sheet// <link href="base.css">
+		-element.sheet// <style>p{}</style>
+		-element.style//内联样式
+		-element.sheet.cssRules[1].style//CSS规则
+		-element.sheet.cssRules[1].selectorText//选择器
+		-element.sheet.cssRules[1].style.lineHeight//element的行高
+		-element.style.color//内联样式声明
+
+	二:更新样式
+		-element.style更新利弊
+			-更新一个属性需要一条语句
+			-不是我们熟悉的CSS
+			-样式混在逻辑中
+		-element.style.cssText
+			-element.style.cssText="border-color:red;color:red"//创建的是内联样式
+
+	三:更新Class
+		-element.calssName+="invalid";//推荐方法
+		-不适用于一次更新很多元素样式
+
+	四:更换样式表
+		-<link href="xxx.css">//修改link
+
+	五:获取样式
+		-element.style//只能获取到内联的样式 获取到的不一定是实际样式
+		-var style=window.getComputedStyle(element).color//获取到的实际样式包括内联样式修改后的实际样式
+		-IE9-使用element.currentStyle//兼容
+
+	六:CSS DOM overview
+		-StyleSheetList
+			|			CSSStyleSheet
+			|				cssRules---CSSRuleList
+			|						Style    		-CSSStyleDeclaration
+			|				|		selectorText			color
+			|				|		
+			|				|
+			|				|
+			|				link.sheet   style.sheet
+			|
+		document.styleSheets
+
+	window.onload=function(){
+		var elem=link.stylesheet
+		// var elem2=document.styleSheets
+		// for(var z in elem){
+		// 	console.log(elem[z])
+		// }
+		console.log(elem)
+	}
+
+
+	</script>
+	<link rel="stylesheet" type="text/css" href="test.css">
+	<style type="text/css">
+	#up{
+		color: red;
+	}
+	div{
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+
+	</style>
+</head>
+<body>
+	<p id="up">test</p>
+	<div></div>
+</body>
+</html>
