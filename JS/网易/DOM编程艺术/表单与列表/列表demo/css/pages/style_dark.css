@@ -1,0 +1,885 @@
+/********************************************************/
+/* STYLE_DARK.CSS 原黑色部分结构 */
+/********************************************************/
+/* Background */
+.u-cover-mv2 .plybtn, .u-cover-mv3 .plybtn, 
+.m-info .name .icn-song::before,.m-yrsh .m-info .btnpr::before{background-image:url(../../res/images/common/icon.png); background-repeat:no-repeat;}
+.n-leadkugou .exp .img{width:700px; height:205px; margin-top:18px; background:url(../../res/images/common/leadin_kugou.png) no-repeat;}
+.n-leadkugou .exp.kw .img{width:711px; height:252px; background:url(../../res/images/common/leadin_kuwo.png) no-repeat;}
+.m-drank .blk .cvr:after{background:url(../../res/images/common/rank_txt.png) no-repeat 0 0;}
+.m-drank .blk.new .cvr{background-image:url(../../res/images/common/rank_new.png);}
+.m-drank .blk.hot .cvr{background-image:url(../../res/images/common/rank_hot.png);}
+.m-drank .blk.org .cvr{background-image:url(../../res/images/common/rank_org.png);}
+.m-drank .blk.elc .cvr{background-image:url(../../res/images/common/rank_elc.png);}
+.m-drank .blk.up .cvr{background-image:url(../../res/images/common/rank_up.png);}
+.m-drank .blk.artist .cvr{background-image:url(../../res/images/common/rank_artist.png);}
+.m-banner .pics li .tag,.m-banner .pics li .tag em{background:url(../../res/images/common/banner_tag.png) no-repeat;}
+.n-single .cdbox,.n-single .cdrun,.n-single .cdin{ background:url(../../res/images/common/single.png);}
+.n-single .cdimg{background:url(../../res/images/default/default_play_disc.png);}
+.m-guiderdi .pic-1{background:url(../../res/images/common/guide_radio_update.png) no-repeat;}
+.m-guiderdi .pic-2{background:url(../../res/images/common/guide_radio_fav.png) no-repeat;}
+.m-cldupdate .cnt{background:url(../../res/images/common/cloud_update.png) no-repeat;}
+
+/* 清浮动Clear */
+.m-form .fmitm::after,.m-fanslst::after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+
+/* 【搜索结果】 */
+.n-norlt{margin-top:90px; text-align:center;}/* 搜索和组件里 */
+.m-search .keyword{padding:30px;}
+
+.m-search .match{padding:20px 30px;}
+.m-search .match ul{margin-left:-14px;}
+.m-search .match li{width:244px; height:60px; padding:10px 0 0 10px; cursor:pointer;}
+.m-search .match .cvr{float:left;}
+.m-search .match h3{display:-webkit-flex;}
+.m-search .match .nam{-webkit-flex:0 1 auto;}
+.m-search .match .vip, .m-search .match .daren{-webkit-flex:0 0 auto; margin:-1px 0 0 3px;}
+.m-search .match .daren{margin-top:-4px;}
+.m-search .match .arr{top:50%; right:15px; margin-top:-7px;}
+.m-search .match .cnt{height:40px; margin:0 30px 0 50px; line-height:40px;}
+.m-search .match .cnt h3{display:inline-block; line-height:19px; vertical-align:middle;}
+.m-search .match .u-cover-tnmv ~ .cnt{margin-left:62px;}
+.m-search .match .u-cover-tnalb ~ .cnt{margin-left:60px;}
+
+/* 【首页】推荐-banner */
+.m-banner{position:relative; z-index:1000; padding:6px 0 40px; -webkit-transform-style: preserve-3d;}
+.m-banner,.m-banner .pics,.m-banner .pics li{-webkit-transition:0.45s;}
+.m-banner .pics,.m-banner .btns{position:relative;z-index:5;}
+.m-banner .pics li:before{position:absolute; top:0; left:0; z-index:6; content:''; width:100%; height:100%; opacity:0; -webkit-transition:0.45s;}
+.m-banner .pics li::after{content:'';position:absolute;z-index:10;top:0;left:0;right:0;bottom:0;}
+.m-banner .pics img,.m-banner .pics li a.link{position:absolute;z-index:2;width:100%;height:100%;}
+.m-banner .pics li a.link{z-index:4;}
+.m-banner .pics li a.link:after{position:absolute; content:''; height:20px; width:100%; bottom:-20px;}
+.m-banner .pics li.z-prv:before,.m-banner .pics li.z-nxt:before{opacity:0.5;}
+
+/* 方案一，左右自适应，投影会消失 */
+.m-banner .pics{height:200px;}
+.m-banner .pics li{position:absolute;z-index:1; width:540px; height:200px; left:calc(50% - 270px); -webkit-transform:scale(0.8); cursor:pointer;}
+.m-banner .pics li.z-crt{z-index:100;-webkit-transform:scale(1);opacity:1;}
+.m-banner .pics li.z-prv,.m-banner .pics li.z-nxt{z-index:2;-webkit-transform:scale(0.8);}
+.m-banner .pics li.z-prv{left:0; -webkit-transform-origin:left;}
+.m-banner .pics li.z-nxt{left:calc(100% - 540px);-webkit-transform-origin:right;}
+
+/* 方案二，左右自适应 + 3d 会闪烁 
+.m-banner .pics{height:200px;}
+.m-banner .pics li{position:absolute;z-index:1; width:540px; height:200px; left:calc(50% - 270px); -webkit-transform:scale(0.8); cursor:pointer; opacity:0;}
+.m-banner .pics li.z-crt{z-index:100;-webkit-transform:scale(1) rotateY(0); opacity:1;}
+.m-banner .pics li.z-prv{left:0; -webkit-transform-origin:left;-webkit-transform:scale(0.8) rotateY(45deg); z-index:2;opacity:1;}
+.m-banner .pics li.z-nxt{left:calc(100% - 540px);-webkit-transform-origin:right; -webkit-transform:scale(0.8) rotateY(-45deg); z-index:2;opacity:1;}
+ */
+/* 方案三，translate3d + 3d 投影不消失 
+.m-banner .pics{width:540px; height:200px; margin:0 auto;}
+.m-banner .pics li{position:absolute; z-index:1; opacity:0; width:540px; height:200px; -webkit-transform:translate3d(0, 0, -5px) scale(0.8); cursor:pointer;}
+.m-banner .pics li.z-crt{opacity:1; -webkit-transform:translate3d(0, 0, 0) scale(1);}
+.m-banner .pics li.z-prv{opacity:1; -webkit-transform-origin:left; -webkit-transform:translate3d(-111px, 0, -3px) scale(0.8);}
+.m-banner .pics li.z-nxt{opacity:1; -webkit-transform-origin:right; -webkit-transform:translate3d(108px, 0, -3px) scale(0.8);}
+*/
+.m-banner .pics li .tag{position:absolute; z-index:20; bottom:10px; right:3px; width:auto; height:23px; padding:5px 0 0 12px; background-position:0 -120px; line-height:23px;}/* 红tag */
+.m-banner .pics li .tag em{position:absolute; top:0; right:-8px; width:8px; height:28px; background-position:right -150px;}
+.m-banner .pics li .tag-blue{background-position-y:-178px;}
+.m-banner .pics li .tag-blue em{background-position-y:-208px;}
+.m-banner .pics li.z-crt .tag{background-position:0 0;}/* 红tag */
+.m-banner .pics li.z-crt .tag em{background-position:right -30px;}
+.m-banner .pics li.z-crt .tag-blue{background-position-y:-58px;}
+.m-banner .pics li.z-crt .tag-blue em{background-position-y:-88px;}
+.m-banner .btns{position:absolute;bottom:5px;left:0;right:0;text-align:center;}
+.m-banner .btns .itm{display:inline-block; width:8px; height:8px; margin:0 3px 0 2px; border-radius:4px; cursor:pointer;}
+.m-banner .arrbtns a{display:none;position:absolute;z-index:100;top:32%;width:40px;height:80px;line-height:82px}
+.m-banner .arrbtns .pre{left:0;}
+.m-banner .arrbtns .nxt{left:auto; right:0;}
+.m-banner .arrbtns .pre span{margin-left:8px;}
+.m-banner .arrbtns .nxt span{margin-left:18px;}
+.m-banner .pics:hover .arrbtns a{display:block;}
+
+/* 【首页】推荐-个性化推荐 */
+.m-recmend{margin-bottom:32px}
+.m-edayrec,.m-recmend .lst li{width:47%;}
+.m-edayrec,.m-edayrec .cvr,.m-recmend .lst li,.m-recmend .lst .cvr{float:left;}
+.m-edayrec .rt,.m-recmend .lst .ifo{margin-left:101px}
+.m-edayrec .rt h3,.m-recmend .lst .ifo h3{line-height:22px;font-size:14px;padding:7px 0 12px 0;}
+.m-recmend .lst .ifo .type{margin:-2px 4px 0 0; vertical-align:middle;}
+.m-edayrec,.m-recmend .lst li{position:relative;padding:20px 0 15px 0;}
+.m-edayrec,.m-recmend .lst li:nth-of-type(even){margin-right:34px}
+.m-recmend .dislike{position:absolute; display:none; top:15px; right:0; cursor:pointer;}
+.m-recmend .dislike .tip{display:none; position:absolute;  top:21px; left:50%; width:56px; height:18px; margin-left:-28px; border-radius:1px; text-align:center; line-height:18px;}
+.m-edayrec:hover .dislike,.m-recmend .lst li:hover .dislike{display:block;}
+.m-edayrec .dislike:hover .tip,.m-recmend .lst li:hover .dislike:hover .tip{display:block;}
+.m-recmend .lst .ifo p{line-height:22px;-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;text-overflow:ellipsis;word-break:break-all;overflow:hidden;}
+.m-recmend .none{margin-top:25px;width:100%;padding:23px 0 18px 0;}
+.m-recmend .none .tit{font-size:21px;}
+.m-recmend .none .desc:before{float:left;content:'';position:relative;top:-4px;}
+.m-recmend .none .txt{font-size:14px;display:inline-block;padding-top:5px}
+.m-recmend .none .btn{float:right;margin-right:10%;width:100px;margin-top:-14px}
+.m-edayrec .bir h3:after{display:inline-block;content:'';width:14px;height:16px;vertical-align:middle;background-position:0 -766px;margin:0 0 2px 4px;}
+
+/* 【首页】推荐-每日推荐 */
+.m-daily{position:relative;}
+.m-daily .banbg,.m-daily .banbg .pic{position:absolute; z-index:-1; top:0; right:0; left:0; width:100%; height:176px;background-repeat:no-repeat;}
+.m-daily .banbg{background-size:100% 176px;}
+.m-daily .ban{height:110px;}
+.m-daily .ban .cal{float:left;}
+.m-daily .ban .cnt{margin-left:107px; padding-top:10px;}
+.m-daily .ban h2{height:47px; font-size:24px;}
+.m-daily.z-birthday .ban h2:after{display:inline-block;content:'';width:16px;height:20px;vertical-align:middle;background-position:-25px -766px;margin:0 0 0 6px;}
+.m-daily .empty{margin-top:175px;font-size:20px; text-align:center;}
+/* 【首页】排行榜 */
+.m-drank{position:relative; margin:18px 0 28px 0;}
+.m-drank:last-child{margin-bottom:0;}
+.m-drank .blk{float:left; width:32%;}
+.m-drank .blk dd{height:272px;}
+.m-drank .blk:nth-of-type(2){position:absolute; top:0; left:50%; margin-left:-16%;}
+.m-drank .blk:last-child{float:right;}
+.m-drank .blk .cvr{position:relative;height:91px;cursor:pointer;background-size:100% 91px;background-repeat:no-repeat;}
+.m-drank .blk .cvr:before{position:absolute; content:''; width:100%; height:100%; z-index:0; box-sizing:border-box;}
+.m-drank .blk .cvr:after{position:absolute;content:'';left:20px;top:20px;width:120px;height:55px;}
+.m-drank .blk.hot .cvr:after{background-position:0 -57px;}
+.m-drank .blk.org .cvr:after{background-position:0 -120px;}
+.m-drank .blk.elc .cvr:after{background-position:0 -180px;}
+.m-drank .blk.up .cvr:after{background-position:0 -240px;}
+.m-drank .blk.artist .cvr:after{background-position:0 -300px;}
+.m-drank .cvr .dte{position:absolute;left:75px;bottom:19px;opacity:0.48;text-shadow:none;}
+.m-drank .cvr .ply{position:absolute;cursor:pointer;right:20px;top:50%;content:'';width:32px;height:32px;margin-top:-16px;background-position:-120px -1572px}
+.m-drank .cvr .ply:hover{background-position:-164px -1572px;}
+.m-drank ol{min-height:240px}
+.m-drank li{height:30px; box-sizing:border-box; line-height:30px;}
+.m-drank li .itm{float:left;position:relative;}
+.m-drank li .num{width:11px;padding-left:15px;font-size:16px;}
+.m-drank li .num.red{text-indent:-9999px; background-position:-86px -728px;}
+.m-drank li:nth-of-type(2) .num.red{background-position-x:-111px;}
+.m-drank li:nth-of-type(3) .num.red{background-position-x:-135px;}
+.m-drank li .rnk{padding:0 4px 0 3px; text-align:center;}
+.m-drank li .rnk i{margin-top:-1px;}
+.m-drank .blk.up li .rnk{width:24px;}
+.m-drank .mre{height:32px;line-height:30px;padding-right:11px;text-align:right;}
+.m-drank li .mv{position:absolute;top:5px;}
+.m-drank li .flow{margin-left:50px;}
+.m-drank .blk.up li .flow{margin-left:58px;}
+.m-drank li .nm{display:-webkit-flex; width:63%;}
+.m-drank li .tit{-webkit-flex:0 1 auto;}
+.m-drank li .cld{-webkit-flex:0 0 auto; margin:9px 0 0 4px;}
+.m-drank li .aut{float:right;width:37%; padding:0 10px 0 5px; box-sizing:border-box; text-align:right;}
+.m-drank li .aut .j-tit-flag{display:inline-block;float:left;width:84%}
+
+.m-drank ol.artist li{position:relative; height:68px; line-height:68px;}
+.m-drank ol.artist li a{display:block; height:100%;}
+.m-drank ol.artist li em{margin-left:20px; font-size:20px;}
+.m-drank ol.artist .icon{position:absolute; right:20px; top:50%; margin-top:-6px;}
+
+/* 【排行榜】歌手排行 */
+.m-arank header{height:98px; padding:0 30px;}
+.m-arank header h2{padding-top:25px; font-size:41px;}
+.m-arank .m-plylist-arank{margin-top:10px;}
+
+/* 【首页】歌单 */
+.m-slthead .u-head1{margin-bottom:0;}
+.m-slthead .btn-cat{font-size:16px;padding-right:6px;height:28px;line-height:28px}
+.m-slthead .btn-cat .tri{display:inline-block;margin-left:3px;margin-bottom:2px;width:12px;height:7px;background-position:-130px -108px}
+.m-slthead .btn-cat:hover .tri{ background-position-x:-150px;}
+.m-slthead .u-tabbtn{float:right; margin-top:-7px;}
+.m-slthead .rec{padding:10px 0;}
+.m-slthead .rec .line{margin:0 8px 0 10px;}
+.m-slthead-1 .rec{padding:8px 0;margin-left:5px}
+.m-slthead-1 .rec .line{margin:0;}
+.m-slthead-1 .rec a{display:inline-block; color:#666; margin:0 -5px; padding:3px 9px; border:1px solid transparent;border-radius:2px;}
+.m-slthead-1 .rec a.z-slt{position:relative;z-index:1;text-shadow:none;}
+
+/* 【首页】主播电台 */
+.m-radio .type{margin:-10px 0 13px -13px;}
+.m-radio .type li{width:72px; margin:0 0 10px 13px; text-align:center;}
+.m-radio .type li a{display:inline-block; min-width:60px; height:61px; padding:1px 6px 0; box-sizing:border-box; border-radius:10px; cursor:pointer;}
+.m-radio .type li .icon{display:block; width:30px; height:30px; margin:4px auto 0;background-position:0 0;}
+.m-radio .type li.z-slt .icon{background-position-x:-30px;}
+.m-radio .type li em{line-height:22px; text-shadow:none;}
+.mq-960 .m-radio .type,.mq-1162 .m-radio .type{margin-left:-31px;}
+.mq-960 .m-radio .type li,.mq-1162 .m-radio .type li{margin-left:31px;}
+
+.m-radio .rdilist{margin:20px 0 40px -27px;}
+.m-radio .rdilist:last-child{margin-bottom:0;}
+.m-radio .rdilist li{flex:0 0 50%;}
+.m-radio .rdilist li .inner{height:90px; margin-left:27px; padding:18px 0;line-height:90px;}
+.m-radio .rdilist li:nth-of-type(1) .inner, .m-radio .rdilist li:nth-of-type(2) .inner{padding-top:0; border-top:none;}
+.m-radio .rdilist li:nth-last-of-type(1) .inner, .m-radio .rdilist li:nth-last-of-type(2) .inner{border-bottom:none; padding-bottom:0;}
+.m-radio .rdilist .cvr{float:left;}
+.m-radio .rdilist .cnt{margin-left:100px;}
+.m-radio .rdilist h3{margin-bottom:4px; line-height:20px;}
+.m-radio .rdilist article{line-height:normal;}
+.m-radio .rdilist article.center{display:inline-block; vertical-align:middle;}
+.m-radio .rdilist article.center h3{margin-bottom:10px;}
+.m-radio .rdilist .u-icn4-vip{margin:2px 0 0 3px;}
+.m-radio .rdilist .u-icn4-daren{margin:-2px 0 0 3px;}
+.m-radio .rdilist .dy{position:absolute; bottom:21px;}
+
+.m-rditop{display:-webkit-flex; margin-bottom:40px;}
+.m-rditop section{flex:0 0 50%; box-sizing:border-box; padding:0 12px 0 0;}
+.m-rditop section:last-child{padding:0 0 0 12px;}
+.m-rditop .help{float:left;margin:5px 0 0 4px;}
+.m-rditop .help .lay{left:87px;top:18px;display:none;}
+.m-rditop .help .lay:before{left:29px; right:auto;}
+.m-rditop .help:hover .lay{display:block;}
+
+.m-rditop .blk{ margin-top:18px;}/* 边框 */
+.m-rditop .toplist{position:relative; min-height:600px;}
+.m-rditop .toplist li{height:60px; padding:10px 0; box-sizing:border-box; line-height:40px;}
+.m-rditop .toplist li:hover .cvr .ply{display:block;}
+.m-rditop .toplist .cvr{margin-left:13px;}
+.m-rditop .toplist .cnt{margin:2px 80px 0 64px; line-height:1.6;}
+.m-rditop .toplist .tag{float:right; margin:10px 13px 0 0;}
+.m-rditop .toplist .tag-hot{width:60px; margin-top:17px;}
+.m-rditop .toplist .cvr, .m-rditop .toplist .num, .m-rditop .toplist .rnk{float:left;}
+.m-rditop .toplist .num{width:29px; padding-left:9px; box-sizing:border-box; font-size:16px; text-align:center;}
+.m-rditop .toplist .num.red{text-indent:-9999px; background-position:-86px -723px;}
+.m-rditop .toplist li:nth-of-type(3) .num.red{background-position-x:-135px;}
+.m-rditop .toplist li:nth-of-type(2) .num.red{background-position-x:-111px;}
+.m-rditop .toplist .rnk{width:16px; margin:-1px 0 0 3px;}
+.m-rditop .toplist-rank .cvr{margin-left:9px;}
+.m-rditop .toplist-rank .cnt{margin-left:104px;}
+
+
+
+/* 【PopLay】主播电台-升级收藏 */
+.m-guiderdi .pic{width:250px; height:160px; margin:0 auto;}
+.m-guiderdi article{text-align:center;}
+.m-guiderdi .tit{margin-top:20px; font-size:30px;}
+.m-guiderdi p{margin-top:10px;}
+.m-guiderdi .tit{color:#555;}
+
+/* 【首页】电台节目排行榜 */
+.m-rdirank .banner{height:137px;}
+.m-rdirank .banner .update{padding:90px 0 0 32px;}
+.m-rdirank .banner .update .help{display:inline-block; margin-left:0; vertical-align:middle; cursor:help; top:-1px;}
+.m-rdirank .banner .help .lay{display:none; left:86px; top:16px;}
+.m-rdirank .banner .help .lay:before{left:30px;}
+.m-rdirank .banner .help:hover .lay{display:block;}
+
+/* 【首页】新碟页 */
+.p-newdvd{width:740px;margin:25px auto 0}
+.mq-1162 .p-newdvd{width:900px}
+.m-newdvdlst .u-cover{margin:0;}
+.m-newdvdlst dt{position:relative;float:left;width:36px; padding-left:2px; margin-right:-38px; font-size:18px; text-align:center;}
+.m-newdvdlst .mnc{margin-left:58px;}
+.m-newdvdlst dd .item{width:141px;margin:0 0 26px 30px;}
+.m-newdvdlst dt .month{display:block; margin-left:-1px; font-size:34px;}
+.m-newdvdlst dt .ymsk{display:block; position:absolute; top:17px; left:-9px; width:60px; height:30px; background-position:-30px -60px;}
+.m-newdvdlst dt .year{position:absolute; left:2px; top:36px; width:36px; font-size:14px}
+.m-newdvdlst-date{position:fixed; top:63px; z-index:1000;width:70px; padding-top:30px;}
+/*.m-newdvdlst .u-load2{margin-left:350px; text-align:left;}*/
+.m-newdvdlst .u-load2.long{margin-left:440px;text-align:left;}
+
+/* 【私人FM】 */
+.m-fm .g-play{height:428px;}
+.m-fm .fmplay{float:left; width:270px; height:376px; margin:52px 0 0 40px;}
+.m-fm .fmplay .covers,.m-fm .fmplay .covers .cvr{width:270px; height:270px;}
+.m-fm .fmplay .covers{-webkit-transform-style:preserve-3d; -webkit-backface-visibility:hidden;}
+.m-fm .fmplay .covers .cvr{-webkit-transition:all 0.6s; z-index:5;}
+.m-fm .fmplay .covers .cvr img{width:100%; height:100%;}
+.m-fm .fmplay .covers .cvr::after{display:block; position:absolute; content:''; top:0; left:0; width:100%; height:100%; box-sizing:border-box;}
+.m-fm .fmplay .covers .cvr-next{-webkit-transform:translate3d(-30px,0,0) scale(0.77); -webkit-transform-origin:left;z-index:4; cursor:pointer;}
+.m-fm .fmplay .covers .cvr-next-hide{-webkit-transform:translate3d(-60px,0,0) scale(0.38); opacity:0; z-index:3; cursor:default;}
+.m-fm .fmplay .covers .cvr-hide{-webkit-transform:translate3d(350px,0,0);opacity:0;z-index:6;}
+.m-fm .fmplay .covers .cvr-dlt{opacity:0; cursor:default !important;}
+.m-fm .fmplay .covers .cvr-nh{opacity:0;}
+.m-fm .fmplay .covers::after{content:''; position:absolute; top:-7px; left:286px; visibility:visible; width:370px; height:350px; box-shadow:none; z-index:10;}
+.m-fm .fmplay .playbtn{z-index:20; left:103px; top:103px; cursor:pointer; -webkit-transition:0.4s; -webkit-transition-property:top,left,width,height;} 
+.m-fm .fmplay .playbtn.z-pause{-webkit-transform:scale(0.78); left:210px; top:210px;}
+.m-fm .fmplay .btnwrap{width:298px; position:relative; margin:42px 0 0 -14px;}
+.m-fm .fmplay .btn{float:left; margin-left:30px;}
+.m-fm .fmplay .btn:nth-of-type(1){margin-left:0;}
+.m-fm .fmlrc{float:right; width:346px; height:424px; margin-right:43px; padding-top:24px; box-sizing:border-box;}
+.m-fm .fmcmt{margin-top:34px; border-radius:4px;}
+
+/* 【MV】全部MV */
+.m-mv .g-min{max-width:948px}
+.m-mv .nonet .u-head1{display:none;}
+.m-mv .u-head1{margin-bottom:20px;}
+.m-mv .headmid{margin-top:7px;}
+.m-mv .mvtags{position:relative;padding-bottom:10px;margin:0 3px 20px 0;text-shadow:none;}
+.m-mv .mvtags::after{position:absolute;bottom:0;display:block;content:'';width:100%;}
+.m-mv .mvtags.nonet,.m-mv .mvtags.nonet::after{border-bottom:none!important}
+.m-mv .mvtags dd{margin-bottom:12px}
+.m-mv .mvtags dt{float:left;padding-top:2px;}
+.m-mv .mvtags dd a,.m-mv .mvtags dd .lne{display:inline-block;}
+.m-mv .mvtags dd a{padding:3px 6px;}
+.m-mv .mvtags dd .lne{vertical-align:middle;margin:0 2px;height:12px;width:1px;}
+
+/* 【MV】网易独家 */
+.m-excl .topban{margin-bottom:30px;}
+.m-excl .topban .ban{position:relative; float:left; width:426px; height:240px; background-position:0 -1240px;}
+.m-excl .topban .ban img, .m-excl .topban .ban a{display:block; width:100%; height:100%;}
+.m-excl .topban .ban .btn{display:none; position:absolute; top:50%; left:50%; margin:-42px 0 0 -42px; opacity:0.7;}
+.m-excl .topban .ban:hover .btn{display:block;}
+.m-excl .topban .ban .btn:hover{opacity:1;}
+.m-excl .topban .ban::before{content:''; z-index:3; width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;}
+.m-excl .topban .ban .ci{top:0; right:0; width:75px; height:21px; padding-right:5px; line-height:21px; text-align:right; pointer-events:none;}
+.m-excl .topban .ban .icon{margin:-1px 4px 0 0;}
+.m-excl .topban .desc{height:240px; box-sizing:border-box; margin-left:426px; padding:20px;}
+.m-excl .topban .desc h2{margin-top:2px; line-height:35px; font-size:20px;}
+.m-excl .topban .desc hr{height:1px; border:none; margin:20px 0 16px;}
+.m-excl .topban .desc article{line-height:20px;-webkit-line-clamp:5;-webkit-box-orient:vertical;display:-webkit-box;text-overflow:ellipsis;overflow:hidden;}
+.m-excl .m-list-mv + .u-head1{margin-top:36px;}
+
+/* 【MV详情页】 */
+.n-mvdtl .mvmain{width:690px;float:left}
+.n-mvdtl .mvtitle{height:28px;}
+.n-mvdtl .mvtitle .tit{float:left;max-width:85%}
+.n-mvdtl .mvtitle h2{display:inline-block;font-size:18px;line-height:1;height:22px}
+.n-mvdtl .mvtitle .back{float:left; width:15px; height:18px; margin-right:5px; background-position:-143px -122px;}
+.n-mvdtl .mvtitle .artist{display:inline-block;margin-left:8px; line-height:22px;}
+.n-mvdtl .mvtitle .time{float:right; line-height:20px;}
+.n-mvdtl .mvbox{width:100%;height:430px;}
+.n-mvdtl .mvplay{width:690px; height:430px;}
+.n-mvdtl .mvbtn{margin:15px 0 40px;}
+.n-mvdtl .mvbtn button{float:left; margin-right:10px;}
+.n-mvdtl .mvmain .u-head1 .tip{margin-left:5px;}
+.n-mvdtl .mvsd{float:left;width:268px;padding-left:15px;margin-top:-24px;}
+.n-mvdtl .mvsd h3{margin:19px 16px 0 16px; line-height:31px; font-weight:bold;}
+.n-mvdtl .mvsd h3 span:first-child{display:inline-block; height:31px;}
+.n-mvdtl .mvsd .intr{position:relative; margin:10px 16px 0; line-height:23px;}
+.n-mvdtl .mvsd .intr p{padding-top:15px}
+.n-mvdtl .mvsd .intr .oper{display:none;position:absolute; bottom:6px; right:6px; width:16px; height:14px; background-position:-99px -184px; cursor:pointer;}
+.n-mvdtl .mvsd .intr .oper.z-fold{display:none;background-position-x:-124px;}
+.n-mvdtl .mvsd .mvlist{margin:13px 16px 0;}
+.n-mvdtl .mvsd .mvlist li{margin-bottom:20px;}
+.n-mvdtl .mvsd .mvlist .u-cover{float:left;}
+.n-mvdtl .mvsd .mvlist .cnt{margin-left:128px; padding-top:5px; line-height:1.5;}
+.n-mvdtl .mvsd .mvlist p:last-child{margin-top:5px;}
+.n-mvdtl .mvsd .intr .p2,
+.n-mvdtl .mvsd .js-unfold .p1,
+.n-mvdtl .mvsd .js-unfold .oper{display:none}
+.n-mvdtl .mvsd .js-fold .oper,
+.n-mvdtl .mvsd .js-unfold .p2,
+.n-mvdtl .mvsd .js-unfold .oper.z-fold{display:block;}
+
+/* 【本地音乐】 */
+.n-btnarea{position:relative; margin:15px 30px;line-height:24px;}
+.n-btnarea button,.n-btnarea .u-ibtn5{float:left; margin-right:10px;}
+.n-btnarea .area1wrap{margin:0 180px 0 124px;}
+.n-btnarea .area1{position:relative; padding:2px 33px 0 23px; margin:0 -33px 0 -23px;}
+.n-btnarea .area1 .u-icn{position:absolute; top:3px; left:0px;}
+.n-btnarea .lnk{position:relative; top:0; right:-5px;}
+.n-btnarea .icntxt{display:inline-block; max-width:93%;}
+.n-btnarea .area1 a:hover .icntxt{text-decoration:underline;}
+.n-btnarea .area2{float:right;}
+.n-btnarea .count{float:right; margin-right:10px; line-height:24px;}
+.n-btnarea .srch{top:-4px; left:auto; right:0px;}
+.n-btnarea .help{left:151px;}
+
+.n-local .oper{padding:15px 21px 15px 15px; height:25px;}
+.n-local .buttons{float:left;}
+.n-local .buttons button + button{margin-left:10px;}
+.n-local .buttons button.u-ibtn5-start{margin-left:0;}
+.n-local .buttons .u-ibtn8w,.n-local .buttons button,.n-local .mtwrap{float:left;}
+.n-local .u-lcsch,.n-local .clear{float:right;}
+.n-local .open{margin:6px 180px 0 250px;}
+.n-local .open > div{position:relative; display:inline-block; max-width:90%;}
+.n-local .open .set{position:absolute; top:0; right:-30px;}
+.n-local .open1{margin:6px 0 0 210px}
+.n-local .open2{margin:6px 185px 0 130px;}
+.n-local .open1 .txt{display:inline-block; max-width:90%; min-width:170px; vertical-align:middle;}
+.n-local .open1 .lnk{position:relative; top:1px; right:-5px;}
+.n-local .open1 a:hover .txt{text-decoration:underline;}
+
+.n-local .wrap{position:absolute; top:59px; left:0; right:0; bottom:0;}
+.n-local .wrap .lcsd,.n-local .wrap .lclst{position:absolute; bottom:0;}
+.n-local .wrap .lcsd{top:35px; left:0; width:182px; z-index:5; overflow:overlay; overflow-x:hidden;}
+.n-local .wrap .lcsd-folder{overflow:overlay;}
+.n-local .wrap .lclst{top:0; right:0; left:182px; z-index:10; overflow:overlay; overflow-x:hidden;}
+.n-local .wrap .srch{position:absolute; top:0; z-index:10; width:182px; height:35px;}
+.n-local .wrap .srch .u-lcsch-s{float:none;}
+.n-local .wrap .lcsd .empty{margin-top:180px; line-height:24px; text-align:center;}
+.n-local .wrap .lcsd .empty *{display:inline-block; vertical-align:middle;}
+.n-local .wrap .lcsd .empty em{max-width:80px;}
+.n-local .wrap .lclst .m-404{padding-top:70px;}
+.n-local .wrap .u-resize2{right:auto;z-index:2}
+.n-local .wrap .u-load2{position:absolute;top:45%;left:28%;}
+
+/* 【本地音乐】匹配音乐 引导 */
+.n-local .mtwrap{position:relative; margin-left:10px;}
+.n-local .mtnote{position:absolute;z-index:1;top:-3px; left:-5px; width:418px; height:340px;}
+.n-local .mtnote .tit{margin:118px 0 0 127px; line-height:20px; font-size:18px;}
+.n-local .mtnote .cls{position:absolute; top:95px; left:360px; width:26px; height:27px; text-indent:-9999px; background-position:0 9999px;}
+.n-local .mtnote .cls:hover{background-position:8px -343px; cursor:pointer;}
+
+/* 【本地音乐】加心 引导 */
+.n-local .favnote{z-index:100; top:38px; left:60px;}
+.n-local .favnote .arr{width:30px; height:48px;}
+.n-local .favnote .cnt{margin:16px 0 0 33px; padding:20px 32px 20px 20px;}
+
+/* 【本地音乐】请添加本地音乐 */
+.n-lmadd{margin:146px 0 0;text-align:center;}
+.n-lmadd p{margin:18px 0 38px;}
+.n-lmadd h2{font-size:14px; font-weight:bold;}
+
+/* 【本地音乐】正在匹配 */
+.m-doingtip{height:24px;line-height:24px;margin:3px 0;padding:0 30px;}
+.m-doingtip .help{position:relative;display:inline-block;width:16px;height:17px;vertical-align:middle;cursor:help;background-position:0 -507px;}
+.m-doingtip .help .u-arrlay{display:none;}
+.m-doingtip .help:hover .u-arrlay{display:block;}
+.m-doingtip .match{display:inline-block; width:150px;}
+
+/*  【本地音乐】正在扫描 */
+.n-local{position:absolute; top:0; right:0; bottom:0; left:0; height:100%;}
+.n-local .header .tab{float:right; margin:25px 16px 0 0;}
+.n-local .header .scan{margin:32px 135px 0 247px;}
+.n-local .header .scan *{ vertical-align:middle;}
+.n-local .header .scan .ico{position:relative; margin-right:8px;}
+.n-local .header .scan .sep{margin-left:10px;}
+.n-local .header .itm{text-align:center; position:relative;}
+.n-local .header .itm.z-first{-webkit-animation:first 0.6s;}
+@-webkit-keyframes first{
+    0%{opacity:0; top:-2px;}
+    100%{opacity:1; top:0;}
+}
+.n-local .header .itm.z-show{-webkit-animation:shownote 0.6s;}
+@-webkit-keyframes shownote{
+    0%{opacity:0; top:3px;}
+    100%{opacity:1; top:0px;}
+}
+
+.n-local .header .itm.z-hide{-webkit-animation:hidenote 0.6s; opacity:0;}
+@-webkit-keyframes hidenote{
+    0%{opacity:1; top:0px;}
+    100%{opacity:0; top:-2px;}
+}
+
+/* 【我的音乐云盘】 */
+.n-local .cldstat{float:left; margin:33px 0 0 20px;}
+.n-local .cldstat .stat, .n-local .cldstat .statcurr{display:inline-block; width:120px; height:12px; border-radius:6px; font-size:12px !important;}
+.n-local .cldstat .stat{vertical-align:top; margin:1px 18px 0 4px; overflow:hidden;}
+.n-local .cldstat .statcurr,.n-local .cldstat .stat em{display:block; width:100%; top:0; left:0; text-align:center;}
+.n-local .cldempty{padding-top:108px; text-align:center; min-height:310px;}
+.n-local .cldempty h2{font-size:30px;}
+.n-local .cldempty p{margin-top:15px;}
+.n-local .cldempty .btns{margin-top:58px;}
+.n-local .cldempty .btn{width:147px;}
+.n-local .service{position:absolute; height:33px; bottom:0; width:100%; text-align:center;}
+.n-local .service-list{position:static; height:40px; line-height:40px;}
+
+/* 【我的音乐云盘】升级引导 */
+.m-cldupdate{width:690px; height:392px; top:50%; left:50%; z-index:1000; margin:-196px 0 0 -345px; border-radius:4px; text-shadow:none;}
+.m-cldupdate .cls{top:10px; right:10px; cursor:pointer;}
+.m-cldupdate h2{height:108px; font-size:26px; text-align:center; line-height:108px;}
+.m-cldupdate .cnt{width:628px; height:250px; margin:0 auto;}
+.m-cldupdate .step1{float:left; width:140px; margin:9px 0 0 34px;}
+.m-cldupdate .url{margin:30px 0 0 -16px;}
+.m-cldupdate .step2{float:left; margin:9px 0 0 88px;}
+
+/* 【本地音乐】文件夹视图 */
+.n-sdlst{overflow:auto; margin-top:-1px; padding-bottom:10px;}
+.n-sdlst li a{display:block; height:40px; padding:6px 0 5px 15px;}
+.n-sdlst li .u-cover{float:left;}
+.n-sdlst li p{margin:0 10px 0 48px; line-height:19px;}
+.n-sdlst li p:first-child{padding-top:3px;}
+.n-sdlst-alb li p{margin-left:58px;}
+.n-sdlst-tre{padding:4px 10px;}
+.n-sdlst-tre p{height:20px;line-height:20px;}
+.n-sdlst-tre p.has{display:inline-block;cursor:pointer;}
+.n-sdlst-tre ul{margin-left:5px;padding-left:9px;border-left:1px dotted;}
+.n-sdlst-tre .top p.has,.n-sdlst-tre .top li{position:relative;}
+.n-sdlst-tre .top li{padding-top:6px}
+.n-sdlst-tre .top li.fstchld{padding-top:1px;}
+.n-sdlst-tre .top p.has:before,.n-sdlst-tre .top li.nochld:before,.n-sdlst-tre .top li.lstchld:after,.n-sdlst-tre .top li.haschld:before,.n-sdlst-tre .top li.lst:after{position:absolute;display:inline-block;content:'';}
+.n-sdlst-tre .top p.has:before{left:-14px;top:5px;background-position:-168px -955px;width:9px;height:10px}
+.n-sdlst-tre .top li.nochld:before{left:-8px;top:14px;width:5px;border-bottom:1px dotted}
+.n-sdlst-tre .top li.lstchld:after{left:-13px;top:16px;width:10px;height:100%;}
+.n-sdlst-tre .top li.haschld.lstchld:after{top:21px;}
+.n-sdlst-tre .top li.haschld:before{left:-4px;top:16px;width:3px;border-bottom:1px dotted}
+.n-sdlst-tre .top li.fstchld:before{top:12px;}
+.n-sdlst-tre .top li.fstchld1:before{top:14px;}
+.n-sdlst-tre .top li.lst.nochld:before{top:15px;}
+.n-sdlst-tre .top li.haschld.expand p.has:before{background-position:-155px -955px}
+.n-sdlst-tre .top li.haschld.expand ul{display:none}
+.n-sdlst-tre .top li p.no a,.n-sdlst-tre .top p.has a{display:inline-block;white-space:nowrap;padding:0 2px}
+.n-sdlst-tre .top li.lst:after{bottom:-16px;left:-14px;width:10px;height:100%}
+.n-sdlst-tre .top li.lst.haschld:after{bottom:-21px;}
+.n-sdlst-tre .top li.fstchld.nochld.lst:after{bottom:-12px}
+.n-sdlst-tre .top li.fstchld.nochld.lst:before{top:10px;}
+.n-sdlst-tre .top li.fstchld.haschld.lst:after{bottom:-16px}
+.n-sdlst-tre .top li.fstchld.haschld.lst:before{top:11px;}
+
+
+/* 【我的音乐】导入歌单 */
+.n-leadinwrap{padding-top:1px;}
+.n-leadin{width:465px;height:340px;padding:56px 0 0 78px;margin:99px auto 0;background-position:0 0;background-size: 100% 550px;}
+.n-leadin h2{margin:0 0 15px;font-size:30px;}
+.n-leadin p{line-height:24px;}
+.n-leadin .sellist{margin:35px 0 0 -20px;}
+.n-leadin .sellist li{position:relative;z-index:1;float:left;width:108px;height:35px;padding:80px 0 0;margin-right:-2px; background-position:0 9999px; text-align:center;cursor:pointer;}
+.n-leadin .sellist li::after{position:absolute;right:-1px;top:9px;height:97px;content:'';}
+.n-leadin .sellist li:hover{z-index:2;border-radius:5px;}
+.n-leadin .sellist li:hover::after,.n-leadin .sellist li:last-child::after{display:none;}
+.n-leadin .sellist li::before{width:60px;height:60px;position:absolute;top:14px;left:46%;margin-left:-27px;content:'';}
+.n-leadin .sellist li.xiami::before{background-position:-58px -437px;}
+.n-leadin .sellist li.douban::before{background-position:0 -437px;}
+.n-leadin .sellist li.duomi::before{width:60px;height:60px;background-position:-126px -437px;}
+.n-leadin .sellist li.kuwo::before{width:60px;height:60px;background-position:-198px -437px;}
+.n-leadin .sellist li.kugou::before{width:60px;height:60px;background-position:-270px -437px;}
+.n-leadin .login{margin:25px 0 0;}
+.n-leadin .login .lgitm{margin:0 0 15px;}
+.n-leadin .login .lgitm:last-child{margin-top:20px;}
+.n-leadin .login input{width:178px;height:20px;line-height:20px;padding:5px 10px;border:1px solid;border-radius:3px;}
+.n-leadin .login .lgerr{position:relative;display:inline-block;height:30px;margin:-2px 0 0 9px;line-height:30px;padding:0 10px 0 35px;vertical-align:middle;border-radius:4px;}
+.n-leadin .login .lgerr::before{position:absolute;left:-5px;top:50%;width:30px;height:15px;margin-top:-7px;content:'';background-position:0 -529px;}
+
+/* 【我的音乐】导入酷狗酷我 */
+.n-leadkugou h2{height:45px; font-size:24px;}
+.n-leadkugou .blk{margin-bottom:22px;}
+.n-leadkugou .lead{padding:20px 0 28px 20px;}
+.n-leadkugou .lead .tip{padding-bottom:18px;}
+.n-leadkugou .lead .btn{width:80px; height:35px;}
+.n-leadkugou .btnbox{position:relative;}
+.n-leadkugou .btnbox .file{position:absolute;left:0;overflow:hidden;width:102px;height:37px; cursor:pointer;}
+.n-leadkugou .btnbox input{position:absolute;left:0;opacity:0;font-size:28px; width:102px; height:37px;}
+.n-leadkugou .ing{padding:22px 0 5px 18px}
+.n-leadkugou .ing h3{padding-bottom:12px}
+.n-leadkugou .ing em{display:inline-block;vertical-align:middle;}
+.n-leadkugou .ing em.arr{width:92px;height:35px;margin:0 8px 0 5px;}
+.n-leadkugou .ing .icn{width:55px;height:55px;}
+.n-leadkugou .ing .icn-import{background-position:-63px -507px;}
+.n-leadkugou .ing.kw .icn-import{height:56px;background-position:-355px -436px;}
+.n-leadkugou .ing .icn-music{width:43px;height:43px;background-position:-435px -445px;}
+.n-leadkugou .succ{padding:45px 20px;}
+.n-leadkugou .succ > div{height:23px; line-height:23px;}
+.n-leadkugou .succ .icn{margin-right:8px;}
+.n-leadkugou .succ h3{display:inline-block; margin-right:20px; font-size:18px; vertical-align:middle;}
+.n-leadkugou .exp{padding:14px 20px;}
+.n-leadkugou .exp .how{height:21px; line-height:21px;}
+.n-leadkugou .exp .icn{margin-right:8px;}
+.n-leadkugou .exp .img{width:700px; height:205px; margin-top:18px;}
+
+/* 【我的音乐】收藏未登录 */
+.n-favlogin{text-align:center;}
+.n-favlogin h2{margin-top:14px; line-height:31px; font-size:18px;}
+.n-favlogin .img{width:376px; height:196px; margin:60px auto 35px;}
+.n-favlogin .btn{margin-top:32px;}
+
+/* 【我的歌手】 */
+.m-myartist .recommend{display:block; width:100%; height:100%; height:60px; line-height:40px; padding:10px 30px; box-sizing:border-box;}
+.m-myartist .recommend .title{margin-left:50px;}
+.m-myartist .recommend .arr{position:absolute; top:50%; left:86%; margin:-4px 0 0 25px;}
+.m-myartist .singers ul{margin-left:-14px;}
+.m-myartist .singers li{position:relative; width:244px; height:96px; margin:0 0 10px 14px; padding:10px 10px 0 10px;}
+.m-myartist .singers .cnt{width:80px; margin-left:60px; line-height:50px;}
+.m-myartist .singers .name{display:inline-block; line-height:1.5; vertical-align:middle;}
+.m-myartist .singers .desc{margin-top:10px;}
+.m-myartist .singers .btn{position:absolute; top:23px; right:10px;}
+.m-myartist .m-empty{padding-top:130px;}
+
+/* 【详情页】用户 歌单 专辑信息 */
+.m-info{min-height:230px;}/* 46 */
+.m-info dt{float:left;position:relative;width:180px;height:180px;padding:4px;}
+.m-info dt img{display:block;width:100%; height:100%;}
+.m-info dt::after{position:absolute;z-index:5;top:-1px;left:-3px;right:-3px;bottom:-11px;content:'';pointer-events:none;background-position:0 -344px;}
+.m-info dt.gdcover{margin:-2px 0 0 -3px;padding:6px 7px;}
+.m-info dt.gdcover::after{top:-4px;left:-6px;right:-6px;bottom:-8px;background-position:0 -598px;}
+.m-info dt.albumcover{padding:0 61px 0 0;}
+.m-info dt.albumcover img{border-radius:4px;}
+.m-info dt.albumcover::after{top:0;left:0;right:-4px;bottom:-13px;background-position:0 -1017px;}
+.m-info dt.albumcover ~ dd{margin-left:280px;}
+.m-info .refwrap{display:none;}
+.m-info dd{margin-left:228px; line-height:23px;}
+.m-info dd .tag{margin:3px 7px 0 0;}
+.m-info .name{position:relative;padding-top:7px; margin-bottom:4px;}
+.m-info .name .tit{font-size:22px; line-height:1.45;}
+.m-info .name .tit.boy,.m-info .name .tit.girl{padding-right:40px;}
+.m-info .name .tit.boy::after,.m-info .name .tit.girl::after{content:''; display:inline-block; width:22px; height:22px;  margin:5px -40px 0 5px;vertical-align:middle; background-position:0 -125px;}
+.m-info .name .tit.girl::after{margin-top:4px; background-position-x:-35px;}
+.m-info .name .tit .u-rtag2{float:left; margin-top:3px;}
+.m-info .name-user .tit{margin-right:215px;}
+.m-info .name .alias{font-size:12px; margin:0px 0 15px 53px; line-height:normal;}
+.m-info .name .alias b:last-child{display:none;}
+.m-info .name .u-icn3-edt{position:absolute;left:100%;top:11px;margin-left:7px;}
+.m-info .name .u-icn5-enter{margin-top:-2px;}
+.m-info .name .icn-song::before{width:9px;height:16px;background-position:-30px 0;}
+.m-info .name .more{float:right;margin:2px 0 0 10px;}
+.m-info .name .more .mnum{display:inline-block;}
+.m-info .name .more .mnum:first-child{margin-left:0;}
+.m-info .name .more .mnum .u-icn4{margin-right:4px;}
+.m-info .name .more button,.m-info .name .more a{margin-left:10px;}
+.m-info .name .more .act.js-fol .fol{display:block;}
+.m-info .name .more .act.js-fol .u-ibtn6,.m-info .name .more .act .fol,.m-info .name-gd .tit::after{display:none;}
+.m-info .name-gd .gd{display:block;overflow:hidden;padding:0 40px 0 5px;}
+.m-info .name-gd .gdin{display:inline-block; position:relative; top:-5px;}
+.m-info .name-gd .gdin b{word-wrap:break-word; word-break:break-all; vertical-align:middle;}
+.m-info .name .uname{display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; vertical-align:middle;}
+.m-info .name-gd-dj .gd{/*padding-right:122px;*/}
+.m-info .name-gd-dj .vol{position:absolute;left:100%;top:-4px;margin:0 0 0 20px;white-space:nowrap;}
+.m-info .name-gd-dj .u-icn3-edt{margin-left:10px;}
+.m-info .name .btnrt{position:absolute; top:9px; right:0;}
+.m-info .name-enter .gd{padding-right:130px;}
+.m-info .data{height:40px;padding:8px 0 0;margin:10px 0 27px 0; }
+.m-info .data li{float:left; padding:0 40px 0 20px;}
+.m-info .data li:first-child{padding-left:0; border-left:none;}
+.m-info .data li:last-child{border-right:none;}
+.m-info .data strong{display:block; margin:-4px 0 3px; font-size:24px;}
+.m-info .data li span{display:block; text-indent:2px;}
+.m-info .user{margin:-1px 0 28px 229px;font-size:14px;}
+.m-info .user .u-icn4-daren{position:relative; top:-2px; margin-left:-1px; margin-right:9px;}
+.m-info .user .u-icn4-vip{margin-left:-1px; margin-right:10px;}
+.m-info .user .u-face{margin:-2px 3px 0 0;vertical-align:middle;}
+.m-info .user time{margin-left:10px;font-size:12px;}
+.m-info .btns{margin-top:20px;margin-bottom:20px;margin-right:-30px;}
+.m-info .btns button,.m-info .btns a,.m-info .btns .u-ibtn7w{margin-right:7px;}
+.m-info .inf{margin-bottom:5px;}
+.m-info .infwrap{height:30px;}
+.m-info .infwrap .inf{float:left; margin-right:20px;}
+.m-info .inf::before{content:'';display:inline-block;width:22px;height:22px;vertical-align:middle;margin-right:2px;}
+.m-info .inf-intr{line-height:24px;word-wrap:break-word;word-break:break-all;}
+.m-info .inf-intr::before{background-position:0 -153px;}
+.m-info .inf-intr .notall{display:inline-block;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:10px; vertical-align:middle;}
+.m-info .inf-sns::before{margin-top:2px;background-position:-30px -155px;}
+.m-info .inf-sns .u-logo,.m-info .inf-sns .u-logo li{display:inline-block;float:none;vertical-align:middle;font-size:0;}
+.m-info .inf-local::before{background-position:0 -183px;}
+.m-info .inf-time{margin-top:1px;}
+.m-info .inf-time::before{background-position:-67px -181px;}
+.m-info .inf-song::before{background-position:-32px -181px;}
+.m-info .inf-alb::before{background-position:-92px -152px;}
+.m-info .inf-tag::before{background-position:-60px -155px;}
+.m-info .inf-tag .u-tag{margin-right:8px;}
+.m-info .inf-tag .u-tag:last-child{margin-right:0;}
+.m-info .inf-mv::before{background-position:-60px -764px;}
+.m-info .vip{margin-top:-4px; padding-bottom:3px;}
+.m-info .vip .icon{margin-right:5px;}
+.m-info .vip .icon:nth-of-type(2){margin-left:10px;}
+
+/* 【详情页】歌单收藏者 */
+.m-favor{margin:20px 0 0 -30px;}
+.m-favor li{float:left; width:122px; height:84px; overflow:hidden; margin-bottom:40px; padding-left:30px; text-align:center;}
+.m-favor .head{width:62px; margin:0 auto 6px;}
+.m-favor .name a{display:inline-block; max-width:108px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.m-favor .m-empty,.m-favor .m-off{margin-left:30px;}
+
+/* 【详情页】歌手，专辑介绍 */
+.m-tkwap{position:relative; padding-top:1px;}
+.m-detail{margin-bottom:30px;}
+.m-detail h3{font-size:14px; font-weight:bold; line-height:30px;}
+.m-detail p{font-size:14px; line-height:30px; text-indent:2em;}
+
+/* 【详情页】艺人详情 */
+.m-yrsh .m-info,.m-ypersonal-show .m-info{position:relative;}
+.m-yrsh .m-info .btnpr,.m-ypersonal-show .m-info .btnpr{position:absolute;top:152px;left:50%;text-shadow:none;width:78px;height:22px;margin-left:-55px; line-height:22px;padding-left:30px;color:#fff;border-radius:13px;border:1px solid rgba(255,255,255,.4);background:rgba(51,51,51,.6)}
+.m-ypersonal-show .m-info .btnpr{padding-left:18px;width:90px}
+.m-yrsh .m-info .btnpr::before{position:absolute;left:15px;top:5px;content:'';width:12px;height:12px;background-position:-54px 0;}
+.m-yrsh .m-info .btnpr em,.m-ypersonal-show .m-info .btnpr em{margin-left:10px;font-weight:bold;opacity:.8;}
+.m-yrsh .m-info .btnpr:hover,.m-ypersonal-show .m-info .btnpr:hover{background:rgba(51,51,51,.8)}
+.m-yrsh .m-list-mv{margin-top:23px}
+.m-xsch .m-list-mv{margin:20px 30px 0 30px;}
+
+/* 【详情页】相似歌手列表 */
+.m-artistlist{margin:23px 0 0 -35px;}
+.m-artistlist li{float:left;width:120px;height:182px;margin-left:35px;}
+.m-artistlist .u-cover{margin:0 auto;}
+.m-artistlist p{margin-top:10px;text-align:center;}
+
+/* 【单曲播放】 */
+.g-box .u-face-2:before{background-position:-80px 0;}
+.g-box .m-slist3 li:hover .u-face-2:before{ background-position:-120px 0;}
+.n-single{position:relative;z-index:1;height:542px;}
+.n-single .wrap,.n-single .cdbox,.n-single .cnt,.n-single .cdimg,.n-single .bg,.n-single .bg::after,.n-single .bgimg{position:absolute;width:100%;height:100%;}
+.n-single .bg,.n-single .wrap{width:998px; left:50%; margin-left:-499px;}
+.g-bd2{width:878px; margin:-54px auto 0 auto;}
+.n-single .bg .dftbg{position:absolute; top:0; right:0; width:100%; height:542px; opacity:0; -webkit-transition:z-index, opacity 3s; z-index:-10; background-repeat:no-repeat; background-position:center 0;}
+.n-single .bg .dftbg.z-default{opacity:1; z-index:-1;}
+.n-single .bg::after,.n-single .bg::before{z-index:4;content:'';pointer-events:none; background-repeat:no-repeat;}
+.n-single .bgimg{background-repeat:no-repeat;background-position:50% 50%;background-size:cover;-webkit-transition:z-index, opacity 3s;opacity:0;z-index:-1;}
+.n-single .bgimg.z-show{opacity:1;z-index:1;}
+
+.n-single .wrap{z-index:6;}
+.n-single .sd{position:absolute;top:0;left:60px;width:400px;height:455px;}
+.n-single .mn{position:absolute;top:20px;left:500px;right:60px;height:405px;}
+.n-single .cd{position:absolute;top:40px;left:50%;width:348px;height:350px;margin-left:-174px;}
+.n-single .cdin,.n-single .cdimg,.n-single .cdimg img{position:absolute;width:220px;height:220px;}
+.n-single .cdin,.n-single .cdimg{top:50%;left:50%;margin:-110px;overflow:hidden;}
+.n-single .cdwrap{position:relative;width:100%;height:100%;-webkit-animation:vinyl 40s infinite linear; -webkit-animation-fill-mode:forwards;-webkit-animation-play-state:paused;}
+@-webkit-keyframes vinyl{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(360deg);}
+}
+.n-single .cdbg{position:absolute;width:100%;height:100%;background-position:0 0; background-repeat:no-repeat;}
+.n-single .cdin{background-position:-380px -174px;}
+.n-single .cdbox{background-position:0 -360px;}
+.n-single .cdrun{position:absolute;top:-40px;left:180px;width:95px;height:122px;background-position:-388px 0;-webkit-transform-origin:0 0;-webkit-transform:rotate(-35deg);-webkit-transition:-webkit-transform 0.3s ease-out;}
+.n-single .cd.z-play .cdimg{/*-webkit-animation-play-state:running;*/}
+.n-single .cd.z-play .cdrun{-webkit-transform:rotate(0deg);}
+.n-single .cd.z-play .cdwrap{-webkit-animation-play-state:running !important;}
+.n-single .btns{position:absolute;left:0;right:0;bottom:0;text-align:center;}
+.n-single .btns button{margin:0 4px;}
+.u-icn-sf{display:none; position:absolute;z-index:140;left:50%;top:82px; margin-left:440px;width:41px;height:29px;background-position:0 -1110px;cursor:pointer;}/* 播放单面切换 */
+.u-icn-sf.z-show{display:block;-webkit-animation:show 0.3s 0.3s both;}
+.u-icn-sf:hover{background-position-x:-47px;}
+
+.n-shead{position:relative;height:18px;line-height:18px;padding:0 0 15px 8px;}
+.n-shead::before{content:'';position:absolute;left:0;top:0;width:3px;height:21px;border-radius:1px;}
+.n-shead .u-tit{float:left;}
+.n-shead .hdinfo{float:left;margin:6px 0 0 10px;line-height:12px;text-shadow:none;}
+.copyright{font-size:12px;}
+
+/* 【单曲播放】简易歌单列表 */
+.m-slist1{margin-top:14px;line-height:20px;}
+.m-slist1 li{padding:6px 0;}
+.m-slist1 li:hover{margin:0 -20px; padding:6px 20px;}
+.m-slist1 li > a{display:block;height:40px;}
+.m-slist1 .u-cover{float:left;margin-right:-60px;}
+.m-slist1 h5,.m-slist1 p{margin-left:50px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.m-slist1 h5{font-size:14px;}
+
+/* 【单曲播放】简易单曲列表 */
+.m-slist2{margin:0 -20px;}
+.m-slist2 li > a{display:block;height:30px;line-height:30px;padding:0 20px;}
+.m-slist2 h5 .tit,.m-slist2 p{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.m-slist2 h5{float:left;width:64%; display:-webkit-flex;}
+.m-slist2 h5 .tit{-webkit-flex:0 1 auto;}
+.m-slist2 h5 .cld{-webkit-flex:0 0 auto; margin:8px 0 0 3px;}
+.m-slist2 p{float:right;width:27%;}
+
+/* 【单曲播放】简易用户列表 */
+.m-slist3 li > a{display:block;height:34px;line-height:34px;padding:10px 1px;}
+.m-slist3 li:first-child > a{border-top:0;}
+.m-slist3 li:hover{padding:1px 20px; margin:-1px -20px;}
+.m-slist3 .u-face,.m-slist3 .u-iface{float:left;margin-right:-34px;}
+.m-slist3 time{float:right;margin-left:5px;max-width:50%; overflow:hidden; white-space:nowrap;text-overflow:ellipsis;}
+.m-slist3 .name{margin:0 0 0 46px;overflow:hidden;}
+.m-slist3 .namec{position:relative;display:inline-block;max-width:100%;box-sizing:border-box;padding-right:17px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.m-slist3 .namec .u-icn4{position:absolute;right:0;top:50%;margin-top:-6px;}
+.n-newhead{margin-top:-12px;margin-bottom:30px}
+.n-newhead .u-tabbtn-1{margin:0 auto;} 
+
+/*【绑定帐号】 */
+.n-binds .head3{padding:30px 0 10px;}
+.n-binds li{height:70px; padding:0 20px; box-sizing:border-box;}
+.n-binds .tit{float:left; line-height:70px;}
+.n-binds .tit .cnt{display:inline-block; line-height:20px; vertical-align:middle;}
+.n-binds .tit .sep{margin-left:10px;}
+.n-binds .tit strong,.n-lyunb strong{font-weight:bold;}
+.n-binds .btns{float:right; margin-top:19px;}
+.n-binds .btns button{margin-left:20px;}
+.n-binds .tit::before{float:left; width:40px; height:40px; margin:15px 8px 0 0; content:'';}
+.n-binds li.mb .tit:before{ background-position:0 -235px;}
+.n-binds li.sn .tit:before{ background-position:0 -283px;}
+.n-binds li.tx .tit:before{ background-position:0 -332px;}
+.n-binds li.rr .tit:before{ background-position:0 -382px;}
+.n-binds li.db .tit:before{ background-position:0 -430px;}
+.n-binds li.wy .tit:before{ background-position:-90px -283px;}
+.n-binds li.yx .tit:before{ background-position:-90px -235px;}
+.n-binds li .tit.z-gray::before{background-position-x:-45px;}
+.n-binds li.qz .tit.z-gray:before,.n-binds li.yx .tit.z-gray:before,.n-binds li.wy .tit.z-gray:before{background-position-x:-130px;}
+
+/* 【设置】 */
+.n-setcnt{padding:30px 0; border-bottom:1px solid;}
+.n-setcnt:last-child{border-bottom:none; padding-bottom:0;}
+.n-setcnt .oneitem{margin-top:25px}
+.n-setcnt .oneitem:first-child{margin-top:0;}
+.n-setcnt h3{float:left; position:relative; top:-4px; width:130px; font-weight:bold; font-size:18px; font-weight:normal;}
+.n-setcnt h4{height:24px;}
+.n-setcnt .subtit{margin-top:24px;}
+.n-setcnt .disable *{opacity:0.3; pointer-events:none;}
+.n-setcnt > div{margin-left:146px;}
+.n-setcnt .account ul li{float:left; margin-right:10px; line-height:24px;}
+.n-setcnt .account ul span{display:block; cursor:pointer;}
+.n-setcnt .account .z-gray{cursor:default;}
+.mq-anonimous .n-setcnt .account{display:none;}
+.mq-anonimous .n-setcnt .account.z-anon{display:block !important;}
+.n-setcnt .btns{margin-top:21px; vertical-align:middle;}
+.n-setcnt .btns a,.n-setcnt button{margin-right:10px;}
+.n-setcnt .hbtns{margin-left:20px;}
+.n-setcnt .fstbtn{margin-top:-5px;}
+.n-setcnt .private{position:relative; margin-top:20px;}
+.n-setcnt .private h4{display:inline-block; height:38px; line-height:24px;}
+.n-setcnt .download .item > span{margin-right:22px}
+.n-setcnt .download .item label{display:inline-block;height:27px;margin-right:25px}
+.n-setcnt .space .sort .txt{display:inline-block;vertical-align:middle;max-width:76%;}
+.n-setcnt .space .spset{margin-top:22px;}
+.n-setcnt .space .cap{display:inline-block;width:32px;margin:0 10px;}
+.n-setcnt .capbar{display:inline-block; position:relative;width:280px; height:6px;margin-left:10px}
+.n-setcnt .capbar .curr{position:absolute; top:0; left:0; height:6px; border-radius:3px;}
+.n-setcnt .proxy .u-select{width:110px; margin-top:10px;}
+.n-setcnt .proxy .pcnt{width:576px; margin:25px 0 0 2px;}
+.n-setcnt .proxy .pcnt li{float:left; width:288px; margin-bottom:10px; }
+.n-setcnt .proxy .pcnt .txt{width:190px;}
+.n-setcnt .about > p{margin-bottom:15px;}
+.n-setcnt .about .btns{margin-left:12px;}
+.n-setcnt .about .dowlod{margin-top:27px}
+.n-setcnt .service{margin-top:40px;}
+.n-setcnt .import p{margin-top:14px;}
+.n-setcnt .import a:hover{text-decoration:underline;}
+.n-setcnt .import a em{margin:-1px 7px 0 0;}
+.n-setcnt .shortcut{margin-top:-4px;}
+.n-setcnt .shortcut .hd,.n-setcnt .shortcut .bd ul{margin-bottom:12px;}
+.n-setcnt .shortcut li{float:left;}
+.n-setcnt .shortcut li:nth-child(1){width:116px;}
+.n-setcnt .shortcut li:nth-child(2){width:206px;}
+.n-setcnt .shortcut li:nth-child(3){width:196px;}
+.n-setcnt .shortcut li:nth-child(4){width:auto;}
+.n-setcnt .shortcut .bd li{line-height:30px;}
+.n-setcnt .shortcut .bd .u-txt2{width:160px;}
+.n-setcnt .shortcut .bd .err{display:none;}
+.n-setcnt .normal .u-select{width:208px;z-index:2;}
+.n-setcnt .normal .u-select .select{top:24px; cursor:default; border-radius:3px;min-height:75px}
+.n-setcnt .normal .u-select .value p{width:80%;}
+.n-setcnt .normal .close li:first-child{height:25px}
+.n-setcnt .shortcut .js-err .err{display:block;}
+.n-setcnt .shortcut .ft{margin-top:24px}
+.n-setcnt .shortcut .ft button{margin-left:66px}
+
+.n-setcnt input[type="range"]{-webkit-appearance:none;width:280px; height:6px; border-radius:3px;}
+.n-setcnt input[type='range']::-webkit-slider-thumb{-webkit-appearance:none !important;z-index:2;position:relative;cursor:pointer;width:16px;height:16px;border-radius:50%;}
+.n-setcnt input[type='range']::-webkit-slider-thumb::after{display:block;content:'';position:absolute;top:4px;left:5px;width:2px;height:6px;border:1px solid;border-width:0 1px;}
+.n-setcnt .desklrc .u-select{width:107px;z-index:2;}
+.n-setcnt .desklrc .fontsize .u-select{z-index:3;}
+.n-setcnt .desklrc .prein{display:inline-block;position:relative;top:8px;margin-left:20px;}
+.n-setcnt .desklrc .prein .tit{position:absolute;top:5px;}
+.n-setcnt .desklrc .prein .u-select{float:left;margin-left:60px;}
+.n-setcnt .desklrc .btn-ply-has,.n-setcnt .desklrc .btn-ply-no{height:28px;line-height:28px;padding-right:36px}
+.n-setcnt .desklrc .btn-ply-has span,.n-setcnt .desklrc .btn-ply-no span{display:inline-block;vertical-align:middle;width:18px;height:18px;margin-bottom:2px;margin-right:6px}
+.n-setcnt .desklrc .preview{height:103px;width:553px;border:1px solid;overflow:hidden;}
+
+/* 【编辑个人和歌单信息】 */
+.m-form{position:relative;margin-top:40px;line-height:32px;}
+.m-form .fmitm{margin:0 0 20px;}
+.m-form .fmitm > label{float:left;width:3em;margin-right:12px;text-align:right;}
+.m-form .fmcnt{float:left;width:420px;}
+.m-form .fmcnt .txt,.m-form .fmcnt .area{width:400px;}
+.m-form .fmcnt .area{height:75px;}
+.m-form .fmcnt .area textarea{width:100%; height:54px;}
+.m-form .fmitm-city .fmcnt{width:282px;}
+.m-form .fmitm-city .u-select{display:inline-block;width:151px;margin-right:10px}
+.m-form .fmitm-city .u-select:first-child{width:105px;}
+.m-form .fmitm-btns{margin-top:40px;padding-top:20px;}
+.m-form .fmitm-btns button{margin-right:20px;}
+.m-form .fmitm-tag .tags{margin-right:15px;}
+.m-form .fmitm-tag .u-tag{margin-right:5px;}
+.m-form .cover{position:absolute;left:520px;top:0;width:180px;height:180px;padding:4px; cursor:pointer;}
+.m-form .cover img{display:block;width:100%;height:100%;}
+.m-form .cover::after{position:absolute;top:-3px;left:-3px;right:-3px;bottom:-11px;content:'';pointer-events:none;background-position:0 -342px;}
+.m-form .cover .bar{position:absolute;bottom:4px;left:4px;right:4px;height:32px;line-height:32px;font-size:14px;text-align:center;padding:4px 10px 0;}
+.m-form .error{padding:5px 0 0;line-height:16px;}
+.m-form-md .fmitm > label{width:4em;}
+.m-form .fmitm-fete{position:relative; z-index:100;}
+.m-form .fmitm-fete .fmcnt{width:215px;}
+.m-form .fmitm-fete .u-select{display:inline-block;width:55px;margin-right:7px}
+.m-form .fmitm-fete .u-select:first-child{width:76px;}
+.m-form .fmitm-fete .u-select .select{z-index:2}
+
+/* 【某某的粉丝】 */
+.m-fanslst{margin-top:27px;margin-left:-40px;text-shadow:none}
+.m-fanslst > li{float:left;margin:0 0 20px 40px;}
+.m-fanslst .fans{position:relative;display:inline-block;width:324px; border-radius:4px;padding:14px 12px 12px 14px;}
+.m-fanslst .fans .right{position:absolute;right:12px;top:36px}
+.m-fanslst .fans .u-face{float:left;}
+.m-fanslst .fans h4 b a,.m-fanslst .fans p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.m-fanslst .fans h4, .m-fanslst .fans p{height:15px;margin:0 70px 0 76px;line-height:15px;}
+.m-fanslst .fans h4{margin-bottom:8px;margin-right:90px;font-size:14px;}
+.m-fanslst .fans h4 b{position:relative;}
+.m-fanslst .fans h4 b a{display:inline-block;max-width:88%;font-weight:bold;}
+.m-fanslst .fans .u-icn4-vip{margin:-7px 0 0 2px}
+.m-fanslst .fans .u-icn4-daren{margin:-10px 0 0 2px;}
+.m-fanslst .fans .tip{margin-top:12px;margin-right:0;}
+.m-fanslst .fans .line{margin:0 14px 0 16px}
+
+/* 【下载手机端app】 */
+.m-loadapps{width:629px; margin:45px auto; padding-top:272px; text-align:center;}
+.m-loadapps p{font-size:18px; line-height:105px;}
+.m-loadapps .btns a{display:inline-block; width:175px; height:56px; margin:0 9px; border-radius:4px; border:1px solid;font-size:16px; text-align:left; text-indent:50px; line-height:56px;}
+
+
+
+

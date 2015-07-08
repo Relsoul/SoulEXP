@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:BOM
+				-窗口对象模型
+				-navigator
+					-浏览器信息
+				-location
+					-浏览器定位和导航
+				-history
+					-窗口浏览器历史
+				-screen
+					-屏幕信息
+			
+			二:navigator
+				-浏览器信息
+				-palform
+					-运行在什么平台如Win32
+				-userAgent
+					-chrom
+					-firefox
+					-IE
+			三:location
+				-浏览器定位和导航
+					-http://www.163.com:8080/index.html?=admin&lang=zh-CN#news
+					-protocol
+						-http
+					-host
+						-www.163.com:8080
+					-pathname
+						-index.html
+					-hostname
+						-www.163.com
+					-port
+						-8080
+					-search
+						-?r=admin&lang=zh-CN
+					-hash
+						-news
+					-调用location会返回href
+						-http://xxx.com/
+					-assign(url)
+						-载入新的url，记录浏览历史
+					-replace(url)
+						-载入新的url，不记录浏览历史
+					-reload()
+						-重载当前页
+			
+			四:history
+				-浏览器当前窗口的浏览历史
+					-back()
+					-forward();
+					-go();//负数后退 正数前进
+			五:screen
+				-屏幕信息
+					-availHeight //显示器可以用高度
+					-height//显示器高度
+					
+			六:方法
+				-alert(),confirm(),prompt()//三种对话框
+				-setTimeout(),setInterval()//计时器
+				-open(),close()//开新窗口，关闭窗口
+			
+			七:三种对话框
+				-alert()//确定按钮
+				-confirm() //确定返回true 取消返回false
+				-prompt()//输入框 返回用户输入的输入字符串
+				-三种对话框都是阻塞用户进行浏览
+			
+			八:开，关新窗口
+				-var w =window.open("url","name","width=400,height=350,status=yes,rezizable=yes")
+				-父窗口调用w.close();
+				-子窗口调用window.close();
+				
+			九:事件
+				-load
+					-文档和所有图片加载完毕时
+				-unload
+					-离开文档时
+				-beforeunload
+					-和unload类似，但他提供询问用户是否确定离开的机会
+				-resize
+					-拖动改变浏览器窗口大小
+				-scroll
+					-拖动滚动浏览器时
+				
+						
+				
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

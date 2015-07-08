@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.head,.footer{
+				background-color:#eeeeee;
+				width:100%;
+				height:50px;
+			}
+			.sub{
+				float:left;
+				width:190px;
+				margin-left:-100%;
+				background:#00CC00;
+				height:100px;
+			}
+			
+			.main{
+				 float: left;       
+          		 width: 100%;   
+          		 background:#0044DD;
+          		 height:100px;
+			}
+			
+			.ext{
+				float:left;
+				width:190px;
+				margin-left:-190px;
+				background:#49047A;
+				height:100px;
+			}
+			/*ok 目前我们已经让.ext和.sub定位到正确的位置了,发现main还未到正确的位置，接下来考虑main的定位*/
+			
+			
+			/*可以向center添加padding来实现定位，咋们试试*/
+			.center{
+				/*padding: 0 190px 0 190px;*/
+				overflow: hidden;
+			}
+			/*但是我们发现 这样能够让main定位到正确位置，但是sub和ext位置又不对了于是 利用相对定位来实现*/
+			/*为了方便了解我们重写一下sub和main*/
+			.sub{
+				float:left;
+				width:190px;
+				margin-left:-100%;
+				background:#00CC00;
+				height:100px;
+				/*position: relative;*/
+				left:-190px;
+			}
+			
+			.ext{
+				float:left;
+				width:190px;
+				margin-left:-190px;
+				background:#49047A;
+				height:100px;
+				/*position: relative;*/
+				right:-190px;
+			}
+			
+			/*nice!发现实现了三栏布局，这就是双飞翼布局的....前身 圣杯布局 现在对圣杯布局进一步优化则形成双飞翼布局*/
+			
+			/*给mian_bg来加上padding来实现定位*/
+			/*先取消center的padding*/
+			/*再取消sub和ext的position*/
+			/*加上main_bg则实现了双飞翼布局*/
+			.main_bg{
+				margin:0 190px 0 190px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--值得一提的是,在HTML结构中 main居于sub与ext之上-->
+		<div class="head">
+			
+		</div>
+		<div class="center">
+			<!--先加一层包裹-->
+			
+				<div class="main">
+					<div class="main_bg">Main</div>
+				</div>
+			
+			
+			<div class="sub">Sub</div>
+			<div class="ext">Ext</div>
+		</div>
+		<div class="footer">
+			
+		</div>
+	</body>
+</html>

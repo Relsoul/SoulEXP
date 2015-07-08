@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:列表
+				-图片形式列表
+				-信息形式列表
+			
+			二:内容
+				-显示列表
+				-选择列表项
+				-新增列表项
+				-删除列表项
+				-更新列表项
+			
+			三:编程方式
+				-面向视图	
+					pro.onFirstNameChange=function(){
+						var firstName=getFromView("firstName")//获取视图值
+						if(this.checkFirstName(firstName)){//对视图值做一个判断
+							this.updateViewPass("firstName")//更新视图
+						}else{
+							this.updateViewFailed("firstName");
+						}
+					}
+					-View=>Controller
+				-面向数据
+					this.data={
+						firstName:"a",
+						lastName:"bcdef";
+						status:{
+							firstName:STATUS_NOT_CHECK,
+							lastName:STATUS_NOT_CHECK
+						}
+					}
+					this.watch("firstName",function(event){
+						if(self.checkFirstName(this.firstName)){
+							this.status.firstName=STATUS_PASS
+						}else{
+							this.status.firstName=STATUS_FAILED
+						}
+						
+					})
+					View=>Binder=>ViewModel
+				
+		</script>
+	</head>
+	<body>
+	<div id="parent">
+		<div class="head">
+
+		<div class="fix">
+			<div class="th col f-pr">
+			</div>	
+			<div class="th col o-love">
+				<span class="ico"></span>
+			</div>
+		</div>
+	</div>
+		<div class="flow f-cb">
+			<div class="th col">音乐标题</div>
+			<div class="th col">歌手</div>
+			<div class="th col">专辑</div>
+			<div class="th col">时长</div>
+		</div>
+	</div>
+	</body>
+</html>

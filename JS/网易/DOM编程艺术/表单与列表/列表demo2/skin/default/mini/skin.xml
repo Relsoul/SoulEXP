@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="300,329" mininfo="300,44" bktrans="true">
+	<Font name="Tahoma" size="12" default="true"/>
+
+	<Default name="VScrollBar" value="width=&quot;6&quot; showbutton1=&quot;false&quot; showbutton2=&quot;false&quot; thumbnormalimage=&quot;file='mini/list/scrlbar.png' corner='2,3,2,3' hole='false'&quot; linesize=&quot;0&quot;" />
+
+	<VerticalLayout name="main" bkcolor="#00000000">
+		<HorizontalLayout name="wordsbar" height="32" float="true" pos="0,42,256,74" visible="false">
+			<Container width="1" height="32"/>
+    		<Container width="12" height="32" bkimage="mini/bar/left.png"/>
+    		<HorizontalLayout height="32" bkimage="file='mini/bar/mid.png' xtiled='true'">
+    			<Container width="2" height="32"/>
+				<VerticalLayout height="32">
+					<Container height="3"/>
+					<Label name="wordbar_info" showhtml="true" endellipsis="true" textcolor="#FFFFFFFF" textcolor1="#FF99999D" align="center"/>
+    			</VerticalLayout>
+    		    <Container width="2" height="32"/>
+    		</HorizontalLayout>
+    		<Container width="12" height="32" bkimage="mini/bar/right.png"/>
+    		<Container width="1" height="32"/>
+    	</HorizontalLayout>
+
+    	<VerticalLayout name="list_panel" height="32" float="true" pos="0,42,256,329" visible="false">
+    		<PlayList name="play_list" header="hidden" inset="5,0,5,8" bkimage="file='mini/list/bk.png' xtiled='true' corner='9,0,9,0'" hole="false" vscrollbar="true" itemhotimage="file='mini/list/hover.png' xtiled='true'" itemselectedimage="file='mini/list/selected.png' xtiled='true'" itembkimage="file='mini/list/itmbk.png' xtiled='true'" itemdisabledimage="file='mini/list/playing.png' xtiled='true'" itemaltbk="true" itemhottextcolor="#FFCCCCCC" itemselectedtextcolor="#FFFFFFFF" itemtextcolor="#FFBBBBBB">
+			</PlayList>
+		</VerticalLayout>
+
+  		<Container height="44">
+  			<HorizontalLayout>
+  				<Container width="44" bkimage="file='mini/main/panel.png' source='0,0,44,44'"/>
+  				<Container>
+  					<Container minwidth="200" bkimage="file='mini/main/panel.png' source='44,0,244,44' xtiled='true'"/>
+					<HorizontalLayout>
+						<VerticalLayout minwidth="180">
+							<Container height="40"/>
+							<Container height="1" bkimage="mini/main/highlight.png"/>
+							<Container height="3"/>
+						</VerticalLayout>
+						<Container width="23"/>
+						<Container name="highlight_padding" width="23"/>
+					</HorizontalLayout>
+  				</Container>
+  				<Container width="55" bkimage="file='mini/main/panel.png' source='244,0,299,44'"/>
+  			</HorizontalLayout>
+
+  			<HorizontalLayout>
+  				<Container />
+  				<VerticalLayout width="100">
+					<Container bkimage="mini/main/gradient.png"/>
+  					<Container height="2"/>
+  				</VerticalLayout>
+				<Container width="1"/>
+  			</HorizontalLayout>
+				
+			 <HorizontalLayout>
+  				<Container width="44"/>
+				<Container />
+				<Container width="101">
+					<Container name="btn_panel_rgn0"/>
+					<HorizontalLayout>
+						<Container />
+						<Container name="btn_panel_rgn1" width="78"/>
+					</HorizontalLayout>
+				</Container>
+  			</HorizontalLayout>
+
+  			<HorizontalLayout name="main_panel">
+	    		<Container width="44">
+	    			<ImageFrame name="small_album" width="42" height="42" float="true" pos="1,0,43,42" enabled="true" mask_image="mini/album/mask.png" frame_image="mini/album/frame.png" default_image="mini/album/default.png" hight_light_image="mini/album/highlight.png" cTransparentColor="#FFFFFFFF" padding="1,1,1,1" alphablend="true"/>
+				</Container>
+
+				<Container name="mid_panel">
+					<VerticalLayout>
+						<Container>
+							<HorizontalLayout name="lrc_panel" visible="false">
+								<Container width="5"/>
+								<Container>
+									<SlideText name="new_lyrc" textcolor="#FFFFFFFF"/>
+								</Container>
+								<Container width="5"/>
+							</HorizontalLayout>
+
+							<VerticalLayout name="no_lrc_panel" visible="false">
+								<Container height="4"/>
+								<HorizontalLayout>
+									<Container width="10"/>
+									<VerticalLayout>
+										<Container>
+											<Label name="no_lrc_title" showhtml="true" textcolor="#FFFFFFFF" endellipsis="true" align="center"/>
+										</Container>
+										<Container>
+											<Label name="no_lrc_artist" showhtml="true" textcolor="#FF99999D" endellipsis="true" align="center"/>
+										</Container>
+									</VerticalLayout>
+									<Container width="10"/>
+								</HorizontalLayout>
+								<Container height="2"/>
+							</VerticalLayout>
+
+							<HorizontalLayout name="control_panel">
+								<Container />
+								<Container width="157" height="42">
+									<HorizontalLayout>
+										<Container width = "36" />
+										<Container />
+										<HorizontalLayout name="panel_previous" width="24" visible="true">
+											<Button name="previous" width="20" height="20" padding="0,11,0,0" normalimage="file='btn/collection.png' source='0,8,20,28'" pushedimage="file='btn/collection.png' source='0,48,20,68'" />
+											<Container width="4"/>
+										</HorizontalLayout>
+										<HorizontalLayout width = "36">
+											<Button name="toplay" width="36" height="36" padding="0,3,0,0" normalimage="file='btn/collection.png' source='24,0,60,36'" pushedimage="file='btn/collection.png' source='24,40,60,76'" visible="false"/>
+											<Button name="topause" width="36" height="36" padding="0,3,0,0" normalimage="file='btn/collection.png' source='64,0,100,36'" pushedimage="file='btn/collection.png' source='64,40,100,76'"/>
+										</HorizontalLayout>
+										<Container width = "4"/>
+										<Button name="next" width="20" height="20" padding="0,11,0,0" normalimage="file='btn/collection.png' source='104,8,124,28'" pushedimage="file='btn/collection.png' source='104,48,124,68'"/>
+										<Container />
+										<Container width = "37"/>
+									</HorizontalLayout>
+								</Container>
+								<Container />
+							</HorizontalLayout>
+						</Container>
+						<Container height="2"/>
+					</VerticalLayout>
+				</Container>
+				<HorizontalLayout adaptive="true">
+					<Container width="2" padding="0,3,0,1" bkimage="mini/main/seperator.png"/>
+					<Container width="5"/>
+					
+					<HorizontalLayout name="like_panel" width="23" height="20" padding="0,11,0,0">
+						<TabLayout name="like_mark" width="22" height="20" selectedid="0">
+							<Button name="like" width="22" height="20" normalimage="file='btn/like.png' source='0,0,22,20'" hotimage="file='btn/like.png' source='0,20,22,40'"/>
+							<Button name="like" width="22" height="20" normalimage="file='btn/like.png' source='0,40,22,60'" hotimage="file='btn/like.png' source='0,60,22,80'"/>
+							<Button name="like" width="22" height="20" normalimage="file='btn/like.png' source='0,80,22,100'" hotimage="file='btn/like.png' source='0,80,22,100'" handcursor="false"/>
+							<Button name="like" width="22" height="20" normalimage="file='btn/like.png' source='0,100,22,120'" hotimage="file='btn/like.png' source='0,100,22,120'" handcursor="false"/>
+							<Button name="like" width="22" height="20" normalimage="file='btn/like.png' source='0,80,22,100'" hotimage="file='btn/like.png' source='0,80,22,100'" handcursor="false"/>
+						</TabLayout>
+					</HorizontalLayout>
+					<HorizontalLayout name="panel_favour" width="24" height="24" padding="0,9,0,0" visible="false">
+						<TabLayout name="favour_mark" width="24" height="24" selectedid="0">
+							<Button name="favour" width="24" height="24" tooltip="赞" normalimage="file='btn/praise.png' source='0,0,24,24'" hotimage="file='btn/praise_hvr.png' source='0,0,24,24'" />
+							<Button name="favour" width="24" height="24" tooltip="已赞" normalimage="file='btn/praised.png' source='0,0,24,24'" hotimage="file='btn/praised.png' source='0,0,24,24'"/>
+						</TabLayout>
+					</HorizontalLayout>
+					<HorizontalLayout name="panel_recyle" width="23" height ="22" padding="0,10,0,0" visible="false">
+						<Container width="2"/>
+						<Button name="btn_recyle" width="21" height="22" tooltip="垃圾桶" normalimage="file='btn/delete.png' source='0,0,21,22'" hotimage="file='btn/delete_hvr.png' source='0,0,21,22'"/>
+					</HorizontalLayout>
+					<HorizontalLayout name="panel_volume" width="23" height ="24" padding="0,9,0,0">
+						<Container width="1"/>
+						<Button name="volume" width="22" height="24" tooltip="音量" normalimage="file='btn/volume.png' source='0,0,22,24'" hotimage="file='btn/volume.png' source='0,24,22,48'"/>
+					</HorizontalLayout>
+					<HorizontalLayout name="panel_list" width="23" height ="21" padding="0,10,0,0">
+						<Container width="1"/>
+						<Button name="show_list" width="22" height="21" tooltip="显示列表" normalimage="file='btn/collection.png' dest='5,5,17,16' source='10,100,22,111'" hotimage="file='btn/collection.png' dest='5,5,17,16' source='40,100,52,111'"/>
+					</HorizontalLayout>
+					<Container width="9"/>
+					<VerticalLayout width="10">
+						<Button name="window_close" width="10" height="10" padding="0,6,0,0" tooltip="关闭" normalimage="file='btn/collection.png' source='0,80,10,90'" pushedimage="file='btn/collection.png' source='20,80,30,90'"/>
+						<Button name="toweb" width="10" height="10" padding="0,2,0,0" tooltip="完整模式" normalimage="file='btn/collection.png' source='40,80,50,90'" pushedimage="file='btn/collection.png' source='60,80,70,90'"/>
+					</VerticalLayout>
+					<Button name="window_size" width="6"/>
+				</HorizontalLayout>
+			</HorizontalLayout>
+    	</Container>
+	</VerticalLayout>
+</Window>

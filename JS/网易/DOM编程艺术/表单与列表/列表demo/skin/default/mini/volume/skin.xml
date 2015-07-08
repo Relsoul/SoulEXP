@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="124,48" bktrans="true">
+	<Font name="微软雅黑" size="12" default="true"/>
+	<Container width="124" height="48">
+		<Container name="vol_top" bkimage="mini/volume/background.png" width="124" height="48" inset="2,6,2,20" >
+		<Slider name="slide" width="120" height="22" foreimage="mini/volume/rail.png" isstretchfore="false" min="0" max="100" value="100" thumbimage="mini/volume/normal.png" thumbhotimage="mini/volume/hover.png" thumbsize="32,22"/>
+		</Container>
+		<Container name="vol_bottom" bkimage="mini/volume/background_bottom.png" width="124" height="48" inset="2,13,2,12" visible="false">
+		<Slider name="slide" width="120" height="22" foreimage="mini/volume/rail.png" isstretchfore="false" min="0" max="100" value="100" thumbimage="mini/volume/normal.png" thumbhotimage="mini/volume/hover.png" thumbsize="32,22"/>
+		</Container>
+	</Container>
+</Window>

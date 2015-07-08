@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		p{width: 200px;margin-bottom: 10px;}
+		.user{float: left; color: #fff;}
+	</style>
+	</head>
+	<body>
+		<input id="userName">
+		<div id="user" data-first-name="Wiliams" data-last-name="Tom" data-gender="male" data-age="12">tom</div>
+		<p id="demo">hello, <span id="s0"> world </span> </p>
+		<button onclick="alert(1);" id="but">保存</button>
+		<h1 style="color: red" id="hid">网易云课堂</h1>
+		<div id="demo2">欢迎<span id="x">你</span>，来到<span id="y">网易云课堂</span></div>
+		<script type="text/javascript">
+			var elem1=document.getElementById("userName")
+			console.log(elem1.type)
+			var demo=document.getElementById("demo")
+			console.log(demo.firstChild)
+			var but=document.getElementById("but")
+			console.log(but.onclick)
+			var hid=document.getElementById("hid")
+			console.log(hid.getAttribute("style"))
+			var element=document.getElementById("user")
+			console.log(element.id)
+			var demo2=document.getElementById("demo2")
+			console.log(demo2.lastChild)
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	一:基本用法
+		-<canvas id="tutorial" width="300" height="150"></canvas>
+
+	二:渲染上下文
+		-var  canvas=document.getElementById("tutorial")
+		-var ctx=canvas.getContext("2d")
+
+	三:globalCompositeOperation
+		-ctx.globalCompositeOperation='destination-over'//两者都显示,后者在前者前面
+
+    四:基本绘图的步骤
+        -清除画笔-绘制图形-保存渲染上下文状态-绘制图形-渲染上下文状态
+        -var sun=new Image();
+        var moon=new Image();
+        var earth=new Image();
+        function init(){
+            sun.src='Cancvas_sun.png';
+            moon.src="Canvas_moon.png"
+            earth.src='Canvas_earth.png'
+            window.requestAnimationFrame(draw);
+        }
+        function draw(){}
+        init();
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/*inline-block+text-align*/
+			/*.parent{
+				text-align: center;	
+				
+			}
+			.child{
+				display: inline-block; /*宽度变为内容宽度
+			}*/
+			
+			/*table+margin
+			
+			.child{
+				display: table;
+				margin:0 auto;
+			}
+			*/
+			
+		/*	absolute+transform*/
+			
+			/*.parent{
+				position: relative;
+			}
+			.child{
+				position: absolute; /*宽度由内容决定
+				left:50%;
+				transform: translateX(-50%); /*参照物为自身宽度的50% 类似于margin-left:-50%xxxpx(需知道元素大小);
+			
+				
+			}
+			*/
+			
+	/*		flex+justify-content*/
+	
+			/*.parent{
+				display: flex; /*宽度为内容宽度
+				justify-content: center;
+			}
+			
+			/*.child{
+					margin: 0 auto
+			}  同样可以实现水平居中*/
+			
+			
+			/*垂直居中之table-cell+vertical-align*/
+			
+			/*.parent{
+				display: table-cell;
+				vertical-align: middle; /*作用在inline table-cell inline-block
+			}*/
+			
+			/*垂直居中之absolute+transform
+			.parent{
+				position: relative;
+			}
+			
+			.child{
+				position: absolute;
+				top:50%; 子容器上边对齐父元素中部
+				transform:translateY(-50%);
+			}*/
+			垂直居中之flex+align-items
+			/*.parent{
+				display: flex; 高度撑满整个容器
+				align-items: center; 垂直居中
+			}*/
+			
+			/*居中(水平垂直居中)之inline-block+text-align+table-cell+vertical-align
+			
+			.parent{
+				text-align: center;
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.child{
+				display: inline-block;
+			}*/
+			
+	/*		居中之absolute+transform*/
+			
+			/*.parent{
+				position:relative;
+			}
+			.child{
+				position:absolute;
+				left:50%;
+				top:50%;
+				transform: translate(-50% -50%);
+			}
+			*/
+			
+			居中之flex+justify-content+align-items
+			.parent{
+				display:flex;/*宽度变为自身宽度 高度充满整个容器*/
+				justify-content: center; /*水平居中*/
+				align-items: center;/*垂直居中*/
+			}
+			
+		</style>
+		<script type="text/javascript">
+			居中布局 父元素 子元素宽/高度不固定
+			
+			一：水平居中之inline-block+text-align
+				-兼容性非常好
+				-inline+zoom:1  //兼容IE8以下
+				-child会继承text-align:center，需要对子元素进行reset
+			
+			二:水平居中之table+margin
+				-table元素宽度为内容宽度
+				-只需要设置child ,IE6 7可以child可以采用table的方式如th tr来实现
+			
+			三:水平居中之absolute+transform
+				-脱离文档流 不会对其他元素产生影响
+				-不兼容低版本IE
+			
+			四:水平居中之flex+justify-content
+				-.child{
+					margin: 0 auto
+				}
+				-不兼容低版本IE
+				
+			五:垂直居中之table-cell+vertical-align
+				-兼容到IE8以上
+				-兼容低版本HTML结构换成table结构
+				
+			六:垂直居中之absolute+transform
+				-子元素不会干扰其他元素
+				
+			七:垂直居中之flex+align-items
+				-不兼容低版本IE
+				
+			八:居中(水平垂直居中)之inline-block+text-align+table-cell+vertical-align
+				-兼容性比较高
+				
+			九:居中之absolute+transform
+				-child不会影响其他元素
+				-不兼容性低版本IE
+				
+			十:居中之flex+justify-content+align-items
+				-只需要设置parent
+				-不兼容低版本IE
+			
+			十一:总结
+				-了解到CSS中的值和特性
+				-对问题进行分解
+				
+		</script>
+	</head>
+	<body>
+		<div class="parent">
+		 	<div class="child">
+		 	DOME
+		 	</div>
+		</div>
+
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

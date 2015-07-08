@@ -1,0 +1,17 @@
+<PlayListElementTemplate>
+	<PlayListContainerEelement height="28">
+	  	<HorizontalLayout>
+	  		<Container width="20" height="28">
+	  			<Button name="list_play" width="16" height="28" normalimage="file='btn/collection.png' dest='4,8,14,21' source='70,100,80,113'" visible="true"/>
+	  			<Button name="list_pause" width="16" height="28" normalimage="file='btn/collection.png' dest='5,9,14,20' source='103,160,112,171'" visible="false"/>
+	  		</Container>
+	    	<Label name="list_title" endellipsis="true" align="left" transtext="255" showhtml="true" visible="true"/>
+	    	<Container width="54" height="28">
+	    		<Button name="list_more_info" width="42" height="28" normalimage="file='btn/collection.png' dest='16,6,32,23' source='90,95,106,112'" pushedimage="file='btn/collection.png' dest='16,6,32,23' source='90,95,106,112'" hotimage="file='btn/collection.png' dest='16,6,32,23' source='110,95,126,112'" visible="true"/>
+	    		<Button name="dj_info" width="42" height="28" normalimage="file='mini/list/radio_nl.png' dest='2,7,27,21'" visible="false" handcursor="false"/>
+	    		<Button name="dj_highlight" width="42" height="28" normalimage="file='mini/list/radio_hl.png' dest='2,7,27,21'" visible="false" handcursor="false"/>
+				<Button name="cloud_audio" width="14" height="14" normalimage="file='mini/list/icn_audio.png' dest='13,7,27,21'" visible="false" handcursor="false"/>
+	    	</Container>
+	    </HorizontalLayout>
+	</PlayListContainerEelement>
+</PlayListElementTemplate>

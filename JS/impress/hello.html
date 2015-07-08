@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				font-family: "微软雅黑";
+			}
+			
+			.step {
+				background: #00A5FF;
+    margin: 0;
+    opacity: 0.3;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+.impress-enabled .step.active { opacity: 1 }
+		</style>
+		
+	</head>
+	<body>
+		<div id="impress">
+			<div class="step" data-x="-1000" data-y="1000" ><p>HELLO</p>
+			</div>
+			<div class="step" data-x="-500" data-y="1000" >I m Soul</div>
+			<div class="step" data-x="500" data-y="1000"  >Use Impress</div>
+		</div>
+		<script type="text/javascript" src="impress.js"></script>
+		<script type="text/javascript">
+			impress().init();
+		</script>
+	</body>
+</html>

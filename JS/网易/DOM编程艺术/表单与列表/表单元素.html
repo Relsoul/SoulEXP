@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:表单步骤
+				-构建表单
+				-服务器处理
+				-配置表单
+			
+			二:构建表单
+				-见HTML
+				
+			三:服务器处理
+				-服务器接口地址
+				-url编码
+				-接口参数信息
+				
+			四:内容
+				-元素
+				-验证
+				-提交
+			
+			五:form元素
+				-属性
+					-autocomplete
+						-on:自动提示功能
+						-off:无
+					-elements
+						-该表单子孙表单控件(除图片按钮input type="image")
+							-button,input,keygen,select
+						-归属于该表单的表单控件(除图片按钮input type="image")
+							-<input name="d" form="f">在input元素中规定了form也会出现在elements中
+						-动态节点集合
+					-length
+						-elements.length
+					-取form表单元素
+						-testForm.elements[0];
+						-testForm.elements["a"];
+						-testForm[0];
+						-testForm["a"]
+					
+					-form[name]
+						-返回id或name为指定名称的表单控件(除图片按钮input type="image")
+						-如果结果为空，则返回id为指定名称的img元素
+						-如果有多个同名元素，则返回这些元素的动态节点集合
+						-一旦用指定名称取过该元素，则不管该元素的id或者name怎么变化，只要节点还在页面上均可以用原名获取该元素
+						-非动态集合所以可以取到已经设置过的元素如
+							-testForm["a"]=>name="b" testForm.elements["a"]=>null
+						-reset()
+							-可重置元素:input,keygen,output,select,textarea
+							-触发表单reset事件，阻止该元素的默认行为可取消重置
+							-元素重置时不再触发元素上的change和input事件
+						-submit()
+						-checkValidity()
+					
+				六:lable元素
+					-htmlFor
+						-关联表单控件激活行为
+						-可关联元素:button,input(除hidden外),keygen,meter,output,progress,select,txtarea
+						-通过设置label的css来构建input的CSS复杂效果
+					
+					-control
+						-如果指定了for属性，则为该for属性对应ID的可关联元素
+						-如果没有指定for属性，则为第一个子孙可关联元素
+						-for指定了一个不可关联元素,则lable.control=>null
+					
+					-form
+						-关联归属表单
+						-可关联元素:button,fieldset,input,keygen,label,object,output,select,textarea
+						-只读属性，不可再程序中修改
+							-label.setAttribute("form","newFormId")
+				
+				七:input元素
+					-type
+						-控件外观
+						-数据类型
+						-默认为text
+					-本地图片预览
+						-onchange
+						-accept
+							-audio/*
+							-video/*
+							-image/*
+							-不带";"的MIME type以"."开始的文件后缀名*/
+							-多个类型用逗号分隔
+							       
+						-multiple 可以多选
+						-files
+					<input type="file" accept="image/*" multiple/>
+					file.addEventListener(
+						"change",function(event){
+							var file=Array.prototype.slice.call(event.target.files,0)
+						};
+						files.forEach(function(item){
+							file2dataurl(item,function(url){
+								var image=new Image()
+								parent.appendChild(image)
+								image.src=url
+							})
+						})
+					)
+				
+				八:select元素
+					-<optgroup lable="name"> //分组
+					-name
+						-表单提交名称
+					-value
+						-第一个选中选项的value值
+					-multiple
+						-多选
+					-options
+						-动态的所有节点集合
+						-
+					-selectedOptions
+						-已经选中选项的动态集合
+					-selectedIndex
+						-选中的元素位置
+					-add(element[,before])
+						-无参照物再最后添加选项
+					-remove([index])
+						-删除选项
+					
+					-optgroup
+						-disabled
+							-当前分组选项是否可选
+						-label
+							-分组名称
+					
+					-option
+						-value
+						-text
+						-index
+						-selected
+							-是否选中
+						-defaultSelected
+							-默认选中
+							
+				九:select
+					-创建选项
+						-document.createElement()
+						-new Option()
+							-new Option("说明","1.2")
+					-添加选项
+						-insertAdjacentElement
+						-select.add
+					-删除选项
+						-removeChild()
+						-select.remove()
+					-级联下拉选择器
+						-onchange
+						-remove
+						-add
+						-参考HTML
+						var chapters=[{text:"1.DOM基础",value:"1"},{text:"2.事件模型",value:"2"}]
+						var sections={
+							1:[
+								{text:"1.1 文档树",value:"1.1"},
+								{text:"1.2 节点操作,value:"1.2"},
+								{text:"1.3 元素遍历",value:"1.3"},
+							],
+							2:[
+								{text:"2.1 事件类型",value:"2.1"},
+								{text:"2.2 事件模型",value:"2.2"},
+							]
+							
+						}
+						function fillSelect(select,list){
+							//删除原有选项,倒序遍历
+							for (var i=select.length-1;i>0;i--) {
+								select.remove(i)
+							}
+							
+							list.forEach(function(data){
+								var option=new Option(data.text,data.value)
+								select.add(option)
+							})
+						}
+						fillSelect(chapterSelect,chapters);
+						chapterSelect.addEventListener("change",function(event){
+							var value=event.target.value,
+								list=section[value]||[];
+							fillSelect(sectionSelect,list)
+						})
+						
+				十:textarea
+					-name
+					-value
+					-select()
+					-selectionStart
+						-选中内容起始位置||光标所在位置
+					-selectionEnd
+						-选中内容结束位置||光标所在位置
+					-selectionDirection
+						-键盘方向键控制
+					-setSelectionRange()
+						-选中某些内容
+					-setRangeText()
+						-设置某个范围内容
+					-@输入提示
+						-oninput
+						-selectionStart
+						-setRangeText
+						textarea.addEventListener("input",function(event){
+							var target=event.target,
+								curor=target.selectionStart;//拿到光标所在位置
+								if(target.value.charAt(cursor-1)==="@"){//拿到光标前面一个字符
+									doshowAtList(function(anme){
+										var end=cursor+name.length;
+											target.setRangeText(
+												name,cursor,end,"end"
+											)
+									})
+								}
+							
+						})
+					
+					
+					
+					
+					
+				
+				
+		</script>
+	</head>
+	<body>
+		<!--构建&配置表单-->
+		<form method="post" action="https://pizza.xxx.com/ordia" enctype="application/x-www-for-urlencoded">
+		<p><label>姓名:<input type="" name="custname" id="" value="" /></label></p>	
+		<p>
+			<label>电话:<input type="tel" name="custtel" /></label>
+		</p>	
+		<p>
+			<label>邮箱:<input type="email" name="custemail" /></label>
+		</p>	
+		<fieldset id="">
+			<legend>披萨大小</legend>
+			<label><input type="radio" name="size" value="small"/>小</label>
+			<label><input type="radio" name="size" value="medium">中</label>
+			<label><input type="radio" name="size" value="large"/>大</label>
+		</fieldset>
+		<fieldset id="">
+			<legend>披萨配料</legend>
+			<label for=""><input type="checkbox" name="topping" value="bacon"/>熏肉</label>
+			<label for=""><input type="checkbox" name="topping" value="cheese"/>奶酪</label>
+			<label for=""><input type="checkbox" name="topping" value="mushroom"/>蘑菇</label>
+		</fieldset>
+		<p><label for=""><input type="time" name="delivery" min="11:00" max="21:00" step="900" /></label></p>	
+		<p><button>提交订单</button></p>
+		</form>
+		
+		<!--级联下拉选择器-->
+		<form name="course"> 
+			<select name="chapter">
+				<option value="">请选择章目录</option>
+			</select>
+			<select name="section">
+				<option value="">请选择节目录</option>
+			</select>
+		</form>
+	</body>
+</html>

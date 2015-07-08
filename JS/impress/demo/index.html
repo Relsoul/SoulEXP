@@ -1,0 +1,279 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=1024"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>HTML5</title>
+
+    <link href="css/impress-demo.css" rel="stylesheet"/>
+</head>
+
+<body class="impress-supported">
+
+<div class="fallback-message">
+    <p>您的浏览器 <b>不支持impress.js所需的功能</b> , 所以提供了一个简化的版本演示.</p>
+
+    <p>请使用最新版本的以下浏览器： <b>Chrome</b>, <b>Safari</b> 或 <b>Firefox</b> .</p>
+</div>
+
+<div id="impress">
+
+    <div class="step slide" data-x="-1000" data-y="-1500">
+        <img src="img/h5.png">
+
+        <h1>HTML5 介绍</h1>
+    </div>
+
+    <!--
+        
+        The `id` attribute of the step element is used to identify it in the URL, but it's optional.
+        If it is not defined, it will get a default value of `step-N` where N is a number of slide.
+        
+        So in the example below it'll be `step-2`.
+        
+        The hash part of the url when this step is active will be `#/step-2`.
+        
+        You can also use `#step-2` in a link, to point directly to this particular step.
+        
+        Please note, that while `#/step-2` (with slash) would also work in a link it's not recommended.
+        Using classic `id`-based links like `#step-2` makes these links usable also in fallback mode.
+        
+    -->
+    <div class="step slide" data-x="0" data-y="-1500">
+        <q class="font14">HTML5是一个新的网络标准，现在仍处于发展阶段。目标是取代现有的<i>HTML 4.01</i>和<i>XHTML 1.0</i>标准。
+            它希望能够<u>减少互联网富应用（RIA）对Flash、Silverlight、JavaFX等的依赖，并且提供更多能有效增强网络应用的API</u>。</q>
+    </div>
+
+    <div class="step slide" data-x="1000" data-y="-1500">
+        <h2>HTML5的8大新特性</h2>
+        <ul class="list">
+            <li>语义</li>
+            <li>三维、图形与特效</li>
+            <li>离线存储</li>
+            <li>多媒体</li>
+            <li>设备通用</li>
+            <li>性能与集成</li>
+            <li>连接</li>
+            <li>CSS3</li>
+        </ul>
+    </div>
+
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <span class="try">进入正题</span>
+
+        <h1>HTML <sup>5</sup></h1>
+        <span class="footnote"><sup>*</sup>W3C万维网联盟</span>
+    </div>
+
+    <div id="yuyi" class="step item" data-x="850" data-y="3000" data-rotate="90" data-scale="3">
+        <h3>语义</h3>
+        <img src="img/yy.png" width="100%">
+
+        <p class="font6">HTML5 引入了新的 HTML 元素，通过使用这些元素，开发者可以更细致的描述文档结构，让文档更加易读，搜索引擎也能更好的理解页面中各部分间的关系，我们也可以搜索到更快，更准确的信息。
+        </p>
+    </div>
+    <div class="step item" data-x="-850" data-y="3000" data-rotate="90" data-scale="2">
+        <h4>十个常用的新标签列表</h4>
+        <ul class="list">
+            <li>&lt;article&gt; 定义文章</li>
+            <li>&lt;aside&gt; 定义文章的侧边栏</li>
+            <li>&lt;figure&gt; 一组媒体对象以及文字</li>
+            <li>&lt;figcaption&gt; 定义 figure 的标题</li>
+            <li>&lt;footer&gt; 定义页脚</li>
+            <li>&lt;header&gt; 定义页眉</li>
+            <li>&lt;hgroup&gt; 定义对网页标题的组合</li>
+            <li>&lt;nav&gt; 定义导航</li>
+            <li>&lt;section&gt; 定义文档中的区段</li>
+            <li>&lt;time&gt; 定义日期和时间</li>
+        </ul>
+        <p class="font4">被弃用的标签：&lt;acronym&gt;、&lt;applet&gt;、&lt;basefont&gt;、&lt;big&gt;、&lt;center&gt;、&lt;dir&gt;、&lt;font&gt;、&lt;frame&gt;、
+            &lt;s&gt;、&lt;isindex&gt;、&lt;noframes&gt;、 &lt;frameset&gt; 、&lt;strike&gt;、&lt;tt&gt;、&lt;u&gt;和&lt;xmp&gt;。
+        </p>
+    </div>
+    <div class="step item" data-x="-1600" data-y="3600" data-rotate="90" data-scale="1">
+        <h4>新表单标签</h4>
+        <ul class="list font8">
+            <li>&lt;input type="number"&gt; <input type="number" placeholder="只能输入数字"></li>
+            <li>&lt;input type="search"&gt; <input type="search" results=s></li>
+            <li>&lt;input type="date"&gt; <input type="date"></li>
+            <li>&lt;input type="month"&gt; <input type="month"></li>
+            <li>&lt;input type="week"&gt; <input type="week"></li>
+            <li>&lt;input type="time"&gt; <input type="time"></li>
+            <li>&lt;input type="color"&gt; <input type="color"></li>
+            <li>&lt;input type="range" step="20" min="1" max="100"&gt; <input type="range" step="20" min="1" max="100">
+            </li>
+            <li>&lt;input list="datalist"&gt; <input list="ilist">
+                <datalist id=ilist>
+                    <option value="a" label="a">
+                    <option value="b" label="b">
+                    <option value="c" label="c">
+                </datalist>
+        </ul>
+    </div>
+    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="4">
+        <b>No Cookie</b>
+
+        <p>以前，这些都是由 Cookie 完成的。但是 Cookie 只有4KB的大小限制，而且会随HTTP请求一起被传递，无形中拖慢网页速度而且效率不高。</p>
+    </div>
+    <div id="tiny" class="step" data-x="2305" data-y="2825" data-z="-3000" data-rotate="300" data-scale="1">
+        <p>
+            IndexedDB&nbsp;&nbsp;&nbsp;&nbsp;SQL_Lite
+            <b>Web&nbsp;&nbsp;Storage</b>
+            <span class="thoughts">sessionStorage&nbsp;&nbsp;&nbsp;&nbsp;localStorage</span>
+            <span class="thoughts2">Application_Cache</span>
+        </p>
+    </div>
+
+
+    <div id="ing" class="step" data-x="3500" data-y="-1450" data-rotate="270" data-scale="6">
+        <p id="drag">拖拽与拖放 (Drag & Drop)<br>与<br>文件处理 (File API)</p>
+
+        <div id="filedrag">拖动文件到这里（最好是图片或文本文件）</div>
+    </div>
+
+    <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
+        <p>网络应用<b>核心</b>---<b class="imagination">连接</b></p>
+    </div>
+
+    <div id="socket" class="step" data-x="7300" data-y="2000" data-rotate="20" data-scale="4">
+        <h3>WebSocket</h3>
+        <h5>WebSocket protocol 是HTML5一种新的协议。它是实现了浏览器与服务器全双工通信(full-duplex)。</h5>
+
+        <div class="des">
+            <div class="font4">
+                <img src="img/socket.png">
+
+                <p>现在，很多网站为了实现即时通讯，所用的技术都是轮询。这种模式需要浏览器不断的向服务器发出请求，然而HTTP请求的header信息是非常长的，这样会占用很多的带宽和服务器资源。</p>
+
+                <p>WebSockets是在一个(TCP)接口进行双向通信的技术，PUSH技术类型。能更好的节省服务器资源和带宽并达到实时通讯。</p>
+
+                <p>在 WebSocket API 中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
+        <p>桌面通知（Notifications）</p>
+        <input id="notify" type="button" value="点此查看桌面通知">
+    </div>
+    <div id="its-in-3d" class="step" data-x="6200" data-y="4500" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <h3>三维、图形与特效</h3>
+
+        <p><span class="have">3D效果</span><span class="you">来了</span><span class="noticed">注意！</span></p>
+
+        <p><span class="its">CSS3-3D</span> <span class="in">in</span> <b>WebGL<sup>*</sup></b></p>
+        <a class="footnote" target="_blank" href="http://dyhdemo.sinaapp.com/game/rubiks/index.html">* 3D魔方 案例</a>
+    </div>
+    <div id="media" class="step" data-x="3500" data-y="3500" data-z="1000" data-scale="3">
+        <h3>多媒体</h3>
+
+        <p> 视频：
+            <video controls="controls" src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" width="600px"></video>
+        </p>
+        <p> 音频：
+            <audio controls="controls" src="img/dwjwlxs.mp3"></audio>
+        </p>
+    </div>
+    <div id="css" class="step" data-x="0" data-y="5000" data-scale="4">
+        <span class="try">And</span>
+
+        <h1>CSS <sup>3</sup></h1>
+        <span class="footnote"><sup>*</sup> 盒子模型、列表模块、超链接方式 、语言模块 、背景和边框 、文字特效 、多栏布局等</span>
+    </div>
+    <div id="selector" class="step" data-x="-1200" data-y="6800" data-rotate="270" data-scale="2">
+        <h3>选择器</h3>
+        <table>
+            <tr>
+                <th>属性选择器</th>
+            </tr>
+            <tr>
+                <td>E[att^="val"]</td>
+                <td>匹配属性att的值以"val"开头的元素</td>
+            </tr>
+
+            <tr>
+                <td>E[att$="val"]</td>
+                <td>匹配属性att的值以"val"结尾的元素</td>
+            </tr>
+            <tr>
+                <td>E[att*="val"]</td>
+                <td>匹配属性att的值包含"val"字符串的元素</td>
+            </tr>
+            <tr>
+                <th>结构性伪类</th>
+            </tr>
+            <tr>
+                <td>E:nth-child(n)</td>
+                <td>匹配父元素的第n个子元素，第一个编号为1</td>
+            </tr>
+            <tr>
+                <td>E:nth-child(odd)</td>
+                <td>匹配父元素的奇数个子元素</td>
+            </tr>
+            <tr>
+                <td>E:nth-child(even)</td>
+                <td>匹配父元素的偶数个子元素</td>
+            </tr>
+            <tr>
+                <th>反选伪类</th>
+            </tr>
+            <tr>
+                <td>E:not(s)</td>
+                <td>匹配不符合当前选择器的任何元素</td>
+            </tr>
+            <tr>
+                <th>同级元素选择器</th>
+            </tr>
+            <tr>
+                <td>E ~ F</td>
+                <td>匹配任何在E元素之后的同级F元素</td>
+            </tr>
+
+        </table>
+    </div>
+    <div id="style" class="step" data-x="-2200" data-y="6800" data-rotate="270" data-scale="3">
+        <div class="demo">圆角，<span class="fire">阴影</span>，<span class="sun">渐变色</span>，还有很多很多</div>
+    </div>
+    <div id="prefix" class="step" data-x="1200" data-y="6800" data-rotate="90" data-scale="2">
+        <h3>CSS3 -私有前缀prefix-</h3>
+
+        <p>CSS3的前缀是一个浏览器生产商经常使用的一种方式。它暗示该CSS属性或规则尚未成为W3C标准的一部分。</p>
+
+        <div class="demo">
+            举例来说，一个标准渐变的代码是： background: linear-gradient(#fff, #000);<br>
+            而现在，我们需要这样写：<br>
+            background: -webkit-linear-gradient(#fff, #000); /*为兼容Chrome&safari*/<br>
+            background: -moz-linear-gradient(#fff, #000); /*为兼容Frifox*/<br>
+            background: -ms-linear-gradient(#fff, #000); /*为兼容IE*/<br>
+            background: -o-linear-gradient(#fff, #000); /*为兼容Opera*/<br>
+            background: linear-gradient(#fff, #000); /*标准的渐变代码*/<br>
+        </div>
+    </div>
+
+    <div id="over" class="step" data-x="3800" data-y="4000" data-rotate="60" data-z="-2000" data-scale="1">
+        THANK&nbsp;&nbsp;YOU
+    </div>
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>使用空格键或方向键来浏览</p>
+</div>
+<script>
+    if ("ontouchstart" in document.documentElement) {
+        document.querySelector(".hint").innerHTML = "<p>点击 left 或 right 切换</p>";
+    }
+</script>
+
+<script src="js/impress.js"></script>
+<script src="js/fileDD.js"></script>
+<script>  impress().init(); </script>
+
+
+</body>
+</html>
+

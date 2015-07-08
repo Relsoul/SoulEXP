@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		/*一:float
+			.parent{
+				margin-left:-20px 总宽度增加一个G
+			}
+			.column{
+				float: left;
+				width: 25%;
+				padding-left: 20px;
+				box-sizing: border-box; 包含了padding
+			}*/
+			
+			/*二:table
+			.parent-fix{
+				margin-left: -20px;
+			}
+			.parent{
+				display: table;
+				width: 100%;
+				table-layout: fixed; 一:布局优先,加速渲染,二:单元格未设置宽度单元格则是平分
+			}
+			.column{
+				display: table-cell;
+				padding-left: 20px;
+			}*/
+			
+			/*三:flex
+			.parent{
+				display: flex;
+			}
+			.column{
+				flex: 1; 每一列宽度都会平均分配
+			}
+			.column+.column{
+				margin-left: 20px;
+			}*/
+			
+			
+			
+		</style>
+		<script type="text/javascript">
+			每列宽度，间距一样
+			总宽度为C,每列宽度为W,每列间距为G,多少列为N
+			则C+G=(W+G)*N 总宽度加上一个G
+			
+			一:float
+				-IE7以下兼容性不太好
+				-结构与样式有耦合性
+			
+			二:table
+				-套一个parent-fix来实现C+G的效果
+				-无耦合性
+			
+			三:flex
+				-兼容性是个坑
+				
+			
+		</script>
+	</head>
+	<body>
+	<div class="parent-fix">
+	<div class="parent">
+		<div class="column">
+			<p>1</p>
+		</div>
+		<div class="column">
+			<p>2</p>
+		</div>
+		<div class="column">
+			<p>3</p>
+		</div>
+		<div class="column">
+			<p>4</p>
+		</div>
+	</div>
+	</div>
+	</body>
+</html>

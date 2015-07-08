@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window bktrans="true">
+  <Font name="宋体" size="12" default="true"/>
+  <Default name="Menu" value="maxwidth=&quot;224&quot; minwidth=&quot;164&quot; inset=&quot;8,6,8,10&quot; vscrollbar=&quot;true&quot; hscrollbar=&quot;false&quot; bkimage=&quot;file='menu/bk.png' corner='8,6,8,10' hole='false'&quot; itemhotimage=&quot;file='menu/hover.png' xtiled='true'&quot; itembkimage=&quot;file='menu/item.png' xtiled='true'&quot; itemdisabledbkcolor=&quot;#FF99999D&quot;"/>
+  <Default name="VScrollBar" value="width=&quot;6&quot; showbutton1=&quot;false&quot; showbutton2=&quot;false&quot; thumbnormalimage=&quot;file='mini/list/scrlbar.png' corner='2,3,2,3' hole='false'&quot; linesize=&quot;0&quot;" />
+  <Menu>
+  </Menu>
+</Window>

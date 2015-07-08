@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+    window.onload=function(){
+        var elem=document.getElementById("example");
+
+        function getClass(elem,cls){
+                var _ele=document.getElementById(elem).getElementsByTagName("*");
+                var re=new RegExp("\\b"+cls+"\\b")
+                var arr=[]
+                for(var i=0;i<_ele.length;i++){
+                    if(re.test(_ele[i].className)){
+                        arr.push(_ele[i])
+                    }
+                }
+            return arr;
+        }
+
+      var test=getClass("example","ccc aaa")
+        console.log(test)
+    }
+
+
+    </script>
+</head>
+<body>
+<div id="example">
+    <p id="p1" class="aaa bbb ACbd"></p>
+    <p id="p2" class="aaa ccc Abcd"></p>
+    <p id="p3" class="bbb ccc A1A2"></p>
+</div>
+</body>
+</html>

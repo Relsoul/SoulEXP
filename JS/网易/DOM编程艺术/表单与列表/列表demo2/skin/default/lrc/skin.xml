@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="662,50" mininfo="552,50" bktrans="true">
+	<Font name="微软雅黑" size="36" default="true"/>
+	<Container name="rootConatiner" adaptive="true">
+		<VerticalLayout name="background" bkimage="file='lrc/frame.png' corner='6,6,6,6' hold='false'" adaptive="true" inset="6,6,6,6">
+			<HorizontalLayout height="60">
+				<Container />
+				<HorizontalLayout width="286" height="60" noClip="true">
+					<Container float="true" bkimage="file='lrc/shadow.png' source='743,0,1200,80'" pos="276,0,743,60"/>
+					<Container float="true" bkimage="file='lrc/shadow.png' source='467,0,743,80'" pos="10,0,276,60"/>
+					<Container float="true" bkimage="file='lrc/shadow.png' source='0,0,467,80'" pos="-743,0,-276,60"/>
+				</HorizontalLayout>
+				<Container />
+			</HorizontalLayout>
+			<Container />
+		</VerticalLayout>
+		
+		<VerticalLayout adaptive="true" inset="6,6,6,6">
+			<Container height="5"/>
+			<HorizontalLayout height="20">
+				<Container />
+				<HorizontalLayout width="310" name="panelConatiner">
+					<Container width="6"/>
+					<Button name="home" width="20" normalimage="file='lrc/button.png' source='0,0,20,20'" hotimage="file='lrc/button.png' source='0,20,20,40'" pushedimage="file='lrc/button.png' source='0,40,20,60'" tooltip="进入音乐详情页"/>
+					<Container width="7"/>
+					<Container width="2" bkimage="file='lrc/seperator.png' source='0,2,2,22'"/>
+					<Container width="11"/>
+					<Button name="prev" width="20" normalimage="file='lrc/button.png' source='20,0,40,20'" hotimage="file='lrc/button.png' source='20,20,40,40'" pushedimage="file='lrc/button.png' source='20,40,40,60'" tooltip="上一首"/>
+					<Container width="11"/>
+					<TabLayout name="playTab" width="20" selectedid="0">
+						<Button name="play" width="20" height="20" normalimage="file='lrc/button.png' source='40,0,60,20'" hotimage="file='lrc/button.png' source='40,20,60,40'" pushedimage="file='lrc/button.png' source='40,40,60,60'" tooltip="播放"/>
+						<Button name="play" width="20" height="20" normalimage="file='lrc/button.png' source='180,0,200,20'" hotimage="file='lrc/button.png' source='180,20,200,40'" pushedimage="file='lrc/button.png' source='180,40,200,60'" tooltip="暂停"/>
+					</TabLayout>
+					<Container width="11"/>
+					<Button name="next" width="20" normalimage="file='lrc/button.png' source='60,0,80,20'" hotimage="file='lrc/button.png' source='60,20,80,40'" pushedimage="file='lrc/button.png' source='60,40,80,60'" tooltip="下一首"/>
+					<Container width="8"/>
+					<Container width="2" bkimage="file='lrc/seperator.png' source='0,2,2,22'"/>
+					<Container width="9"/>
+					<Button name="setting" width="20" normalimage="file='lrc/button.png' source='80,0,100,20'" hotimage="file='lrc/button.png' source='80,20,100,40'" pushedimage="file='lrc/button.png' source='80,40,100,60'" tooltip="设置"/>
+					<Container width="7"/>
+					<Button name="lock" width="20" normalimage="file='lrc/button.png' source='100,0,120,20'" hotimage="file='lrc/button.png' source='100,20,120,40'" pushedimage="file='lrc/button.png' source='100,40,120,60'" tooltip="锁定桌面歌词"/>
+					<Container width="7"/>
+					<Container width="2" bkimage="file='lrc/seperator.png' source='0,2,2,22'"/>
+					<Container width="9"/>
+					<Button name="minusOffset" width="20" normalimage="file='lrc/button.png' source='120,0,140,20'" hotimage="file='lrc/button.png' source='120,20,140,40'" pushedimage="file='lrc/button.png' source='120,40,140,60'" disabledimage="file='lrc/button.png' source='120,60,140,80'" tooltip="歌词后退0.5s"/>
+					<Container width="11"/>
+					<Button name="plusOffset" width="20" normalimage="file='lrc/button.png' source='140,0,160,20'" hotimage="file='lrc/button.png' source='140,20,160,40'" pushedimage="file='lrc/button.png' source='140,40,160,60'" disabledimage="file='lrc/button.png' source='140,60,160,80'" tooltip="歌词前进0.5s"/>
+					<Container width="10"/>
+					<Container width="2" bkimage="file='lrc/seperator.png' source='0,2,2,22'"/>
+					<Container width="7"/>
+					<Button name="close" width="20" normalimage="file='lrc/button.png' source='160,0,180,20'" hotimage="file='lrc/button.png' source='160,20,180,40'" pushedimage="file='lrc/button.png' source='160,40,180,60'" tooltip="关闭桌面歌词"/>
+					<Container width="8"/>
+				</HorizontalLayout>
+				<Container />
+			</HorizontalLayout>
+			<Container height="5"/>
+			<TextOutlineContainer name="textOutlineConatiner" adaptive="true">
+				<TextOutline name="line1" text="网易云音乐，听见好时光" gradientBelow="#FF49494D,#FFA6A5AA" gradientAbove="#FFD10B0B,#FFFC7878" shadowColor="#3F000000" outlineColor="#FF000000"/>
+				<TextOutline name="line2" gradientBelow="#FF49494D,#FFA6A5AA" gradientAbove="#FFD10B0B,#FFFC7878" shadowColor="#80000000" outlineColor="#FF000000"/>
+			</TextOutlineContainer>
+			<Container height="8"/>
+		</VerticalLayout>
+	</Container>
+</Window>

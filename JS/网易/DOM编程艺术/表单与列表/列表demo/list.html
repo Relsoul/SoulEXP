@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>List Sample</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/grid.css"/>
+    <link rel="stylesheet" href="../css/module.css"/>
+    <link rel="stylesheet" href="../css/unit.css"/>
+    <link rel="stylesheet" href="../css/frame.css">
+    <link rel="stylesheet" href="../css/layer.css">
+    <link rel="stylesheet" href="../css/pages/style_dark.css">
+    <link rel="stylesheet" href="../css/pages/style_light.css">
+    <!-- SKIN -->
+     
+    <link rel="stylesheet" href="../skin/default/web/css/skin_frame.css">
+    <link rel="stylesheet" href="../skin/default/web/css/skin_dark.css">
+    <link rel="stylesheet" href="../skin/default/web/css/skin_light.css">
+    <style>
+    body{overflow-y:auto;border:0;}
+    h1{font-size:30px; margin:20px 0; font-weight:bold; text-align:center;}
+    .whitebg{margin:10px 0;padding:10px; background:#eeeff2; text-shadow:0 1px rgba(255,255,255,0.5);color:#333;}
+    .whitebg h1{ color:#333; text-shadow:none;}
+    .g-bd{position:static;min-height:0;padding:30px;}
+    .m-layer.z-show,.m-menu,.m-dragmdl{position:relative;top:auto;left:auto;}
+    .m-dragmdl{margin:20px;}
+    #parent .fix{width:86px;}
+    #parent .flow{margin-left:86px;}
+    #parent .o-love{width:34px;}
+    #parent .o-love .xlv{margin:3px 0 0;}
+
+
+    .menu{position:fixed;width:150px;background:#F7F8F9;color:#010101;text-align:left;text-shadow:none;}
+    .menu .itm{height:30px;line-height:30px;padding:5px 30px;}
+    .menu .itm:hover{background:#E9EAEC;}
+    </style>
+    <script src="trimpath.js"></script>
+</head>
+
+<body>
+
+    <h1>歌曲列表</h1>
+    <div class="m-plylist m-plylist-sort s-bfc5" id="parent">
+      <div class="head f-cb">
+    	  <div class="fix">
+            <div class="th col f-pr"></div>
+            <div class="th col o-love">
+              <span class="ico xlv u-icn4 u-icn4-love j-lvbtn" id="love-all-action"></span>
+            </div>
+          </div>
+    	  <div class="flow f-cb">
+    		<div class="th col">音乐标题</div>
+    		<div class="th col">歌手</div>
+    		<div class="th col">专辑</div>
+    		<div class="th col">时长</div>
+    	  </div>
+      </div>
+    </div>
+    
+
+    <script type="text/template" id="track-list">
+      <ul>
+        {list tracks as track}
+        <li class="itm j-item">
+          <span class="ico u-icn4 u-icn4-love j-love"></span>
+          <div class="flow f-cb">
+            <div class="td col title">
+              <a href="/track/${track.id}/" class="tit s-bfc8">${track.name}</a>
+            </div>
+            <div class="td col ellipsis">
+              <a href="/artist/${track.artist.id}/" class="s-bfc8 ">${track.artist.name}</a>
+            </div>
+            <div class="td col ellipsis">
+              <a href="/album/${track.album.id}/" class="s-bfc4">${track.album.name}</a>
+            </div>
+            <div class="td col">${track.duration|dur2str}</div>
+          </div>
+        </li>
+        {/list}
+      </ul>
+    </script>
+    <script type="text/template" id="action-list">
+      {list actions as action}
+      <div class="itm" data-action="${action.value}">${action.text}</div>
+      {/list}
+    </script>
+    <script>
+        var parent = document.getElementById('parent');
+        var tplContent = TrimPath.parse(
+            document.getElementById('track-list').textContent
+        );
+        var tplMenu = TrimPath.parse(
+            document.getElementById('action-list').textContent
+        );
+    </script>
+    <script>
+        function render(parent,list){
+            var config = {
+                dur2str:function(duration){
+                    duration = duration/1000;
+                    var m = Math.floor(duration/60),
+                        s = Math.floor(duration%60);
+                    return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+                }
+            };
+            var html = TrimPath.merge(
+                tplContent,{tracks:list},config
+            );
+            parent.insertAdjacentHTML('beforeEnd',html);
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET','./track.json',true);
+        xhr.onload = function(){
+            render(parent,JSON.parse(xhr.responseText));
+        };
+        xhr.send(null);
+    </script>    
+    <script>
+        var selection = [];
+        function select(node,selected){
+            if (selected){
+                if (node.className.indexOf('z-sel')<0){
+                    node.className += ' z-sel'; 
+                }
+            }else{
+                node.className = 
+                    node.className.
+                        replace('z-sel','').trim();
+            }
+        }
+        function getLastSelection(){
+            return selection[selection.length-1];
+        }
+        function isSelected(node){
+            return selection.indexOf(node)>=0;
+        }
+        function clearSelection(){
+            selection.forEach(function(node){
+                select(node,false);
+            });
+            selection = [];
+        }
+        function appendToSelection(node){
+            if (selection.indexOf(node)<0){
+                select(node,true);
+                selection.push(node);
+            }
+        }
+        function removeFromSelection(node){
+            var index = selection.indexOf(node);
+            if (index>=0){
+                select(node,false);
+                selection.splice(index,1);
+            }
+        }
+        function selectWithRangeFromTo(list,from,to){
+            var select = false;
+            list.forEach(function(node){
+                if (node==from||node==to){
+                    appendToSelection(node);
+                    select = from!=to&&!select;
+                }else{
+                    select ? appendToSelection(node)
+                           : removeFromSelection(node);
+                }
+            });
+        }
+
+        var last;
+        function getTarget(event,clazz){
+            clazz = clazz||'j-item';
+            var node = event.target;
+            while(!!node&&(node.className||'').indexOf(clazz)<0){
+                node = node.parentNode;
+            }
+            return node;
+        }
+
+        var menu;
+        var frag = document.createDocumentFragment();
+        function getMenu(html){
+            if (!menu){
+                menu = document.createElement('div');
+                menu.className = 'menu';
+                menu.addEventListener(
+                    'click',function(event){
+                        var target = event.target;
+                        switch(target.dataset.action){
+                            case 'insert':
+                                insertTrack();
+                            break;
+                            case 'delete':
+                                removeTrack();
+                            break;
+                            case 'update':
+                                updateTrack();
+                            break;
+                        }
+                    }
+                );
+                document.addEventListener(
+                    'click',function(event){
+                        frag.appendChild(menu);
+                    }
+                );
+            }
+            menu.innerHTML = html;
+            return menu;
+        }
+        function showContextMenu(selection,left,top){
+            // build menu items
+            var actions = [
+                {text:'删除歌曲',value:'delete'}
+            ];
+            if (selection.length<=1){
+                actions.push(
+                    {text:'插入歌曲',value:'insert'},
+                    {text:'编辑歌曲',value:'update'}
+                );
+            }
+            // show menu
+            var menu = getMenu(
+                TrimPath.merge(
+                    tplMenu,{actions:actions}
+                )
+            );
+            menu.style.top = top+20+'px';
+            menu.style.left = left+10+'px';
+            document.body.appendChild(menu);
+        }
+
+        parent.addEventListener(
+            'contextmenu',function(event){
+                var target = getTarget(event);
+                if (!!target){
+                    event.preventDefault();
+                    showContextMenu(
+                        selection,
+                        event.pageX,
+                        event.pageY
+                    );
+                }
+            }
+        );
+        parent.addEventListener(
+            'mousedown',function(event){
+                var target = getTarget(event);
+                if (!!target&&!isSelected(target)&&
+                    !event.ctrlKey&&!event.shiftKey){
+                    clearSelection();
+                    appendToSelection(target);
+                }
+            }
+        );
+        parent.addEventListener(
+            'mouseup',function(event){
+                var target = getTarget(event),
+                    selected = isSelected(target);
+                // right click
+                if (event.button==2&&selected){
+                    return;
+                }
+                // with ctrl key
+                if (event.ctrlKey){
+                    !selected ? appendToSelection(target)
+                              : removeFromSelection(target);
+                }
+                // with shift key
+                if (event.shiftKey){
+                    var list = Array.prototype.slice.call(
+                        parent.getElementsByTagName('li'),0
+                    );
+                    if (!last){
+                        last = getLastSelection()||target;
+                    }
+                    selectWithRangeFromTo(list,last,target);
+                }else{
+                    last = null;
+                }
+            }
+        );
+    </script>
+    <script>
+
+        function showTrackAddForm(callback){
+            var seed = +new Date;
+            callback({
+                "id": seed,
+                "name": "TRACK"+seed,
+                "duration": 160444,
+                "album": {
+                    "id": seed+1,
+                    "name": "热门华语205"
+                },
+                "artist": {
+                    "id": seed+2,
+                    "name": "群星"
+                }
+            });
+        }
+
+        function showTrackUpdateForm(node,callback){
+            var seed = +new Date;
+            callback({
+                "name": "TRACK"+seed,
+                "album": {
+                    "name": "ALBUM"+seed
+                },
+                "artist": {
+                    "name": "ARTIST"+seed
+                }
+            });
+        }
+
+        var getTrackItem = function(track){
+            var div = document.createElement('div');
+            render(div,[track]);
+            return div.getElementsByTagName('li')[0];
+        };
+        function insertTrack(){
+            showTrackAddForm(function(track){
+                selection[0].insertAdjacentElement(
+                    'beforeBegin',
+                    getTrackItem(track)
+                );
+            });
+        }
+        function removeTrack(){
+            selection.forEach(function(node){
+                node.parentNode.removeChild(node);
+            })
+            selection = [];
+        }
+        function updateTrack(){
+            var node = selection[0];
+            showTrackUpdateForm(
+                node,function(track){
+                    var list = node.getElementsByTagName('a');
+                    list[0].textContent = track.name;
+                    list[1].textContent = track.album.name;
+                    list[2].textContent = track.artist.name;
+                }
+            );
+        }
+    </script>
+    <script>
+        function love(node,loved){
+            var name = node.className||'';
+            if (loved){
+                node.className = 
+                    name.replace('u-icn4-love','').trim()+' u-icn4-loved';
+            }else{
+                node.className = 
+                    name.replace('u-icn4-loved','').trim()+' u-icn4-love';
+            }
+            
+        }
+        function toggleLove(node){
+            var loved = node.className.indexOf('u-icn4-loved')>=0;
+            loved ? love(node,false) : love(node,true);
+            return !loved;
+        }
+        function loveAll(){
+            var list = Array.prototype.slice.call(
+                parent.getElementsByClassName('j-love'),0
+            );
+            list.forEach(function(node){
+                love(node,true);
+            });
+        }
+        function unloveAll(){
+            var list = Array.prototype.slice.call(
+                parent.getElementsByClassName('j-love'),0
+            );
+            list.forEach(function(node){
+                love(node,false);
+            });
+        }
+        var loveBtn = document.getElementById('love-all-action');
+        function syncLoveAllState(){
+            var list = parent.getElementsByClassName('u-icn4-love j-love');
+            love(loveBtn,!list.length);
+        }
+        parent.addEventListener(
+            'mousedown',function(event){
+                // love all track
+                var target = getTarget(event,'j-lvbtn');
+                if (!!target){
+                    var loved = toggleLove(target);
+                    loved ? loveAll() : unloveAll();
+                    return;
+                }
+                // love one track
+                var target = getTarget(event,'j-love');
+                if (!!target){
+                    toggleLove(target);
+                }
+                syncLoveAllState();
+            }
+        );
+
+    </script>
+
+</body>
+</html>

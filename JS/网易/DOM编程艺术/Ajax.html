@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			AJAX
+		一:Ajax概念
+			-异步JavaScriptXML（JSON,TXT...）
+		
+		二:Ajax通信流程
+			-XHR
+				-readState:0;
+				-sratus:
+				-responseText:
+			| open()还未发送请求
+			v
+				-readyState:1;
+			|send()发送y请求
+			v        y
+				-readyState:2
+			|浏览器返回数据 y
+			v        y
+				-readyState:3;
+			|结束请求    y
+			v        y
+				-readyState:4;
+				-stratus:200;
+				-responseText:<!DOCTYPE HTML> //相应返回值
+			
+		三:Ajax调用示例
+			var xhr=new XMLHttpRequest();//创建XHR对象
+			//处理返回数据
+			xhr.onreadystatechange=function(callback){
+				if(xhr.readyState==4){
+					if((xhr.status>=200&&xhr.status<300)||xhr.status==304){
+						callback(xhr.responseText)
+					}else{
+						alert("Request was unsuccessful:"+xhr.status)	
+					}
+					
+				}
+			}
+			
+			//发送请求
+			xhr.open("get","example.json",true)
+			xhr.setRequestHeader("myHeader","myValue");
+			xhr.send(null)
+		
+		四:方法
+			-xhr.open(method,url[,async=true]);
+					  请求方法 请求路径 默认为true
+			-xhr.setRequestHeader(header   ,    value)
+								   Content-Type  编码
+			-xhr.send([data=null])//正式向服务器端发送请求
+						String
+						FormData
+						
+			-发请一个表单请求
+			-xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+			-xhr,send("FormData")
+		
+		五:请求参数序列化
+			-xhr.open("get","example.json?"+"name1=value1&name2=value2",true)
+			-如果查询参数是对象则应该处理一下
+				funcrion serialize(data){
+					if(!data)return "";
+					var pairs=[];
+					for (var name in data) {
+						if(!data.hasOwnProperty(name))continue;
+						if(typeof data[name]==='function') continue;
+						var value=data[name].toString();
+						name=encodeURIComponent(name);
+						value=encodeURIComponent(value);
+						pairs.push(name+"="+value);
+					}
+					return pairs.join("&")
+				}
+		
+		六:GET请求
+			-var url="example.json?"+serialize(formdata);
+			xhr.open('get',url,true);
+			xhr.send(null);
+		
+		七:POST请求
+			-xhr.open('post',"example.json",true);
+			xhr.send(serialize(formdata))
+		
+		八:同源策略
+			-两个页面拥有相同的协议，端口，主机，那么这两个页面属于同一个源
+			
+		
+		九:跨域资源访问
+			-不满足同源策略的资源访问，叫跨域资源访问
+			-W3C定义了CORS
+			-现代浏览器已经实现了对CORS的支持
+		
+		十:其他跨域技术
+			-Frame代理
+			-JSONP
+			-Comet
+			-...
+			
+		十一:JSONP
+			-JSON with padding （填充式JSON）
+			-<script>可以跨域
+			-请求一段js代码
+			
+			function handleResponse(response){
+				alert("my name is"+response.name)
+			}
+			var script=document.createElement("script")
+			script.src="http://127.0.0.1:3000/json?callback=handleResponse"
+			document.body.insertBefore(script,document.body.firstChild);
+			handleResponse({name:'NetEase'})
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+/********************************************************/
+/* BASE.CSS */
+/********************************************************/
+
+/* Reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;outline:none;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+button,input{box-sizing:content-box}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:normal;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body{-webkit-text-size-adjust:none;-webkit-user-select:none;cursor:default;}
+[contenteditable]{-webkit-user-select:auto;outline:0;}
+mark{background:none;}
+a{color:#666;}/* 换肤预设 */
+a:hover{ text-decoration:none;}
+a:focus{outline:none;}
+::-webkit-scrollbar{width:8px;height:9px;}
+::-webkit-scrollbar-thumb{border-radius:4px;}
+::-webkit-scrollbar-button,::-webkit-scrollbar-corner{display:none;}
+::selection{text-shadow:none; color:#fff; background-color:rgba(102,102,102,0.8);}
+/* img{display:none !important;} 看默认图用，正常情况必须注释掉 */
+
+/* Function */
+.f-cb:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+.f-fs0{font-size:12px;}
+.f-fs1{font-size:14px;}
+.f-fs2{font-size:13px;}
+.f-fs3{font-size:15px;}
+.f-fs4{font-size:18px;}
+.f-ff1{font-family:simsun, arial, helvetica, sans-serif;}/* 宋体 */
+.f-ff2{font-family:"Microsoft Yahei", arial, helvetica, sans-serif, simsun;}/* 雅黑 */
+.f-ff3{font-family:arial, helvetica, sans-serif, simsun;}/** 数字 **/
+.f-ff4{font-family:cambria, arial, helvetica, sans-serif, simsun;}/** 排行榜数字 **/
+.f-fwb{font-weight:bold;}
+.f-tdu,.f-tdu:hover{text-decoration:underline;}
+.f-dn{display:none !important;}
+.f-db{display:block;}
+.f-thide{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.f-thide2{-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;text-overflow:ellipsis;overflow:hidden;}/* 纯文本显示正常 如果子节点中带有标签显示不太正常 */
+.f-brk{word-break:break-all;word-wrap:break-word;white-space:normal;}
+.f-pr{position:relative;}
+.f-pa{position:absolute;}
+.f-hide,.js-hide{display:none;}
+.f-cp{cursor:pointer !important;}
+.f-cd{cursor:default !important;}
+.f-pen{pointer-events:none !important;}
+.f-stop,.f-stop *{cursor:not-allowed !important;}
+.f-oys{overflow-y:overlay !important;}
+.f-fuck{width:1px;height:100%; display:none;}
+.f-bn{background:none !important;position:static !important;}
+.f-vh{visibility:hidden;}
+.f-vam{ vertical-align:middle;}
+.f-fl{float:left;}
+.f-fr{float:right;}
+.f-os{opacity:1 !important;}
+.f-pea{pointer-events:auto !important;}
+.f-pen,.z-dis,.mq-offline .z-off{pointer-events:none;}
+.f-ust{-webkit-user-select:text; cursor:text; }/* 普通 */
+.f-eresize .f-ust{-webkit-user-select:none; cursor:e-resize;}
+.f-eresize {cursor:e-resize;}
+.f-flex{display:-webkit-flex;-webkit-flex-wrap:wrap;-webkit-justify-content:space-between;}/* 列表两端对齐 最后一行左对齐 */
+.f-flex .u-load2, .f-flex .u-load, .f-flex .m-empty, .f-flex .m-off{position:absolute; left:46%;}
+.f-flex .m-off{left:38%;}
+.j-leftfix{overflow:hidden;margin-bottom:0!important;margin-top:0!important;height:0!important;background:none!important;padding-top:0!important;padding-bottom:0!important;border:none!important;}
+
+/* Keyframes */
+@-webkit-keyframes show{/* animation:show */
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+@-webkit-keyframes hide{/* animation:hide */
+    0%{opacity:1;}
+    100%{opacity:0;}
+}
+
+/* 代替JS控制 */
+.mq-offline .z-off{cursor:default;}/* 无网时不可点 */
+.q-offshow{display:none;}/* 有网时不显示 */
+.mq-offline .q-offshow{display:block;}/* 无网时显示 */
+.mq-offline .q-offhide{display:none;}/* 无网时不显示 */
+.mq-anioff .q-anioff{-webkit-animation:none !important;}/* 停止动画效果 */
+
+/* For Mac */
+body.mq-osx{font-family:"Lucida Grande",Helvetica,Arial,Verdana,sans-serif,simsun;}
+.mq-osx .z-osx-hide{display:none !important;}
+
+/* Fonts */
+body{font-size:12px; line-height:1.14; font-family:arial,\5b8b\4f53, sans-serif; outline:0; -webkit-font-smoothing:subpixel-antialiased;}
+textarea,input,button,select,keygen,legend{font:inherit; outline:0;}
+.s-fc2,a.s-fc2:hover{color:#2875ce;}/* 链接色/强调色 */
+.s-fc6{color:#cd1818;}/* 出错 */
+
+
+

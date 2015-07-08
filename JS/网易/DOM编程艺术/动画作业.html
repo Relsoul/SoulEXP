@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#did{
+		background: blue;
+		width: 200px;
+		height: 200px;
+
+		
+	}
+
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var elem=document.getElementById("did");
+		
+
+		function fadeout(elem,delay,callback){
+			var getComCSS=getComputedStyle(elem, false)["opacity"]||elem.currentStyle["opacity"];
+			var over_opacity=0;
+			var load_time=(getComCSS-0)/100;//每10ms需要变化这么多的透明度
+			elem.style.opacity=getComCSS
+			var step=function(){
+				elem.style.opacity-=load_time
+				if(elem.style.opacity<=0){
+					clearInterval(timer)
+				}
+			}
+			var timer=setInterval(step,10)
+		}
+		
+		fadeout(elem,1000)
+
+
+
+
+	}
+
+
+
+	</script>
+</head>
+<body>
+	<div id="did">
+		
+	</div>
+</body>
+</html>

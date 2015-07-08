@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			HTML5storage
+			一:有效期
+				-localStorage
+					-默认为永久(如果用户不对浏览器进行缓存清理等)
+				-sessionStorage
+					-默认为浏览器会话时间
+			
+			二:作用域
+				-localStorage
+					-协议
+					-主机名
+					-端口
+				-sessionStorage
+					-不同的窗口不共享seessionstorage
+			
+			三:大小
+				-5MB
+			
+			四:JS对象
+				-读取
+					-localStorage.name
+				-添加/修改
+					-localStorage.name="Net" //目前为止浏览器只支持字符串
+				-删除
+					-delete localStorage.name
+			
+			五:API
+				-可以进行向下兼容
+				-获取键值对数量
+					-localStorage.length
+				-读取
+					-localStorage.getItem("name"),localStorage.key(i)
+				-添加/修改
+					-localStorage.setItem("name","soul")
+				-删除对应键值
+					-localStorage.removeItem("name")
+				-删除所有数据
+					-localStorage.clear()
+					
+					
+					
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

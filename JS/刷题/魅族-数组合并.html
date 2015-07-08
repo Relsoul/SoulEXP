@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var arr1=[10,20,30,35,36,45,20,10,30,35,350];
+        var arr2=[10,30,25,35,45,20,10,400]
+
+        function noFe(arr){
+            var _obj={};
+            var _arr=[];
+            var _arr2=[];
+            //单个数组仅需处理重复
+            if(arguments.length==1) {
+                for (var i = 0; i < arr.length; i++) {
+                    _obj[arr[i]] = i
+                }
+                console.log(_obj)
+
+                for (var x in _obj) {
+                    if (_obj.hasOwnProperty(x)) {
+                        _arr.push(x)
+                    }
+                }
+                //多个数组进行合并重复处理
+            }else{
+                //合并数组
+                for(var i=0;i<arguments.length;i++){
+                    console.log(arguments[i])
+                    for(var j=0;j<arguments[i].length;j++){
+                        _arr.push(arguments[i][j])
+                    }
+                }
+                //处理数组重复内容
+                for (var i = 0; i < _arr.length; i++) {
+                    _obj[_arr[i]] = i
+                }
+                console.log(_obj)
+
+                for (var x in _obj) {
+                    if (_obj.hasOwnProperty(x)) {
+                        _arr2.push(x)
+                    }
+                }
+                return _arr2
+            }
+
+
+        }
+
+        var t=noFe(arr1,arr2)
+       console.log(t)
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

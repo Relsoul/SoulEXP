@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function get (url,options,callback){
+				var xhr=new XMLHttpRequest();//创建XHR对象
+			//处理返回数据
+			xhr.onreadystatechange=function(callback){
+				if(xhr.readyState==4){
+					if((xhr.status>=200&&xhr.status<300)||xhr.status==304){
+						callback(xhr.responseText)
+					}else{
+						alert("Request was unsuccessful:"+xhr.status)	
+					}
+					
+				}
+			}
+			xhr.open("get",url+"?"+serialize(options),true)
+			xhr.send(null)
+			funcrion serialize(data){
+					if(!data)return "";
+					var pairs=[];
+					for (var name in data) {
+						if(!data.hasOwnProperty(name))continue;
+						if(typeof data[name]==='function') continue;
+						var value=data[name].toString();
+						name=encodeURIComponent(name);
+						value=encodeURIComponent(value);
+						pairs.push(name+"="+value);
+					}
+					return pairs.join("&")
+				}
+			}
+			
+			function post(url, options, callback) {
+    var serialize = function(data) {
+        if (!data) return '';
+        var pairs = [];
+        for (var name in data) {
+            if (!data.hasOwnProperty(name)) continue;
+            if (typeof data[name] === 'function') continue;
+            var value = data[name].toString();
+            name = encodeURIComponent(name);
+            value = encodeURIComponent(value);
+            pairs.push(name + '=' + value);
+        }
+        return pairs.join('&');
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(callback) {
+        if(xhr.readyState == 4) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                callback(xhr.responseText);
+            } else {
+                alert('request failed!' + xhr.status);
+            }
+        }
+    }
+    xhr.open('post', url, true);
+    xhr.send(options);
+}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

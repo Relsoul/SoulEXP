@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;margin: 0;
+		}
+			.slide{
+				width:200px;
+				height: 140px;
+				position: relative;
+				background: #215A6D;
+			}
+			.pointer{
+				position: absolute;
+				bottom:10px;
+			
+				left:50%;
+				transform: translateX(-50%);
+				-weibkit-transform: translateX(-50%);
+			}
+			.pointer>i{
+				display: inline-block;
+				margin-left: 5px;
+				width: 10px;
+				height: 10px;;
+				border-radius: 10px;
+				background: black;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="slide">
+	<!-- 图片省略 -->
+	<!-- 以下是指示器 -->
+	<div class="pointer"><i></i><i></i><i></i></div>
+</div>
+	</body>
+</html>

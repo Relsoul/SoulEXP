@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:验证元素
+				-可验证元素
+					-button
+					-input
+					-select
+					-textarea
+				-以下情况不做验证
+					-Input&&type={hidden,reset,button}
+					-button&&type={reset,button}
+					-input/textarea&&readonly
+					-作为datalist的子孙节点
+					-disabled
+			
+			二:验证
+				-willValidate
+					-表单提交是否会被验证
+				-checkValidity()
+					-验证元素
+				-validity
+					-存储验证结果
+				-validationMessage
+					-验证异常信息
+				-setCustomValidity(message)
+					-自定义验证错误
+			
+			三:验证
+				-validity
+					-具体属性见图片
+				-自定义异常
+					-oninvalid
+					-setCustomValidity
+					-自定义提示消息 input.addEventListener("invalid",function(){
+						var target=event.target;
+						if(target.validity.valueMissing){
+							target.setCustomValidity("请输入姓名")
+						}
+					})
+				-禁止验证
+					-form的 novalidate属性
+						-禁止验证
+					
+					
+		</script>
+	</head>
+	<body>
+	<form action="./api" method="post" novalidate>
+		<p>
+			<lable>姓名<input type="text" name="username" required="" /></lable>
+		</p>
+		<p><button>submit</button></p>
+	</form>
+	</body>
+</html>

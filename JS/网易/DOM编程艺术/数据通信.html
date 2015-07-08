@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+		一:HTTP
+			-客户端向服务器发送包含命令和URL的HTTP请求报文
+			-服务器返回一个包含事务结果的HTTP响应报文
+			
+		二:请求报文格式
+			-头行 
+				-GET music.163.com HTTP/1.1
+				  方式  主机地址		版本
+			-头部
+				-许多键值对构成
+					-Accept:浏览器端接受的类型
+					-Accept-Encoding:浏览器端编码类型
+					-Accept-Language:浏览器端可以接受的语言类型
+					-Cache-Control:浏览器是否可以缓存
+					-Connection:是否持续链接
+					-Cookie:浏览器向服务器端发送的cookie
+					-Host:主机地址
+					-Pragma:
+					-User-Agent:浏览器版本
+					-set-cookie:设置服务器缓存cookie
+		
+		三:响应报文格式
+			-头行
+				-HTTP/1.1  200    OK
+				 HTTP版本  状态码    HTTP状态码描述
+			-头部
+				-Expires:缓存有效时间
+				-Server:服务器端HTTP服务器
+			-主体
+				-完整的XML页面
+				
+		四:常用HTTP方法
+			-GET
+				-从服务器获取一份稳定 不包含主体
+			-POST
+				-向服务器发送需要处理的数据 包含主体
+			-PUT
+				-将请求的主体部分储存在服务器上 包含主体
+			-DELETE
+				-从服务器上删除一份稳定 不包含主体
+			-HEAD
+				-只从服务器获取文档的首部 不包含主体
+			-TRACE
+				-对可能经过代理服务器传送到服务器上的报文进行追踪 不包含主体
+			-OPTIONS
+				-决定可以在服务器上执行哪些方法 不包含主体
+				
+		五:URL构成
+			-http://www.163.com:8080/index.html?=admin&lang=zh-CN#news
+			-protocol
+				-http
+			-host
+				-www.163.com:8080
+			-pathname
+				-index.html
+			-hostname
+				-www.163.com
+			-port
+				-8080
+			-search
+				-?r=admin&lang=zh-CN
+			-hash
+				-news
+		
+		六:HTTP版本
+			-HTTP/0.9
+				-1991年 HTTP原型，有很多设计缺陷
+			-HTTP/1.0
+				-很快取代HTTP/0.9，成为第一个广泛应用的版本
+			-HTTP/1.0+
+				-添加持久的keep-alive连接，虚拟主机支持，以及代理连接支持，成为非官方的事实标准
+			-HTTP/1.1
+				-校正了结构性缺点，明确语义，引入重要的性能优化措施，删除不好特性，是当前使用的版
+				
+		七:常见HTTP状态码
+			-200
+				-请求成功。一般用于GET和POST方法 原因短语:OK
+			-301
+				-资源移动，所请求资源自动到新的URL，浏览器自动跳转到新的URL moved Permanently
+			-304
+				-未修改。所请求资源未修改，浏览器读取缓存数据 Not Modified
+			-400
+				-请求语法错误，服务器无法理解 Bad Request
+			-404
+				-未找到资源，可以设置个性404页面 Not Found
+			-500
+				-内部服务器错误 Internal Server Error
+				
+				
+				
+				
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

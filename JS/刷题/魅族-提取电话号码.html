@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+	var str=" 1852145998 020-888-999845 测试 021  -  85421987, 19865754"
+
+	function extNum(str){
+		var re=/(\d+)-(\d+)-(\d+)|\d+(\s*-\s*\d+)*/g
+		var m=str.match(re);
+		return m;
+	}
+
+	var z=extNum(str)
+	console.log(z)
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<script type="text/javascript">
+			一:COOKIE
+				-小型文本文件
+				-大小在4KB左右
+				-由键值对构成，键值对中间用分号空格隔开
+				
+			二:服务器端设置
+				-设置set-Cookie来设置cookie
+			
+			三:属性
+				-Name 名
+				-Value 值
+				-Domain 作用域 默认当前文档域
+				-Path 作用路径 默认当前文档路径
+				-Expirs/Max-Age 失效时间 默认浏览器会话时间
+				-Secure https协议时生效 默认false
+			
+			四:作用域
+				浏览器	-domain:news.163.com
+						-path:/
+				
+				服务器 	-news.163.com 会带上浏览器的cookie
+				
+				浏览器  -domain:.163.com
+					   -path:/
+				
+				服务器 -访问xxx.163.com都会带上这个cookie
+			
+						-当设置path:/a时访问xxx.163.com/a会带上这个cookie
+						
+			五:读取
+				-function getCookie(){
+					var cookie={};
+					var all=document.cookie;
+					if(all==="")return cookie;
+					var list=all.split("; ");
+					for(var i=0;i<list.length;i++){
+						var item=list[i];
+						var p=item.indexOf("=");
+						var name=item.substring(0,p);
+						name=decodeURIComponent(name);
+						var value=item.substring(p+1);
+						value=decodeURIComponent(value);
+						cookie[name]=value
+					}
+					return cookie
+				}
+				
+			六:设置/修改
+				document.cookie='name=value';
+				function setCookie(name,value,expires,path,domain,secure){
+					var cookie=encodeURIComponent(name)+"="+encodeURIComponent(value);
+					if(expires){
+						cookie+="; expires="+expires.toGMTString();
+					}
+					if(path){
+						cookie+="; path="+path;
+					}
+					if(domain){
+						cookie+="; domain="+domain;
+					}
+					if(secure){
+						cookie+="; secure="+secure
+					}
+					document.cookie=cookie;
+				}
+			
+			七:删除
+				function removeCookie(name,path,domain){
+					document.cookie=name+"="
+					+";path="+path
+					+"; domain="+domain
+					+"; max-age=0"
+				}
+			
+			八:缺陷
+				-流量代价
+				-安全性问题
+				-大小限制
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

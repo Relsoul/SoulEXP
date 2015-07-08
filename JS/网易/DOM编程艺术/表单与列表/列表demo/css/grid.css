@@ -1,0 +1,83 @@
+/********************************************************/
+/* GRID.CSS */
+/********************************************************/
+/* 整站/页面布局 */
+html,body{width:100%;height:100%;overflow:hidden;border-radius:4px;}
+body{position:relative;box-sizing:border-box;}
+
+.g-hd,.g-sd,.g-mn,.g-single{position:absolute;left:0;right:0;}
+.g-hd{height:62px;z-index:150;top:0;}
+.g-sd,.g-mn,.g-single{top:63px;bottom:65px;}
+.g-single{z-index:110;left:1px;right:1px;opacity:0;-webkit-transform:scale(0);-webkit-transform-origin:0 100%;padding:0 0 40px;overflow:hidden;overflow-y:overlay;-webkit-transition:opacity 0.3s ease-out,-webkit-transform 0.3s ease-out;}
+.g-single.z-show{opacity:1;-webkit-transform:scale(1);-webkit-transition:opacity 0.3s ease-out,-webkit-transform 0.3s ease-out;}
+.g-singlec.z-hasmore{padding-bottom:150px;}
+.g-sd{z-index:100;width:199px;right:auto;border-right:1px solid;}
+.g-mn{z-index:70;left:201px;overflow:hidden;overflow-y:overlay;}
+.g-mn.z-overlay{overflow-y:overlay;}
+.g-mn.z-noscr{overflow-y:hidden !important;}
+.g-bd{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;overflow-y:overlay;}/* 白色页面 */
+.g-bdmc, .g-bds{box-sizing:border-box;}
+.g-bdm{float:left;width:100%;min-height:100%;}
+.g-bdmc{min-height:100%;margin-right:235px;border-right:1px solid;}
+.g-bds{float:right;width:236px;min-height:100%;border-left:1px solid;margin-left:-236px;}
+.g-bd-1{margin-top:20px;}
+.g-bdmc-1{margin-right:154px; padding-right:30px;border-right:1px solid;}
+.g-bds-1{width:155px;right:29px;}
+
+.g-bd2{position:relative;z-index:3;margin:0 60px;}
+.g-bd3{position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;overflow-y:overlay;}
+.g-sd2{position:relative;float:right;width:270px;}
+.g-mn2{float:left;width:100%;margin-right:-270px;}
+.g-mn2c{margin-right:290px;}
+.g-box{padding:20px;margin:0 0 20px;border:1px solid;border-radius:4px;}
+.g-box-1{padding-bottom:10px;}
+.g-mv{position:absolute; top:63px; bottom:0; width:100%;overflow:overlay;}
+.g-mv .mvwrap{width:975px; padding:30px 0; margin:0 auto;}
+.g-ft{position:absolute;z-index:91;bottom:65px;left:200px;right:0;height:17px;pointer-events:none;}
+.g-min{max-width:760px; margin:0 auto;}
+
+/* 命名空间 */
+/* 
+	*已经有m-xx做命名空间的不作更改；
+	*没有m-xx的，增加p-xx，p-xx不一定在页面顶部定义，也可用于tab分页；
+	*p-xx或m-xx应与g-wrap和k-lrc同时出现，用于控制歌词栏; 
+	*页面上g-wrap有多个或嵌套的可特殊处理；
+*/
+.p-recmd{max-width:900px; margin:0 auto;}/* 发现-推荐 */
+.p-playlist{}/* 发现-歌单 */
+.p-radio{min-width:760px; max-width:900px; margin:0 auto;}/* 发现-主播电台 */
+.p-rank{}/* 发现-排行榜 */
+.p-newsong{}/* 发现-最新音乐 */
+.p-exclusive{}/* MV-精选 */
+.p-mvall{}/* MV-全部 */
+.p-daren{}/* 朋友-达人明星  */
+.p-fans{}/* 粉丝和关注 */
+.p-enent{}/* 单个动态页 */
+.p-localtrack{}/* 本地-列表模式 */
+.p-dld{}/* 我的下载 */
+.p-cloud{}/* 我的云盘 */
+.p-dtalb{position:relative; padding-top:1px;}/* 详情-专辑 */
+.p-dtmv{}/* 详情-MV */
+.p-dtintro{}/* 详情-详细介绍 */
+.p-dtremd{}/* 详情-相似歌手推荐 */
+.p-dtradio{}/* 详情-电台 */
+.p-search{}/* 搜索结果页 */
+.p-listen{}/* 最近常听 */
+
+/* g-wrap 只定义内容之间的间距，不作它用 */
+.g-wrap{padding:30px;}
+.g-wrap1{padding:0;}
+.g-wrap2{padding:0 30px 30px;}
+.g-wrap3{padding:20px;}/* 【朋友】认识的人 */
+.g-wrap4{padding:30px 30px 0 30px;}
+.g-wrap5{padding:0 30px;}
+/* g-wrap有词条的情况 */ 
+.mq-lrc .q-lrc.g-wrap{padding-bottom:40px;}
+.mq-lrc .q-lrc.g-wrap1{padding-bottom:34px;}
+.mq-lrc .q-lrc.g-wrap2{padding-bottom:34px;}
+.mq-lrc .q-lrc.g-wrap3{padding-bottom:34px;}
+.mq-lrc .q-lrc.g-wrap4{padding-bottom:30px;}
+.mq-lrc .q-lrc.g-wrap5{padding-bottom:34px;}
+/* 特殊处理：绝对定位元素，不需要加g-wrap  */
+.mq-lrc .n-local .n-sdlst{padding-bottom:34px;}/* 本地音乐 视图类型 */
+.mq-lrc .n-local .lclst .m-plylist{margin-bottom:34px;}/* 本地音乐 视图列表 */

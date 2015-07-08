@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>List Sample</title>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/grid.css"/>
+    <link rel="stylesheet" href="../css/module.css"/>
+    <link rel="stylesheet" href="../css/unit.css"/>
+    <link rel="stylesheet" href="../css/frame.css">
+    <link rel="stylesheet" href="../css/layer.css">
+    <link rel="stylesheet" href="../css/pages/style_dark.css">
+    <link rel="stylesheet" href="../css/pages/style_light.css">
+    <link rel="stylesheet" href="../skin/default/web/css/skin_frame.css">
+    <link rel="stylesheet" href="../skin/default/web/css/skin_dark.css">
+    <link rel="stylesheet" href="../skin/default/web/css/skin_light.css">
+    <style>
+    body{overflow-y:auto;border:0;}
+    h1{font-size:30px; margin:20px 0; font-weight:bold; text-align:center;}
+    .whitebg{margin:10px 0;padding:10px; background:#eeeff2; text-shadow:0 1px rgba(255,255,255,0.5);color:#333;}
+    .whitebg h1{ color:#333; text-shadow:none;}
+    .g-bd{position:static;min-height:0;padding:30px;}
+    .m-layer.z-show,.m-menu,.m-dragmdl{position:relative;top:auto;left:auto;}
+    .m-dragmdl{margin:20px;}
+    #parent .fix{width:86px;}
+    #parent .flow{margin-left:86px;}
+    #parent .o-love{width:34px;}
+    #parent .o-love .u-icn4-love{margin:3px 0 0;}
+
+
+    .menu{position:fixed;width:150px;background:#F7F8F9;color:#010101;text-align:left;text-shadow:none;}
+    .menu .itm{height:30px;line-height:30px;padding:5px 30px;}
+    .menu .itm:hover{background:#E9EAEC;}
+    </style>
+    <script src="regular.js"></script>
+</head>
+
+<body>
+
+    <h1>歌曲列表</h1>
+    <div class="m-plylist m-plylist-sort s-bfc5" id="parent"></div>
+    
+
+    <script type="text/template" id="track-list">
+      <div class="head f-cb">
+          <div class="fix">
+            <div class="th col f-pr"></div>
+            <div class="th col o-love">
+              <span class="ico u-icn4 {allLoved?'u-icn4-loved':'u-icn4-love'}" 
+                    on-click={ this.toggleAll() }></span>
+            </div>
+          </div>
+          <div class="flow f-cb">
+            <div class="th col">音乐标题</div>
+            <div class="th col">歌手</div>
+            <div class="th col">专辑</div>
+            <div class="th col">时长</div>
+          </div>
+      </div>
+      <ul>
+        {#list tracks as track}
+        <li class="itm j-item">
+          <span class="ico u-icn4 {track.loved?'u-icn4-loved':'u-icn4-love'}" 
+                on-click={ track.loved = !track.loved }></span>
+          <div class="flow f-cb">
+            <div class="td col title">
+              <a href="/track/{track.id}/" class="tit s-bfc8">{track.name}</a>
+            </div>
+            <div class="td col ellipsis">
+              <a href="/artist/{track.artist.id}/" class="s-bfc8 ">{track.artist.name}</a>
+            </div>
+            <div class="td col ellipsis">
+              <a href="/album/{track.album.id}/" class="s-bfc4">{track.album.name}</a>
+            </div>
+            <div class="td col">{track.duration}</div>
+          </div>
+        </li>
+        {/list}
+      </ul>
+    </script>
+
+    <script>
+        var TrackList = Regular.extend({
+            template: '#track-list',
+            computed:{
+                allLoved:{
+                    set:function(sign,data){
+                        data.tracks.forEach(function(item){
+                            item.loved = sign;
+                        })
+                    },
+                    get:function(data){
+                        return data.tracks.length === this.getList('loved').length
+                    }
+                }
+            },
+            getList: function(filter){
+                if (!filter || filter === 'all'){
+                    return this.data.tracks;
+                }else{
+                    return this.data.tracks.filter(function(item){
+                        return filter === 'loved'? item.loved : !item.loved;
+                    });
+                } 
+            },
+            toggleAll:function(){
+                var sign = this.data.tracks.length === this.getList('loved').length;
+                this.data.tracks.forEach(function(item){
+                    return item.loved = !sign;
+                });
+            }
+        });
+
+    </script>
+    <script>
+        function render(parent,list){
+            new TrackList({
+                data:{tracks:list}
+            })
+            .$inject(parent);
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET','./track.json',true);
+        xhr.onload = function(){
+            render('#parent',JSON.parse(xhr.responseText));
+        };
+        xhr.send(null);
+
+    </script>
+
+</body>
+</html>

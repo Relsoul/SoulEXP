@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function fucReturn(num){
+				var sum=num;
+				var count=0;
+				var tempFn=function(x){
+					sum+=x;
+					count++;
+					return tempFn
+				}
+				tempFn.toString=function(){
+					return "第几次闭包调试"+count+"结果为:"+sum
+				}
+				return tempFn;
+			}
+			console.log(fucReturn(10)(10)(10))
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

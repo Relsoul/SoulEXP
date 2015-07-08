@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+.parent { display: flex; -webkit-flex-direction: column; flex-direction: column; width: 100%; height: 100%; }
+.row { flex: 1; display: flex; }
+.row:first-child { margin-bottom: 10px; }
+.col { flex: 1; background-color: #666; }
+.col:nth-child(odd) { margin-right: 10px; }
+		</style>
+	</head>
+	<body>
+		<div class="parent">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+	</body>
+</html>

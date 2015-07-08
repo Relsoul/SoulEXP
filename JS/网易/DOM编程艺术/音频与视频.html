@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一：多媒体和图形编程
+				-多媒体
+					-audio
+					-video
+				-图形编程
+					-canvas
+			二:基本用法
+				-<audio src="xxx.mp3"></audio>
+				-<video src="mo.mov" width=320 height=240></video>
+			
+			三:audio兼容用法
+				-<audio>
+					<source src="xxx.mp3" type="audio/mpeg">
+					<source src="xxx.wav" type="audio/x-wav">
+					<source src="xxx.ogg" type="audio/ogg">
+					</audio>
+			四:多媒体格式兼容性
+				-var a=new Audio();
+				a.canPlayType("audio/nav");
+					-支持返回maybe probably
+					-不支持 返回""
+			五:控制多媒体播放
+				-load()
+					-加载媒体内容
+				-play()
+					-开始播放
+				-pause()
+					-暂停播放
+				-playbackRate
+					-播放速度
+				-currentTime
+					-播放进度
+				-volume
+					-音量
+				-muted
+					-静音
+			
+			六:查询多媒体状态
+				-paused
+					-暂停
+				-seeking
+					-跳转
+				-ended
+					-播放完成
+				-duration
+					-媒体时长
+				-initialTime
+					-媒体开始时间
+			
+			八:多媒体相关事件
+				-loadstart
+					-开始请求媒体内容
+				-loadmetadata
+					-媒体元数据已经加载完
+				-canplay
+					-加载了一些内容，可以开始播放
+				-play
+					-调用play()，或者设置了autoplay
+				-waiting
+					-缓存数据不够，播放暂停
+				-playing
+					-正在播放
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

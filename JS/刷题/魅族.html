@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+    window.onload=function(){
+        var elem=document.getElementById("move");
+        //fun one
+        function move(elem,epx){
+            var curcss= getComputedStyle(elem, false)['left']||elem.currentStyle["left"];
+
+            elem.style.left=parseInt(curcss)
+            var step=function (){
+                if(elem.style.left>=epx+"px"){
+                    clearInterval(timer)
+                }
+                elem.style.left=parseInt(elem.style.left)+50+"px"
+
+            }
+            var timer=setInterval(step,1000)
+
+        }
+
+        //fuc two
+
+        function moveT(elem,epx){
+            var curcss= getComputedStyle(elem, false)['left']||elem.currentStyle["left"];
+            elem.style.left=parseInt(curcss)
+
+            var step=function(){
+                if(elem.style.left<epx+"px"){
+                    elem.style.left = parseInt(elem.style.left) + 50 + "px";
+                    setTimeout(step, 1000)
+                }else if(elem.style.left=epx+"px"){
+                    return false;
+                }
+            }
+            var timer=setTimeout(step,1000)
+
+        }
+
+
+//      move(elem,100)
+        moveT(elem,100);
+    }
+
+
+
+
+    </script>
+    <style>
+        #move{
+            background: red;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            left:0;
+
+        }
+    </style>
+</head>
+<body>
+<div id="move">
+
+</div>
+</body>
+</html>

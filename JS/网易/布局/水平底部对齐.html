@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			/*flex布局*/
+			/*#test1{
+				width: 400px;
+				display: flex;
+				align-items: flex-end; /*底部对齐
+			}
+			#test1>div{
+				width: 100px;
+				
+			}*/
+			
+			/*table-cell+vertial-align*/
+			/*#test1{
+				width: 400px;
+				font-size:0; /*去除inline-block间隙
+			}
+			#test1>div{
+				font-size:12px;
+				 margin-right: -10px;
+				width:100px;
+				display:inline-block;
+			}*/
+			
+			
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				
+				var test1=document.getElementById("test1");
+				var test1_l=test1.getElementsByTagName("div")
+				for(var i=0;i<test1_l.length;i++){
+					test1_l[i].style.backgroundColor="#"+(i+3)+(i+2)+(i+4);
+					test1_l[i].style.height=100*(i+1)+"px"
+				}
+			//
+				
+			}
+		</script>
+	</head>
+	<body>
+		<!--flex布局-->
+		<div id="test1">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>

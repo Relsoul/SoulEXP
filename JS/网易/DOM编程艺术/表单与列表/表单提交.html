@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:隐式提交
+				-如:聚焦在输入框时按回车提交表单
+				-满足以下任一条件
+					-表单有非禁用的提交按钮
+					-没有提交按钮时,只有一个input元素
+			
+			二:提交
+				-提交过程
+					-根据表单enctype指定的值构建要提交的数据结构
+					-使用method指定的方式发送数据到action指定的目标
+				-构建提交数据
+					-从可提交的元素中提取数据组装成指定的数据结构的过程
+					-可提交元素:button.input,keygen,object,select,textarea
+				-编码方式(enctype)
+					-application/x-www-form-urlencoded[默认]
+						-a=a&b=b&c=c &分割键值对
+					-multipare/form-data
+						-数据格式组织成2388文字流
+					-text/plain
+						-a=a b=b c=c 空格分割的键值对
+				-特殊案例
+					-name="isindex"&&type="text"
+						-编码方式为application/x-www-form-urlencoded
+						-作为表单的第一个提交元素
+						-提交时只发送value值，不包含name
+					-name="_charset_"&&type="hidden"
+						-没有设置value值
+						-提交时value自动用当前提交的字符集填充
+				-submit()
+					-提交表单
+						-form.submit()
+				-onsubmit
+					-表单提交事件
+					-提交之前的数据验证
+					-阻止事件的默认行为可取消表单提交
+					form.addEventListener("submit",function(event){
+						var noValid=false;
+						var elements=event.target.elements
+						//TODO 处理自定义的验证规则
+						if(noValid){
+							event.preventDefault()
+						}
+					})
+				-无刷新表单提交
+					-form
+					-target
+					-iframe
+					iframe指定一个name
+					form指定一个target指向iframe name
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

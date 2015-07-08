@@ -1,0 +1,246 @@
+/********************************************************/
+/* STYLE_LIGHT.CSS 原白色部分结构 */
+/********************************************************/
+/* background */
+.n-frdlogin .img{background:url(../../res/images/common/frd_nologin.png) no-repeat;}
+.m-guiderdi .pic-1{background:url(../../res/images/common/guide_radio_update.png) no-repeat;}
+.m-guiderdi .pic-2{background:url(../../res/images/common/guide_radio_fav.png) no-repeat;}
+/* Clear */
+.m-dynamic .ditm::after,.m-dynamic .dopt::after,.m-dynamic .srcbox:after,.m-dynamic .src:after,.m-chartlist .chartcnt:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+
+
+/* 【朋友动态】 */
+.m-dynamic{line-height:20px;}
+.m-dynamic .ditm{padding:14px 0 12px;}
+.m-dynamic .ditm:first-child{border-top:0;}
+.m-dynamic .ditm:last-child{border-bottom:0;}
+.m-dynamic .dface{position:relative;float:left;width:50px;margin-right:-50px;}
+.m-dynamic .dwrap{float:right;width:100%;}
+.m-dynamic .dwrapc{margin-left:50px;}
+.m-dynamic .dwrapc img{vertical-align:middle;}
+.m-dynamic .devt{margin-top:-3px;}
+.m-dynamic .devt time{float:right;}
+.m-dynamic .devt .u-icn4-daren{margin:-4px 0 0 -1px;}
+.m-dynamic .devt .u-icn4-vip{margin-left:-1px;}
+.m-dynamic .name{margin-right:6px;}
+.m-dynamic .dcnt blockquote{margin:8px 0;font-size:14px;word-wrap:break-word;word-break:break-all;}
+.m-dynamic .dcnt blockquote::before,.m-dynamic .dcnt blockquote::after{content:'';display:inline-block;width:14px;height:16px;vertical-align:middle;}
+.m-dynamic .dcnt blockquote::before{margin-right:8px;background-position:-90px -90px;}
+.m-dynamic .dcnt blockquote::after{margin-left:8px;background-position:-90px -110px;}
+.m-dynamic .dopt{margin-top:14px;clear:both;line-height:15px;}
+.m-dynamic .dopt-1{padding-top:14px;}
+.m-dynamic .dcnt ~ .dopt{margin-right:10px;}
+.m-dynamic .opts{float:right;}
+.m-dynamic .optitm{float:left;}
+.m-dynamic .optitm::after{content:'|'; margin:0 10px;}
+.m-dynamic .optitm:last-child::after{display:none;}
+.m-dynamic .opt{position:relative;z-index:2;cursor:pointer;}
+.m-dynamic .opt::before{content:'';display:inline-block;width:12px;height:15px;margin-right:4px;vertical-align:middle;}
+.m-dynamic .opt-1::before{background-position:-70px -70px;}
+.m-dynamic .opt-2::before{background-position:-70px -48px;}
+.m-dynamic .opt-3::before{background-position:-90px -48px;}
+.m-dynamic .opt.z-done{opacity:1 !important;cursor:default;}
+.m-dynamic .opt.z-done::before{background-position-x:-90px;}
+.m-dynamic .opt.z-open::after{content:'';position:absolute;top:100%;left:50%;margin:11px 0 0 -4px;width:8px;height:8px;border-style:solid;-webkit-transform:rotate(45deg);}
+.m-dynamic .opt.z-dp{cursor:default;}
+.m-dynamic .cmtbox{display:block;position:relative;clear:both;margin:14px 8px 0;padding:15px;border-radius:2px; border:1px solid;}
+.m-dynamic .cmtbox:empty{margin:0;padding:0;border:none;}
+.m-dynamic .cmtbox .m-more{margin-bottom:-5px;}
+.m-dynamic .zan{float:left;line-height:32px;}
+.m-dynamic .zan a,.m-dynamic .zan .temp,.m-dynamic .zan::before{float:left;margin:-6px 0 -6px 10px;}
+.m-dynamic .zan::before{content:'赞：';margin-left:0;}
+.m-dynamic .zan a:first-child{margin-left:0;}
+.m-dynamic .zan ~ .opts{margin-top:4px; margin-right: 10px;}
+.m-dynamic .srcbox{display:block;position:relative;clear:both; margin:12px 0 0;padding:19px;border:1px solid;border-radius:2px;}
+.m-dynamic .u-cover,.m-dynamic .newget{float:left;margin-right:-80px;}
+.m-dynamic .newget img{width:110px;height:70px;border-radius:2px;}
+.m-dynamic .srctxt{margin-left:70px;padding-top:8px;line-height:24px;}
+.m-dynamic .srctxt .type{margin:3px 3px 0 0;}
+.m-dynamic .srctxt .cld{margin:-1px 1px 0 0;}
+.m-dynamic .ditm-get .srctxt{margin-left:120px;padding-top:12px;}
+.m-dynamic .ditm-get .srctxt .red{display:inline-block;vertical-align:top;text-shadow:none;line-height:18px;padding:0 3px;margin:3px 3px 0 0;border-radius:2px;background:#d02526;font-size:12px;color:#fff;}
+.m-dynamic .ditm-get a.srcbox{margin-top:0;}
+.m-dynamic .ditm-get-nopic .srcbox{padding-top:5px; padding-bottom:5px;}
+.m-dynamic .srctxt:first-child{margin-left:0;}
+.m-dynamic .srcbox .src + .srctxt{margin-left:0;}
+.m-dynamic .u-cover-mv + .srctxt{margin-left:90px;}
+.m-dynamic .u-cover-smalb + .srctxt{margin-left:86px;}
+.m-dynamic .srcbox::before{content:'';position:absolute;top:-5px;left:20px;width:8px;height:8px; -webkit-transform:rotate(45deg);}
+.m-dynamic a.srcbox{margin:7px 0 0;}
+.m-dynamic a.srcbox::before{display:none;}
+.m-dynamic .srcbox a,.m-dynamic .srcbox .opt{position:relative;z-index:2;}
+.m-dynamic .srcbox h5{font-size:14px;}
+.m-dynamic .srcbox.z-del{cursor:default;}
+.m-dynamic .srcbox .del{text-align:center;}
+.m-dynamic .srcbox .del::before{content:'';display:inline-block;width:20px;height:21px;vertical-align:middle;margin-right:10px;background-position:0 0;}
+.m-dynamic .srcbox .srclink{position:absolute;z-index:1;top:-1px;right:-1px;bottom:-1px;left:-1px;}
+.m-dynamic .srcbox .dopt{margin-top:10px;}
+.m-dynamic .srcbox .opts{margin-bottom:-10px;}
+.m-dynamic .srcbox .opt,.m-dynamic .srcbox .optitm::after{opacity:0.6;}
+.m-dynamic .srcbox .opt:hover{opacity:1;}
+.m-dynamic a.src{position:relative;z-index:2;display:block;margin-top:15px;vertical-align:top;padding:10px;border-radius:2px;}
+.m-dynamic .srcbox .cls{position:absolute; top:9px; right:9px; display:block; text-indent:-9999px;}
+.m-dynamic .srcbox .tc{text-align:center;}
+
+/* 【朋友动态】查看更多 */
+.m-more{position:relative;height:22px;line-height:22px;padding:10px 0 0;}
+.m-more button{float:left;}
+.m-more .morelnk{float:right;}
+
+/* 【朋友动态】刷新按钮 */
+.u-refresh,.u-refresh i{display:inline-block;width:24px;height:24px;}
+.u-refresh{border-radius:50%;}
+.u-refresh i{background-position:-110px -43px;}
+
+/* 【朋友动态】标题（动态） */
+.u-head3{height:38px;line-height:30px;text-shadow:none;}
+.u-head3 .u-tit{float:left;font-size:28px;}
+.u-head3 .more{float:right;margin-top:4px;}
+
+/* 【朋友动态】右则信息 */
+.m-uinfo{padding:30px 20px 18px;}
+.m-uinfo .uface{position:relative;float:left;margin-right:-60px;padding:2px; background-color:#fff;}
+.m-uinfo .uface img{display:block;width:100%;height:100%;border-radius:2px;}
+.m-uinfo .uface .u-icn-vip{position:absolute; bottom:-6px; right:-6px;}
+.m-uinfo .uwrap{float:right;width:100%;}
+.m-uinfo .uwrapc{margin-left:70px;line-height:20px;}
+.m-uinfo h5{padding:5px 0;font-size:14px;font-weight:bold;}
+.m-uinfo h5,.m-uinfo p{overflow:hidden;word-wrap:break-word;word-break:break-all;}
+.m-uinfo ul{clear:both;padding-top:20px;}
+.m-uinfo li{float:left;width:33.33%;box-sizing:border-box;font-weight:bold;}
+.m-uinfo li a{display:block;padding-left:8px;}
+.m-uinfo li a .num{display:block;padding:0 0 8px;font-size:20px;line-height:20px;}
+.m-uinfo li:first-child{border:0;box-shadow:none;}
+.m-uinfo li:first-child a{padding-left:0;}
+
+/* 【朋友动态】右则列表 */
+.m-ulist h3,.n-addgz h3{position:relative;margin:0 0 20px;font-weight:bold;}
+.m-ulist h3 .more{position:absolute;right:0;top:0;font-weight:normal;}
+.m-ulist li{position:relative;float:left;width:100%;margin:0 0 10px;}
+.m-ulist .u-face{position:relative;float:left;margin-right:-40px;}
+.m-ulist .ulwrap{float:right;width:100%;}
+.m-ulist .ulwrapc{position:relative; top:-2px; margin:0 30px 0 40px;line-height:15px;}
+.m-ulist li h5,.m-ulist li p{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.m-ulist li h5{margin:0 0 4px;}
+.m-ulist li h5 .u-icn4-vip{margin-left:-1px;}
+.m-ulist li h5 .u-icn4-daren{margin:-3px 0 0 -1px;}
+.m-ulist li .btnadd{position:absolute; top:8px; right:5px; display:inline-block; width:16px; height:16px; background-position:-115px -70px; vertical-align:middle;}
+.m-ulist li .btnadd:hover{ background-position-y:-90px;}
+.m-ulist li .udel{position:absolute;top:0;right:-13px;bottom:0;width:20px;}
+.m-ulist li .udelicn{display:none;position:absolute;top:10px;left:5px;width:9px;height:8px;border-radius:2px;padding:2px;cursor:pointer;}
+.m-ulist li:hover .udelicn{display:block;}
+.m-ulist li.z-show{-webkit-animation:show 0.5s both;}
+
+/* 【朋友】寻找并邀请好友 */
+.n-invite h2{height:88px; padding-left:30px; font-size:28px; line-height:88px;}
+.n-invite .tab{height:41px; padding-left:30px;}
+.n-invite .tab li,.n-invite .tab a{float:left;}
+.n-invite .tab li{margin-right:-1px; border-bottom:none;}
+.n-invite .tab li:first-child,.n-invite .tab li:first-child a{ border-radius:4px 0 0 0;}
+.n-invite .tab li:last-child,.n-invite .tab li:last-child a{ border-radius:0 4px 0 0;}
+.n-invite .tab a:before{display:inline-block; content:''; width:24px; height:24px; margin-right:9px; vertical-align:middle;}
+.n-invite .tab li:first-child a:before{ background:url(../../res/images/logo/lg_sina.png)}
+.n-invite .tab li:last-child a:before{ background:url(../../res/images/logo/lg_tc.png);}
+.n-invite .tab a{width:116px; height:39px; padding-left:20px; border-style:solid; border-width:1px 1px 0; line-height:39px; font-size:14px;}
+.n-invite .tab li.z-sel a{position:relative; z-index:10; height:41px; }
+.n-invite .cnt{position:relative;}
+.n-invite .subtab{margin:-2px 0 30px;}
+.n-invite .subtab a{font-size:14px;}
+.n-invite .subtab .line{margin:0 10px;}
+.n-invite .title{margin:8px 0 24px;}
+.n-invite .frdlist{margin-left:-32px;}
+.n-invite .frdlist li{float:left; width:120px; margin:0 0 40px 32px; text-align:center;}
+.n-invite .frdlist .head{position:relative; width:60px; height:60px; margin:0 auto;}
+.n-invite .frdlist .head.z-cked:after{position:absolute; top:0; left:0; display:block; content:''; width:60px; height:60px; background-position:0 -30px;pointer-events:none;}
+.n-invite .frdlist img{display:block; width:60px; height:60px; margin:0 auto; border-radius:30px; }
+.n-invite .frdlist p{margin:8px 0 5px;}
+.n-invite .notbind{padding-top:100px; text-align:center;}
+.n-invite .notbind h3{height:35px; font-size:20px;}
+.n-invite .notbind p{height:43px;}
+.n-invite .notbind .btn{width:110px;}
+.n-invite .norst{padding-top:100px; font-size:14px; text-align:center;}
+.n-invite .nofrd{margin-top:130px; text-align:center;}
+.n-invite .nofrd h3{ font-size:22px;}
+
+/* 【朋友】添加关注 */
+.n-addgz li a{display:block; position:relative; height:36px; margin-bottom:9px; border-radius:3px; line-height:36px;}
+.n-addgz li .icn{float:left; width:30px; height:30px; margin:3px 0 0 3px;}
+.n-addgz li .icn-1{background-position:-60px -370px;}
+.n-addgz li .icn-2{background-position:-100px -370px;}
+.n-addgz li .icn-3{background-position:-60px -410px;}
+.n-addgz li .icn-4{background-position:-100px -410px;}
+.n-addgz li .tit{float:left;width:70px; margin-left:13px;}
+.n-addgz li .num{float:right; width:40px; margin-right:26px; text-align:right;}
+.n-addgz li a:after{display:block; position:absolute; top:14px; right:10px; content:''; width:5px; height:10px; background-position:-120px -195px;}
+.n-addgz li a:hover:after{background-position-x:-130px;}
+
+/* 【朋友】没有关注任何人和朋友 */
+.n-fans .tbar{position:relative; height:81px; font-size:24px; text-align:center; line-height:80px;}
+.n-fans .tbar::after{display:block; content:''; position:absolute; left:50%; bottom:-11px; width:20px; height:12px; margin-left:-10px; background-position:-90px -30px;}
+.n-fans h3{height:35px; font-size:14px; font-weight:bold; text-shadow:none;}
+.n-fans .hdlist{margin-left:-6px;}
+.n-fans .hdlist li{float:left; width:144px; height:130px; margin-left:6px;}
+.n-fans .hdlist .head{width:60px; height:60px; position:relative; margin:0 auto;}
+.n-fans .hdlist .head input{position:absolute; top:48px; left:2px; margin:0;}
+.n-fans .hdlist p{text-align:center;}
+.n-fans .hdlist p.name{margin-top:7px;}
+.n-fans .hdlist p.name a{display:inline-block; max-width:122px; margin-right:3px; font-size:14px; vertical-align:middle;}
+.n-fans .hdlist p:last-child{line-height:19px;}
+.n-fans .btnwrap{margin-top:20px; padding-top:17px;  text-align:center;}
+.n-fans .btnwrap button{width:170px;}
+.n-fans .notbind{padding:30px 0 80px; text-align:center; font-size:16px;}
+
+/* 【朋友】推荐的用户 */
+.m-usrrank{margin-left:17px;}
+.m-usrrank h3{height:22px;}
+.m-usrrank .help{position:relative; cursor:help;}
+.m-usrrank .help .u-arrlay{display:none; right:-30px; left:auto; top:102%;}
+.m-usrrank .help:hover .u-arrlay{display:block;}
+.m-usrrank .help .u-arrlay::before{right:32px; left:auto;}
+.m-usrrank .update{height:25px;}
+.m-usrrank li{height:29px; line-height:29px;}
+.m-usrrank li .num{float:left; width:18px; height:29px; overflow:hidden; margin:0 11px 0 -5px; text-align:center; font-size:14px; line-height:31px;}
+.m-usrrank li .nam{float:left; width:92px;}
+
+/* 【朋友】导航 */
+.u-nav{height:30px; line-height:30px;}
+.u-nav li{float:left; margin-right:20px;}
+.u-nav li a{float:left; position:relative; height:29px; font-size:16px;}
+
+/* 【朋友】用户大列表 */
+.m-gzlist{position:relative;margin-left:-38px;}
+.m-gzlist li{position:relative;width:160px; height:227px;margin:0 0 30px 38px;}
+.m-gzlist li .cover{border-radius:2px 2px 0 0}
+.m-gzlist li .cover,.m-gzlist .cover img{display:block;width:160px; height:160px;border-radius:2px 2px 0 0}
+.m-gzlist li .cover a:after{display:block; content:''; position:absolute; top:0; left:0; width:158px; height:160px;border-radius:2px 2px 0 0}
+.m-gzlist .btm{height:66px; text-align:center;}
+.m-gzlist .btm .name{height:30px; line-height:30px; font-weight:bold;}
+.m-gzlist .btm .name a{max-width:86%;display:inline-block;}
+.m-gzlist .btm .name .u-icn4-vip{margin-bottom:21px}
+.m-gzlist .u-load2,.n-clsblk .u-load2{position:absolute;bottom:-200px;left:50%;}
+
+/* 【朋友】达人分类 */
+.n-mygz{margin-top:20px;}
+.n-class{line-height:18px;margin-bottom:8px}
+.n-class dt{float:left;}
+.n-class dd{margin-left:36px;}
+.n-class dd a{display:inline-block; margin:0 0 12px; padding:0 6px; border-radius:3px;}
+.n-class dd a:first-child{margin-left:0;}
+.n-class dd .line{margin:0 2px;}
+
+.n-clsblk{position:relative;margin:0 0 0 -2.5%;}
+.n-clsblk li{margin:0 0 20px 2.5%; width:268px; height:93px;}
+.n-clsblk .itm{position:relative; width:258px; height:83px; padding:10px 0 0 10px;border-radius:2px;}
+.n-clsblk .itm .cover{float:left;}
+.n-clsblk .itm .info{float:left; width:120px; margin-left:12px; line-height:24px;}
+.n-clsblk .itm .name{display:block; max-width:100%; font-weight:bold;}
+.n-clsblk .itm .name a{float:left;max-width:85%;}
+.n-clsblk .itm .name .u-icn4-daren{margin-bottom:5px}
+.n-clsblk .itm .sign{position:absolute; top:70px; width:248px;}
+.n-clsblk .itm .btn{position:absolute; top:22px; right:10px;}
+
+/* 【朋友】未登录 */
+.n-frdlogin{text-align:center;}
+.n-frdlogin h2{margin-top:14px; line-height:31px; font-size:18px;}
+.n-frdlogin .img{width:439px; height:287px; margin:20px auto;}
+.n-frdlogin .btn{margin-top:32px; }

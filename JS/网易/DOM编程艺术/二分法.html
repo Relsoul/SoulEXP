@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function er(arr,data){
+            var max=arr.length-1;
+            var min=0;
+                while(min<=max){
+                var mid=Math.floor((max+min)/2);
+                if(arr[mid]<data){
+                    min=mid+1
+                }else if(arr[mid]>data){
+                    max=mid-1
+                }else{
+                    return mid
+                }
+
+            }
+            return -1
+        }
+        var arrt=[10,20,30,35,45,48,52,57,62];
+        console.log(er(arrt,52))
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

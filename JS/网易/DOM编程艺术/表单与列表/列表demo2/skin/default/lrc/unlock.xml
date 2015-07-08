@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window size="40,36" mininfo="40,36" bktrans="true">
+	<Container name="rootConatiner" adaptive="true">
+		<VerticalLayout>
+			<HorizontalLayout height="36">
+				<Container />
+				<HorizontalLayout bkimage="file='lrc/desk_btn_unlock.png'" width="40">
+					<Container />
+					<VerticalLayout width="21">
+						<Container />
+						<Button name="unlock" normalimage="file='lrc/desk_icn_unlock.png' source='0,0,21,20'" hotimage="file='lrc/desk_icn_unlock_hvr.png' source='0,0,21,20'" pushedimage="file='lrc/desk_icn_unlock_hvr.png' source='0,0,21,20'" tooltip="解锁桌面歌词"/>
+						<Container />
+					</VerticalLayout>
+					<Container />
+				</HorizontalLayout>
+				<Container />
+			</HorizontalLayout>
+			<Container />
+		</VerticalLayout>
+	</Container>
+</Window>
