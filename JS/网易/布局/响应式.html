@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">	</script>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			.left{
+				background: #001E3B;
+				float: left;
+				width: 100px;
+				margin-right: 20px;
+			}
+			.right{
+				background: #0084C7;
+				overflow: hidden;
+			}
+			@media screen and (max-width:320px){
+				.left{
+					float:none;
+					width: auto;
+					margin-right: 0;
+					margin-bottom:20px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="parent">
+			<div class="left">
+				<p>left</p>
+			</div>
+			<div class="right">
+				<p>right</p>
+				<p>right</p>
+			</div>
+		</div>
+	</body>
+</html>

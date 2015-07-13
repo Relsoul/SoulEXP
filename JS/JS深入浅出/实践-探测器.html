@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			!function(global){
+				function DetectorBase(configs){
+					//如果this不是DetectorBase本身的话也就是 this为DetectorBase prototype
+					//必须使用new DetectorBase 阻止外部直接调用
+					if(!this instanceof DetectorBase){
+						throw new Error("Do not invoke without new|无法调用新detectorBase")
+					}
+					this.configs=configs;
+					this.analyze();//创建的时候是一个实例 实例.analyze() 解析一下数据
+				}
+				DetectorBase.prototype.detect=function(){
+					throw new Error("Not implemented|未执行")
+				}
+				DetectorBase.prototype.analyze=function(){
+					console.log("analyzing..");
+					this.data="###date###"
+				}
+				function LinkDetector(links){
+					if(!this instanceof LinkDetector){
+						throw new Error("Do not invoke without new|无法调用新detectorBase")
+					}
+					this.links=links;
+					DetectorBase.apply(this,arguments)
+				}
+				function ContainerDetector(containers){
+					if(!this instanceof ContainerDetector){
+						throw new Error("Do not invoke without new|无法调用新detectorBase")
+					}
+					this.containers=containers
+					DetectorBase.apply(this,arguments);
+				}
+				//inherit first
+				//实际上就是Object.create()
+				//先实现原型链继承 再实现link,containerDetector属性
+				inherit(LinkDetector,DetectorBase);
+				inherit(ContainerDetector,DetectorBase)
+				
+				//expand later 扩展
+				LinkDetector.prototype.detect=function(){
+					console.log("Loading data:"+this.data)
+					console.log("Link detection started.")
+					console.log("Scaning links:"+this.links)
+				}
+				ContainerDetector.prototype.detect=function(){
+					console.log("Loading data:"+this.data)
+					console.log("Container detection started")
+					console.log("Scanning containers:"+this.containers)
+				}
+				
+				//prevent from being altered 防止被修改
+				Object.freeze(DetectorBase)
+				Object.freeze(DetectorBase.prototype)
+				Object.freeze(LinkDetector)
+				Object.freeze(LinkDetector.prototype)
+				Object.freeze(ContainerDetector)
+				Object.freeze(ContainerDetector.prototype)
+				
+				//export to global object 导出到全局对象
+				//暴露到外面 同时不可改写
+				Object.defineProperties(global,{
+					LinkDetector:{value:LinkDetector},
+					ContainerDetector:{value:ContainerDetector},
+					DetectorBase:{value:DetectorBase}
+				})
+				function inherit(subClass,superClass){
+					subClass.prototype=Object.create(superClass.prototype)
+					subClass.prototype.constructor=subClass
+				}
+			}(this)
+			var cd=new ContainerDetector("#abc #def #ghi");
+			var ld=new LinkDetector("http://www.baidu.com http://taobao.com");
+			cd.detect();
+			ld.detect();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

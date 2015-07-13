@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:模拟重载
+				-判断实际传入参数个数来实现重载
+				function Person(){
+					var args=arguments
+					if(typeof args[0]==="object"&&args[0]){
+						if(args[0].name){
+							this.name=args[0].name
+						}
+						if(args[0].age){
+							this.age=args[0].age
+						}
+					}else{
+						if(args[0]){
+							this.name=args[0]
+						}
+						if(args[1]){
+							this.age=args[1]
+						}
+					}
+				}
+				Person.prototype.toString=function(){
+					return 'name='+this.name+",age="+this.age
+				}
+				var bosn=new Person("Bosn",27);
+				bosn.toString()//name=Bosn,age=27
+				var nunn=new Person({name:"Nunn",age:38});
+				nunn.toString()//name=Nunn,age=38
+			
+			二:-调用子类模型
+					function Person(name){this.name=name}
+					function Student(name,cls){this.className=cls;
+					Person.call(this,name)}
+					var bosn=new Student("Bosn","Network064");
+					bosn;//Student{className:"Network64",name:"Bosn"}
+					Person.prototype.init=function(){}
+					Student.prototype.init=function(){
+						// do sth
+						Person.prototype.init.apply(this,arguments)
+					}
+					
+			三:链式调用
+				function ClassManager(){
+					ClassManager.prototype.addClass=function(str){
+						console.log("Class"+str+"added");
+						console.log(this.toString())
+						return this //返回原函数 也就是 function ClassManager的实例
+					}
+					
+				}
+				ClassManager.prototype.toString=function(){
+						return this
+					}
+				var manager=new ClassManager();
+				
+				manager.addClass("classA").addClass("classB");
+			
+			四：抽象类
+				function DetectorBase(){
+					throw new Error("Abstract class can not not be invoked directly!")//防止抽象类直接被调用
+				}
+				DetectorBase.prototype.detect=function(){console.log("Detection staring")};
+				DetectorBase.prototype.stop=function(){console.log("Detection stopped")};
+				DetectorBase.prototype.init=function(){throw new Error("Error")};
+				function LinkDetector(){
+					LinkDetector.prototype=Object.create(Detector.prototype);
+					LinkDetector.prototype.constructor=LinkDetector
+				}
+			
+			五:defineProperty(ES5)
+				function Person(name){
+					//name:name(name变量),是否可枚举:true
+					Object.defineProperty(this,"name",{value:name,enumerable:true})
+				}
+				//ARMS_NUM:2,是否可枚举:true
+				Object.defineProperty(Person,"ARMS_NUM",{value:2,enumerable:true})
+				Object.seal(Person.prototype);//无法再被扩展和配置
+				Object.seal(Person);
+				function Student(name.className){
+					this.className=className;
+					Person.call(this,name)
+				}
+				Student.prototype=Object.create(Person.prototype);
+				Student.prototype.constructor=Student
+			
+			六:模块化
+				var moduleA;
+				moduleA=function(){
+					var prop=1;
+					function func(){
+						return{
+							func:func
+							prop:prop
+						}
+					}
+				}()
+				var moduleA;
+				moduleA=new function(){
+					var prop=1;
+					function func(){
+						this.func=func;
+						this.prop=prop;
+					}
+				}
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

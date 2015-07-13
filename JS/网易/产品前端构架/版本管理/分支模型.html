@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:有一天
+			-A B同时开发不同的特性
+			-两个不同特性 问题定位较为困难
+			
+			二:加入
+				-基线仓库copy一份
+				-合并到主分支
+			
+			三:分支与分支模型
+				-分支
+					-从目标仓库获得一份项目拷贝，每条拷贝都有和原仓库功能一样的开发线
+				-分支模型/工作流
+					-一个围绕项目[开发/部署/测试]层工作流程的分支操作（创建，合并等）规范集合
+			
+			四:产品级的分支模型
+				-常驻分支
+					-development
+						-从master创建
+					-production(master)
+						-默认分支
+				-活动分支
+					-feature
+						-从development创建
+					-hotfix 如hot-fix-36
+						-从master创建
+					-release 如release-110
+						-从development分支创建
+				
+				五:分支模型-特性开发
+					-develoopment
+					-feature1
+						-并行开发
+					-reature2
+						-并行开发
+						-获取feature1分支 解决冲突
+				
+				六：分支模型-发布线
+					-master
+						-推送一份master分支
+					-release
+						-创建分支
+					-development
+						-结合release进行合并处理
+				
+				七:环境
+					-开发环境
+						-测试开发
+						-需要提交下一个release分支
+					-测试环境
+						-测试
+						-release/master
+					-预发布环境
+						-线上
+						-release分支
+					-生产环境
+						-线上
+						-master
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

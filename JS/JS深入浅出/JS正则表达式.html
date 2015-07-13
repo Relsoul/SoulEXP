@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:什么是正则
+				-在常见的字符串检索或替换中，我们需要提供一种模式表示检索或替换的规则。正则表达式
+					使用单个字符来描述、匹配一系列符合某个句法规则的字符串
+				-abc [a-z]{4} \d\d\d
+			二：简单例子
+				/\d\d\d/.test("123");//true
+				/\d\d\d/.test("abc");//false
+				new RegExp("Bosn").test("HI,Bosn")
+				-\d单个匹配 只会匹配一次字符
+				-\b \bno //ano bno xxxno 
+			三:特殊字符转义
+				-/\^abc/.test("^abc")
+			
+			四:分组
+				/(abc)\1/.test("abcabc")//重复1分组
+				/(?:abc)(def)\1/.test("abcdefdef")//(?:x)仅分组 不会记录
+			
+			五:三个Flag
+				-g：全局
+				-i：不区分大小写
+				-m:是否跨行进行检索替换
+				/abc/gim.test("ABC");//true
+				RegExp("abc","mgi")
+			
+			六:RegExp对象方法
+				/abc/.exec("abcdef")//返回匹配结果
+				var reg=/abc/;
+				reg.compile("def")//改变正则内容
+				reg.test("def")//true
+			
+			七:String类型与正则相关的方法
+				-"abcabcdef".search(/(abc)\1/)//0
+				-"aabbbcc".replace(/b+?/,"1");//aa1bbbcc
+				-"aabbbbcc".match(/b+/)//["bbbb"]
+				-"aabbbbccbbaa".match(/b+/g)//["bbbb","bb"]
+				-"aabbbbccbbaa".split(/b+/)//["aa","cc","aa"]
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

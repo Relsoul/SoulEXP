@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:全屏布局实现方案
+				-Position
+					-IE6 不支持 可以采用hack
+				-Flex
+					-IE9及以下不支持
+				-百分比布局把px换成百分比即可
+				-自适应全屏布局
+					-Position无法实现
+					-FLEX只需要把设置高度的地方去掉即可
+			
+			二对比
+				-Position
+					-兼容性:好
+					-性能:好
+					-自适应:部分自适应
+				-Flex
+					-兼容性:较差
+					-性能:差
+					-自适应:可自适应
+		</script>
+		<style type="text/css">
+		
+			/*html,body,.parent{
+				height: 100%;
+				overflow: hidden;/*禁用滚动条
+			}
+			.top{
+				position: absolute;
+				top:0;
+				left: 0;
+				right: 0;
+				height: 100px;
+				/*水平方向上自适应
+			}
+			.left{
+				position: absolute;
+				left: 0;
+				top: 100px;
+				bottom: 50px;
+				width: 200px;
+			}
+			.right{
+				overflow: auto; /*出现滚动条
+				position: absolute;
+				left: 200px;
+				right: 0;
+				top: 100px;
+				bottom: 50px;
+			}
+			.bottom{
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom:0;
+				height: 50px;
+			}
+			/*让right区域滚动起来
+			.right .inner{
+				min-height: 1000px;
+			}*/
+			
+			/*FLEX*/
+			/*html,body,.parent{
+				height: 100%;
+				overflow: hidden;
+			}
+			.parent{
+				display: flex;
+			/*	列布局
+				flex-direction: column;
+			}
+			.top{
+				height: 100px; 
+			}
+			.bottom{
+				height: 50px;
+			}
+			.middle{
+				/*占据剩余区域
+				flex: 1;
+				display: flex;
+			}
+			.middle .left{
+				width: 200px;
+			}
+			.middle .right{
+				/*占据剩余区域
+				flex: 1;
+				overflow: auto;
+			}
+			.right .inner{
+				min-height: 1000px;
+			}*/
+			
+			/*FLEX自适应布局*/
+			html,body,.parent{
+				height: 100%;
+				overflow: hidden;
+			}
+			.parent{
+				display: flex;
+				flex-direction: column;
+			}
+			/*.top{
+				height: 10%;
+			}*/
+			/*.bottom{
+				height: 5%;
+			}*/
+			.middle{
+				flex: 1;
+				display: flex;
+			}
+			/*.left{
+				width: 20%;
+			}*/
+			.right{
+				flex: 1;
+				overflow: auto;
+				
+			}
+			.right .inner{
+				min-height: 1000px;
+			}
+			
+		</style>
+	</head>
+	<body>
+	<!--	position-->
+	<!--<div class="parent">
+		<div class="top">top</div>
+		<div class="left">left</div>
+		<div class="right">
+				<div class="inner"> right</div>
+		</div>
+		<div class="bottom">bottom</div>
+	</div>-->
+	
+		<!--Flex-->
+		<div class="parent">
+			<div class="top">top</div>
+			<div class="middle">
+				<div class="left">left</div>
+				<div class="right"><div class="inner">right</div></div>
+			</div>
+			<div class="bottom">bottom</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:git help
+				-git --help
+			
+			二:git congfig
+				-用户配置
+					-git config --global user.name "xxx"
+					-git config --global user.email test@xxx.com
+				-配置级别
+					- --local [默认，高优先级]:只影响本地仓库 .git/config
+					- --global [中优先级]:影响到所有当前用户的git仓库 ~/.gitconfig
+					- --system [低优先级]:影响到全系统的git仓库 /etc/gitconfig
+			
+			三:git init
+				-git status
+					-查看当前仓库信息
+				-git init
+					-初始化一个git仓库
+			
+			四:git status
+				-内容状态
+					-工作目录
+					-暂存区
+					-提交区
+				-了解当前内容状态
+			
+			五:git add
+				-添加文件内容到暂存区（同时文件被跟踪）
+				-批量添加
+					-git add .  //添加当前目录所有文件
+					
+			六:忽略文件
+				-.gitgnore
+					-在添加时忽略匹配的文件
+					-仅作用于未跟踪的文件
+				-常见的gitgnore
+					#logs //注释
+					logs
+					*.log
+			
+			七:从暂存区删除git-rm
+				-git rm --cached:仅从暂存区删除
+				-git rm :从暂存区与工作目录删除
+				-git rm $(git ls-files --deleted):删除所有被跟踪，但是在工作目录被删除的文件
+			
+			八:工作目录与暂存区
+				-物品:文件
+				-货架:工作目录
+				-购物车:暂存区
+				-购买:提交内容
+				
+				-每类物品只能放置一次的购物车
+				-货架和购物车可以出现同种物品
+				-货架上的物品可以替换掉购物车物品
+				-可以删除物品
+				-提交购物车完成购买，生成购买记录
+				
+			九:git commit
+				-根据暂存区内容创建一个提交记录
+				-git commit -m ""
+				-直接提交
+					-git commit -a
+			
+			十:git log
+				-git log --oneline
+					-简单log
+			
+			十一:git中的alias(别名）命令
+					-git config alias.shortname <fullcommad>
+					-git config --global alias.lg "log --oneline"
+					-git lg//配置了别名
+			
+			十二:git diff
+				-显示不同的版本差异
+				-git diff:
+					-工作目录与暂存区的差异
+				-git diff --cached
+					-暂存区与某次提交差异,默认为HEAD
+				-git diff <reference>
+					-工作目录与某次提交差异
+			
+			十三:撤销本地修改
+				-git checkout --<file>
+					-将文件内容从暂存区复制到工作目录
+			
+			十四:撤销暂存区内容
+				-git reset HEAD <file>
+					-将文件内容从上次提交复制到暂存区
+			
+			十五:撤销全部改动
+				-git checkout HEAD --<file>
+				-将内容从上次提交复制到工作目录
+				
+				
+				
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -12,6 +12,10 @@
 			$id1.click(function(){
 				alert("1")
 			})
+			var d=document.getElementById("date-test");
+			d.addEventListener("change",function(event){
+				console.log(this.value)
+			})
 
 		}
 
@@ -22,5 +26,7 @@
 	<input type="checkbox" id="id_1">1
 	<br>
 	<input type="checkbox" id="id_2">2
+	<br />
+	<input type="datetime-local" name="" id="date-test" value="" />
 </body>
 </html>
