@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:模块组织JavaScript
+			
+			二:模块
+				-封装实现
+				-暴露接口
+				-声明依赖
+			
+			三:反模式
+				-math.js
+					function add(a,b){
+						return a+b;
+					};
+					function sub(a,b){
+						return a-b
+					}
+					-封装无
+					-接口结构不明显
+				-caculator.js
+					var action="add"
+					function compute(a,b){
+						switch(action){
+							case "add":return add(a,b)
+							case "sub":return add(a,b)
+						}
+					}
+					-没有依赖声明
+					-使用全局状态
+			
+			四:字面量
+			-math.js
+				var math={
+					add:function add(a,b){
+						return a+b;
+					},
+					sub:function sub(a,b){
+						return a-b
+					}
+				}
+				-结构性好
+				-无访问控制
+			- caculator.js
+				var caculator={
+					action:"add",
+					compute:function compute(a,b){
+						switch(action){
+							case "add":return math.add(a,b)
+							case "sub":return math.add(a,b)
+						}
+					}
+				}
+				-同样没有依赖声明
+			
+			五:IIFE
+				-caculator-1.js
+					-var caculator=(function(){
+						var action="add"
+						return {
+							compute: function (a,b){
+								switch(action){
+									case "add":return math.add(a,b)
+									case "sub":return math.add(a,b)
+								}
+							}
+						}
+					})()
+				-访问控制
+				-无依赖声明
+				
+				-caculator-2.js
+					-var caculator=(function(m){
+						var action="add"
+						function compute(a,b){
+							switch(action){
+								case "add":
+									return m.add(a,b)
+								case "sub":
+									return m.add(a,b)
+							}
+						}
+						return{
+							compute:compute
+						}
+					})(math)
+					-显示了依赖声明
+					-仍然污染了全局变量
+					-必须手动进行依赖管理
+				
+				六:命名空间
+					-math.js
+						namespace("math",[],function(){
+							function add(a,b){return a+b};
+							function sub(a,b){return a-b}
+							return{
+								add:add,
+								sub:sub
+							}
+						})
+						-无依赖声明
+					
+					-caculator.js
+						namespace("caculator",["math"].function(m){
+							var action = "add"
+							function compute(a,b){
+								return m[action](a,b)
+							}
+							return{
+								compute:compute
+							}
+						})
+						-依赖声明
+						-依赖注入
+				
+				七:依赖管理
+				
+				
+				
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

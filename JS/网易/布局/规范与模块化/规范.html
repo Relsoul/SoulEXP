@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一:规范
+				-文件规范
+				-注释规范
+				-命名规范
+				-书写规范
+				-其他规范
+			
+			二:文件规范
+				-文件分类
+					-通用类
+						-reset.css jquery-ul.css
+					-业务类
+						-alibum toplist
+				-文件引入
+					-行内样式
+						-不推荐
+					-外联引入
+						-link
+					-内联引入
+						-style
+					-避免在CSS中使用import
+				-文件本身
+					-文件名
+						-由小写字母，数字，中划线组成
+					-编码
+						-utf-8
+			
+			三:注释规范
+				-块状注释
+					-统一缩进
+					-在被注释对象之上
+				-单行注释
+					-文字两端空格
+					-在被注释对象之上
+				-行内注释
+					-文字两端空格
+					-在分号之后
+			
+			四:命名规范
+				-分类命名
+					-g-header
+					-h-header
+				-命名格式
+					-大小写
+					-长度
+						-衡量长度和可读性
+				-语义化命名
+					-以内容语义命名
+			
+			五:书写规范
+				-单行与多行
+					-.logo{//do sth}
+					-.logo{
+						padding://
+						color://
+					}
+					-二选一 遵守之
+				-空格与分号
+					-空格
+						-缩进 2 or 4
+						-规则内空格
+							-.logo{width: 200px;height: 50px;}
+					-分号
+						-保留最后一个属性值的分号
+				-属性顺序
+					-根据属性的重要性按顺序书写
+						-显示属性
+						-自身属性
+						-文本属性和其他修饰
+				-Hack方式
+					-统一各个浏览器的Hack方式
+						-IE6:_pro:value
+						-IE7:*pro:value
+					-不要滥用hack
+				-值格式
+					-统一属性值
+						-color
+							-white or #fff or rgb(255,255,255)
+						-url()
+							-icon.png or "icon.png" or 'icon.png'
+			六:其他规范
+				-HTML规范
+					-文档声明
+					-闭合
+						-闭合标签
+						-自闭合标签
+					-属性
+						-双引号与单引号
+						-<input readonly> or <input readonly="readonly">
+					-层级
+						-用缩进体现层级，提高可读性
+						-标签正确嵌套，但嵌套不宜太深
+					-注释
+						-<!-- LOGO -->
+						-<!-- /LOGO-->
+					-大小写
+						-标签，属性均小写
+				
+				-图片规范
+					-文件名称
+						-语义
+						-长度
+					-保留源文件
+					-图片合并
+						-尽量使用sprite技术
+						-sprite图片可按模块，业务，页面来划分
+				
+				
+				
+				
+				
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -3,6 +3,66 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<script type="text/javascript">
+			一git branch
+				-分支的增删查改都靠他
+				-git branch next	
+					-提交cmmit后 NEXT仍旧不会指向新的branch
+					-创建一个next分支
+			
+			二:git checkout
+				-通过移动HEAD检出版本，用于分支切换
+				-git checkout <branchName>
+				-git checkout next
+					-切换到next分支
+				-git checkout -
+					-恢复到上个分支
+				-git checkout -b soul
+					-创建一个分支
+				-git branch -v
+					-查看分支信息 带有*号的为当前所处分支
+				-git checkout commitID
+					-HEAD跟具体分支分明了(detached head) 分离状态
+					-危险状态 仅仅读取
+			
+			三:git reset
+				-将当前分支回退到历史某个版本
+				-git reset --mixed e390b3(commitID)
+					-HEAD master移入到前面一个提交
+				-git reset --head
+				-git reset --soft
+					-仅仅是指针移动
+			
+			四:git reflog
+				-不断向前 某些信息会丢失
+			
+			五:使用捷径
+				-A^:A上的父提交
+				-A~n:在A之前的N次提交
+			
+			五:reset checkout
+				-commit操作
+				-file操作
+			
+			六:git stash
+				-保存目前的工作目录和暂存区，并返回到干净的工作空间
+				
+			七:git merge 
+				-合并分支
+				-git merge next
+				-git merge next --no-ff
+					-不适用快速合并
+					
+			八:gir rebase master
+				-更变线基
+				-勿在共有分支使用rebase
+			
+			九:git tag
+				-对某个提交设置一个不变的别名
+				-git tag v1.0 commitid
+				-git checkout v1.0
+				
+		</script>
 	</head>
 	<body>
 	</body>

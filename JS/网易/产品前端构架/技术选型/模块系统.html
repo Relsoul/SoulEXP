@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			一：模块系统
+				-依赖管理 加载/分析/注入/初始化
+				-决定模块写法
+			
+			二:Commonjs/module 非浏览器环境的js
+				-math.js
+					function add(a,b){
+						return a+b;
+					};
+					function sub(a,b){
+						return a-b
+					}
+					exports.add=add
+					exports.sub=sub
+				-caculator.js
+					var math=require("./math");
+					function Caculator(container){
+						this.add=container.querySelector("xx")
+						//do sth
+					}
+					exports.Caculator=Caculator
+					优点
+					-依赖管理程度可靠
+					-社区活跃，规范接受度高
+					-运行时指出，模块定义非常简单
+					-文件级的模块作用域隔离
+					-可以处理循环依赖
+					缺点
+					-不是标准组织的规范
+					-同步的require，没有考虑浏览器环境
+				
+				三:AMD
+					-math.js
+						define([],function(){
+							function add(a,b){
+								return a+b
+							}
+							function sub(a,b){
+								return a-b
+							}
+							//接口暴露
+							return{
+								add:add,
+								sub:sub
+							}
+						})
+						
+					-caculator.js
+					//依赖声明
+						define(["./math"],function(math){
+							//do sth
+							return{
+								Caculator:Caculator
+							}
+						})
+					优点
+					-依赖管理成熟可靠
+					-社区活跃，规范接受度高
+					-转为异步IO环境打造，适合浏览器环境
+					-支持类似Commonjs的书写方法
+					-通过插件API可支持加载非JS资源
+					-成熟的打包构建工具
+					缺点
+					-模块定义繁琐，需要额外嵌套
+					-只是库级别的支持，需要引入额外库
+					-无法处理循环依赖
+					-无法实现条件加载
+					
+				四:systemjs
+					-支持加载AMD
+					-支持加载Commonjs
+					-支持加载ES6
+					-支持加载任何资源
+				System.paths={
+					"app/*":"../es6/*.js"
+				}
+				System.import("app/caculator").then(function(c){
+					new c.Caculator(document.getElementById("caculator"))
+				})
+				
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

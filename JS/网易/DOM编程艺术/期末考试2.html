@@ -30,123 +30,99 @@
         <option value="0">--</option>
     </select>日
     <script type="text/javascript">
-    	var dateElem=document.getElementById("date");
-    	var monthElem=document.getElementById("month");
-    	var yearElem=document.getElementById("year");
-    	var yearp,monthp;
-    	console.log(dateElem.options)
-    	
-    	function checkMPass(elem){
-    		if(elem.value>"0"){
-    			
-    		}else{
-    			console.log(elem)
-    			for(var i=dateElem.length-1;i>0;i--){
-    				dateElem.remove(i)
+    	function Obj(dateElem,monthElem,yearElem){
+    		function $(id){return document.getElementById(id);}
+    		this.dateElem=$(dateElem);
+    		this.monthElem=$(monthElem);
+    		this.yearElem=$(yearElem);
+    	}
+    	Obj.prototype.checkPass=function(elem){
+    		if(elem.value=="0"){
+    			if(this.yearElem.value=="0"){
+    				return false;
     			}
-    			dateElem.options[0].selected=true;
-    			monthElem.options[0].selected=true;
-    			return false
-    		}
-    		
-    	}
-    	function checkPass(elem){
-    		console.log(elem.value)
-    		if(elem.value>"0"){
-    			
+    			return false;
     		}else{
-    		yearElem.options[0].selected=true;
-    		dateElem.options[0].selected=true;
-    		monthElem.options[0].selected=true;
-    		}
+    			return true;
+    		}	
     	}
-    	
-    	
-    	//监听monthElem变化
-    	monthElem.addEventListener("change",function(event){
-    		if(yearElem.value==0){
-    			monthElem.options[0].selected=true;
+    	Obj.prototype.checkYear=function(value){
+    		if((value%4==0 && value%100!=0)||(value%100==0 && value%400==0)){
+    			return true;
+    		}else{
     			return false;
     		}
-    		monthp=event.target.selectedIndex;
-    		if(checkMPass(monthElem.options[monthp])==false){
-    			return false
-    		}
-    		changeDate(yearp,monthp);
-    	})
-    	
-    	//监听yearElem变化
-    	yearElem.addEventListener("change",function(event){
-    		yearp=event.target.selectedIndex;
-    		checkPass(yearElem.options[yearp])
-    		for(var i=monthElem.length-1;i>0;i--){
-    				monthElem.remove(i)
+    	}
+    	Obj.prototype.deleteDate=function(elem){
+    			for(var i=elem.length-1;i>0;i--){
+    				elem.remove(i)
     			}
-    			for(var i=1;i<=12;i++){
-    				var option=new Option(i,i)
-    				monthElem.add(option)
-    				monthElem.options[0].selected=true;
-    			}
-    		
-    		
-    	})
-    	
-    	function sumMonth(month){
-    		month=parseInt(month)
-    		console.log(month)
+    	}
+    	Obj.prototype.sumDate=function(data){
     		var bigM=[1,3,5,7,8,10,12];
-    		if(month==2){
-    				return "e"
-    			}
+    		if(data=="2"&&this.checkYear(this.yearElem.value)==true){
+    			return 29;
+    		}else if(data=="2"&&this.checkYear(this.yearElem.value)==false){
+    			return 28;
+    		}
     		for(var i=0;i<bigM.length;i++){
-    			 if(bigM[i]==month){
-    				return "big"
+    			if(bigM[i]==data){
+    				return 31;
     			}
     		}
-    		return "sm"
+    		return 30;
+    	}
+    	Obj.prototype.addElem=function(data){
+    		function add(elem,num){
+    			for(var i=1;i<=num;i++){
+      				  var option=new Option(i,i)
+    				elem.add(option)
+    				elem.options[0].selected=true;
+    			}
+    		}
+    		switch(data){
+    			case "month":add(this.monthElem,12);break;
+    			case "date":add(this.dateElem,this.sumDate(this.monthElem.value));break;
+    		}
+    	}
+    	Obj.prototype.addYearEv=function(){
+    		var y=this.yearElem;
+    		var that=this;
+    		that.deleteDate(that.monthElem)
+    		y.addEventListener("change",function(){
+    			that.deleteDate(that.dateElem)
+    			that.deleteDate(that.monthElem)
+				that.addElem("month")
+    		})
+    	}
+    	Obj.prototype.addMonthEv=function(){
+    		var m=this.monthElem;
+    		var that=this;
+    		var d=that.dateElem;
+    		m.addEventListener("change",function(){
+    			if(that.checkPass(that.yearElem)==false||that.checkPass(that.monthElem)==false){
+    				that.deleteDate(that.dateElem);
+    				return false;
+    			}
+    			that.deleteDate(that.dateElem)
+    			that.addElem("date")
+    		})
     	}
     	
-    
-    	function changeDate(year,month){
-    		if(((year%4==0 && year%100!=0)||(year%100==0 && year%400==0))&&month==2){
-    			for(var i=dateElem.length-1;i>0;i--){
-    				dateElem.remove(i)
+    	Obj.prototype.addDateEv=function(){
+    		var d=this.dateElem;
+    		var that=this;
+    		d.addEventListener("change",function(){
+    			if(that.checkPass(that.yearElem)==false||that.checkPass(that.monthElem)==false){
+    				that.deleteDate(that.dateElem);
+    				return false
     			}
-    			for(var i=1;i<=29;i++){
-    				var option=new Option(i,i)
-    				dateElem.add(option)
-    				dateElem.options[1].selected=true;
-    			}
-    		}else if(sumMonth(month)=="big"){
-    			for(var i=dateElem.length-1;i>0;i--){
-    				dateElem.remove(i)
-    			}
-    				for(var i=1;i<=31;i++){
-    				var option=new Option(i,i)
-    				dateElem.add(option)
-    				dateElem.options[1].selected=true;
-    			}
-    		}else if(sumMonth(month)=="sm"){
-    			for(var i=dateElem.length-1;i>0;i--){
-    				dateElem.remove(i)
-    			}
-    			for(var i=1;i<=30;i++){
-    				var option=new Option(i,i)
-    				dateElem.add(option)
-    				dateElem.options[1].selected=true;
-    			}
-    		}else if(sumMonth(month)=="e"){
-    			for(var i=dateElem.length-1;i>0;i--){
-    				dateElem.remove(i)
-    			}
-    			for(var i=1;i<=28;i++){
-    				var option=new Option(i,i)
-    				dateElem.add(option)
-    				dateElem.options[1].selected=true;
-    			}
-    		}
+    		})
     	}
-    	console.log(2008%400)
+    	var soul=new Obj("date","month","year");
+    	soul.addYearEv()
+    	soul.addMonthEv()
+    	soul.addDateEv()
     </script>
 	</body>
 </html>

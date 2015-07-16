@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			git支持本地协议，所以可以初始化一个本地远程服务器
+			-gut init ~/git-server --bare
+		
+		一:git push
+				-提交本地历史到远程
+			
+		二:git remote
+			-远程仓库相关配置
+			-git remote add origin ~/git-server
+			-git remote -v
+				-查看远程仓库信息
+		
+		三:git fetch
+			-获取远程服务器提交历史
+			-git fetch origin master
+				-获取orgin提交历史
+			-git merge origin/master
+			-git push orgin master
+		
+		四:git pull
+			git pull=git fetch +git merge
+				git fetch remote
+				gir merge origin/master
+		
+		五:完整获取远程仓库
+			-git clone
+				-git clone ~/gitserver test2
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

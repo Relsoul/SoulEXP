@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+h1,h2,h3{
+	font-weight: bold;
+}
+h3{
+	width: 100px;
+}
+.g-bd{
+	border: 1px soild;
+	border-color:#000 #f00 #f00 #000;
+	color: #bbff22;
+}
+
+
+
+.m-tab{
+	margin:10px 10px 20px;
+	color: #f00;
+}
+
+
+.m-tab li a{
+	display: block;
+	padding: 0px 10px;
+	font: 20px/1.5 "Microsoft YaHei", simsun;
+	
+}
+
+
+
+.m-side{
+	width: 200px;
+	background:url(bg.png) #ccc repeat-y ;
+}
+		</style>
+		<script type="text/javascript">
+			一:为什么要优化
+				-提升网页相应速度
+				-对搜索引擎，屏幕阅读器友好
+				-提高可读性，可维护性
+			
+			二:如何优化
+				-减少请求
+				-减少文件大小
+				-页面性能
+				-可读性，可维护性
+			
+			三:减少请求
+				-图片合并
+				-CSS文件合并
+					-多个CSS文件合并为一个
+					-少量CSS样式内联
+					-避免使用import的方式引入css文件
+			
+			四:减少文件大小
+				-减少图片大小
+					-选择合适的图片格式
+						-PNG
+						-JPG
+					-压缩图片
+						-ImageOptim
+						-ImageAlpha
+			
+					-CSS值缩写
+						p{
+							margin:10px 10px 20px 30px;
+						}
+					-省略值为0的单位
+					-颜色值最短表示
+						color:#ccc
+					-CSS选择器合并
+					-文件压缩
+						-YUI Compressor
+						-cssmin
+			
+			五:页面性能
+				-加载顺序
+					-Css文件放在head里
+					-script放在body底部
+				-减少标签数量
+				-选择器长度
+				-耗性能属性
+					-expression
+					-filter
+					-border-radius
+					-box-shadow
+					-gradients
+				-图片设置宽高
+				-所有表现用CSS实现
+					elm.className="shrink"
+					.shrink li{width:100px}
+			
+			六:可读性，可维护性
+				-规范
+				-语义化
+				-尽量避免Hack
+				-模块化
+				-注释
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
