@@ -30,12 +30,15 @@
         <option value="0">--</option>
     </select>日
     <script type="text/javascript">
+    	//定义函数构造器
     	function Obj(dateElem,monthElem,yearElem){
     		function $(id){return document.getElementById(id);}
+    		//存储elem
     		this.dateElem=$(dateElem);
     		this.monthElem=$(monthElem);
     		this.yearElem=$(yearElem);
     	}
+    	//检查date,month,year元素是否选择的是空值也就是0
     	Obj.prototype.checkPass=function(elem){
     		if(elem.value=="0"){
     			if(this.yearElem.value=="0"){
@@ -46,6 +49,7 @@
     			return true;
     		}	
     	}
+    	//判断年份是否为闰年
     	Obj.prototype.checkYear=function(value){
     		if((value%4==0 && value%100!=0)||(value%100==0 && value%400==0)){
     			return true;
@@ -53,26 +57,34 @@
     			return false;
     		}
     	}
+    	//删除month,date函数
     	Obj.prototype.deleteDate=function(elem){
     			for(var i=elem.length-1;i>0;i--){
     				elem.remove(i)
     			}
     	}
+    	//计算月份从而生成日份
     	Obj.prototype.sumDate=function(data){
+    		//大月份
     		var bigM=[1,3,5,7,8,10,12];
+    		//生成2月的日份
     		if(data=="2"&&this.checkYear(this.yearElem.value)==true){
     			return 29;
     		}else if(data=="2"&&this.checkYear(this.yearElem.value)==false){
     			return 28;
     		}
+    		//生成大月份的日份
     		for(var i=0;i<bigM.length;i++){
     			if(bigM[i]==data){
     				return 31;
     			}
     		}
+    		//小月份
     		return 30;
     	}
+    	//定义生成month date函数
     	Obj.prototype.addElem=function(data){
+    		//定义一个添加元素函数
     		function add(elem,num){
     			for(var i=1;i<=num;i++){
       				  var option=new Option(i,i)
@@ -80,40 +92,61 @@
     				elem.options[0].selected=true;
     			}
     		}
+    		//进行判断要生成月还是日
     		switch(data){
     			case "month":add(this.monthElem,12);break;
     			case "date":add(this.dateElem,this.sumDate(this.monthElem.value));break;
     		}
     	}
+    	//监听year变动事件
     	Obj.prototype.addYearEv=function(){
     		var y=this.yearElem;
     		var that=this;
+    		//先删除初始化的月份
     		that.deleteDate(that.monthElem)
+    		//监听year
     		y.addEventListener("change",function(){
-    			that.deleteDate(that.dateElem)
-    			that.deleteDate(that.monthElem)
-				that.addElem("month")
+    			//每变动一次删除date month
+    			that.deleteDate(that.dateElem);
+    			that.deleteDate(that.monthElem);
+    			//当选择的年份不是0
+    			if(that.checkPass(that.yearElem)==true){
+    				//添加月份
+    				that.addElem("month")
+    			}
+				
     		})
     	}
+    	
+    	//监听month变动事件
     	Obj.prototype.addMonthEv=function(){
     		var m=this.monthElem;
     		var that=this;
     		var d=that.dateElem;
+    		//监听month
     		m.addEventListener("change",function(){
-    			if(that.checkPass(that.yearElem)==false||that.checkPass(that.monthElem)==false){
+    			//如果选择的月份为0
+    			if(that.checkPass(that.monthElem)==false){
+    				//删除date
     				that.deleteDate(that.dateElem);
     				return false;
     			}
+    			//单纯的变动也得删除一次date
     			that.deleteDate(that.dateElem)
+    			//重新生成date
     			that.addElem("date")
     		})
     	}
     	
+    	//监听date变动事件
     	Obj.prototype.addDateEv=function(){
     		var d=this.dateElem;
     		var that=this;
+    		//监听date
     		d.addEventListener("change",function(){
+    			//如果当date变动的时候 其year为0 month为0
     			if(that.checkPass(that.yearElem)==false||that.checkPass(that.monthElem)==false){
+    				//删除date
     				that.deleteDate(that.dateElem);
     				return false
     			}
