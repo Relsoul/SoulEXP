@@ -1,0 +1,76 @@
+@toolbar-size:52px;
+*{
+    margin: 0;padding: 0;
+}
+
+.mimix(@pos,@hov){
+     background-position: 0 @pos;
+    &:hover{
+        background-position: 0 @hov;
+    }
+}
+
+
+.toolbar{
+    position: fixed;
+    left:50%;
+    bottom: 5px;
+    margin-left: -@toolbar-size/2;
+    
+}
+.toolbar-item {
+    position: relative;
+    display: block;
+    width: @toolbar-size;
+    height: @toolbar-size;
+    background: url(../img/toolbar.png) no-repeat;
+    margin-top: 1px;
+    transition: background-position 1s;
+    &:hover{
+        .toolbar-layer{
+            opacity: 1;
+            filter: alpha(opacity=100);
+            transform: scale(1);
+            -webkit-transform: scale(1);
+        }
+    }
+}
+.toobar-item-weixin{
+   .mimix(-798px,-860px);
+    .toolbar-layer{
+        height: 212px;
+        background-position: 0 0;
+    }
+}
+.toolbar-layer{
+        position: absolute;
+        right: @toolbar-size - 6;
+        bottom: -10px;
+        width: 172px;
+        background: url(../img/toolbar_img.png) no-repeat;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        //opacity元素仍然在页面占有位置，这里利用transform来隐藏
+        transform: scale(0.01);
+        -webkit-transform: scale(0.01);
+        //变化基准点
+        transform-origin: 95% 95%;
+        transition: all 1s;
+        -webkit-transition: all 1s; 
+}
+.toobar-item-feedback{
+    .mimix(-426px,-488px);
+    
+}
+.toobar-item-app{
+    .mimix(-550px,-612px);
+   
+    .toolbar-layer{
+        height: 195px;
+        background-position: 0 -222px;
+    }
+}
+.toobar-item-top{
+    .mimix(-674px,-436px);
+   
+}

@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: 5px;
+  margin-left: -26px;
+}
+.toolbar-item {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 52px;
+  background: url(../img/toolbar.png) no-repeat;
+  margin-top: 1px;
+  transition: background-position 1s;
+}
+.toolbar-item:hover .toolbar-layer {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+.toobar-item-weixin {
+  background-position: 0 -798px;
+}
+.toobar-item-weixin:hover {
+  background-position: 0 -860px;
+}
+.toobar-item-weixin .toolbar-layer {
+  height: 212px;
+  background-position: 0 0;
+}
+.toolbar-layer {
+  position: absolute;
+  right: 46px;
+  bottom: -10px;
+  width: 172px;
+  background: url(../img/toolbar_img.png) no-repeat;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: scale(0.01);
+  -webkit-transform: scale(0.01);
+  transform-origin: 95% 95%;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+}
+.toobar-item-feedback {
+  background-position: 0 -426px;
+}
+.toobar-item-feedback:hover {
+  background-position: 0 -488px;
+}
+.toobar-item-app {
+  background-position: 0 -550px;
+}
+.toobar-item-app:hover {
+  background-position: 0 -612px;
+}
+.toobar-item-app .toolbar-layer {
+  height: 195px;
+  background-position: 0 -222px;
+}
+.toobar-item-top {
+  background-position: 0 -674px;
+}
+.toobar-item-top:hover {
+  background-position: 0 -436px;
+}
