@@ -6,7 +6,7 @@
 ###[RequireJS官网](http://requirejs.org/)
 
 ###RequireJS常用方法
-1. requirejs.config
+1.requirejs.config
 ```
 requirejs.config({
 	//配置别名
@@ -16,7 +16,7 @@ requirejs.config({
 	}
 })
 ```
-2. requirejs
+2.requirejs
 ```
 //第一个为数组，后面为回调函数
 requirejs(['jquery','vadata'],function($,vadata){
@@ -24,7 +24,7 @@ requirejs(['jquery','vadata'],function($,vadata){
 })
 
 ```
-3. define
+3.define
 ```
 define(['jquery'],function($){
 
