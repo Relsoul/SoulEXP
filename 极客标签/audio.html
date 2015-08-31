@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="main">
+			<audio controls="controls" >
+				<source src="t.mp3"></source>
+				<source src="t_WAV.wav"></source>
+				<source src="t.ogg"></source>
+			</audio>
+			<audio controls="controls">
+				<source src="t.mp3"></source>
+				<source src="t_WAV.wav"></source>
+				<source src="t.ogg"></source>
+			</audio>
+			<audio controls="controls">
+				<source src="t.mp3"></source>
+				<source src="t_WAV.wav"></source>
+				<source src="t.ogg"></source>
+			</audio>
+		</div>
+		<script type="text/javascript">
+			var main=document.getElementById("main");
+			var audioElem=main.getElementsByTagName("audio")
+			for (var i=0;i<audioElem.length;i++){
+				(
+					function(i){
+						var that=this;
+						audioElem[i].addEventListener("play",function(){
+							aePause();
+							this.id="play"
+						})
+						audioElem[i].addEventListener("pause",function(){
+							if(this.id=="play"){
+								this.id=""
+							}
+						})
+					}
+				)(i)
+			}
+			
+			function aePause(){
+				for (var i=0;i<audioElem.length;i++){
+				(
+					function(i){
+						if(audioElem[i].id=="play"){
+							audioElem[i].pause();
+						}
+						return false;
+					}
+				)(i)
+			}
+			}
+			
+		</script>
+	</body>
+</html>

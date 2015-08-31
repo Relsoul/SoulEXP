@@ -8,6 +8,19 @@
 	<script type="text/javascript">
 	window.onload=function(){
 		
+		function dosth(event){
+			alert("nice")
+		}
+		
+		function tEvent(){
+		var x="nice";
+		var ele=document.getElementById("pid")
+		ele.addEventListener("click",dosth,x)
+			
+		}
+		tEvent()
+		
+		
 		// function abc(){
 		// 	var a=0;
 		// 	return (function(a){
@@ -35,6 +48,8 @@
 		// test()
 
 		
+		
+		
 	}
 	
 
@@ -44,7 +59,7 @@
 </head>
 <body>
 	<div>
-		
+		<p id="pid">click me</p>
 	</div>
 </body>
 </html>
